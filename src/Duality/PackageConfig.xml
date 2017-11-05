@@ -18,5 +18,7 @@
     <Package id="AdamsLair.Duality.Editor.Plugins.SceneView" version="2.0.13.0" />
     <Package id="AdamsLair.Duality.Editor.Plugins.PackageManagerFrontend" version="2.1.2.0" />
     <Package id="AdamsLair.Duality.Editor.Backend.DefaultOpenTK" version="2.0.5.0" />
+    <Package id="AdamsLair.Duality.Plugins.Tilemaps" version="1.1.14.0" />
+    <Package id="AdamsLair.Duality.Editor.Plugins.Tilemaps" version="1.1.20.0" />
   </Packages>
 </PackageConfig>
