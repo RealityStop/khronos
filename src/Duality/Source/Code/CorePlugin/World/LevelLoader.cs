@@ -10,10 +10,12 @@ namespace Khronos.World
     internal class LevelLoader
     {
         private static LevelLoader _Instance = new LevelLoader();
-        public static LevelLoader Instance { get; private set; }
+        public static LevelLoader Instance { get { return _Instance; } }
 
         [DontSerialize]
         Dictionary<string, Level> Levels = new Dictionary<string, Level>();
+
+        public Level CurrentLevel { get; private set; }
 
 
         public LevelLoader()
@@ -21,11 +23,14 @@ namespace Khronos.World
             InitializeDefault(); 
         }
 
-        public Level GetLevel(string levelName)
+        public Level LoadLevel(string levelName)
         {
             if (Levels.TryGetValue(levelName, out var level))
+            {
+                CurrentLevel = level;
+                level.Load();
                 return level;
-
+            }
             return null;
         }
 

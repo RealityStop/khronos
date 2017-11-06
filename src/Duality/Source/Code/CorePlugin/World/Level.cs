@@ -1,4 +1,5 @@
-﻿using Humper;
+﻿using Duality;
+using Humper;
 using System;
 
 namespace Khronos.World
@@ -26,6 +27,11 @@ namespace Khronos.World
         private void AddFloor()
         {
             world.Create(0, 750, 800, 50);
+        }
+
+        internal void Load()
+        {
+                Logs.Game.Write("Loaded level");
         }
     }
 }

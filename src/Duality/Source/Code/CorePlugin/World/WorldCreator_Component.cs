@@ -21,12 +21,7 @@ namespace Khronos.World
 
         private void LoadDefaultLevel()
         {
-            Load(LevelLoader.Instance.GetLevel("Default"));
-        }
-
-        private void Load(Level level)
-        {
-            Logs.Game.Write("Loaded level");
+            LevelLoader.Instance.LoadLevel("Default");
         }
     }
 }
