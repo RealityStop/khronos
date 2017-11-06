@@ -26,7 +26,7 @@ namespace Khronos.World
 
         private void Load(Level level)
         {
-            Log.Game.Write("Loaded level");
+            Logs.Game.Write("Loaded level");
         }
     }
 }

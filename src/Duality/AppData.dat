@@ -10,7 +10,9 @@
   <skipBackends />
   <soundDopplerFactor dataType="Float">1</soundDopplerFactor>
   <speedOfSound dataType="Float">360</speedOfSound>
-  <startScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]" />
-  <version dataType="UInt">1</version>
+  <startScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
+    <contentPath dataType="String">Data\Basic Testing.Scene.res</contentPath>
+  </startScene>
+  <version dataType="UInt">3</version>
 </root>
 <!-- XmlFormatterBase Document Separator -->
