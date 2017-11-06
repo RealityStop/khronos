@@ -2,7 +2,10 @@
   <appName dataType="String">Duality Application</appName>
   <customData />
   <forcedRenderResizeMode dataType="Enum" type="Duality.TargetResize" name="Fit" value="2" />
-  <forcedRenderSize dataType="Struct" type="Duality.Point2" />
+  <forcedRenderSize dataType="Struct" type="Duality.Point2">
+    <X dataType="Int">1920</X>
+    <Y dataType="Int">1080</Y>
+  </forcedRenderSize>
   <multisampleBackBuffer dataType="Bool">true</multisampleBackBuffer>
   <physicsFixedTime dataType="Bool">false</physicsFixedTime>
   <physicsVelThreshold dataType="Float">0.8333333</physicsVelThreshold>
