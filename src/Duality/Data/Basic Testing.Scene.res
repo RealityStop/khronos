@@ -165,13 +165,13 @@
             <ignoreParent dataType="Bool">false</ignoreParent>
             <parentTransform />
             <pos dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">268.360352</X>
-              <Y dataType="Float">115.961319</Y>
+              <X dataType="Float">251.360352</X>
+              <Y dataType="Float">-277.0387</Y>
               <Z dataType="Float">0</Z>
             </pos>
             <posAbs dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">268.360352</X>
-              <Y dataType="Float">115.961319</Y>
+              <X dataType="Float">251.360352</X>
+              <Y dataType="Float">-277.0387</Y>
               <Z dataType="Float">0</Z>
             </posAbs>
             <scale dataType="Float">1</scale>
@@ -334,7 +334,7 @@
                   <externalTilemap />
                   <gameobj dataType="ObjectRef">1795559056</gameobj>
                   <offset dataType="Float">-0</offset>
-                  <origin dataType="Enum" type="Duality.Alignment" name="TopLeft" value="5" />
+                  <origin dataType="Enum" type="Duality.Alignment" name="BottomLeft" value="9" />
                   <tileDepthMode dataType="Enum" type="Duality.Plugins.Tilemaps.TileDepthOffsetMode" name="Flat" value="0" />
                   <tileDepthOffset dataType="Int">0</tileDepthOffset>
                   <tileDepthScale dataType="Float">0</tileDepthScale>
@@ -419,7 +419,7 @@
                 <item dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapCollider" id="1573500818">
                   <active dataType="Bool">true</active>
                   <gameobj dataType="ObjectRef">4205649231</gameobj>
-                  <origin dataType="Enum" type="Duality.Alignment" name="TopLeft" value="5" />
+                  <origin dataType="Enum" type="Duality.Alignment" name="BottomLeft" value="9" />
                   <roundedCorners dataType="Bool">false</roundedCorners>
                   <shapeFriction dataType="Float">0.299999982</shapeFriction>
                   <shapeRestitution dataType="Float">0.299999982</shapeRestitution>
