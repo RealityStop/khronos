@@ -51,11 +51,9 @@ namespace Khronos.Player
                 {
                     //Adjust our velocity based on collision so we don't "inherit" velocity.
 
-                    //Detect landing from a vertical fall.
-                    if (MathF.Abs(GameObj.Transform.Pos.Y - newPosition.Y) < 0.05f)
-                    {
-                        Vel.Y = 0;
-                    }
+                    //We do this by evaluating what our effective velocity is.
+                    var effectivevelocity = (newPosition - GameObj.Transform.Pos.Xy) / Duality.Time.TimeMult;
+                    Vel = effectivevelocity;
                 }
 
                 GameObj.Transform.Pos = new Vector3(newPosition, 0);

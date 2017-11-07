@@ -37,7 +37,7 @@ namespace Khronos.Player
 
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
-            var movement = box.Move(newLocation.X, newLocation.Y, (collisionInfo) => { Logs.Game.Write("impact"); return CollisionResponses.Slide; });
+            var movement = box.Move(newLocation.X, newLocation.Y, (collisionInfo) =>  CollisionResponses.Slide );
             actualResultPosition = new Vector2(movement.Destination.X, movement.Destination.Y);
             return movement.HasCollided;
         }

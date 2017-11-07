@@ -4,6 +4,13 @@
         <name>GamePlugin.core</name>
     </assembly>
     <members>
+        <member name="T:Khronos.World.HumperMapObject">
+            <summary>
+            Generic base-class for Humper collision objects.  Automatically add themselves on Enabled=true and remove themselves when Enabled = false
+            
+            By default, assume they occupy a single tile at TileX/TileY.
+            </summary>
+        </member>
         <member name="T:Duality_.Duality_CorePlugin">
             <summary>
             Defines a Duality core plugin.
