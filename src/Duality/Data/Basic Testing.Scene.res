@@ -238,7 +238,7 @@
                   <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="727031777" custom="true">
                     <body>
                       <version dataType="Int">3</version>
-                      <data dataType="Array" type="System.Byte[]" id="1206819182">H4sIAAAAAAAEAO3Q0QkAIAxDwc4gHUAEl3L/QRTpCBaSGqG835zdzPzctPuqZyHk6U5AX+JnQUySTz75ikQ+7sjHHfm4Ix93vvQNhGUZvoA5wrIMXyuXgG2viouFiBEAAA==</data>
+                      <data dataType="Array" type="System.Byte[]" id="1206819182">H4sIAAAAAAAEAO3RQQ2AQBAEwfWAAZKzgRL8C4GQ++CgHj3JpAT0NTPn+2O+hc8dIDXyqZFPjXxq5FMjnxr51MinRj418qmRT418auRTI58a+dTIp0Y+NfKpkU+NfGrkUyOfGvnUyKdGPjXyqZFPjXxq5FMjn3+jFSA7zgODV0ttiDQAAA==</data>
                     </body>
                   </tileData>
                   <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -342,7 +342,7 @@
                   <active dataType="Bool">true</active>
                   <gameobj dataType="ObjectRef">4205649231</gameobj>
                   <origin dataType="Enum" type="Duality.Alignment" name="TopLeft" value="5" />
-                  <roundedCorners dataType="Bool">true</roundedCorners>
+                  <roundedCorners dataType="Bool">false</roundedCorners>
                   <shapeFriction dataType="Float">0.299999982</shapeFriction>
                   <shapeRestitution dataType="Float">0.299999982</shapeRestitution>
                   <solidOuterEdges dataType="Bool">true</solidOuterEdges>
@@ -389,17 +389,23 @@
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3683138826">
         <_items dataType="Array" type="Duality.Component[]" id="2708048440" length="4">
           <item dataType="ObjectRef">1678811662</item>
+          <item dataType="Struct" type="Khronos.World.HumperLevelGen" id="396347329">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1621534444</gameobj>
+          </item>
         </_items>
-        <_size dataType="Int">1</_size>
+        <_size dataType="Int">2</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2449924690" surrogate="true">
         <header />
         <body>
           <keys dataType="Array" type="System.Object[]" id="475540768">
             <item dataType="ObjectRef">3128875926</item>
+            <item dataType="Type" id="2549024732" value="Khronos.World.HumperLevelGen" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="3596312462">
             <item dataType="ObjectRef">1678811662</item>
+            <item dataType="ObjectRef">396347329</item>
           </values>
         </body>
       </compMap>

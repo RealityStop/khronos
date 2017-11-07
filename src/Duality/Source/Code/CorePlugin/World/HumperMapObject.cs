@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Humper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,37 @@ using System.Threading.Tasks;
 
 namespace Khronos.World
 {
-    public class HumperMapObject : Component, ICmpInitializable
+    public class HumperMapObject
     {
-        public void OnInit(InitContext context)
+        public int TileX { get; set; }
+        public int TileY { get; set; }
+
+        private bool _Enabled = false;
+        public bool Enabled { get { return _Enabled; } set { _Enabled = value; if (value) GameLevel.Instance.Inject(this); else GameLevel.Instance.Remove(this); } }
+
+
+        private IBox box;
+
+
+        public virtual void Build(IWorld world, Vector2 tilesize)
         {
-            GameLevel.Instance.Inject(this);
+            if (!Enabled)
+                return;
+
+            if (box == null)
+                box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, tilesize.X, tilesize.Y);
         }
 
-        public void OnShutdown(ShutdownContext context)
+
+        public void Remove(IWorld world)
         {
+            if (Enabled)
+                return;
+            if (box == null)
+                return;
+
+            world.Remove(box);
+            box = null;
         }
     }
 }

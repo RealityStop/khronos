@@ -11,5 +11,13 @@ namespace Khronos.World.Level
         public bool PassThroughFromBelow { get; set; }
         public bool PassThroughFromAbove { get; set; }
 
+        public Platform(int tileX, int tileY, bool enable = true)
+        {
+            TileX = tileX;
+            TileY = tileY;
+            if (enable)
+                Enabled = true;
+        }
+
     }
 }
