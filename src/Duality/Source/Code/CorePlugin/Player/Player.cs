@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Khronos.World;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Khronos.Player
 {
     public class Player : Component
     {
+        
     }
 }
