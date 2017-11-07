@@ -1,7 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorePlugin", "CorePlugin\CorePlugin.csproj", "{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duality", "..\..\..\..\duality\Source\Core\Duality\Duality.csproj", "{D821AFB9-BCC9-4025-9A9C-798E2BC546AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DualityPrimitives", "..\..\..\..\duality\Source\Core\Primitives\DualityPrimitives.csproj", "{C87A6A2F-E537-48FA-A789-3C54CF29CC09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +19,10 @@ Global
 		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D821AFB9-BCC9-4025-9A9C-798E2BC546AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D821AFB9-BCC9-4025-9A9C-798E2BC546AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87A6A2F-E537-48FA-A789-3C54CF29CC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87A6A2F-E537-48FA-A789-3C54CF29CC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

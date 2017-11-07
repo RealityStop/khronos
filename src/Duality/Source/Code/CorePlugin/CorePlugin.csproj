@@ -65,9 +65,9 @@
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="World\HumperMapObject.cs" />
     <Compile Include="World\Level.cs" />
-    <Compile Include="World\LevelLoader.cs" />
-    <Compile Include="World\WorldCreator_Component.cs" />
+    <Compile Include="World\Level\Platform.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

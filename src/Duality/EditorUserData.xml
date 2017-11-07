@@ -23,7 +23,7 @@
           <Y>0</Y>
           <Z>0</Z>
         </SnapToGridSize>
-        <ActiveState>Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState</ActiveState>
+        <ActiveState>Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState</ActiveState>
         <States>
           <State type="Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState">
             <SpecialRenderSize>CamView</SpecialRenderSize>
@@ -48,6 +48,8 @@
           <State type="Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState">
             <ActiveLayers>
               <Item>Duality.Editor.Plugins.CamView.CamViewLayers.GridCamViewLayer</Item>
+              <Item>Duality.Editor.Plugins.CamView.CamViewLayers.RigidBodyJointCamViewLayer</Item>
+              <Item>Duality.Editor.Plugins.CamView.CamViewLayers.RigidBodyShapeCamViewLayer</Item>
             </ActiveLayers>
             <ObjectVisibility>
               <Item>Duality.Plugins.Tilemaps.Tilemap</Item>
@@ -83,22 +85,34 @@
         <ShowComponents>true</ShowComponents>
       </SceneView>
     </Plugin>
+    <Plugin id="Tilemaps">
+      <TilePalette>
+        <DarkBackground>false</DarkBackground>
+        <DisplayTileIndices>Never</DisplayTileIndices>
+      </TilePalette>
+      <TilesetEditor>
+        <DarkBackground>false</DarkBackground>
+        <DisplayTileIndices>Hovering</DisplayTileIndices>
+      </TilesetEditor>
+    </Plugin>
   </Plugins>
 </UserData>
 <!-- DockPanel Data -->
 <?xml version="1.0" encoding="utf-8"?>
 <!--DockPanel configuration file. Author: Weifen Luo, all rights reserved.-->
 <!--!!! AUTOMATICALLY GENERATED FILE. DO NOT MODIFY !!!-->
-<DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="0.440885416666667" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="6" ActivePane="0">
-  <Contents Count="6">
+<DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="0.440885416666667" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="6" ActivePane="6">
+  <Contents Count="8">
     <Content ID="0" PersistString="Duality.Editor.Plugins.CamView.CamView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
     <Content ID="1" PersistString="Duality.Editor.Plugins.ProjectView.ProjectFolderView" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
     <Content ID="2" PersistString="Duality.Editor.Plugins.SceneView.SceneView" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
     <Content ID="3" PersistString="Duality.Editor.Plugins.ObjectInspector.ObjectInspector" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
     <Content ID="4" PersistString="Duality.Editor.Plugins.HelpAdvisor.HelpAdvisor" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
     <Content ID="5" PersistString="Duality.Editor.Plugins.LogView.LogView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
+    <Content ID="6" PersistString="Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
+    <Content ID="7" PersistString="Duality.Editor.Plugins.Tilemaps.TilesetEditor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
   </Contents>
-  <Panes Count="8">
+  <Panes Count="9">
     <Pane ID="0" DockState="DockRight" ActiveContent="2">
       <Contents Count="1">
         <Content ID="0" RefID="2" />
@@ -131,13 +145,19 @@
       </Contents>
     </Pane>
     <Pane ID="6" DockState="Document" ActiveContent="0">
-      <Contents Count="1">
+      <Contents Count="2">
         <Content ID="0" RefID="0" />
+        <Content ID="1" RefID="7" />
       </Contents>
     </Pane>
     <Pane ID="7" DockState="DockBottomAutoHide" ActiveContent="5">
       <Contents Count="1">
         <Content ID="0" RefID="5" />
+      </Contents>
+    </Pane>
+    <Pane ID="8" DockState="DockLeft" ActiveContent="6">
+      <Contents Count="1">
+        <Content ID="0" RefID="6" />
       </Contents>
     </Pane>
   </Panes>
@@ -147,8 +167,10 @@
         <Pane ID="0" RefID="6" PrevPane="-1" Alignment="Right" Proportion="0.5" />
       </NestedPanes>
     </DockWindow>
-    <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="3">
-      <NestedPanes Count="0" />
+    <DockWindow ID="1" DockState="DockLeft" ZOrderIndex="2">
+      <NestedPanes Count="1">
+        <Pane ID="0" RefID="8" PrevPane="-1" Alignment="Bottom" Proportion="0.5" />
+      </NestedPanes>
     </DockWindow>
     <DockWindow ID="2" DockState="DockRight" ZOrderIndex="1">
       <NestedPanes Count="4">
@@ -161,7 +183,7 @@
     <DockWindow ID="3" DockState="DockTop" ZOrderIndex="4">
       <NestedPanes Count="0" />
     </DockWindow>
-    <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="2">
+    <DockWindow ID="4" DockState="DockBottom" ZOrderIndex="3">
       <NestedPanes Count="1">
         <Pane ID="0" RefID="7" PrevPane="-1" Alignment="Right" Proportion="0.5" />
       </NestedPanes>
