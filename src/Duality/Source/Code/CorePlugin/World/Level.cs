@@ -11,13 +11,14 @@ namespace Khronos.World
         IWorld HumperMap;
         public int HumperWidth { get; set; }
         public int HumperHeight { get; set; }
-        public Vector2 TileSize { get; private set; }
+        public Point2 TileSize { get; private set; }
 
         const int defaultFloorHeight = 50;
 
 
-        internal void Initialize(int humperwidth = -1, int humperheight = -1)
+        internal void Initialize(Point2 tilesize, int humperwidth = -1, int humperheight = -1)
         {
+            TileSize = tilesize;
             if (humperwidth < 0)
                 HumperWidth = Duality.DualityApp.AppData.ForcedRenderSize.X;
             if (humperheight < 0)

@@ -21,13 +21,13 @@
             <ignoreParent dataType="Bool">false</ignoreParent>
             <parentTransform />
             <pos dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">0</X>
-              <Y dataType="Float">0</Y>
+              <X dataType="Float">960</X>
+              <Y dataType="Float">540</Y>
               <Z dataType="Float">-100</Z>
             </pos>
             <posAbs dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">0</X>
-              <Y dataType="Float">0</Y>
+              <X dataType="Float">960</X>
+              <Y dataType="Float">540</Y>
               <Z dataType="Float">-100</Z>
             </posAbs>
             <scale dataType="Float">1</scale>
@@ -165,13 +165,13 @@
             <ignoreParent dataType="Bool">false</ignoreParent>
             <parentTransform />
             <pos dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">369.654</X>
-              <Y dataType="Float">373.7919</Y>
+              <X dataType="Float">268.360352</X>
+              <Y dataType="Float">115.961319</Y>
               <Z dataType="Float">0</Z>
             </pos>
             <posAbs dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">369.654</X>
-              <Y dataType="Float">373.7919</Y>
+              <X dataType="Float">268.360352</X>
+              <Y dataType="Float">115.961319</Y>
               <Z dataType="Float">0</Z>
             </posAbs>
             <scale dataType="Float">1</scale>
@@ -210,8 +210,8 @@
             <gameobj dataType="ObjectRef">3446780109</gameobj>
           </item>
           <item dataType="Struct" type="Khronos.Player.PlayerCollider" id="2056838925">
-            <_x003C_SizeX_x003E_k__BackingField dataType="Int">0</_x003C_SizeX_x003E_k__BackingField>
-            <_x003C_SizeY_x003E_k__BackingField dataType="Int">0</_x003C_SizeY_x003E_k__BackingField>
+            <_x003C_SizeX_x003E_k__BackingField dataType="Int">32</_x003C_SizeX_x003E_k__BackingField>
+            <_x003C_SizeY_x003E_k__BackingField dataType="Int">64</_x003C_SizeY_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3446780109</gameobj>
             <humperObject dataType="Struct" type="Khronos.Player.PlayerHumper" id="2391548525">
@@ -227,7 +227,7 @@
             <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
             <_x003C_TerminalVelocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2">
               <X dataType="Float">1</X>
-              <Y dataType="Float">1</Y>
+              <Y dataType="Float">10</Y>
             </_x003C_TerminalVelocity_x003E_k__BackingField>
             <_x003C_Velocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2" />
             <active dataType="Bool">true</active>

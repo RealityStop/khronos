@@ -21,7 +21,7 @@ namespace Khronos.World
             var tilemap = GameObj.GetComponentsInChildren<Tilemap>().FirstOrDefault();
             _TileGrid = new Grid<HumperMapObject>(tilemap.Size.X, tilemap.Size.Y);
 
-            GameLevel.Instance.Initialize();
+            GameLevel.Instance.Initialize(tilemap.Size);
 
             if (tilemap != null)
             {

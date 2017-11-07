@@ -14,7 +14,18 @@ namespace Khronos.World
         public int TileY { get; set; }
 
         private bool _Enabled = false;
-        public bool Enabled { get { return _Enabled; } set { _Enabled = value; if (value) GameLevel.Instance.Inject(this); else GameLevel.Instance.Remove(this); } }
+        public bool Enabled { get { return _Enabled; } set {
+                if (_Enabled == value)
+                    return;
+
+                //If changed
+                _Enabled = value;
+                if (value)
+                    GameLevel.Instance.Inject(this);
+                else
+                    GameLevel.Instance.Remove(this);
+            }
+        }
 
 
         private IBox box;
@@ -27,6 +38,9 @@ namespace Khronos.World
 
             if (box == null)
                 box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, tilesize.X, tilesize.Y);
+
+
+           // Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
         }
 
 
