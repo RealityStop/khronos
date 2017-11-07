@@ -8,7 +8,7 @@
     <parameters dataType="Struct" type="Duality.Drawing.ShaderParameterCollection" id="2696347487" custom="true">
       <body>
         <mainTex dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Texture]]">
-          <contentPath dataType="String">Data\tileset.Texture.res</contentPath>
+          <contentPath dataType="String">Data\Media\tilesets\tileset.Texture.res</contentPath>
         </mainTex>
       </body>
     </parameters>
@@ -22,7 +22,7 @@
         <id dataType="String">mainTex</id>
         <name dataType="String">Main Texture</name>
         <sourceData dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Pixmap]]">
-          <contentPath dataType="String">Data\tileset.Pixmap.res</contentPath>
+          <contentPath dataType="String">Data\Media\tilesets\tileset.Pixmap.res</contentPath>
         </sourceData>
         <sourceTileSize dataType="Struct" type="Duality.Point2">
           <X dataType="Int">32</X>

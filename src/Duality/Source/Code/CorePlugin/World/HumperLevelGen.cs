@@ -9,23 +9,12 @@ using System.Threading.Tasks;
 
 namespace Khronos.World
 {
-    public class HumperLevelGen : Component, ICmpUpdatable
+    public class HumperLevelGen : Component, ICmpInitializable
     {
-        private bool beenInitialized = false;
-
         [DontSerialize]
         Grid<HumperMapObject> _TileGrid;
         Grid<HumperMapObject> TileGrid { get { return _TileGrid; } }
 
-
-        public void OnUpdate()
-        {
-            if (!beenInitialized)
-            {
-                Initialize();
-                beenInitialized = true;
-            }
-        }
 
         private void Initialize()
         {
@@ -60,6 +49,15 @@ namespace Khronos.World
                 Platform platform = new Platform(x,y);
                 TileGrid[x, y] = platform;
             }
+        }
+
+        void ICmpInitializable.OnInit(InitContext context)
+        {
+            Initialize();
+        }
+
+        void ICmpInitializable.OnShutdown(ShutdownContext context)
+        {
         }
     }
 }

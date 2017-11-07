@@ -30,7 +30,7 @@ namespace Khronos.World
         }
 
 
-        public void Remove(IWorld world)
+        public virtual void Remove(IWorld world)
         {
             if (Enabled)
                 return;

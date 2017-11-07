@@ -23,7 +23,7 @@
           <Y>0</Y>
           <Z>0</Z>
         </SnapToGridSize>
-        <ActiveState>Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState</ActiveState>
+        <ActiveState>Duality.Editor.Plugins.CamView.CamViewStates.SceneEditorCamViewState</ActiveState>
         <States>
           <State type="Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState">
             <SpecialRenderSize>CamView</SpecialRenderSize>
@@ -101,7 +101,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--DockPanel configuration file. Author: Weifen Luo, all rights reserved.-->
 <!--!!! AUTOMATICALLY GENERATED FILE. DO NOT MODIFY !!!-->
-<DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="0.440885416666667" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="6" ActivePane="6">
+<DockPanel FormatVersion="1.0" DockLeftPortion="0.25" DockRightPortion="0.440885416666667" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="6" ActivePane="3">
   <Contents Count="8">
     <Content ID="0" PersistString="Duality.Editor.Plugins.CamView.CamView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
     <Content ID="1" PersistString="Duality.Editor.Plugins.ProjectView.ProjectFolderView" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
@@ -109,7 +109,7 @@
     <Content ID="3" PersistString="Duality.Editor.Plugins.ObjectInspector.ObjectInspector" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
     <Content ID="4" PersistString="Duality.Editor.Plugins.HelpAdvisor.HelpAdvisor" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
     <Content ID="5" PersistString="Duality.Editor.Plugins.LogView.LogView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
-    <Content ID="6" PersistString="Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
+    <Content ID="6" PersistString="Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette" AutoHidePortion="0.25" IsHidden="True" IsFloat="False" />
     <Content ID="7" PersistString="Duality.Editor.Plugins.Tilemaps.TilesetEditor" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
   </Contents>
   <Panes Count="9">
@@ -155,7 +155,7 @@
         <Content ID="0" RefID="5" />
       </Contents>
     </Pane>
-    <Pane ID="8" DockState="DockLeft" ActiveContent="6">
+    <Pane ID="8" DockState="DockLeft" ActiveContent="-1">
       <Contents Count="1">
         <Content ID="0" RefID="6" />
       </Contents>
