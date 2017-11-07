@@ -38,44 +38,130 @@
             Allows to select the source pattern for drawing tiles from an existing <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
             </summary>
         </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.SelectTilemapTool">
+            <summary>
+            Selects the topmost tilemap that is hovered by the mouse cursor for editing.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool">
+            <summary>
+            Flood-fills the selected tile patch with the source pattern.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.GetFloodFillArea(Duality.Plugins.Tilemaps.Tilemap,Duality.Point2,System.Boolean,Duality.Grid{System.Boolean},Duality.Point2@)">
+            <summary>
+            Runs the flood fill algorithm on the specified position and writes the result into the specified variables.
+            </summary>
+            <param name="tilemap"></param>
+            <param name="pos"></param>
+            <param name="preview">If true, the algorithm will cancel when taking too long for an interactive preview.</param>
+            <param name="floodFillArea"></param>
+            <param name="floodFillOrigin"></param>
+            <returns>True, if the algorithm completed. False, if it was canceled.</returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.FloodFillTiles(Duality.Grid{System.Boolean}@,Duality.Grid{Duality.Plugins.Tilemaps.Tile},Duality.Point2,System.Int32,Duality.Point2@,Duality.Point2@)">
+            <summary>
+            Performs a flood fill operation originating from the specified position. 
+            <see cref="T:Duality.Plugins.Tilemaps.Tile"/> equality is checked in the <see cref="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool._FloodFill_TilesEqual(Duality.Plugins.Tilemaps.Tile,Duality.Plugins.Tilemaps.Tile)"/> method.
+            </summary>
+            <param name="fillBuffer">A buffer that will be filled with the result of the flood fill operation.</param>
+            <param name="tiles"></param>
+            <param name="pos"></param>
+            <param name="maxTileCount">The maximum number of tiles to fill. If the filled tile count exceeds this number, the algorithm is canceled.</param>
+            <param name="fillAreaSize"></param>
+            <param name="fillAreaTopLeft"></param>
+            <returns>True when successful. False when aborted.</returns>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.OvalTilemapTool">
+            <summary>
+            Fills all tiles in the selected oval area with the source pattern.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool">
+            <summary>
+            Fills all tiles in the selected rectangular area with the source pattern.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool">
+            <summary>
+            Draws the source pattern directly onto the tilemap.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.NoTilemapTool">
+            <summary>
+            A dummy tool that represents not performing any operation on the edited <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment">
+            <summary>
+            Provides an interface for <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> instances to access <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState"/> internals and perform editing operations.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.TileDrawSource">
+            <summary>
+            [GET / SET] When drawing tiles, this is the source from which the drawn pattern is retrieved.
+            This property is never null. Assigning null will reset it to its default non-null value.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.SelectedTool">
+            <summary>
+            [GET / SET] The currently selected <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.HoveredTile">
+            <summary>
+            [GET] The coordinate of the <see cref="T:Duality.Plugins.Tilemaps.Tile"/> that is currently hovered by the mouse cursor.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveTilemap">
+            <summary>
+            [GET] The currently active <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveOrigin">
+            <summary>
+            [GET / SET] The <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> coordinates of the actions proposed <see cref="T:Duality.Plugins.Tilemaps.Tile"/> editing area.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveArea">
+            <summary>
+            [GET] A grid mask that represents the actions proposed <see cref="T:Duality.Plugins.Tilemaps.Tile"/> editing area.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveAreaOutlines">
+            <summary>
+            [GET] A list of outlines that enclose the actions proposed <see cref="T:Duality.Plugins.Tilemaps.Tile"/> editing area.
+            Will be determined automatically when cleared.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActionBeginTile">
+            <summary>
+            [GET] The coordinate of the <see cref="T:Duality.Plugins.Tilemaps.Tile"/> where the current action was started.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.SubmitActiveAreaChanges(System.Boolean)">
+            <summary>
+            Submits a set of previous changes to <see cref="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveArea"/> or <see cref="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveOrigin"/> to be used in the editor.
+            </summary>
+            <param name="isFullPreview">
+            Specifies whether the currently set editing area represents the actual area the action will be performed in.
+            False is for incomplete or invalid previews.
+            </param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapActionType,Duality.Plugins.Tilemaps.Tilemap,Duality.Point2,Duality.Grid{System.Boolean},Duality.Editor.Plugins.Tilemaps.ITileDrawSource,Duality.Point2)">
+            <summary>
+            Performs an editing operation to the specified <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
+            </summary>
+            <param name="actionType"></param>
+            <param name="tilemap"></param>
+            <param name="pos"></param>
+            <param name="brush"></param>
+            <param name="source"></param>
+            <param name="sourceOffset"></param>
+        </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool">
             <summary>
             Base class for implementing <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> editing operations.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.UpdatePreview">
-            <summary>
-            Updates the preview of this operation.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.UpdateActiveArea">
-            <summary>
-            Updates the active action area of this operation.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.BeginAction">
-            <summary>
-            Begins a continuous operation with this tool. Usually invoked via left-click.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.UpdateAction">
-            <summary>
-            Updates the currently performed continuous operation of this tool.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.EndAction">
-            <summary>
-            Ends a previously started continuous operation of this tool.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.InitToolButton">
-            <summary>
-            Initializes the tool's internal toolbar button.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.DisposeToolButton">
-            <summary>
-            Disposes the tool's internal toolbar button.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.Environment">
@@ -145,6 +231,82 @@
             [GET] Retrieves the object that stores this tool's settings.
             </summary>
         </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.UpdatePreview">
+            <summary>
+            Updates the preview of this operation.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.UpdateActiveArea">
+            <summary>
+            Updates the active action area of this operation.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.BeginAction">
+            <summary>
+            Begins a continuous operation with this tool. Usually invoked via left-click.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.UpdateAction">
+            <summary>
+            Updates the currently performed continuous operation of this tool.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.EndAction">
+            <summary>
+            Ends a previously started continuous operation of this tool.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.InitToolButton">
+            <summary>
+            Initializes the tool's internal toolbar button.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool.DisposeToolButton">
+            <summary>
+            Disposes the tool's internal toolbar button.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState">
+            <summary>
+            Provides tools for editing <see cref="T:Duality.Plugins.Tilemaps.Tilemap">tilemaps</see>, which are embedded
+            directly into the current <see cref="T:Duality.Resources.Scene"/> using an <see cref="T:Duality.Plugins.Tilemaps.ICmpTilemapRenderer"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.GetDisplayedGridData(System.Drawing.Point,Duality.Editor.Plugins.CamView.CamViewLayers.GridLayerData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.InitAvailableTools">
+            <summary>
+            Initializes the list of available <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> instances.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.InitAvailableActions">
+            <summary>
+            Initializes the list of available <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>-related editor actions.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.InitToolButtons">
+            <summary>
+            Creates the tilemap editor's tool buttons based on the available tools and actions.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.CleanupToolButtons">
+            <summary>
+            Destroys all previously added tool buttons of the tilemap editor.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.SelectToolInInspector">
+            <summary>
+            Adds the currently selected <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> to the editor-wide selection, so
+            it becomes editable in the object inspector and can be configured by the user.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.DeselectToolInInspector">
+            <summary>
+            Removes the currently selected <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> from the editor-wide selection.
+            </summary>
+            <seealso cref="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.SelectToolInInspector"/>
+        </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.DataConverters.TilesetFromPixmap">
             <summary>
             A <see cref="T:Duality.Editor.DataConverter"/> that is able to provide matching existing <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>
@@ -158,41 +320,28 @@
         </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.EditorActions.OpenTilemapSetupDialog">
             <summary>
-            Opens a setup dialog that allows to configure the selected tilemaps.
+            Opens a user dialog that helps you quickly create a set of layered Tilemaps.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.EditorActions.OpenTileset">
+            <summary>
+            Opens the Tileset for editing.
             </summary>
         </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.EditorActions.OpenTilemapResizeDialog">
             <summary>
-            Opens a setup dialog that allows to configure the selected tilemaps.
+            Opens a user dialog that allows to resize the selected Tilemaps. If no tilemaps are selected, it will resize all currently active, non-hidden tilemaps in the current scene.
             </summary>
         </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.EditorActions.PixmapToTileset">
             <summary>
-            Context menu action that will create a new <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> 
-            based on the selected <see cref="T:Duality.Resources.Pixmap"/> resource.
+            Creates a new Tileset Resource based on the Pixmap.
             </summary>
         </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog">
             <summary>
             A user dialog that allows to quickly generate a set of <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> layers
             based on some settings.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="F:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.Settings.MapSize">
@@ -228,10 +377,32 @@
             for generating collision shapes in a static <see cref="T:Duality.Components.Physics.RigidBody"/>.
             </summary>
         </member>
+        <member name="F:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapSetupDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.TilemapResizeDialog">
             <summary>
             A user dialog for resizing a set of <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> instances
             relative to a specified origin.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilemapResizeDialog.Tilemaps">
+            <summary>
+            [GET / SET] The tilemaps that are to be adjusted by the dialog.
             </summary>
         </member>
         <member name="F:Duality.Editor.Plugins.Tilemaps.TilemapResizeDialog.components">
@@ -249,113 +420,6 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilemapResizeDialog.Tilemaps">
-            <summary>
-            [GET / SET] The tilemaps that are to be adjusted by the dialog.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.InvalidateTileset">
-            <summary>
-            Invalidates the assigned <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> and forces re-generating its
-            visual representation inside this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>. This is only
-            necessary if the <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> has changed outside the <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.ResetZoom">
-            <summary>
-            Resets <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor"/> to the default for the currently 
-            displayed <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.PickTileIndexAt(System.Int32,System.Int32,System.Boolean,System.Boolean)">
-            <summary>
-            Determines the tile index at the specified pixel / view coordinate.
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="scrolled"></param>
-            <param name="allowNearest"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTileIndexLocation(System.Int32,System.Boolean)">
-            <summary>
-            Determines the pixel / view coordinate of the specified tile index.
-            </summary>
-            <param name="tileIndex"></param>
-            <param name="scrolled"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTilesetTilePos(System.Int32,System.Int32)">
-            <summary>
-            Converts a 2D tile (not pixel) coordinate from displayed to original tileset space.
-            </summary>
-            <param name="displayedTileX"></param>
-            <param name="displayedTileY"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetDisplayedTilePos(System.Int32,System.Int32)">
-            <summary>
-            Converts a 2D tile (not pixel) coordinate from original tileset to displayed space.
-            </summary>
-            <param name="tilesetTileX"></param>
-            <param name="tilesetTileY"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTileIndex(System.Int32,System.Int32)">
-            <summary>
-            Converts a 2D tile (not pixel) coordinate (in tileset space) into the associated tile index.
-            </summary>
-            <param name="tileX"></param>
-            <param name="tileY"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTilePos(System.Int32)">
-            <summary>
-            Converts a tile index into a 2D tile (not pixel) coordinate, in tileset space.
-            </summary>
-            <param name="tileIndex"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.OnPaintTiles(System.Windows.Forms.PaintEventArgs)">
-            <summary>
-            Draws the tile layer of the <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.DrawTileIndices">
-            <summary>
-            [GET / SET] Whether or not each tile's index inside the tileset
-            is displayed on top of the tile.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.DisplayedTileSize">
-            <summary>
-            [GET] The pixel size of a single tile, as displayed in this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
-            Note that this does not necessarily need to reflect the original <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>
-            tile size.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileCount">
-            <summary>
-            [GET] The original tileset layout's number of tiles in X and Y direction.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.DisplayedTileCount">
-            <summary>
-            [GET] The number of displayed tiles in X and Y direction.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor">
-            <summary>
-            [GET / SET] The display size multiplier of the tiles relative to their original pixel size.
-            Constrained by <see cref="F:Duality.Editor.Plugins.Tilemaps.TilesetView.MinDisplayedSize"/> and <see cref="F:Duality.Editor.Plugins.Tilemaps.TilesetView.MaxDisplayedSize"/> constants.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.SpecialZoomLevel">
-            <summary>
-            [GET] Returns <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor"/>'s relation to the size limits.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.Tilemaps.SourcePaletteTilesetView.SelectedArea">
@@ -425,6 +489,12 @@
             a regular <see cref="T:AdamsLair.WinForms.PropertyEditing.PropertyGrid"/>.
             </summary>
         </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditor.SelectedTileset">
+            <summary>
+            [GET] The currently selected <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> in this editor. This property
+            is dependent on and automatically set by editor-wide selection events.
+            </summary>
+        </member>
         <member name="F:Duality.Editor.Plugins.Tilemaps.TilesetEditor.components">
             <summary>
             Required designer variable.
@@ -440,12 +510,6 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditor.SelectedTileset">
-            <summary>
-            [GET] The currently selected <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> in this editor. This property
-            is dependent on and automatically set by editor-wide selection events.
             </summary>
         </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetViewTileIndexChangeEventArgs">
@@ -529,390 +593,6 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.ITileDrawSource">
-            <summary>
-            When drawing tiles onto a <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>, this represents the source 
-            from which the drawn <see cref="T:Duality.Plugins.Tilemaps.Tile"/> data is retrieved.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.BeginAction">
-            <summary>
-            Signals the beginning of a continuous editing operation that will access this source.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.EndAction">
-            <summary>
-            Signals the end of a continuous editing operation that will access this source.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.FillTarget(Duality.Grid{Duality.Plugins.Tilemaps.Tile},Duality.Point2)">
-            <summary>
-            Fills the specified target grid with tiles from this source.
-            </summary>
-            <param name="target"></param>
-            <param name="offset"></param>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.SourceTilemap">
-            <summary>
-            [GET] If the tiles are or were originally retrieved from a <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>,
-            this property returns a reference to it. Otherwise, it returns null.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.SourceOrigin">
-            <summary>
-            [GET] An origin offset within the <see cref="T:Duality.Editor.Plugins.Tilemaps.ITileDrawSource"/>. 
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.SourceShape">
-            <summary>
-            [GET] The shape of the tiles to draw.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode">
-            <summary>
-            Allows to edit a Tileset's AutoTile layers, which define how similar adjacent tiles join together.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode">
-            <summary>
-            Describes an editing mode of the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/>. This is a
-            base class that can be derived from in order to implement a new editing mode.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.AddLayer">
-            <summary>
-            Adds a new layer to the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel"/> that is defined by this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.RemoveLayer">
-            <summary>
-            Removes the currently selected layer from the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel"/> that is defined by this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.SelectLayer(System.Object)">
-            <summary>
-            Selects the layer with the associated model node. This is the same value
-            that will be provided as part of the <see cref="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnLayerSelectionChanged(Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.LayerSelectionChangedEventArgs)"/> event
-            when reacting to selection changes.
-            </summary>
-            <param name="modelNode"></param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnEnter">
-            <summary>
-            Called when the editing mode becomes active.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnLeave">
-            <summary>
-            Called when the editing mode is deactivated.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnTilesetSelectionChanged(Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetSelectionChangedEventArgs)">
-            <summary>
-            Called when the <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> selection changed.
-            </summary>
-            <param name="args"></param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnTilesetModified(Duality.Editor.ObjectPropertyChangedEventArgs)">
-            <summary>
-            Called when the currently edited <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> was modified.
-            </summary>
-            <param name="args"></param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnLayerSelectionChanged(Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.LayerSelectionChangedEventArgs)">
-            <summary>
-            Called when the user item selection of the provided <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel"/> has changed.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnApplyRevert">
-            <summary>
-            Called when the previously done <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> changes are applied or reverted.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.SelectedTileset">
-            <summary>
-            [GET] The <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> that is currently selected in the
-            editor.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor">
-            <summary>
-            [GET] The <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/> that hosts this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetView">
-            <summary>
-            [GET] The <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetView"/> of the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/>, which
-            can be customized on a per-<see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/> basis.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Id">
-            <summary>
-            [GET] The editing mode's unique and persistent id. As far as possible, this
-            should be a constant across versions.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Name">
-            <summary>
-            [GET] The editing mode's name that is displayed to the user.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Icon">
-            <summary>
-            [GET] An icon that is used to visually identify this editing mode.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel">
-            <summary>
-            [GET] An <see cref="T:Aga.Controls.Tree.ITreeModel"/> that describes the contents of the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/>
-            layer view.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Description">
-            <summary>
-            [GET] A user-targeted description of the purpose of this editing mode.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.SortOrder">
-            <summary>
-            [GET] When displaying various editing modes in a list, this defines the
-            sorting order in which they are listed. Lower values are listed first,
-            higher values last. The default is zero.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.AllowLayerEditing">
-            <summary>
-            [GET] Whether this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/> allows users to edit its layers.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.AllowTileIndexDisplay">
-            <summary>
-            [GET] Whether this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/> allows displaying
-            tile indices on top of the tiles, should the user request it.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode.AddLayer">
-            <inheritdoc />
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode.RemoveLayer">
-            <inheritdoc />
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode.AutoTileDrawMode">
-            <summary>
-            Describes how the current user drawing operation will affect existing AutoTile data.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.SelectTilemapTool">
-            <summary>
-            Selects the topmost tilemap that is hovered by the mouse cursor for editing.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool">
-            <summary>
-            Flood-fills the selected tile patch with the source pattern.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.GetFloodFillArea(Duality.Plugins.Tilemaps.Tilemap,Duality.Point2,System.Boolean,Duality.Grid{System.Boolean},Duality.Point2@)">
-            <summary>
-            Runs the flood fill algorithm on the specified position and writes the result into the specified variables.
-            </summary>
-            <param name="tilemap"></param>
-            <param name="pos"></param>
-            <param name="preview">If true, the algorithm will cancel when taking too long for an interactive preview.</param>
-            <param name="floodFillArea"></param>
-            <param name="floodFillOrigin"></param>
-            <returns>True, if the algorithm completed. False, if it was canceled.</returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool.FloodFillTiles(Duality.Grid{System.Boolean}@,Duality.Grid{Duality.Plugins.Tilemaps.Tile},Duality.Point2,System.Int32,Duality.Point2@,Duality.Point2@)">
-            <summary>
-            Performs a flood fill operation originating from the specified position. 
-            <see cref="T:Duality.Plugins.Tilemaps.Tile"/> equality is checked in the <see cref="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.FillTilemapTool._FloodFill_TilesEqual(Duality.Plugins.Tilemaps.Tile,Duality.Plugins.Tilemaps.Tile)"/> method.
-            </summary>
-            <param name="fillBuffer">A buffer that will be filled with the result of the flood fill operation.</param>
-            <param name="tiles"></param>
-            <param name="pos"></param>
-            <param name="maxTileCount">The maximum number of tiles to fill. If the filled tile count exceeds this number, the algorithm is canceled.</param>
-            <param name="fillAreaSize"></param>
-            <param name="fillAreaTopLeft"></param>
-            <returns>True when successful. False when aborted.</returns>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.OvalTilemapTool">
-            <summary>
-            Fills all tiles in the selected oval area with the source pattern.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.RectTilemapTool">
-            <summary>
-            Fills all tiles in the selected rectangular area with the source pattern.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.BrushTilemapTool">
-            <summary>
-            Draws the source pattern directly onto the tilemap.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.NoTilemapTool">
-            <summary>
-            A dummy tool that represents not performing any operation on the edited <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment">
-            <summary>
-            Provides an interface for <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> instances to access <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState"/> internals and perform editing operations.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.SubmitActiveAreaChanges(System.Boolean)">
-            <summary>
-            Submits a set of previous changes to <see cref="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveArea"/> or <see cref="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveOrigin"/> to be used in the editor.
-            </summary>
-            <param name="isFullPreview">
-            Specifies whether the currently set editing area represents the actual area the action will be performed in.
-            False is for incomplete or invalid previews.
-            </param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.PerformEditTiles(Duality.Editor.Plugins.Tilemaps.UndoRedoActions.EditTilemapActionType,Duality.Plugins.Tilemaps.Tilemap,Duality.Point2,Duality.Grid{System.Boolean},Duality.Editor.Plugins.Tilemaps.ITileDrawSource,Duality.Point2)">
-            <summary>
-            Performs an editing operation to the specified <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
-            </summary>
-            <param name="actionType"></param>
-            <param name="tilemap"></param>
-            <param name="pos"></param>
-            <param name="brush"></param>
-            <param name="source"></param>
-            <param name="sourceOffset"></param>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.TileDrawSource">
-            <summary>
-            [GET / SET] When drawing tiles, this is the source from which the drawn pattern is retrieved.
-            This property is never null. Assigning null will reset it to its default non-null value.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.SelectedTool">
-            <summary>
-            [GET / SET] The currently selected <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.HoveredTile">
-            <summary>
-            [GET] The coordinate of the <see cref="T:Duality.Plugins.Tilemaps.Tile"/> that is currently hovered by the mouse cursor.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveTilemap">
-            <summary>
-            [GET] The currently active <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveOrigin">
-            <summary>
-            [GET / SET] The <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> coordinates of the actions proposed <see cref="T:Duality.Plugins.Tilemaps.Tile"/> editing area.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveArea">
-            <summary>
-            [GET] A grid mask that represents the actions proposed <see cref="T:Duality.Plugins.Tilemaps.Tile"/> editing area.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActiveAreaOutlines">
-            <summary>
-            [GET] A list of outlines that enclose the actions proposed <see cref="T:Duality.Plugins.Tilemaps.Tile"/> editing area.
-            Will be determined automatically when cleared.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.CamViewStates.ITilemapToolEnvironment.ActionBeginTile">
-            <summary>
-            [GET] The coordinate of the <see cref="T:Duality.Plugins.Tilemaps.Tile"/> where the current action was started.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState">
-            <summary>
-            Provides tools for editing <see cref="T:Duality.Plugins.Tilemaps.Tilemap">tilemaps</see>, which are embedded
-            directly into the current <see cref="T:Duality.Resources.Scene"/> using an <see cref="T:Duality.Plugins.Tilemaps.ICmpTilemapRenderer"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.GetDisplayedGridData(System.Drawing.Point,Duality.Editor.Plugins.CamView.CamViewLayers.GridLayerData@)">
-            <inheritdoc />
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.InitAvailableTools">
-            <summary>
-            Initializes the list of available <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> instances.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.InitAvailableActions">
-            <summary>
-            Initializes the list of available <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>-related editor actions.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.InitToolButtons">
-            <summary>
-            Creates the tilemap editor's tool buttons based on the available tools and actions.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.CleanupToolButtons">
-            <summary>
-            Destroys all previously added tool buttons of the tilemap editor.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.SelectToolInInspector">
-            <summary>
-            Adds the currently selected <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> to the editor-wide selection, so
-            it becomes editable in the object inspector and can be configured by the user.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.DeselectToolInInspector">
-            <summary>
-            Removes the currently selected <see cref="T:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapTool"/> from the editor-wide selection.
-            </summary>
-            <seealso cref="M:Duality.Editor.Plugins.Tilemaps.CamViewStates.TilemapEditorCamViewState.SelectToolInInspector"/>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.PushTilePalette">
-            <summary>
-            Informs the system that a <see cref="T:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette"/> is required and creates one, if none is present yet.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.PopTilePalette">
-            <summary>
-            Informs the system that a <see cref="T:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette"/> is no longer required and closes it, if no
-            other claims are pending.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.GetRecompileTilesets(Duality.ContentRef{Duality.Resources.Pixmap})">
-            <summary>
-            Given the specified <see cref="T:Duality.Resources.Pixmap"/> reference, this method enumerates all
-            loaded <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> instances that are candidates for a runtime recompile 
-            to account for potential changes.
-            </summary>
-            <param name="pixmapRef"></param>
-            <returns></returns>
-        </member>
-        <member name="E:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.TileDrawingSourceChanged">
-            <summary>
-            An event that is fired when the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.TileDrawingSource"/> is assigned a new value.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.TileDrawingSource">
-            <summary>
-            [GET / SET] The data source that is used for retrieving tile patterns while using a tile drawing tool.
-            Can be thought of as the "tile brush" that is currently used in user editing operations.
-            </summary>
-        </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsResCache">
             <summary>
             Since directly accessing code generated from .resx files will result in a deserialization on
@@ -933,31 +613,6 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsRes.ActionDesc_CreateTileset">
-            <summary>
-              Looks up a localized string similar to Creates a new Tileset Resource based on the Pixmap..
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsRes.ActionDesc_OpenTilemapEditor">
-            <summary>
-              Looks up a localized string similar to Opens a Camera View in Tilemap Editor mode and selects the Tilemap for editing..
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsRes.ActionDesc_OpenTileset">
-            <summary>
-              Looks up a localized string similar to Opens the Tileset for editing..
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsRes.ActionDesc_ResizeTilemap">
-            <summary>
-              Looks up a localized string similar to Opens a user dialog that allows to resize the selected Tilemaps. If no tilemaps are selected, it will resize all currently active, non-hidden tilemaps in the current scene..
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsRes.ActionDesc_SetupTilemap">
-            <summary>
-              Looks up a localized string similar to Opens a user dialog that helps you quickly create a set of layered Tilemaps..
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.TilemapsRes.ActionName_CreateTileset">
@@ -1364,38 +1019,21 @@
               Looks up a localized string similar to Remove Config Layer.
             </summary>
         </member>
-        <member name="T:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility">
+        <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode">
             <summary>
-            Provides commonly used utility methods for setting up <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> layers
-            to be edited by the user. This usually involves and initial resize and default tile
-            assignments.
+            Allows to edit a Tileset's AutoTile layers, which define how similar adjacent tiles join together.
             </summary>
         </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility.GetDefaultTileIndex(Duality.Plugins.Tilemaps.Tileset,System.Boolean)">
+        <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode.AutoTileDrawMode">
             <summary>
-            Determines the default tile index of the specified <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>
-            depending on the role of the <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> in which it is used.
+            Describes how the current user drawing operation will affect existing AutoTile data.
             </summary>
-            <param name="tileset"></param>
-            <param name="isUpperLayer"></param>
-            <returns></returns>
         </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility.SetupTilemap(Duality.Plugins.Tilemaps.Tilemap,Duality.ContentRef{Duality.Plugins.Tilemaps.Tileset})">
-            <summary>
-            Prepares the specified <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> for user editing using the default size.
-            </summary>
-            <param name="tilemap"></param>
-            <param name="tilesetRef"></param>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode.AddLayer">
+            <inheritdoc />
         </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility.SetupTilemap(Duality.Plugins.Tilemaps.Tilemap,Duality.ContentRef{Duality.Plugins.Tilemaps.Tileset},System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            Prepares the specified <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> for user editing using the specified size.
-            </summary>
-            <param name="tilemap"></param>
-            <param name="tilesetRef"></param>
-            <param name="width"></param>
-            <param name="height"></param>
-            <param name="isUpperLayer"></param>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.AutoTileTilesetEditorMode.RemoveLayer">
+            <inheritdoc />
         </member>
         <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.DepthInfoTilesetEditorMode">
             <summary>
@@ -1476,6 +1114,347 @@
         </member>
         <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.VisualLayerTilesetEditorMode.RemoveLayer">
             <inheritdoc />
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode">
+            <summary>
+            Describes an editing mode of the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/>. This is a
+            base class that can be derived from in order to implement a new editing mode.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.SelectedTileset">
+            <summary>
+            [GET] The <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> that is currently selected in the
+            editor.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor">
+            <summary>
+            [GET] The <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/> that hosts this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetView">
+            <summary>
+            [GET] The <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetView"/> of the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/>, which
+            can be customized on a per-<see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/> basis.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Id">
+            <summary>
+            [GET] The editing mode's unique and persistent id. As far as possible, this
+            should be a constant across versions.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Name">
+            <summary>
+            [GET] The editing mode's name that is displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Icon">
+            <summary>
+            [GET] An icon that is used to visually identify this editing mode.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel">
+            <summary>
+            [GET] An <see cref="T:Aga.Controls.Tree.ITreeModel"/> that describes the contents of the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.TilesetEditor"/>
+            layer view.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.Description">
+            <summary>
+            [GET] A user-targeted description of the purpose of this editing mode.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.SortOrder">
+            <summary>
+            [GET] When displaying various editing modes in a list, this defines the
+            sorting order in which they are listed. Lower values are listed first,
+            higher values last. The default is zero.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.AllowLayerEditing">
+            <summary>
+            [GET] Whether this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/> allows users to edit its layers.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.AllowTileIndexDisplay">
+            <summary>
+            [GET] Whether this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/> allows displaying
+            tile indices on top of the tiles, should the user request it.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.AddLayer">
+            <summary>
+            Adds a new layer to the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel"/> that is defined by this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.RemoveLayer">
+            <summary>
+            Removes the currently selected layer from the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel"/> that is defined by this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.SelectLayer(System.Object)">
+            <summary>
+            Selects the layer with the associated model node. This is the same value
+            that will be provided as part of the <see cref="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnLayerSelectionChanged(Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.LayerSelectionChangedEventArgs)"/> event
+            when reacting to selection changes.
+            </summary>
+            <param name="modelNode"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnEnter">
+            <summary>
+            Called when the editing mode becomes active.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnLeave">
+            <summary>
+            Called when the editing mode is deactivated.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnTilesetSelectionChanged(Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetSelectionChangedEventArgs)">
+            <summary>
+            Called when the <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> selection changed.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnTilesetModified(Duality.Editor.ObjectPropertyChangedEventArgs)">
+            <summary>
+            Called when the currently edited <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> was modified.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnLayerSelectionChanged(Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.LayerSelectionChangedEventArgs)">
+            <summary>
+            Called when the user item selection of the provided <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.LayerModel"/> has changed.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetEditorModes.TilesetEditorMode.OnApplyRevert">
+            <summary>
+            Called when the previously done <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> changes are applied or reverted.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.DrawTileIndices">
+            <summary>
+            [GET / SET] Whether or not each tile's index inside the tileset
+            is displayed on top of the tile.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.DisplayedTileSize">
+            <summary>
+            [GET] The pixel size of a single tile, as displayed in this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
+            Note that this does not necessarily need to reflect the original <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>
+            tile size.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileCount">
+            <summary>
+            [GET] The original tileset layout's number of tiles in X and Y direction.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.DisplayedTileCount">
+            <summary>
+            [GET] The number of displayed tiles in X and Y direction.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor">
+            <summary>
+            [GET / SET] The display size multiplier of the tiles relative to their original pixel size.
+            Constrained by <see cref="F:Duality.Editor.Plugins.Tilemaps.TilesetView.MinDisplayedSize"/> and <see cref="F:Duality.Editor.Plugins.Tilemaps.TilesetView.MaxDisplayedSize"/> constants.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.SpecialZoomLevel">
+            <summary>
+            [GET] Returns <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor"/>'s relation to the size limits.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.InvalidateTileset">
+            <summary>
+            Invalidates the assigned <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> and forces re-generating its
+            visual representation inside this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>. This is only
+            necessary if the <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> has changed outside the <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.ResetZoom">
+            <summary>
+            Resets <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor"/> to the default for the currently 
+            displayed <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.PickTileIndexAt(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Determines the tile index at the specified pixel / view coordinate.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="scrolled"></param>
+            <param name="allowNearest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTileIndexLocation(System.Int32,System.Boolean)">
+            <summary>
+            Determines the pixel / view coordinate of the specified tile index.
+            </summary>
+            <param name="tileIndex"></param>
+            <param name="scrolled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTilesetTilePos(System.Int32,System.Int32)">
+            <summary>
+            Converts a 2D tile (not pixel) coordinate from displayed to original tileset space.
+            </summary>
+            <param name="displayedTileX"></param>
+            <param name="displayedTileY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetDisplayedTilePos(System.Int32,System.Int32)">
+            <summary>
+            Converts a 2D tile (not pixel) coordinate from original tileset to displayed space.
+            </summary>
+            <param name="tilesetTileX"></param>
+            <param name="tilesetTileY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTileIndex(System.Int32,System.Int32)">
+            <summary>
+            Converts a 2D tile (not pixel) coordinate (in tileset space) into the associated tile index.
+            </summary>
+            <param name="tileX"></param>
+            <param name="tileY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.GetTilePos(System.Int32)">
+            <summary>
+            Converts a tile index into a 2D tile (not pixel) coordinate, in tileset space.
+            </summary>
+            <param name="tileIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.OnPaintTiles(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Draws the tile layer of the <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.ITileDrawSource">
+            <summary>
+            When drawing tiles onto a <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>, this represents the source 
+            from which the drawn <see cref="T:Duality.Plugins.Tilemaps.Tile"/> data is retrieved.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.SourceTilemap">
+            <summary>
+            [GET] If the tiles are or were originally retrieved from a <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/>,
+            this property returns a reference to it. Otherwise, it returns null.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.SourceOrigin">
+            <summary>
+            [GET] An origin offset within the <see cref="T:Duality.Editor.Plugins.Tilemaps.ITileDrawSource"/>. 
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.SourceShape">
+            <summary>
+            [GET] The shape of the tiles to draw.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.BeginAction">
+            <summary>
+            Signals the beginning of a continuous editing operation that will access this source.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.EndAction">
+            <summary>
+            Signals the end of a continuous editing operation that will access this source.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.ITileDrawSource.FillTarget(Duality.Grid{Duality.Plugins.Tilemaps.Tile},Duality.Point2)">
+            <summary>
+            Fills the specified target grid with tiles from this source.
+            </summary>
+            <param name="target"></param>
+            <param name="offset"></param>
+        </member>
+        <member name="E:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.TileDrawingSourceChanged">
+            <summary>
+            An event that is fired when the <see cref="P:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.TileDrawingSource"/> is assigned a new value.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.TileDrawingSource">
+            <summary>
+            [GET / SET] The data source that is used for retrieving tile patterns while using a tile drawing tool.
+            Can be thought of as the "tile brush" that is currently used in user editing operations.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.PushTilePalette">
+            <summary>
+            Informs the system that a <see cref="T:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette"/> is required and creates one, if none is present yet.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.PopTilePalette">
+            <summary>
+            Informs the system that a <see cref="T:Duality.Editor.Plugins.Tilemaps.TilemapToolSourcePalette"/> is no longer required and closes it, if no
+            other claims are pending.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsEditorPlugin.GetRecompileTilesets(Duality.ContentRef{Duality.Resources.Pixmap})">
+            <summary>
+            Given the specified <see cref="T:Duality.Resources.Pixmap"/> reference, this method enumerates all
+            loaded <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> instances that are candidates for a runtime recompile 
+            to account for potential changes.
+            </summary>
+            <param name="pixmapRef"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility">
+            <summary>
+            Provides commonly used utility methods for setting up <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> layers
+            to be edited by the user. This usually involves and initial resize and default tile
+            assignments.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility.GetDefaultTileIndex(Duality.Plugins.Tilemaps.Tileset,System.Boolean)">
+            <summary>
+            Determines the default tile index of the specified <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>
+            depending on the role of the <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> in which it is used.
+            </summary>
+            <param name="tileset"></param>
+            <param name="isUpperLayer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility.SetupTilemap(Duality.Plugins.Tilemaps.Tilemap,Duality.ContentRef{Duality.Plugins.Tilemaps.Tileset})">
+            <summary>
+            Prepares the specified <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> for user editing using the default size.
+            </summary>
+            <param name="tilemap"></param>
+            <param name="tilesetRef"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.Tilemaps.TilemapsSetupUtility.SetupTilemap(Duality.Plugins.Tilemaps.Tilemap,Duality.ContentRef{Duality.Plugins.Tilemaps.Tileset},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Prepares the specified <see cref="T:Duality.Plugins.Tilemaps.Tilemap"/> for user editing using the specified size.
+            </summary>
+            <param name="tilemap"></param>
+            <param name="tilesetRef"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="isUpperLayer"></param>
         </member>
     </members>
 </doc>

@@ -55,12 +55,23 @@
     <Reference Include="DualityPrimitives">
       <HintPath>..\..\..\DualityPrimitives.dll</HintPath>
     </Reference>
+    <Reference Include="Humper">
+      <HintPath>..\..\..\Plugins\Humper.dll</HintPath>
+    </Reference>
+    <Reference Include="Tilemaps.core">
+      <HintPath>..\..\..\Plugins\Tilemaps.core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="CorePlugin.cs" />
-    <Compile Include="Player\Controller2D.cs" />
     <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="World\HumperLevelGen.cs" />
+    <Compile Include="World\HumperMapObject.cs" />
+    <Compile Include="World\Level.cs" />
+    <Compile Include="World\Level\Platform.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>

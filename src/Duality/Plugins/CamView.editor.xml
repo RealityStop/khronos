@@ -1,0 +1,1130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CamView.editor</name>
+    </assembly>
+    <members>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewLayers.GridLayerData">
+            <summary>
+            Defines how the <see cref="T:Duality.Editor.Plugins.CamView.CamViewLayers.GridCamViewLayer"/> is displayed to the user.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.CamViewLayers.GridLayerData.GridBaseSize">
+            <summary>
+            The base size of the grid in horizontal and vertical direction.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.CamViewLayers.GridLayerData.DisplayedGridPos">
+            <summary>
+            The displayed cursor position on the grid.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.ObjectEditorCamViewState.ApplyAxisLock(Duality.Vector3,Duality.Vector3,Duality.Vector3)">
+            <summary>
+            Returns an axis-locked version of the specified vector, if requested by the user. Doesn't
+            do anything when no axis lock is in currently active.
+            </summary>
+            <param name="baseVec">The base vector without any locking in place.</param>
+            <param name="lockedVec">A reference vector that represents the base vector being locked to all axes at once.</param>
+            <param name="beginToTarget">The movement vector to evaluate in order to determine the axes to which the base vector will be locked.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.ChainRigidBodyEditorTool">
+            <summary>
+            Creates a new chain shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.VertexRigidBodyEditorTool">
+            <summary>
+            A tool that represents performing a move vertex operation on the edited <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.LoopRigidBodyEditorTool">
+            <summary>
+            Creates a new loop shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.PolygonRigidBodyEditorTool">
+            <summary>
+            Creates a new polygon shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment" -->
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.SelectedTool">
+            <summary>
+            [GET / SET] The currently selected <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody">
+            <summary>
+            [GET] The <see cref="T:Duality.Components.Physics.RigidBody"/> that is currently being edited 
+            by the <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorCamViewState"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBodyPos">
+            <summary>
+            [GET] The cursor-hovered local position relative to the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
+            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredBodyPos"/>, this property will take into account snap-to-grid and axis lock constraints.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveWorldPos">
+            <summary>
+            [GET] The cursor-hovered world position on the Z-plane of the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
+            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredWorldPos"/>, this property will take into account snap-to-grid and axis lock constraints.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredBodyPos">
+            <summary>
+            [GET] The cursor-hovered local position relative to the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
+            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBodyPos"/>, this property will ignore snap-to-grid and axis lock constraints.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredWorldPos">
+            <summary>
+            [GET] The cursor-hovered world position on the Z-plane of the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
+            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBodyPos"/>, this property will ignore snap-to-grid and axis lock constraints.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.LockedWorldPos">
+            <summary>
+            [GET] The world position to which cursor movement will be locked when using the
+            axis lock editor feature.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.IsActionKeyPressed">
+            <summary>
+            [GET] Returns whether the key that was used to start this action is still pressed.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.BgColor">
+            <summary>
+            [GET] The preferred background color to be used when rendering a tool overlay.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.FgColor">
+            <summary>
+            [GET] The preferred foreground color to be used when rendering a tool overlay.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.EndToolAction">
+            <summary>
+            Stops the currently active tool action. Call this when you want a custom tool action
+            implementation to end without the user explicitly ending it.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.SelectShapes(System.Collections.Generic.IEnumerable{Duality.Components.Physics.ShapeInfo},Duality.Editor.SelectMode)">
+            <summary>
+            Selects the specified enumeration of <see cref="T:Duality.Components.Physics.RigidBody"/> shapes in the editor.
+            To clear the current shape selection, specify an empty or null shape enumerable
+            with a <see cref="T:Duality.Editor.SelectMode"/> of <see cref="F:Duality.Editor.SelectMode.Set"/>.
+            </summary>
+            <param name="shapes"></param>
+            <param name="mode"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.SelectTool(System.Type)">
+            <summary>
+            Selects the tool of the specified type.
+            </summary>
+            <param name="toolType"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.IsCoordInView(Duality.Vector3,System.Single)">
+            <summary>
+            Determines whether a world space with the given radius is visible in the
+            <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorCamViewState"/> view.
+            </summary>
+            <param name="worldPos"></param>
+            <param name="radius"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.GetScaleAtZ(System.Single)">
+            <summary>
+            Determins the view scale at a given world space Z position.
+            </summary>
+            <param name="z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.GetSpaceCoord(Duality.Vector3)">
+            <summary>
+            Determins the world space position of a given point in screen space.
+            The Z coordinate of that point will be evaluated as the assumed Z position.
+            </summary>
+            <param name="screenCoord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.GetScreenCoord(Duality.Vector3)">
+            <summary>
+            Determines the screen space position of a given point in world space.
+            </summary>
+            <param name="spaceCoord"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.CircleRigidBodyEditorTool">
+            <summary>
+            Creates a new circle shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.NoRigidBodyEditorTool">
+            <summary>
+            A tool that allows you to select and edit <see cref="T:Duality.Components.Physics.ShapeInfo"/> objects using
+            the regular move / rotate / scale actions that you already know from the Scene Editor.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool">
+            <summary>
+            Base class for implementing <see cref="T:Duality.Components.Physics.RigidBody"/> editor operations.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.Environment">
+            <summary>
+            [GET] The editor environment in which this operation is performed.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.ToolButton">
+            <summary>
+            [GET] The toolbar button that represents this operation.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.Name">
+            <summary>
+            [GET] The name of the editing operation as displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.Icon">
+            <summary>
+            [GET] The icon of the editing operation as displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.HelpInfo">
+            <summary>
+            [GET] An optional hint that is displayed in the user interface when using this tool.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.ActionCursor">
+            <summary>
+            [GET] The cursor image to be used when this tool is active.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.ShortcutKey">
+            <summary>
+            [GET] An optional shortcut key that can be used to invoke this tool.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.SortOrder">
+            <summary>
+            [GET] A relative indicator where to put this tool when displaying it to the user.
+            Negative values offset towards the beginning, positive values offset towards the end.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.IsAvailable">
+            <summary>
+            [GET] Whether this tool is available in the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.Environment"/>,
+            e.g. whether it can perform a meaningful action on the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.IsHoveringAction">
+            <summary>
+            [GET] Whether this tool, while selected, indicates that there is an action that
+            can potentially be performed at the current mouse position.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.GetActionText">
+            <summary>
+            While performing a continuous operation, this method can provide an optional
+            action text that will be displayed in the status area of the <see cref="T:Duality.Components.Physics.RigidBody"/> editor.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.CanBeginAction(System.Windows.Forms.MouseButtons)">
+            <summary>
+            Checks whether this tool can start a continuous operation given the specified
+            user input and environment state.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.BeginAction(System.Windows.Forms.MouseButtons)">
+            <summary>
+            Attempts to begin a continuous operation with this tool. Returns false when no
+            operation is possible or associated with the specified mouse button.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.UpdateAction">
+            <summary>
+            Updates the currently active continuous operation of this tool.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.EndAction">
+            <summary>
+            Ends a previously started continuous operation of this tool.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnActionKeyPressed(System.Windows.Forms.MouseButtons)">
+            <summary>
+            Called when the action key has been pressed after the action has already begun.
+            </summary>
+            <param name="mouseButton"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnActionKeyReleased(System.Windows.Forms.MouseButtons)">
+            <summary>
+            Called when the action key has been released after the action has already begun.
+            </summary>
+            <param name="mouseButton"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnWorldOverlayDrawcalls(Duality.Drawing.Canvas)">
+            <summary>
+            Called when the tool is selected and allowed to draw an overlay inside the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/>.
+            </summary>
+            <param name="canvas"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnMouseMove">
+            <summary>
+            Called when the tool is selected and allowed to handle mouse movement events. Unlike <see cref="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.UpdateAction"/>,
+            this method will also be called while the tool is not performing any continuous action, allowing it to
+            update its internal state that may then be used to make <see cref="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.CanBeginAction(System.Windows.Forms.MouseButtons)"/> and <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.IsHoveringAction"/>
+            more efficient.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.InitToolButton">
+            <summary>
+            Initializes the tool's internal toolbar button.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.DisposeToolButton">
+            <summary>
+            Disposes the tool's internal toolbar button.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.GetDisplayedGridData(System.Drawing.Point,Duality.Editor.Plugins.CamView.CamViewLayers.GridLayerData@)">
+            <summary>
+            Provides data on how the grid layer should be displayed to the user.
+            The default base class implementation provides reasonable values based on
+            user settings and mouse coordinates, but certain editing modes might
+            provide more suitable or specialized information instead.
+            </summary>
+            <param name="cursorPos"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.OnEnterState">
+            <summary>
+            Called when the <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> is entered.
+            Use this for overall initialization of the state.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.OnLeaveState">
+            <summary>
+            Called when the <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> is left.
+            Use this for overall termination of the state.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.OnShown">
+            <summary>
+            Called when the <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> becomes visible to the user, e.g.
+            by being entered, selecting the multi-document tab that contains its parent <see cref="T:Duality.Editor.Plugins.CamView.CamView"/>
+            or similar.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState.OnHidden">
+            <summary>
+            Called when the <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> becomes hidden from the user, e.g.
+            by being left, deselecting the multi-document tab that contains its parent <see cref="T:Duality.Editor.Plugins.CamView.CamView"/>
+            or similar.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState">
+            <summary>
+            Provides a full preview of the game within the editor. 
+            This state renders the games actual audiovisual output and reroutes user input to the game.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SpecialRenderSize">
+            <summary>
+            Describes rendering size preset roles that may have special behaviour.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SpecialRenderSize.Fixed">
+            <summary>
+            A fixed size is used, regardless of game settings or window sizes.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SpecialRenderSize.CamView">
+            <summary>
+            Matches the <see cref="F:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SpecialRenderSize.CamView"/> client size.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SpecialRenderSize.GameTarget">
+            <summary>
+            Matches the target size of the game, based on forced rendering size
+            settings and default screen resolution.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.StateName">
+            <inheritdoc />
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.RenderedViewport">
+            <inheritdoc />
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.RenderedImageSize">
+            <inheritdoc />
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.GameAntialiasingQuality">
+            <summary>
+            [GET] The antialiasing quality that is preferred by the game.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.GameTargetSize">
+            <summary>
+            [GET] The target rendering size that is preferred by the game.
+            Depends on default window size and forced resolution settings.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.CamViewTargetSize">
+            <summary>
+            [GET] The target rendering size that is preferred by the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/>
+            client area.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.TargetRenderSize">
+            <summary>
+            [GET / SET] The rendering size that will be used for displaying the
+            game in this <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.TargetRenderSizeMode">
+            <summary>
+            [GET / SET] The special rendering size role that is currently active
+            for dynamically choosing rendering size in this <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/>.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.TargetSizeFitsClientArea">
+            <summary>
+            [GET] Whether the currently used <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.TargetRenderSize"/> fits
+            completely inside the available client area without having to downscale.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.UseOffscreenBuffer">
+            <summary>
+            [GET] Whether an offscreen buffer should be used for rendering the game.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.LocalGameWindowRect">
+            <summary>
+            [GET] The rect inside the local <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> client area that
+            will be occupied by the game rendering. Pixels outside this rect will
+            not be rendered to by the game.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.AddToolbarItems">
+            <summary>
+            Creates the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> main toolbar items that are only available while
+            the <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState"/> is active.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.RemoveToolbarItems">
+            <summary>
+            Disposes any <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> main toolbar items that have been created
+            during <see cref="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.AddToolbarItems"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.InitResolutionDropDownItems">
+            <summary>
+            Initializes dropdown menu items for the rendering size preset toolbar button.
+            Will clean up or update previous contents when called multiple times.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.ApplyTargetRenderSizeMode">
+            <summary>
+            Applies the dynamic rendering size that is defined by the currently
+            used <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.TargetRenderSizeMode"/>. Does nothing if that mode is
+            <see cref="F:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SpecialRenderSize.Fixed"/>.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.UpdateTargetRenderSizeUI">
+            <summary>
+            Updates the render size UI textboxes to display the current internal
+            rendering size value.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.ParseAndValidateTargetRenderSize">
+            <summary>
+            Parses the render size UI textbox contents, and applies the validated
+            and clamped values to the internal rendering size value.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SampleRecentTargetRenderSize">
+            <summary>
+            Flags the currently applied rendering size as recently used. Shouldn't
+            be called on every change, because users generally do multiple changes
+            (modify X and Y, potentially mistype, etc.) until the final value is entered.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.CleanupRenderTarget">
+            <summary>
+            Disposes any potentially allocated internal offscreen rendering
+            target for rendering the game.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SetupOutputRenderTarget">
+            <summary>
+            Sets up an offscreen rendering target for rendering the game. If
+            one was already available, the existing target is updated to match
+            the current rendering size and settings.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SetupBlitDevice">
+            <summary>
+            Sets up a <see cref="T:Duality.Drawing.DrawDevice"/> to be used for blitting an internal
+            offscreen rendering target to the actual window surface.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.SaveUserData(System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.LoadUserData(System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.OnEnterState">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.OnLeaveState">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.OnRenderState">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.OnResize">
+            <inheritdoc />
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.GameViewCamViewState.OnGotFocus">
+            <inheritdoc />
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorCamViewState">
+            <summary>
+            Allows you to edit the collision geometry of a <see cref="T:Duality.Components.Physics.RigidBody"/>.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.SceneEditorCamViewState">
+            <summary>
+            Allows to move, scale and rotate the objects of a <see cref="T:Duality.Resources.Scene"/> while providing a
+            preview through the lens of the editor <see cref="T:Duality.Components.Camera"/>. User input is consumed
+            by the editor and not forwarded to the game.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamView.IsHiddenDocument">
+            <summary>
+            [GET] Whether this <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> is a hidden document in the editor's <see cref="T:WeifenLuo.WinFormsUI.Docking.DockPanel"/>.
+            This is typically true when storing the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> in a <see cref="T:WeifenLuo.WinFormsUI.Docking.DockPane"/> with multiple
+            tabs and then selecting a different tab, resulting in the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> becoming hidden.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamView.UpdateHiddenDocumentState">
+            <summary>
+            Updates the <see cref="P:Duality.Editor.Plugins.CamView.CamView.IsHiddenDocument"/> value of the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> and fires
+            events in the currently active state according to the detected changes. This will allow
+            the active <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> to react to being hidden or becoming visible again.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.CamView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.CamViewClient.IsViewVisible">
+            <summary>
+            [GET] Whether the parent <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> of this <see cref="T:Duality.Editor.Plugins.CamView.CamViewClient"/> is currently
+            visible to the user, or hidden away (e.g. by being in an inactive multi-document tab or similar).
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewPlugin.CreateOrSwitchCamView(System.String)">
+            <summary>
+            Switches an existing <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> to the specified <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> type id,
+            or creates a new one, should none exist that is allowed to switch.
+            </summary>
+            <param name="camViewState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewPlugin.CreateOrSwitchCamView(System.Type)">
+            <summary>
+            Switches an existing <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> to the specified <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/> type,
+            or creates a new one, should none exist that is allowed to switch.
+            </summary>
+            <param name="camViewState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewPlugin.CreateCamView(System.String)">
+            <summary>
+            Creates a new <see cref="T:Duality.Editor.Plugins.CamView.CamView"/> and initializes it with the specified <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.CamViewState"/>.
+            </summary>
+            <param name="initStateTypeId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.GameObjectTypeFilter">
+            <summary>
+            Filters <see cref="T:Duality.GameObject"/> instances based on the <see cref="T:Duality.Component"/> types they have.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.MatchingTypes">
+            <summary>
+            [GET] Enumerates all <see cref="T:Duality.Component"/> types that will match with this filter.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.IsEmpty">
+            <summary>
+            [GET] Returns whether this filter is currently empty.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.Matches(Duality.GameObject)">
+            <summary>
+            Returns true if the specified <see cref="T:Duality.GameObject"/> has any of the matching
+            <see cref="T:Duality.Component"/> types, or if the filter is empty.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.Matches(System.Type)">
+            <summary>
+            Returns true, if the specified <see cref="T:System.Type"/> is considered a match.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.SetMatchingTypes(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Replaces the set of matching <see cref="T:Duality.Component"/> types with the
+            enumerates types.
+            </summary>
+            <param name="visibleObjectTypes"></param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.SetTypeMatches(System.Type,System.Boolean)">
+            <summary>
+            Changes whether the specified <see cref="T:Duality.Component"/> type is considered
+            a match.
+            </summary>
+            <param name="objectType"></param>
+            <param name="isMatch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GameObjectTypeFilter.ClearTypeCache">
+            <summary>
+            Clears all type-specific information in this filter. This should be done
+            when a core plugin reload took place, so all internal <see cref="T:System.Type"/>
+            references can be refreshed.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.EditingGuide.SnapPosition(Duality.Vector3)">
+            <summary>
+            Snaps the specified world position to this editing guide.
+            </summary>
+            <param name="pos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.EditingGuide.SnapPosition(Duality.Vector2)">
+            <summary>
+            Snaps the specified world position to this editing guide.
+            </summary>
+            <param name="pos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.EditingGuide.SnapSize(Duality.Vector3)">
+            <summary>
+            Snaps the specified size value according to match this editing guide.
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.EditingGuide.SnapSize(Duality.Vector2)">
+            <summary>
+            Snaps the specified size value according to match this editing guide.
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.EditingGuide.SnapSize(System.Single)">
+            <summary>
+            Snaps the specified size value according to match this editing guide.
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Duality.Editor.Plugins.CamView.GridSizeDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GridSizeDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Duality.Editor.Plugins.CamView.GridSizeDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.Properties.CamViewRes">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Action_Move">
+            <summary>
+              Looks up a localized string similar to Move.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Action_Rotate">
+            <summary>
+              Looks up a localized string similar to Rotate.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Action_Scale">
+            <summary>
+              Looks up a localized string similar to Scale.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Action_Select_Active">
+            <summary>
+              Looks up a localized string similar to Selecting....
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_CamActions">
+            <summary>
+              Looks up a localized string similar to Camera Control Shortcuts.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_CamActions_Focus">
+            <summary>
+              Looks up a localized string similar to Press F to focus the world origin..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_CamActions_Move">
+            <summary>
+              Looks up a localized string similar to Use Mouse Wheel, Middle and Right Mouse button to move..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_CamActions_MoveAlternate">
+            <summary>
+              Looks up a localized string similar to Hold Space for alternative camera movement..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_CamActions_MoveStep">
+            <summary>
+              Looks up a localized string similar to Press Ctrl + Arrow Keys, Add or Subtract to move by a fixed step..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions">
+            <summary>
+              Looks up a localized string similar to Object Action Shortcuts.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions_AxisLock">
+            <summary>
+              Looks up a localized string similar to Hold Shift to limit an action to one axis..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions_Clone">
+            <summary>
+              Looks up a localized string similar to Press Ctrl + C to clone the selected objects..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions_Delete">
+            <summary>
+              Looks up a localized string similar to Press Delete to remove the selected objects..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions_EditClone">
+            <summary>
+              Looks up a localized string similar to Hold Alt to perform an action on a clone of the current selection..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions_Focus">
+            <summary>
+              Looks up a localized string similar to Press F to focus on the current selection..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Help_ObjActions_MoveStep">
+            <summary>
+              Looks up a localized string similar to Press Arrow Keys, Add or Subtract to move the selected objects by a fixed step..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Status_Angle">
+            <summary>
+              Looks up a localized string similar to Angle: {0:F}°.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Status_PosX">
+            <summary>
+              Looks up a localized string similar to X: {0:F}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Status_PosY">
+            <summary>
+              Looks up a localized string similar to Y: {0:F}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamView_Status_PosZ">
+            <summary>
+              Looks up a localized string similar to Z: {0:F}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_BackPlate_Desc">
+            <summary>
+              Looks up a localized string similar to Fades out the actual scene rendering to improve Layer visibility.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_BackPlate_Name">
+            <summary>
+              Looks up a localized string similar to Background Plate.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_Grid_Desc">
+            <summary>
+              Looks up a localized string similar to Displays a uniform spatial grid.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_Grid_Name">
+            <summary>
+              Looks up a localized string similar to Grid.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_RigidBodyJoint_Desc">
+            <summary>
+              Looks up a localized string similar to Displays the physical constraints of a RigidBody Component.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_RigidBodyJoint_Name">
+            <summary>
+              Looks up a localized string similar to RigidBody Joints.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_RigidBodyShape_Desc">
+            <summary>
+              Looks up a localized string similar to Displays the physical shape of a RigidBody Component.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewLayer_RigidBodyShape_Name">
+            <summary>
+              Looks up a localized string similar to RigidBody Shapes.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewState_GameView_Name">
+            <summary>
+              Looks up a localized string similar to Game View.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewState_RigidBodyEditor_Name">
+            <summary>
+              Looks up a localized string similar to RigidBody Editor.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CamViewState_SceneEditor_Name">
+            <summary>
+              Looks up a localized string similar to Scene Editor.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CursorArrowCreateCircle">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CursorArrowCreateEdge">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CursorArrowCreateLoop">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CursorArrowCreatePolygon">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CursorArrowEditVertices">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpCircleCollider">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpEdgeCollider">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpEditVertices">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpLoopCollider">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpRectCollider">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconEye">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconMonitor">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconShapeSelect">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemDesc_CantRemoveComponent">
+            <summary>
+              Looks up a localized string similar to Can&apos;t remove {0} because it is required by the &apos;{1}&apos; Component..
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemName_AppData">
+            <summary>
+              Looks up a localized string similar to Application Data.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemName_CamView">
+            <summary>
+              Looks up a localized string similar to Camera.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemName_RemoveComponent">
+            <summary>
+              Looks up a localized string similar to Remove.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemName_ResetComponent">
+            <summary>
+              Looks up a localized string similar to Reset.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemName_UserData">
+            <summary>
+              Looks up a localized string similar to Default User Data.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_CreateChain">
+            <summary>
+              Looks up a localized string similar to Create Chain Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_CreateCircle">
+            <summary>
+              Looks up a localized string similar to Create Circle Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_CreateLoop">
+            <summary>
+              Looks up a localized string similar to Create Loop Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_CreatePolygon">
+            <summary>
+              Looks up a localized string similar to Create Polygon Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_EditShapes">
+            <summary>
+              Looks up a localized string similar to Select / Edit Shapes.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_EditVertices">
+            <summary>
+              Looks up a localized string similar to Edit Vertices.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_SelBodyName">
+            <summary>
+              Looks up a localized string similar to RigidBody.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_SelCircleShapeName">
+            <summary>
+              Looks up a localized string similar to Circle Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_SelLoopShapeName">
+            <summary>
+              Looks up a localized string similar to Loop Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_SelPolyShapeName">
+            <summary>
+              Looks up a localized string similar to Polygon Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_SelShapeName">
+            <summary>
+              Looks up a localized string similar to Shape.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_CreateRigidBodyShape">
+            <summary>
+              Looks up a localized string similar to Create {0}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_CreateRigidBodyShapeMulti">
+            <summary>
+              Looks up a localized string similar to Create {0} Shapes.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_CreateRigidBodyShapeVertex">
+            <summary>
+              Looks up a localized string similar to Create Vertex.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DeleteRigidBodyShape">
+            <summary>
+              Looks up a localized string similar to Delete {0}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DeleteRigidBodyShapeMulti">
+            <summary>
+              Looks up a localized string similar to Delete {0} Shapes.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DeleteRigidBodyShapeVertex">
+            <summary>
+              Looks up a localized string similar to Delete Vertex.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DropGameObjectInScene">
+            <summary>
+              Looks up a localized string similar to Drop {0}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DropGameObjectInSceneMulti">
+            <summary>
+              Looks up a localized string similar to Drop {0} GameObjects.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_MoveCamViewObj">
+            <summary>
+              Looks up a localized string similar to Move {0}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_MoveCamViewObjMulti">
+            <summary>
+              Looks up a localized string similar to Move {0} Objects.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_MoveRigidBodyShapeVertex">
+            <summary>
+              Looks up a localized string similar to Move Vertex.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_RotateCamViewObj">
+            <summary>
+              Looks up a localized string similar to Rotate {0}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_RotateCamViewObjMulti">
+            <summary>
+              Looks up a localized string similar to Rotate {0} Objects.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_ScaleCamViewObj">
+            <summary>
+              Looks up a localized string similar to Scale {0}.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_ScaleCamViewObjMulti">
+            <summary>
+              Looks up a localized string similar to Scale {0} Objects.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.Properties.CamViewResCache">
+            <summary>
+            Since directly accessing code generated from .resx files will result in a deserialization on
+            each Resource access, this class allows cached Resource access.
+            </summary>
+        </member>
+        <member name="T:Duality.Editor.Plugins.CamView.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.layers">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.magnifier_one">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.ObjectVisibility">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.ObjectVisibilityFiltered">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.RenderSetup">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.shape_perspective">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.Plugins.CamView.Properties.Resources.SnapToGrid">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>
