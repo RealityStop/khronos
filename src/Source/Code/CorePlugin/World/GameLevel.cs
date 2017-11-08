@@ -6,7 +6,9 @@ using Duality.Drawing;
 
 namespace Khronos.World
 {
-    
+    /// <summary>
+    /// An internal singleton that handles setting up and tearing down the humpermap.  
+    /// </summary>
     internal class GameLevel
     {
         public static GameLevel Instance { get; } = new GameLevel();
@@ -15,11 +17,6 @@ namespace Khronos.World
         public int HumperWidth { get; set; }
         public int HumperHeight { get; set; }
         public Vector2 TileSize { get; private set; }
-        public bool DrawDebug { get; set; }
-
-        [DontSerialize]
-        private HumperRenderer _Renderer;
-        public HumperRenderer Renderer { get { return _Renderer; } }
 
         const int defaultFloorHeight = 50;
 

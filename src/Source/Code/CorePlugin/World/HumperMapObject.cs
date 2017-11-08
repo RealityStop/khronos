@@ -11,7 +11,7 @@ namespace Khronos.World
     /// <summary>
     /// Generic base-class for Humper collision objects.  Automatically add themselves on Enabled=true and remove themselves when Enabled = false
     /// 
-    /// By default, assume they occupy a single tile at TileX/TileY.
+    /// Implemnetations must describe how to add and remove themselves.
     /// </summary>
     public abstract class HumperMapObject
     {

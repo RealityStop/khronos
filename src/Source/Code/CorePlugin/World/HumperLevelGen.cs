@@ -9,13 +9,11 @@ using System.Threading.Tasks;
 
 namespace Khronos.World
 {
-    public class HumperLevelGen : Component, ICmpInitializable, ICmpUpdatable
+    public class HumperLevelGen : Component, ICmpInitializable
     {
         [DontSerialize]
         Platform[] _TileGrid;
         Platform[] TileGrid { get { return _TileGrid; } }
-
-        public bool Debug { get; set; }
 
 
         private void Initialize()
@@ -26,7 +24,7 @@ namespace Khronos.World
 
             if (tilemap != null)
             {
-                List<Rect> rectangles = TileMerger.GridMerge(tilemap);
+                List<Rect> rectangles = TileMerger.GridMerge(tilemap, TileMerger.IsCollider);
                 _TileGrid = rectangles.Select(rect =>
                 {
                     return new Platform((int)rect.X, (int)rect.Y, (int)rect.W + 1, (int)rect.H + 1);
@@ -42,11 +40,6 @@ namespace Khronos.World
 
         void ICmpInitializable.OnShutdown(ShutdownContext context)
         {
-        }
-
-        public void OnUpdate()
-        {
-            GameLevel.Instance.DrawDebug = Debug;
         }
     }
 }

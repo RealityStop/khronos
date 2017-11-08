@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Khronos.World.Level
 {
+    /// <summary>
+    /// A tile-based Ground object.  Records x,y,w,h in tile units and handles auto-adding to the humpermap.
+    /// </summary>
     public class Platform :  HumperMapObject
     {
         public int TileX { get; set; }
