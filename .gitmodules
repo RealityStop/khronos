@@ -3,4 +3,4 @@
 	url = https://github.com/RealityStop/Humper
 [submodule "duality"]
 	path = duality
-	url = https://github.com/AdamsLair/duality.git
+	url = https://github.com/RealityStop/duality.git
