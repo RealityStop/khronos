@@ -50,7 +50,7 @@ namespace Khronos.Player
         public int SizeX { get; set; }
         public int SizeY { get; set; }
 
-
+        [DontSerialize]
         private PlayerHumper humperObject;
 
         public PlayerCollider()

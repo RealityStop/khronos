@@ -15,6 +15,8 @@ namespace Khronos.Player
         PlayerCollider collider;
 
         public float Gravity { get; set; }
+        public float HorizontalMovementDamp { get; set; }
+        public float AirborneHorizontalMovementDamp { get; set; }
         public Vector2 Velocity { get; set; }
         public Vector2 TerminalVelocity { get; set; }
         public int GamepadNumber { get; set; }
@@ -36,7 +38,10 @@ namespace Khronos.Player
             {
                 GatherInputs();
 
-            //Uses the computed velocities to move the player character.
+                //Apply Gravity, etc.
+                AdjustValues();
+
+                //Uses the computed velocities to move the player character.
                 ApplyVelocity();
             }
         }
@@ -64,22 +69,41 @@ namespace Khronos.Player
             }
         }
 
+    private void AdjustValues()
+        {
+            Vector2 Vel = Velocity;
+
+
+            Vel.Y -= Gravity * Duality.Time.TimeMult;
+
+            //Apply horizontal damping.
+            if (OnGround)
+                Vel.X = HorizontalMovementDamp * Vel.X;
+            else
+                Vel.X = AirborneHorizontalMovementDamp * Vel.X;
+
+            //Detect the slow movement phase and just stop the player
+            if (MathF.Abs(Vel.X) < 0.05f)
+                Vel.X = 0;
+
+
+            Velocity = Vel;
+
+
+            //Clamp velocity to terminal, regardless of direction
+            Vel.Y = MathF.Min(Vel.Y, TerminalVelocity.Y);
+            Vel.X = MathF.Min(Vel.X, TerminalVelocity.X);
+            //Vel.Y = MathF.Max(Vel.Y, -TerminalVelocity.Y);        //Okay, just kidding, we don't have an upwards terminal velocity, for now.
+            Vel.X = MathF.Max(Vel.X, -TerminalVelocity.X);
+
+        }
+
         private void ApplyVelocity()
         {
             Vector2 Vel = Velocity;
-            Vel.Y -= Gravity * Duality.Time.TimeMult;
-            OnGround = false;
-
-            //Clamp velocity to terminal, regardless of direction
-
-            Vel.Y = MathF.Min(Vel.Y, TerminalVelocity.Y);
-            Vel.X = MathF.Min(Vel.X, TerminalVelocity.X);
-            //Vel.Y = MathF.Max(Vel.Y, -TerminalVelocity.Y);
-            Vel.X = MathF.Max(Vel.X, -TerminalVelocity.X);
-
 
             //Now attempt to move based on the Velocity
-
+            OnGround = false;
             if (collider.AttemptMove(Vel, out var newPosition))
             {
                 //Adjust our velocity based on collision so we don't "inherit" velocity.
