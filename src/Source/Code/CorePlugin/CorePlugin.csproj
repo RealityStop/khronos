@@ -70,6 +70,13 @@
     <Compile Include="Player\PlayerCollider.cs" />
     <Compile Include="Player\PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Controls\Button.cs" />
+    <Compile Include="UI\Controls\Control.cs" />
+    <Compile Include="UI\GUI.cs" />
+    <Compile Include="UI\IUIScreen.cs" />
+    <Compile Include="UI\Screens\TestOverlay.cs" />
+    <Compile Include="UI\Screens\MainMenu.cs" />
+    <Compile Include="UI\UITest.cs" />
     <Compile Include="World\HumperLevelGen.cs" />
     <Compile Include="World\HumperMapObject.cs" />
     <Compile Include="World\GameLevel.cs" />
