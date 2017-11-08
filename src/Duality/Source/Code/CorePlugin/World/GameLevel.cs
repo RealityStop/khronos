@@ -14,7 +14,7 @@ namespace Khronos.World
         IWorld HumperMap;
         public int HumperWidth { get; set; }
         public int HumperHeight { get; set; }
-        public Point2 TileSize { get; private set; }
+        public Vector2 TileSize { get; private set; }
         public bool DrawDebug { get; set; }
 
         [DontSerialize]
@@ -24,7 +24,7 @@ namespace Khronos.World
         const int defaultFloorHeight = 50;
 
 
-        internal void Initialize(Point2 tilesize, int humperwidth = -1, int humperheight = -1)
+        internal void Initialize(Vector2 tilesize, int humperwidth = -1, int humperheight = -1)
         {
             TileSize = tilesize;
             if (humperwidth < 0)
