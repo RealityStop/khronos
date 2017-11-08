@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace Khronos.World
 {
-    public class HumperLevelGen : Component, ICmpInitializable
+    public class HumperLevelGen : Component, ICmpInitializable, ICmpUpdatable
     {
         [DontSerialize]
         Grid<HumperMapObject> _TileGrid;
         Grid<HumperMapObject> TileGrid { get { return _TileGrid; } }
+
+        public bool Debug { get; set; }
 
 
         private void Initialize()
@@ -21,7 +23,7 @@ namespace Khronos.World
             var tilemap = GameObj.GetComponentsInChildren<Tilemap>().FirstOrDefault();
             _TileGrid = new Grid<HumperMapObject>(tilemap.Size.X, tilemap.Size.Y);
 
-            GameLevel.Instance.Initialize(tilemap.Size);
+            GameLevel.Instance.Initialize(tilemap.Tileset.Res.TileSize);
 
             if (tilemap != null)
             {
@@ -38,7 +40,7 @@ namespace Khronos.World
         private void GenerateForSector(Tilemap tilemap, int x, int y)
         {
             var tileSize = tilemap.Tileset.Res.TileSize;
-            var tile = tilemap.Tiles[x, y];
+            var tile = tilemap.Tiles[x, tilemap.Size.Y - y-1];
             var tileData = tilemap.Tileset.Res.TileData[tile.BaseIndex];
 
             if (tileData.IsVisuallyEmpty)
@@ -58,6 +60,11 @@ namespace Khronos.World
 
         void ICmpInitializable.OnShutdown(ShutdownContext context)
         {
+        }
+
+        public void OnUpdate()
+        {
+            GameLevel.Instance.DrawDebug = Debug;
         }
     }
 }
