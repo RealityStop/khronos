@@ -65,13 +65,15 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="CorePlugin.cs" />
+    <Compile Include="FpsDisplay.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\PlayerCollider.cs" />
     <Compile Include="Player\PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World\HumperLevelGen.cs" />
     <Compile Include="World\HumperMapObject.cs" />
-    <Compile Include="World\Level.cs" />
+    <Compile Include="World\GameLevel.cs" />
+    <Compile Include="World\HumperRenderer.cs" />
     <Compile Include="World\Level\Platform.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

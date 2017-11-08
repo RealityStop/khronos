@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace Khronos.World
 {
-    public class HumperLevelGen : Component, ICmpInitializable
+    public class HumperLevelGen : Component, ICmpInitializable, ICmpUpdatable
     {
         [DontSerialize]
         Grid<HumperMapObject> _TileGrid;
         Grid<HumperMapObject> TileGrid { get { return _TileGrid; } }
+
+        public bool Debug { get; set; }
 
 
         private void Initialize()
@@ -58,6 +60,11 @@ namespace Khronos.World
 
         void ICmpInitializable.OnShutdown(ShutdownContext context)
         {
+        }
+
+        public void OnUpdate()
+        {
+            GameLevel.Instance.DrawDebug = Debug;
         }
     }
 }

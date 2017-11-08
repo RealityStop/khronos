@@ -1,9 +1,12 @@
 ﻿using Duality;
+using Duality.Components;
 using Humper;
 using System;
+using Duality.Drawing;
 
 namespace Khronos.World
 {
+    
     internal class GameLevel
     {
         public static GameLevel Instance { get; } = new GameLevel();
@@ -12,6 +15,11 @@ namespace Khronos.World
         public int HumperWidth { get; set; }
         public int HumperHeight { get; set; }
         public Point2 TileSize { get; private set; }
+        public bool DrawDebug { get; set; }
+
+        [DontSerialize]
+        private HumperRenderer _Renderer;
+        public HumperRenderer Renderer { get { return _Renderer; } }
 
         const int defaultFloorHeight = 50;
 
@@ -26,6 +34,10 @@ namespace Khronos.World
             HumperMap = new Humper.World(HumperWidth, HumperHeight);
         }
 
+        internal void WireRenderer(HumperRenderer renderer)
+        {
+            renderer.Initialize(HumperMap, HumperWidth, HumperHeight);
+        }
 
         internal void Inject(HumperMapObject humperMapObject)
         {

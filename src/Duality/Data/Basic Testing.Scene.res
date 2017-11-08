@@ -22,12 +22,12 @@
             <parentTransform />
             <pos dataType="Struct" type="Duality.Vector3">
               <X dataType="Float">960</X>
-              <Y dataType="Float">540</Y>
+              <Y dataType="Float">-540</Y>
               <Z dataType="Float">-100</Z>
             </pos>
             <posAbs dataType="Struct" type="Duality.Vector3">
               <X dataType="Float">960</X>
-              <Y dataType="Float">540</Y>
+              <Y dataType="Float">-540</Y>
               <Z dataType="Float">-100</Z>
             </posAbs>
             <scale dataType="Float">1</scale>
@@ -224,9 +224,11 @@
             </humperObject>
           </item>
           <item dataType="Struct" type="Khronos.Player.PlayerMovement" id="3542014220">
+            <_x003C_GamepadNumber_x003E_k__BackingField dataType="Int">0</_x003C_GamepadNumber_x003E_k__BackingField>
             <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
+            <_x003C_OnGround_x003E_k__BackingField dataType="Bool">false</_x003C_OnGround_x003E_k__BackingField>
             <_x003C_TerminalVelocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2">
-              <X dataType="Float">1</X>
+              <X dataType="Float">10</X>
               <Y dataType="Float">10</Y>
             </_x003C_TerminalVelocity_x003E_k__BackingField>
             <_x003C_Velocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2" />
@@ -468,11 +470,20 @@
         <_items dataType="Array" type="Duality.Component[]" id="2708048440" length="4">
           <item dataType="ObjectRef">1678811662</item>
           <item dataType="Struct" type="Khronos.World.HumperLevelGen" id="396347329">
+            <_x003C_Debug_x003E_k__BackingField dataType="Bool">false</_x003C_Debug_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1621534444</gameobj>
           </item>
+          <item dataType="Struct" type="Khronos.World.HumperRenderer" id="1420845880">
+            <_height dataType="Int">0</_height>
+            <_humperMap />
+            <_width dataType="Int">0</_width>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1621534444</gameobj>
+            <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
+          </item>
         </_items>
-        <_size dataType="Int">2</_size>
+        <_size dataType="Int">3</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2449924690" surrogate="true">
         <header />
@@ -480,10 +491,12 @@
           <keys dataType="Array" type="System.Object[]" id="475540768">
             <item dataType="ObjectRef">3128875926</item>
             <item dataType="Type" id="2549024732" value="Khronos.World.HumperLevelGen" />
+            <item dataType="Type" id="3236366614" value="Khronos.World.HumperRenderer" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="3596312462">
             <item dataType="ObjectRef">1678811662</item>
             <item dataType="ObjectRef">396347329</item>
+            <item dataType="ObjectRef">1420845880</item>
           </values>
         </body>
       </compMap>
@@ -496,6 +509,100 @@
       </identifier>
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">Map</name>
+      <parent />
+      <prefabLink />
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="3470017702">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3497215664">
+        <_items dataType="Array" type="Duality.Component[]" id="1542462396" length="4">
+          <item dataType="Struct" type="Duality.Components.Transform" id="3527294920">
+            <active dataType="Bool">true</active>
+            <angle dataType="Float">0</angle>
+            <angleAbs dataType="Float">0</angleAbs>
+            <angleVel dataType="Float">0</angleVel>
+            <angleVelAbs dataType="Float">0</angleVelAbs>
+            <deriveAngle dataType="Bool">true</deriveAngle>
+            <gameobj dataType="ObjectRef">3470017702</gameobj>
+            <ignoreParent dataType="Bool">false</ignoreParent>
+            <parentTransform />
+            <pos dataType="Struct" type="Duality.Vector3">
+              <X dataType="Float">81</X>
+              <Y dataType="Float">-42</Y>
+              <Z dataType="Float">0</Z>
+            </pos>
+            <posAbs dataType="Struct" type="Duality.Vector3">
+              <X dataType="Float">81</X>
+              <Y dataType="Float">-42</Y>
+              <Z dataType="Float">0</Z>
+            </posAbs>
+            <scale dataType="Float">1</scale>
+            <scaleAbs dataType="Float">1</scaleAbs>
+            <vel dataType="Struct" type="Duality.Vector3" />
+            <velAbs dataType="Struct" type="Duality.Vector3" />
+          </item>
+          <item dataType="Struct" type="Duality.Components.Renderers.TextRenderer" id="57988060">
+            <active dataType="Bool">true</active>
+            <blockAlign dataType="Enum" type="Duality.Alignment" name="Center" value="0" />
+            <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">255</B>
+              <G dataType="Byte">255</G>
+              <R dataType="Byte">255</R>
+            </colorTint>
+            <customMat />
+            <gameobj dataType="ObjectRef">3470017702</gameobj>
+            <iconMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]" />
+            <offset dataType="Float">0</offset>
+            <text dataType="Struct" type="Duality.Drawing.FormattedText" id="1130780300">
+              <flowAreas />
+              <fonts dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Font]][]" id="108761508">
+                <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Font]]">
+                  <contentPath dataType="String">Default:Font:GenericMonospace10</contentPath>
+                </item>
+              </fonts>
+              <icons />
+              <lineAlign dataType="Enum" type="Duality.Alignment" name="Left" value="1" />
+              <maxHeight dataType="Int">0</maxHeight>
+              <maxWidth dataType="Int">0</maxWidth>
+              <sourceText dataType="String">Hello World</sourceText>
+              <wrapMode dataType="Enum" type="Duality.Drawing.FormattedText+WrapMode" name="Word" value="1" />
+            </text>
+            <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
+          </item>
+          <item dataType="Struct" type="Khronos.FpsDisplay" id="3858608289">
+            <_display dataType="ObjectRef">57988060</_display>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3470017702</gameobj>
+          </item>
+        </_items>
+        <_size dataType="Int">3</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1140184942" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="1981226626">
+            <item dataType="ObjectRef">3128875926</item>
+            <item dataType="Type" id="3920472720" value="Duality.Components.Renderers.TextRenderer" />
+            <item dataType="Type" id="418254574" value="Khronos.FpsDisplay" />
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="1519380618">
+            <item dataType="ObjectRef">3527294920</item>
+            <item dataType="ObjectRef">57988060</item>
+            <item dataType="ObjectRef">3858608289</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform dataType="ObjectRef">3527294920</compTransform>
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="258224626">BCmMoejqqUaJXvfcH2XkiQ==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">TextRenderer</name>
       <parent />
       <prefabLink />
     </item>
