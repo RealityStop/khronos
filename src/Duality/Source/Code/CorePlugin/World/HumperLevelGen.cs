@@ -12,8 +12,8 @@ namespace Khronos.World
     public class HumperLevelGen : Component, ICmpInitializable, ICmpUpdatable
     {
         [DontSerialize]
-        Grid<HumperMapObject> _TileGrid;
-        Grid<HumperMapObject> TileGrid { get { return _TileGrid; } }
+        Platform[] _TileGrid;
+        Platform[] TileGrid { get { return _TileGrid; } }
 
         public bool Debug { get; set; }
 
@@ -21,41 +21,23 @@ namespace Khronos.World
         private void Initialize()
         {
             var tilemap = GameObj.GetComponentsInChildren<Tilemap>().FirstOrDefault();
-            _TileGrid = new Grid<HumperMapObject>(tilemap.Size.X, tilemap.Size.Y);
 
             GameLevel.Instance.Initialize(tilemap.Tileset.Res.TileSize);
 
             if (tilemap != null)
             {
-                for (int x = 0; x < tilemap.Size.X; x++)
+                List<Rect> rectangles = TileMerger.GridMerge(tilemap);
+                _TileGrid = rectangles.Select(rect =>
                 {
-                    for (int y = 0; y < tilemap.Size.Y; y++)
-                    {
-                        GenerateForSector(tilemap, x, y);
-                    }
-                }
-            }
-        }
-
-        private void GenerateForSector(Tilemap tilemap, int x, int y)
-        {
-            var tileSize = tilemap.Tileset.Res.TileSize;
-            var tile = tilemap.Tiles[x, tilemap.Size.Y - y-1];
-            var tileData = tilemap.Tileset.Res.TileData[tile.BaseIndex];
-
-            if (tileData.IsVisuallyEmpty)
-                return;
-
-            if (tileData.Collision[0].HasFlag(TileCollisionShape.Solid))
-            {
-                Platform platform = new Platform(x,y);
-                TileGrid[x, y] = platform;
+                    return new Platform((int)rect.X, (int)rect.Y, (int)rect.W + 1, (int)rect.H + 1);
+                }).ToArray();
             }
         }
 
         void ICmpInitializable.OnInit(InitContext context)
         {
-            Initialize();
+            if( context == InitContext.Loaded)
+                Initialize();
         }
 
         void ICmpInitializable.OnShutdown(ShutdownContext context)

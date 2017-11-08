@@ -75,6 +75,7 @@
     <Compile Include="World\GameLevel.cs" />
     <Compile Include="World\HumperRenderer.cs" />
     <Compile Include="World\Level\Platform.cs" />
+    <Compile Include="World\TileMerger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
