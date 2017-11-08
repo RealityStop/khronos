@@ -23,8 +23,8 @@ namespace Khronos.Player
 
         public override void Build(IWorld world, Vector2 tilesize)
         {
-            box = world.Create(Owner.GameObj.Transform.Pos.X - Owner.SizeX/2,
-                Owner.GameObj.Transform.Pos.Y - Owner.SizeY/2,
+            box = world.Create(Owner.GameObj.Transform.Pos.X,
+                -Owner.GameObj.Transform.Pos.Y,
                 Owner.SizeX,
                 Owner.SizeY);
 
@@ -37,8 +37,8 @@ namespace Khronos.Player
 
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
-            var movement = box.Move(newLocation.X, newLocation.Y, (collisionInfo) =>  CollisionResponses.Slide );
-            actualResultPosition = new Vector2(movement.Destination.X, movement.Destination.Y);
+            var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>  CollisionResponses.Slide );
+            actualResultPosition = new Vector2(movement.Destination.X, -movement.Destination.Y);
             return movement.HasCollided;
         }
     }

@@ -39,10 +39,10 @@
             <active dataType="Bool">true</active>
             <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
             <farZ dataType="Float">10000</farZ>
-            <focusDist dataType="Float">100</focusDist>
+            <focusDist dataType="Float">500</focusDist>
             <gameobj dataType="ObjectRef">1422208509</gameobj>
             <nearZ dataType="Float">0</nearZ>
-            <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Parallax" value="1" />
+            <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
             <priority dataType="Int">0</priority>
             <renderSetup dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderSetup]]" />
             <renderTarget dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderTarget]]" />
@@ -195,8 +195,8 @@
             <rect dataType="Struct" type="Duality.Rect">
               <H dataType="Float">64</H>
               <W dataType="Float">32</W>
-              <X dataType="Float">-16</X>
-              <Y dataType="Float">-32</Y>
+              <X dataType="Float">0</X>
+              <Y dataType="Float">-64</Y>
             </rect>
             <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
             <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
@@ -318,7 +318,7 @@
                   <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="727031777" custom="true">
                     <body>
                       <version dataType="Int">3</version>
-                      <data dataType="Array" type="System.Byte[]" id="1206819182">H4sIAAAAAAAEAO3RQQ2AQBAEwfWAAXI6UIJ/IRByHxzUoyeZlIC+ZuZ8f8y38LkDpEY+NfKpkU+NfGrkUyOfGvnUyKdGPjXyqZFPjXxq5FMjnxr51MinRj418qmRT418auRTI58a+dTIp0Y+NfKpkU+NfGrk82+0AmTHeQA3Qxw5iDQAAA==</data>
+                      <data dataType="Array" type="System.Byte[]" id="1206819182">H4sIAAAAAAAEAO3awQnDMBAAweshDYTU4UrSfyExwW8Rf+LFjEDM+1gQetw2M8/9PuZ70OeNIBr10aiPRn006qNRH436aNRHoz4a9dGoj0Z9NOqjUR+N+mjUR6M+GvXRqI9GfTTqo1Efjfpo1EejPqcbvRYkJrofpxtZc+03wsWNvGBFLOr3+aHR6peAP3B0+ACrQaYIiDQAAA==</data>
                     </body>
                   </tileData>
                   <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -528,13 +528,13 @@
             <ignoreParent dataType="Bool">false</ignoreParent>
             <parentTransform />
             <pos dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">81</X>
-              <Y dataType="Float">-42</Y>
+              <X dataType="Float">75.03253</X>
+              <Y dataType="Float">-28.1086273</Y>
               <Z dataType="Float">0</Z>
             </pos>
             <posAbs dataType="Struct" type="Duality.Vector3">
-              <X dataType="Float">81</X>
-              <Y dataType="Float">-42</Y>
+              <X dataType="Float">75.03253</X>
+              <Y dataType="Float">-28.1086273</Y>
               <Z dataType="Float">0</Z>
             </posAbs>
             <scale dataType="Float">1</scale>
@@ -554,7 +554,7 @@
             <customMat />
             <gameobj dataType="ObjectRef">3470017702</gameobj>
             <iconMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]" />
-            <offset dataType="Float">0</offset>
+            <offset dataType="Float">-80</offset>
             <text dataType="Struct" type="Duality.Drawing.FormattedText" id="1130780300">
               <flowAreas />
               <fonts dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Font]][]" id="108761508">
@@ -564,8 +564,8 @@
               </fonts>
               <icons />
               <lineAlign dataType="Enum" type="Duality.Alignment" name="Left" value="1" />
-              <maxHeight dataType="Int">0</maxHeight>
-              <maxWidth dataType="Int">0</maxWidth>
+              <maxHeight dataType="Int">100</maxHeight>
+              <maxWidth dataType="Int">100</maxWidth>
               <sourceText dataType="String">FPS!</sourceText>
               <wrapMode dataType="Enum" type="Duality.Drawing.FormattedText+WrapMode" name="Word" value="1" />
             </text>

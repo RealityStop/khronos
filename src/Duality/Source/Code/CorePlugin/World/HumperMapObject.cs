@@ -40,7 +40,7 @@ namespace Khronos.World
                 return;
 
             if (box == null)
-                box = world.Create(TileX * tilesize.X, -TileY * tilesize.Y, tilesize.X, tilesize.Y);
+                box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, tilesize.X, tilesize.Y);
 
             Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
         }

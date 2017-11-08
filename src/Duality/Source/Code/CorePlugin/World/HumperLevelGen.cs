@@ -40,7 +40,7 @@ namespace Khronos.World
         private void GenerateForSector(Tilemap tilemap, int x, int y)
         {
             var tileSize = tilemap.Tileset.Res.TileSize;
-            var tile = tilemap.Tiles[x, y];
+            var tile = tilemap.Tiles[x, tilemap.Size.Y - y-1];
             var tileData = tilemap.Tileset.Res.TileData[tile.BaseIndex];
 
             if (tileData.IsVisuallyEmpty)

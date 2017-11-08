@@ -36,7 +36,7 @@ namespace Khronos.World
 
                 (box) =>
                 {
-                    canvas.DrawRect(box.X, box.Y - box.Height, box.Width, box.Height);
+                    canvas.DrawRect(box.X, -(box.Y + box.Height), box.Width, box.Height);
                 },
 
 

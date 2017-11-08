@@ -54,7 +54,7 @@ namespace Khronos.Player
                 }
 
                 if (OnGround && DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A))
-                    Velocity = new Vector2(Velocity.X, -50);
+                    Velocity = new Vector2(Velocity.X, -20);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Khronos.Player
 
             Vel.Y = MathF.Min(Vel.Y, TerminalVelocity.Y);
             Vel.X = MathF.Min(Vel.X, TerminalVelocity.X);
-            Vel.Y = MathF.Max(Vel.Y, -TerminalVelocity.Y);
+            //Vel.Y = MathF.Max(Vel.Y, -TerminalVelocity.Y);
             Vel.X = MathF.Max(Vel.X, -TerminalVelocity.X);
 
 
