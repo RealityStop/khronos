@@ -4,7 +4,7 @@
     <Backups>true</Backups>
     <Autosaves>ThirtyMinutes</Autosaves>
     <FirstSession>false</FirstSession>
-    <ActiveDocumentIndex>0</ActiveDocumentIndex>
+    <ActiveDocumentIndex>2</ActiveDocumentIndex>
   </EditorApp>
   <Plugins>
     <Plugin id="CamView">
@@ -184,7 +184,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--DockPanel configuration file. Author: Weifen Luo, all rights reserved.-->
 <!--!!! AUTOMATICALLY GENERATED FILE. DO NOT MODIFY !!!-->
-<DockPanel FormatVersion="1.0" DockLeftPortion="0.13203125" DockRightPortion="0.440885416666667" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="6" ActivePane="2">
+<DockPanel FormatVersion="1.0" DockLeftPortion="0.13203125" DockRightPortion="0.440885416666667" DockTopPortion="0.25" DockBottomPortion="0.25" ActiveDocumentPane="6" ActivePane="6">
   <Contents Count="10">
     <Content ID="0" PersistString="Duality.Editor.Plugins.CamView.CamView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
     <Content ID="1" PersistString="Duality.Editor.Plugins.ProjectView.ProjectFolderView" AutoHidePortion="0.440885416666667" IsHidden="False" IsFloat="False" />
@@ -229,7 +229,7 @@
         <Content ID="0" RefID="0" />
       </Contents>
     </Pane>
-    <Pane ID="6" DockState="Document" ActiveContent="0">
+    <Pane ID="6" DockState="Document" ActiveContent="8">
       <Contents Count="4">
         <Content ID="0" RefID="0" />
         <Content ID="1" RefID="7" />
