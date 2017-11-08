@@ -10,6 +10,11 @@ using Duality;
 
 namespace Khronos.World
 {
+    /// <summary>
+    /// Responsible for drawing the humper collision boxes in the game on Group30.  Currently ignores humper collision cells and strings.
+    /// 
+    /// Draws at z= -80, leaving some room for UI elements above.
+    /// </summary>
     public class HumperRenderer : Renderer, ICmpInitializable
     {
         private IWorld _humperMap;
@@ -29,17 +34,16 @@ namespace Khronos.World
 
 
             _humperMap.DrawDebug(0, 0, Duality.DualityApp.AppData.ForcedRenderSize.X, Duality.DualityApp.AppData.ForcedRenderSize.Y,
-
-
-
+                //DrawCell
                 DrawCell,
 
+                //DrawBox
                 (box) =>
                 {
                     canvas.DrawRect(box.X, -(box.Y + box.Height), -80, box.Width, box.Height);
                 },
 
-
+                //DrawString
                 DrawString);
 
             canvas.End();

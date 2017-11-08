@@ -8,8 +8,38 @@
             <summary>
             Generic base-class for Humper collision objects.  Automatically add themselves on Enabled=true and remove themselves when Enabled = false
             
-            By default, assume they occupy a single tile at TileX/TileY.
+            Implemnetations must describe how to add and remove themselves.
             </summary>
+        </member>
+        <member name="T:Khronos.World.GameLevel">
+            <summary>
+            An internal singleton that handles setting up and tearing down the humpermap.  
+            </summary>
+        </member>
+        <member name="T:Khronos.World.HumperRenderer">
+            <summary>
+            Responsible for drawing the humper collision boxes in the game on Group30.  Currently ignores humper collision cells and strings.
+            
+            Draws at z= -80, leaving some room for UI elements above.
+            </summary>
+        </member>
+        <member name="T:Khronos.World.Level.Platform">
+            <summary>
+            A tile-based Ground object.  Records x,y,w,h in tile units and handles auto-adding to the humpermap.
+            </summary>
+        </member>
+        <member name="T:Khronos.World.TileMerger">
+            <summary>
+            Tile Merge optimizer.  Operates by operating in a Y-first (left-right) merge to find applicable cells to merge
+            </summary>
+        </member>
+        <member name="M:Khronos.World.TileMerger.GridMerge(Duality.Plugins.Tilemaps.Tilemap,System.Func{Duality.Plugins.Tilemaps.Tilemap,System.Int32,System.Int32,System.Boolean})">
+            <summary>
+            Performs the merge.  Returns a list of rectangles, representing the tilemap indices covered by the rectangles.
+            </summary>
+            <param name="tilemap"></param>
+            <param name="MergeFunction">Function to perform the merge on.  IsCollider is a natural fit.</param>
+            <returns></returns>
         </member>
         <member name="T:Duality_.Duality_CorePlugin">
             <summary>

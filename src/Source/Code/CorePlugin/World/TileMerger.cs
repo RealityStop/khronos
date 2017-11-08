@@ -8,9 +8,18 @@ using System.Threading.Tasks;
 
 namespace Khronos.World
 {
+    /// <summary>
+    /// Tile Merge optimizer.  Operates by operating in a Y-first (left-right) merge to find applicable cells to merge
+    /// </summary>
     static class TileMerger
     {
-        public static List<Rect> GridMerge(Tilemap tilemap)
+        /// <summary>
+        /// Performs the merge.  Returns a list of rectangles, representing the tilemap indices covered by the rectangles.
+        /// </summary>
+        /// <param name="tilemap"></param>
+        /// <param name="MergeFunction">Function to perform the merge on.  IsCollider is a natural fit.</param>
+        /// <returns></returns>
+        public static List<Rect> GridMerge(Tilemap tilemap, Func<Tilemap,int,int,bool> MergeFunction)
         {
             int start_y = -1, end_y = -1;
             List<Rect> rectangles = new List<Rect>();
@@ -20,7 +29,7 @@ namespace Khronos.World
                 for (int y = 0; y < tilemap.Tiles.Height; y++)
                 {
 
-                    if (IsCollider(tilemap, x, y))
+                    if (MergeFunction(tilemap, x, y))
                     {
                         if (start_y < 0)
                             start_y = y;
@@ -41,9 +50,11 @@ namespace Khronos.World
             return rectangles;
         }
 
+
+        //Internal function that is responsible for merging cells together.
         private static void CheckOverlaps(ref int start_y, ref int end_y, List<Rect> rectangles, int x)
         {
-            //If we found the end of the collider, then it's time to start merging.
+            //If we found the end of the collider, then we record all the rectangles we're next to.
             List<int> overlaps = new List<int>();
             for (int i = 0; i < rectangles.Count; i++)
             {
@@ -56,12 +67,14 @@ namespace Khronos.World
                 }
             }
 
+            //Sort the overlaps, so that the following loop is in order of Y
             overlaps.Sort(Comparer<int>.Create((a, b) => { return rectangles[a].TopY.CompareTo(rectangles[b].TopY); }));
 
 
             for (int i = 0; i < overlaps.Count; i++)
             {
                 Rect rect = rectangles[overlaps[i]];
+                //If we're in between cells, create a new rectangle.
                 if (start_y < rect.TopY)
                 {
                     Rect newRect = new Rect(x, start_y, 0, rect.TopY - 1 - start_y);
@@ -69,6 +82,7 @@ namespace Khronos.World
                     start_y = (int)rect.TopY;
                 }
 
+                //Aha, we can just grow this rectangle...
                 if (start_y == rect.TopY)
                 {
                     rect.W += 1;
@@ -85,7 +99,7 @@ namespace Khronos.World
                 }
             }
 
-
+            //Remainder.  Make a new rectangle.
             if (start_y >= 0)
             {
                 Rect newRect = new Rect(x, start_y, 0, end_y - start_y);
