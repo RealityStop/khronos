@@ -46,6 +46,11 @@ namespace Khronos.Player
             if (GamepadNumber >= 0)
             {
                 float horizontalAxisValue = DualityApp.Gamepads[GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX) * Time.TimeMult;
+                if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.A))
+                    horizontalAxisValue = -1;
+                else if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.D))
+                    horizontalAxisValue = 1;
+
                 if (MathF.Abs(horizontalAxisValue) > 0.3)
                 {
                     Vector2 Vel = Velocity;
@@ -53,8 +58,9 @@ namespace Khronos.Player
                     Velocity = Vel;
                 }
 
-                if (OnGround && DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A))
-                    Velocity = new Vector2(Velocity.X, -20);
+                if (OnGround)
+                    if(DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A)  ||DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                        Velocity = new Vector2(Velocity.X, -20);
             }
         }
 
