@@ -86,7 +86,7 @@
                   <lineAlign dataType="Enum" type="Duality.Alignment" name="Center" value="0" />
                   <maxHeight dataType="Int">0</maxHeight>
                   <maxWidth dataType="Int">0</maxWidth>
-                  <sourceText dataType="String">Humpernaut 1</sourceText>
+                  <sourceText dataType="String">PlayerName</sourceText>
                   <wrapMode dataType="Enum" type="Duality.Drawing.FormattedText+WrapMode" name="Word" value="1" />
                 </text>
                 <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
@@ -152,6 +152,7 @@
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
         <item dataType="Struct" type="Khronos.Player.Player" id="445628521">
+          <_x003C_PlayerName_x003E_k__BackingField dataType="String">Humpernaut 1</_x003C_PlayerName_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">2105844559</gameobj>
         </item>
@@ -160,11 +161,6 @@
           <_x003C_SizeY_x003E_k__BackingField dataType="Int">64</_x003C_SizeY_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">2105844559</gameobj>
-          <humperObject dataType="Struct" type="Khronos.Player.PlayerHumper" id="1002752127">
-            <_Enabled dataType="Bool">false</_Enabled>
-            <_x003C_Owner_x003E_k__BackingField dataType="ObjectRef">715903375</_x003C_Owner_x003E_k__BackingField>
-            <box />
-          </humperObject>
         </item>
         <item dataType="Struct" type="Khronos.Player.PlayerMovement" id="2201078670">
           <_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.98</_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField>
@@ -211,7 +207,7 @@
       <body />
     </identifier>
     <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
-    <name dataType="String">Player</name>
+    <name dataType="String">Player 1</name>
     <parent />
     <prefabLink />
   </objTree>

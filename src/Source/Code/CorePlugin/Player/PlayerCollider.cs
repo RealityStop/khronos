@@ -60,7 +60,7 @@ namespace Khronos.Player
 
         public void OnInit(InitContext context)
         {
-            if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
+            if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game && context == InitContext.Activate)
                 humperObject.Enabled = true;
         }
 

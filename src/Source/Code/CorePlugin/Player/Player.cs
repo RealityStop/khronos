@@ -23,5 +23,10 @@ namespace Khronos.Player
         public void OnShutdown(ShutdownContext context)
         {
         }
+
+        internal void PlayerDropout()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -50,7 +50,7 @@ namespace Khronos.Player
         {
             float horizontalAxisValue = 0;
             if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable)
-                horizontalAxisValue = DualityApp.Gamepads[GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX) * Time.TimeMult;
+                horizontalAxisValue = DualityApp.Gamepads[GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX);
 
             if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.A))
                 horizontalAxisValue = -1;
