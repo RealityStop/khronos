@@ -7,22 +7,24 @@ using Duality.Resources;
 
 namespace Khronos.UI
 {
-    public class GUI : Component, ICmpUpdatable, ICmpRenderer
+    public class GUI : Component, ICmpInitializable, ICmpUpdatable, ICmpRenderer
     {
-        public IReadOnlyList<IUIScreen> Screens
-        {
-            get { return screens.Values.ToList(); }
-        }
-
         public ContentRef<Font> TextFont
         {
             get { return textFont; }
             set { textFont = value; }
         }
 
-        [DontSerialize]
-        private Dictionary<Type, IUIScreen> screens = new Dictionary<Type, IUIScreen>();
+        public List<IUIScreen> ActiveScreens
+        {
+            get { return screens; }
+            set
+            {
+                screens = value;
+            }
+        }
 
+        private List<IUIScreen> screens;
         private ContentRef<Font> textFont;
 
         public virtual void GetCullingInfo(out CullingInfo info)
@@ -32,50 +34,29 @@ namespace Khronos.UI
             info.Visibility = VisibilityFlag.AllGroups | VisibilityFlag.ScreenOverlay;
         }
 
-        public T AddScreen<T>() where T : IUIScreen, new()
+        public void OnInit(InitContext context)
         {
-            if (!screens.ContainsKey(typeof(T)))
+            if (context == InitContext.Activate)
             {
-                var newScreen = new T();
-                newScreen.OnInitialize();
-                screens.Add(typeof(T), newScreen);
-
-                SortByDrawOrder();
-
-                return newScreen;
-            }
-            return default(T);
-        }
-
-        public T GetScreen<T>() where T : IUIScreen
-        {
-            if (screens.ContainsKey(typeof(T)))
-            {
-                return (T)screens[typeof(T)];
-            }
-            return default(T);
-        }
-
-        public void RemoveScreen<T>() where T : IUIScreen
-        {
-            if (screens.ContainsKey(typeof(T)))
-            {
-                var screen = screens[typeof(T)];
-                screen?.OnDisable();
-                screens.Remove(typeof(T));
+                if (screens != null)
+                {
+                    screens.Sort((x, y) => x.DrawOrder.CompareTo(y.DrawOrder));
+                    foreach (var screen in screens)
+                        screen?.OnInitialize();
+                }
             }
         }
 
-        public void SortByDrawOrder()
+        public void OnShutdown(ShutdownContext context)
         {
-            screens = screens.OrderBy(x => x.Value.DrawOrder).ToDictionary(x => x.Key, x => x.Value);
         }
 
         public void OnUpdate()
         {
             foreach (var screen in screens)
             {
-                screen.Value.OnUpdate();
+                if (screen.Active)
+                    screen.OnUpdate();
             }
         }
 
@@ -84,11 +65,21 @@ namespace Khronos.UI
             Canvas canvas = new Canvas();
             canvas.Begin(device);
             canvas.State.TextFont = textFont;
-
-            foreach (var screen in screens)
+            if (screens != null)
             {
-                if (screen.Value.Visible)
-                    screen.Value.OnDraw(canvas);
+                foreach (var screen in screens)
+                {
+                    if (screen != null)
+                    {
+                        if (screen.Visible && screen.Active)
+                        {
+                            // reset states
+                            canvas.State.ColorTint = ColorRgba.White;
+                            canvas.State.TransformScale = Vector2.One;
+                            screen.OnDraw(canvas);
+                        }
+                    }
+                }
             }
             canvas.End();
         }

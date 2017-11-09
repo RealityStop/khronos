@@ -5,13 +5,11 @@ namespace Khronos.UI.Screens
     public class TestOverlay : IUIScreen
     {
         public bool Visible { get; set; }
-
+        public bool Active { get; set; }
         public float DrawOrder { get; set; }
 
         public void OnInitialize()
         {
-            Visible = true;
-            DrawOrder = 1f;
         }
 
         public void OnDisable()
@@ -24,9 +22,8 @@ namespace Khronos.UI.Screens
 
         public void OnDraw(Canvas canvas)
         {
-            // background
-            canvas.State.ColorTint = new ColorRgba(0, 0, 0, 0.5f);
-            canvas.FillRect(200, 200, 200, 200);
+            canvas.State.ColorTint = ColorRgba.Red;
+            canvas.FillRect(20, 20, 200, 200);
         }
     }
 }

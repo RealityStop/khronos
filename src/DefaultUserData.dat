@@ -5,7 +5,7 @@
   <soundMasterVol dataType="Float">1</soundMasterVol>
   <soundMusicVol dataType="Float">1</soundMusicVol>
   <soundSpeechVol dataType="Float">1</soundSpeechVol>
-  <systemCursorVisible dataType="Bool">false</systemCursorVisible>
+  <systemCursorVisible dataType="Bool">true</systemCursorVisible>
   <windowMode dataType="Enum" type="Duality.ScreenMode" name="Fullscreen" value="3" />
   <windowRefreshMode dataType="Enum" type="Duality.RefreshMode" name="AdaptiveVSync" value="3" />
   <windowSize dataType="Struct" type="Duality.Point2">

@@ -93,6 +93,24 @@
           <item dataType="Struct" type="Khronos.UI.GUI" id="2294168029">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">2496773112</gameobj>
+            <screens dataType="Struct" type="System.Collections.Generic.List`1[[Khronos.UI.IUIScreen]]" id="3497328265">
+              <_items dataType="Array" type="Khronos.UI.IUIScreen[]" id="1355585422" length="4">
+                <item dataType="Struct" type="Khronos.UI.Screens.MainMenu" id="410551504">
+                  <_x003C_Active_x003E_k__BackingField dataType="Bool">true</_x003C_Active_x003E_k__BackingField>
+                  <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">0</_x003C_DrawOrder_x003E_k__BackingField>
+                  <_x003C_Visible_x003E_k__BackingField dataType="Bool">true</_x003C_Visible_x003E_k__BackingField>
+                  <gameScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
+                    <contentPath dataType="String">Data\Basic Testing.Scene.res</contentPath>
+                  </gameScene>
+                </item>
+                <item dataType="Struct" type="Khronos.UI.Screens.TestOverlay" id="2950279790">
+                  <_x003C_Active_x003E_k__BackingField dataType="Bool">false</_x003C_Active_x003E_k__BackingField>
+                  <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">1</_x003C_DrawOrder_x003E_k__BackingField>
+                  <_x003C_Visible_x003E_k__BackingField dataType="Bool">false</_x003C_Visible_x003E_k__BackingField>
+                </item>
+              </_items>
+              <_size dataType="Int">2</_size>
+            </screens>
             <textFont dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Font]]">
               <contentPath dataType="String">Data\Media\fonts\m5x7.Font.res</contentPath>
             </textFont>

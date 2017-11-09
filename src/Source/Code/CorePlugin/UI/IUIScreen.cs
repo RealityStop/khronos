@@ -6,6 +6,8 @@ namespace Khronos.UI
     {
         bool Visible { get; set; }
 
+        bool Active { get; set; }
+
         float DrawOrder { get; set; }
 
         void OnInitialize();

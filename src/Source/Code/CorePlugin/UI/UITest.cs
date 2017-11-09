@@ -12,8 +12,7 @@ namespace Khronos.UI
             if (context == InitContext.Activate)
             {
                 var gui = Scene.Current.FindComponent<GUI>();
-                gui.AddScreen<MainMenu>();
-                gui.AddScreen<TestOverlay>();
+                //gui.ActiveScreen = new MainMenu();
             }
         }
 
