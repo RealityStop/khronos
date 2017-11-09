@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khronos.World
+namespace Khronos.World.Level
 {
     [RequiredComponent(typeof(Transform))]
-    public class PlayerSpawnPoint : Component
+    public class PlayerSpawnPoint : TilemapObjectPositioner
     {
         public bool RestrictToGamepadNumber { get; set; }
 

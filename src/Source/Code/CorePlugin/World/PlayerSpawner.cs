@@ -2,6 +2,7 @@
 using Duality.Components;
 using Duality.Resources;
 using Khronos.Player;
+using Khronos.World.Level;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace Khronos.World
                             GeneratePlayer(i);
                     }
                 }
+            }
+
+            if (DualityApp.Keyboard.KeyHit(Duality.Input.Key.F2))
+            {
+                GeneratePlayer(AllocatedGamepads.Count);
             }
         }
 
