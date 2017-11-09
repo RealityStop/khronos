@@ -105,13 +105,13 @@
                   <ignoreParent dataType="Bool">false</ignoreParent>
                   <parentTransform />
                   <pos dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">100</X>
-                    <Y dataType="Float">-200</Y>
+                    <X dataType="Float">64</X>
+                    <Y dataType="Float">-96</Y>
                     <Z dataType="Float">0</Z>
                   </pos>
                   <posAbs dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">100</X>
-                    <Y dataType="Float">-200</Y>
+                    <X dataType="Float">64</X>
+                    <Y dataType="Float">-96</Y>
                     <Z dataType="Float">0</Z>
                   </posAbs>
                   <scale dataType="Float">1</scale>
@@ -121,8 +121,8 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PlayerSpawnPoint" id="1067798064">
                   <_x003C_AssignedGamepadNumber_x003E_k__BackingField dataType="Int">0</_x003C_AssignedGamepadNumber_x003E_k__BackingField>
-                  <_x003C_OffsetX_x003E_k__BackingField dataType="Int">5</_x003C_OffsetX_x003E_k__BackingField>
-                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">5</_x003C_OffsetY_x003E_k__BackingField>
+                  <_x003C_OffsetX_x003E_k__BackingField dataType="Int">2</_x003C_OffsetX_x003E_k__BackingField>
+                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">3</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_RestrictToGamepadNumber_x003E_k__BackingField dataType="Bool">true</_x003C_RestrictToGamepadNumber_x003E_k__BackingField>
                   <_x003C_TargetTilemap_x003E_k__BackingField dataType="Struct" type="Duality.Plugins.Tilemaps.Tilemap" id="1001204493">
                     <active dataType="Bool">true</active>
@@ -358,7 +358,7 @@
                     <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="1199993053" custom="true">
                       <body>
                         <version dataType="Int">3</version>
-                        <data dataType="Array" type="System.Byte[]" id="79756390">H4sIAAAAAAAEAO3aywmAMBAA0fRgA5I6rMT+C1HEiyDBiCSTdQSZa9znB9QlpTTv+5SOzfCzGmA04kcjfjTiRyN+NOJHI3404kcjfjTiRyN+NOJHI3404gdhlC9BzIWUvkb5bhFSoYxK37Kk4hv5iBzGyMvJk3aAaMSPRvxoxM+YRrk2iFUjjKpH93aC//pxsPpQSrNu9uulRt+ORyPUvc40MIr3vI2Q6PeJCHn+xsz0yumwAe/G4nyINAAA</data>
+                        <data dataType="Array" type="System.Byte[]" id="79756390">H4sIAAAAAAAEAO3aywmAMBAA0fRgA5I6rMT+C1HEowSFkMyuI8hcTZ4/jFspZT33pVyb4Wc3wGjEj0b8aMSPRvxoxI9G/GjET1qj2iWIoaQ1ShSN+NGIH4340YgfhBHwXYqUuUb16SCkQhm11rKk4hv5iAxj5OXkSRsgGvGjET8a8RPTKOYaA8Jo2CrNv34c/DyU1lwP+/VSo77ToxHqXmcGGOV73mZI9vtEhrz/YmZm5XY4AFLoJ+iINAAA</data>
                       </body>
                     </tileData>
                     <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -412,13 +412,13 @@
                   <ignoreParent dataType="Bool">false</ignoreParent>
                   <parentTransform />
                   <pos dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">1700</X>
-                    <Y dataType="Float">-200</Y>
+                    <X dataType="Float">1824</X>
+                    <Y dataType="Float">-32</Y>
                     <Z dataType="Float">0</Z>
                   </pos>
                   <posAbs dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">1700</X>
-                    <Y dataType="Float">-200</Y>
+                    <X dataType="Float">1824</X>
+                    <Y dataType="Float">-32</Y>
                     <Z dataType="Float">0</Z>
                   </posAbs>
                   <scale dataType="Float">1</scale>
@@ -428,8 +428,8 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PlayerSpawnPoint" id="189136400">
                   <_x003C_AssignedGamepadNumber_x003E_k__BackingField dataType="Int">1</_x003C_AssignedGamepadNumber_x003E_k__BackingField>
-                  <_x003C_OffsetX_x003E_k__BackingField dataType="Int">40</_x003C_OffsetX_x003E_k__BackingField>
-                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">20</_x003C_OffsetY_x003E_k__BackingField>
+                  <_x003C_OffsetX_x003E_k__BackingField dataType="Int">57</_x003C_OffsetX_x003E_k__BackingField>
+                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">1</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_RestrictToGamepadNumber_x003E_k__BackingField dataType="Bool">true</_x003C_RestrictToGamepadNumber_x003E_k__BackingField>
                   <_x003C_TargetTilemap_x003E_k__BackingField dataType="ObjectRef">1001204493</_x003C_TargetTilemap_x003E_k__BackingField>
                   <active dataType="Bool">true</active>
@@ -480,12 +480,12 @@
                   <parentTransform />
                   <pos dataType="Struct" type="Duality.Vector3">
                     <X dataType="Float">960</X>
-                    <Y dataType="Float">-540</Y>
+                    <Y dataType="Float">-640</Y>
                     <Z dataType="Float">0</Z>
                   </pos>
                   <posAbs dataType="Struct" type="Duality.Vector3">
                     <X dataType="Float">960</X>
-                    <Y dataType="Float">-540</Y>
+                    <Y dataType="Float">-640</Y>
                     <Z dataType="Float">0</Z>
                   </posAbs>
                   <scale dataType="Float">1</scale>
@@ -496,7 +496,7 @@
                 <item dataType="Struct" type="Khronos.World.Level.PlayerSpawnPoint" id="3328405167">
                   <_x003C_AssignedGamepadNumber_x003E_k__BackingField dataType="Int">0</_x003C_AssignedGamepadNumber_x003E_k__BackingField>
                   <_x003C_OffsetX_x003E_k__BackingField dataType="Int">30</_x003C_OffsetX_x003E_k__BackingField>
-                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">20</_x003C_OffsetY_x003E_k__BackingField>
+                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">23</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_RestrictToGamepadNumber_x003E_k__BackingField dataType="Bool">false</_x003C_RestrictToGamepadNumber_x003E_k__BackingField>
                   <_x003C_TargetTilemap_x003E_k__BackingField dataType="ObjectRef">1001204493</_x003C_TargetTilemap_x003E_k__BackingField>
                   <active dataType="Bool">true</active>

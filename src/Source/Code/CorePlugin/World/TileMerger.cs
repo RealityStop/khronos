@@ -10,6 +10,8 @@ namespace Khronos.World
 {
     /// <summary>
     /// Tile Merge optimizer.  Operates by operating in a Y-first (left-right) merge to find applicable cells to merge
+    /// 
+    /// C# adaptation of https://love2d.org/wiki/TileMerging
     /// </summary>
     static class TileMerger
     {
