@@ -50,7 +50,7 @@ namespace Khronos.Player
         public int SizeX { get; set; }
         public int SizeY { get; set; }
 
-
+        [DontSerialize]
         private PlayerHumper humperObject;
 
         public PlayerCollider()
@@ -60,7 +60,7 @@ namespace Khronos.Player
 
         public void OnInit(InitContext context)
         {
-            if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
+            if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game && context == InitContext.Activate)
                 humperObject.Enabled = true;
         }
 
