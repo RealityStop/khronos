@@ -15,7 +15,9 @@ namespace Khronos.Player
 
         public void OnInit(InitContext context)
         {
-            GameObj.GetChildByName("Title").GetComponent<TextRenderer>().Text.SourceText = PlayerName;
+            var title = GameObj.GetChildByName("Title")?.GetComponent<TextRenderer>() ?? null;
+            if (title != null)
+                title.Text.SourceText = PlayerName;
         }
 
         public void OnShutdown(ShutdownContext context)

@@ -15,7 +15,6 @@ namespace Khronos.World
         Platform[] _TileGrid;
         Platform[] TileGrid { get { return _TileGrid; } }
 
-
         private void Initialize()
         {
             var tilemap = GameObj.GetComponentsInChildren<Tilemap>().FirstOrDefault();

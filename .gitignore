@@ -288,3 +288,7 @@ __pycache__/
 *.xsd.cs
 
 *.txt
+
+src/OpenAL32\.dll
+
+src/EditorUserData\.xml

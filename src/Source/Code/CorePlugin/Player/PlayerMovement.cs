@@ -48,28 +48,29 @@ namespace Khronos.Player
 
         private void GatherInputs()
         {
-            if (GamepadNumber >= 0)
+            float horizontalAxisValue = 0;
+            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable)
+                horizontalAxisValue = DualityApp.Gamepads[GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX) * Time.TimeMult;
+
+            if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.A))
+                horizontalAxisValue = -1;
+            else if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.D))
+                horizontalAxisValue = 1;
+
+            if (MathF.Abs(horizontalAxisValue) > 0.3)
             {
-                float horizontalAxisValue = DualityApp.Gamepads[GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX) * Time.TimeMult;
-                if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.A))
-                    horizontalAxisValue = -1;
-                else if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.D))
-                    horizontalAxisValue = 1;
-
-                if (MathF.Abs(horizontalAxisValue) > 0.3)
-                {
-                    Vector2 Vel = Velocity;
-                    Vel.X = horizontalAxisValue * TerminalVelocity.X;
-                    Velocity = Vel;
-                }
-
-                if (OnGround)
-                    if(DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A)  ||DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                        Velocity = new Vector2(Velocity.X, -20);
+                Vector2 Vel = Velocity;
+                Vel.X = horizontalAxisValue * TerminalVelocity.X;
+                Velocity = Vel;
             }
+
+            if (OnGround)
+                if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                    if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                        Velocity = new Vector2(Velocity.X, -20);
         }
 
-    private void AdjustValues()
+        private void AdjustValues()
         {
             Vector2 Vel = Velocity;
 
