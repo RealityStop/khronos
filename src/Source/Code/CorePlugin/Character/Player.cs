@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Khronos.Powerups;
 
-namespace Khronos.Player
+namespace Khronos.Character
 {
     public class Player : Component, ICmpInitializable
     {

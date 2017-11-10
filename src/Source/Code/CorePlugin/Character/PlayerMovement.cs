@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khronos.Player
+namespace Khronos.Character
 {
     [ExecutionOrder(ExecutionRelation.After, typeof(HumperLevelGen))]
     [RequiredComponent(typeof(Player))]

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorePlugin", "CorePlugin\CorePlugin.csproj", "{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}"
 EndProject
@@ -40,9 +40,7 @@ Global
 		{2F7D1F9D-0803-4E13-85A6-0AF56AC05431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F7D1F9D-0803-4E13-85A6-0AF56AC05431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FB9F397-FD39-460C-A9AD-B4780D19945F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FB9F397-FD39-460C-A9AD-B4780D19945F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FB9F397-FD39-460C-A9AD-B4780D19945F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FB9F397-FD39-460C-A9AD-B4780D19945F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

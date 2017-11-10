@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 using Humper;
 using Humper.Responses;
 using Khronos.World.BackingData;
+using Khronos.Powerups;
 
-namespace Khronos.Player
+namespace Khronos.Character
 {
     public class PlayerHumper : HumperMapObject
     {

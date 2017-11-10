@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Humper;
-using Khronos.Player;
 using Duality.Components.Physics;
+using Khronos.Character;
 
-namespace Khronos.World
+namespace Khronos.Powerups
 {
     public class PowerupPickup : TilemapObjectPositioner, ICmpUpdatable, ICmpInitializable, ICmpCollisionListener
     {
@@ -70,7 +70,7 @@ namespace Khronos.World
             }
         }
 
-        internal void Collect(Player.Player player)
+        internal void Collect(Player player)
         {
             if (player != null && Pickup.IsAvailable)
             {
@@ -89,7 +89,7 @@ namespace Khronos.World
 
         void ICmpCollisionListener.OnCollisionBegin(Component sender, CollisionEventArgs args)
         {
-            var player = args.CollideWith.GetComponent<Player.Player>();
+            var player = args.CollideWith.GetComponent<Player>();
             if (player != null && PowerupAvailable)
             {
                 Collect(player);
