@@ -31,6 +31,8 @@
         <member name="T:Khronos.World.TileMerger">
             <summary>
             Tile Merge optimizer.  Operates by operating in a Y-first (left-right) merge to find applicable cells to merge
+            
+            C# adaptation of https://love2d.org/wiki/TileMerging
             </summary>
         </member>
         <member name="M:Khronos.World.TileMerger.GridMerge(Duality.Plugins.Tilemaps.Tilemap,System.Func{Duality.Plugins.Tilemaps.Tilemap,System.Int32,System.Int32,System.Boolean})">

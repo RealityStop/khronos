@@ -1,7 +1,7 @@
 ﻿using Duality;
 using Duality.Components;
 using Duality.Resources;
-using Khronos.Player;
+using Khronos.Character;
 using Khronos.World.Level;
 using System;
 using System.Collections.Generic;
@@ -9,13 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khronos.World
+namespace Khronos.Character
 {
     public class PlayerSpawner : Component, ICmpUpdatable
     {
         public ContentRef<Prefab> PlayerPrefab { get; set; }
 
-        Dictionary<int, Khronos.Player.Player> AllocatedGamepads = new Dictionary<int, Khronos.Player.Player>();
+        Dictionary<int, Player> AllocatedGamepads = new Dictionary<int, Player>();
 
         public void OnUpdate()
         {
@@ -66,7 +66,7 @@ namespace Khronos.World
                 newObj.Name = "Player " + gamepadNumber;
                 if (newObj != null)
                 {
-                    var rootPlayer = newObj.GetComponent<Player.Player>();
+                    var rootPlayer = newObj.GetComponent<Player>();
                     if (rootPlayer != null)
                         rootPlayer.PlayerName = "Player " + gamepadNumber;
 
@@ -80,7 +80,7 @@ namespace Khronos.World
                 newObj.Transform.Pos = assignedSpawn.GameObj.Transform.Pos;
 
                 Scene.Current.AddObject(newObj);
-                AllocatedGamepads.Add(gamepadNumber, newObj.GetComponentsDeep<Player.Player>().First());
+                AllocatedGamepads.Add(gamepadNumber, newObj.GetComponentsDeep<Player>().First());
             }
         }
     }
