@@ -1,5 +1,6 @@
 ﻿using Duality;
 using Humper;
+using Khronos.World.BackingData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Khronos.World.Level
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
 
-
+        [DontSerialize]
         private IBox box;
 
         public bool PassThroughFromBelow { get; set; }
@@ -45,7 +46,9 @@ namespace Khronos.World.Level
             if (box == null)
                 box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, TileWidth * tilesize.X, TileHeight * tilesize.Y);
 
-           // Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
+
+            box.AddTags(HumperColliderTags.World);
+            // Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
         }
 
 

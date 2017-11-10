@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Humper;
 using Humper.Responses;
+using Khronos.World.BackingData;
 
 namespace Khronos.Player
 {
@@ -14,6 +15,7 @@ namespace Khronos.Player
     {
         public PlayerCollider Owner { get; set; }
 
+        [DontSerialize]
         private IBox box;
 
         public PlayerHumper(PlayerCollider playerCollider)
@@ -27,6 +29,8 @@ namespace Khronos.Player
                 -Owner.GameObj.Transform.Pos.Y,
                 Owner.SizeX,
                 Owner.SizeY);
+            box.AddTags(HumperColliderTags.Player);
+            box.Data = Owner.GameObj.GetComponent<Player>();
 
             Logs.Game.Write("PlayerHumper created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
         }
@@ -37,7 +41,19 @@ namespace Khronos.Player
 
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
-            var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>  CollisionResponses.Slide );
+            var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) => {
+                if (collisionInfo.Other.HasTag(HumperColliderTags.Pickup))
+                {
+                    var pickup = collisionInfo.Other.Data as PowerupPickup;
+                    if (pickup != null && pickup.PowerupAvailable)
+                    {
+                        pickup.Collect(box.Data as Player);
+                    }
+                    return CollisionResponses.None;
+                }
+                else
+                    return CollisionResponses.Slide;
+                });
             actualResultPosition = new Vector2(movement.Destination.X, -movement.Destination.Y);
             return movement.HasCollided;
         }

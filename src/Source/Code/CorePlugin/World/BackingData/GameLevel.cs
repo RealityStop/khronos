@@ -14,17 +14,39 @@ namespace Khronos.World
     {
         public static GameLevel Instance { get; } = new GameLevel();
 
+        [DontSerialize]
         IWorld HumperMap;
-        public int HumperWidth { get; set; }
-        public int HumperHeight { get; set; }
-        public Vector2 TileSize { get; private set; }
 
-        const int defaultFloorHeight = 50;
+        [DontSerialize]
+        private int humperWidth;
+        public int HumperWidth
+        {
+            get { return humperWidth; }
+            set { humperWidth = value; }
+        }
 
 
         [DontSerialize]
-        List<HumperMapObject> _queuedObjects = new List<HumperMapObject>();
+        private int humperHeight;
+        public int HumperHeight
+        {
+            get { return humperHeight; }
+            set { humperHeight = value; }
+        }
 
+        [DontSerialize]
+        private Vector2 tileSize;
+        public Vector2 TileSize
+        {
+            get { return tileSize; }
+            set { tileSize = value; }
+        }
+
+
+        const int defaultFloorHeight = 50;
+
+        [DontSerialize]
+        List<HumperMapObject> _queuedObjects = new List<HumperMapObject>();
 
         internal void Initialize(Vector2 tilesize, int humperwidth = -1, int humperheight = -1)
         {

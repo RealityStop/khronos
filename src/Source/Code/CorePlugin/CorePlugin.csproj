@@ -74,16 +74,17 @@
     <Compile Include="Powerups\PowerupLibrary.cs" />
     <Compile Include="Powerups\SimpleProjectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="World\BackingData\HumperColliderTags.cs" />
     <Compile Include="World\HumperLevelGen.cs" />
-    <Compile Include="World\HumperMapObject.cs" />
-    <Compile Include="World\GameLevel.cs" />
+    <Compile Include="World\BackingData\HumperMapObject.cs" />
+    <Compile Include="World\BackingData\GameLevel.cs" />
     <Compile Include="World\HumperRenderer.cs" />
     <Compile Include="World\Level\Platform.cs" />
     <Compile Include="World\Level\TilemapObjectPositioner.cs" />
     <Compile Include="World\PlayerSpawner.cs" />
     <Compile Include="World\Level\PlayerSpawnPoint.cs" />
     <Compile Include="World\PowerupPickup.cs" />
-    <Compile Include="World\TileMerger.cs" />
+    <Compile Include="World\BackingData\TileMerger.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
