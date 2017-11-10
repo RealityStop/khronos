@@ -86,7 +86,7 @@
                   <lineAlign dataType="Enum" type="Duality.Alignment" name="Center" value="0" />
                   <maxHeight dataType="Int">0</maxHeight>
                   <maxWidth dataType="Int">0</maxWidth>
-                  <sourceText dataType="String">PlayerName</sourceText>
+                  <sourceText dataType="String"></sourceText>
                   <wrapMode dataType="Enum" type="Duality.Drawing.FormattedText+WrapMode" name="Word" value="1" />
                 </text>
                 <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
@@ -125,6 +125,72 @@
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="679539446">
       <_items dataType="Array" type="Duality.Component[]" id="3973444062" length="8">
         <item dataType="ObjectRef">2163121777</item>
+        <item dataType="Struct" type="Duality.Components.Physics.RigidBody" id="1640774047">
+          <active dataType="Bool">true</active>
+          <allowParent dataType="Bool">false</allowParent>
+          <angularDamp dataType="Float">0.3</angularDamp>
+          <angularVel dataType="Float">0</angularVel>
+          <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Kinematic" value="2" />
+          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1" value="1" />
+          <colFilter />
+          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="All" value="2147483647" />
+          <explicitInertia dataType="Float">0</explicitInertia>
+          <explicitMass dataType="Float">0</explicitMass>
+          <fixedAngle dataType="Bool">false</fixedAngle>
+          <gameobj dataType="ObjectRef">2105844559</gameobj>
+          <ignoreGravity dataType="Bool">false</ignoreGravity>
+          <joints />
+          <linearDamp dataType="Float">0.3</linearDamp>
+          <linearVel dataType="Struct" type="Duality.Vector2" />
+          <revolutions dataType="Float">0</revolutions>
+          <shapes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Components.Physics.ShapeInfo]]" id="536468591">
+            <_items dataType="Array" type="Duality.Components.Physics.ShapeInfo[]" id="2594626030">
+              <item dataType="Struct" type="Duality.Components.Physics.PolyShapeInfo" id="1009471056">
+                <convexPolygons dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Vector2[]]]" id="3129941436">
+                  <_items dataType="Array" type="Duality.Vector2[][]" id="797059652" length="4">
+                    <item dataType="Array" type="Duality.Vector2[]" id="1480772164" length="4">
+                      <item dataType="Struct" type="Duality.Vector2">
+                        <X dataType="Float">0</X>
+                        <Y dataType="Float">-64</Y>
+                      </item>
+                      <item dataType="Struct" type="Duality.Vector2">
+                        <X dataType="Float">32</X>
+                        <Y dataType="Float">-64</Y>
+                      </item>
+                      <item dataType="Struct" type="Duality.Vector2">
+                        <X dataType="Float">32</X>
+                        <Y dataType="Float">0</Y>
+                      </item>
+                    </item>
+                  </_items>
+                  <_size dataType="Int">1</_size>
+                </convexPolygons>
+                <density dataType="Float">1</density>
+                <friction dataType="Float">0.3</friction>
+                <parent dataType="ObjectRef">1640774047</parent>
+                <restitution dataType="Float">0.3</restitution>
+                <sensor dataType="Bool">true</sensor>
+                <userTag dataType="Int">0</userTag>
+                <vertices dataType="Array" type="Duality.Vector2[]" id="734186134" length="4">
+                  <item dataType="Struct" type="Duality.Vector2">
+                    <X dataType="Float">0</X>
+                    <Y dataType="Float">-64</Y>
+                  </item>
+                  <item dataType="Struct" type="Duality.Vector2">
+                    <X dataType="Float">32</X>
+                    <Y dataType="Float">-64</Y>
+                  </item>
+                  <item dataType="Struct" type="Duality.Vector2">
+                    <X dataType="Float">32</X>
+                    <Y dataType="Float">0</Y>
+                  </item>
+                </vertices>
+              </item>
+            </_items>
+            <_size dataType="Int">1</_size>
+          </shapes>
+          <useCCD dataType="Bool">false</useCCD>
+        </item>
         <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="3574463839">
           <active dataType="Bool">true</active>
           <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
@@ -151,51 +217,54 @@
           <spriteIndex dataType="Int">-1</spriteIndex>
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
-        <item dataType="Struct" type="Khronos.Player.Player" id="445628521">
-          <_x003C_PlayerName_x003E_k__BackingField dataType="String">Humpernaut 1</_x003C_PlayerName_x003E_k__BackingField>
+        <item dataType="Struct" type="Khronos.Character.Player" id="11490929">
+          <_x003C_PlayerName_x003E_k__BackingField />
+          <_x003C_Powerup_x003E_k__BackingField />
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">2105844559</gameobj>
         </item>
-        <item dataType="Struct" type="Khronos.Player.PlayerCollider" id="715903375">
-          <_x003C_SizeX_x003E_k__BackingField dataType="Int">32</_x003C_SizeX_x003E_k__BackingField>
-          <_x003C_SizeY_x003E_k__BackingField dataType="Int">64</_x003C_SizeY_x003E_k__BackingField>
+        <item dataType="Struct" type="Khronos.Character.PlayerCollider" id="2679324311">
+          <_x003C_SizeX_x003E_k__BackingField dataType="Int">1</_x003C_SizeX_x003E_k__BackingField>
+          <_x003C_SizeY_x003E_k__BackingField dataType="Int">2</_x003C_SizeY_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">2105844559</gameobj>
         </item>
-        <item dataType="Struct" type="Khronos.Player.PlayerMovement" id="2201078670">
+        <item dataType="Struct" type="Khronos.Character.PlayerMovement" id="4164499606">
           <_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.98</_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_GamepadNumber_x003E_k__BackingField dataType="Int">0</_x003C_GamepadNumber_x003E_k__BackingField>
           <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
-          <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.85</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
+          <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.87</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_OnGround_x003E_k__BackingField dataType="Bool">false</_x003C_OnGround_x003E_k__BackingField>
           <_x003C_TerminalVelocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2">
             <X dataType="Float">10</X>
-            <Y dataType="Float">15</Y>
+            <Y dataType="Float">20</Y>
           </_x003C_TerminalVelocity_x003E_k__BackingField>
           <_x003C_Velocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2" />
           <active dataType="Bool">true</active>
-          <collider dataType="ObjectRef">715903375</collider>
+          <collider dataType="ObjectRef">2679324311</collider>
           <gameobj dataType="ObjectRef">2105844559</gameobj>
         </item>
       </_items>
-      <_size dataType="Int">5</_size>
+      <_size dataType="Int">6</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2494235856" surrogate="true">
       <header />
       <body>
         <keys dataType="Array" type="System.Object[]" id="2970950280">
-          <item dataType="Type" id="3838709612" value="Khronos.Player.Player" />
-          <item dataType="Type" id="2268693558" value="Khronos.Player.PlayerMovement" />
           <item dataType="ObjectRef">3048984492</item>
-          <item dataType="Type" id="602122808" value="Duality.Components.Renderers.SpriteRenderer" />
-          <item dataType="Type" id="3981262098" value="Khronos.Player.PlayerCollider" />
+          <item dataType="Type" id="3838709612" value="Duality.Components.Renderers.SpriteRenderer" />
+          <item dataType="Type" id="2268693558" value="Duality.Components.Physics.RigidBody" />
+          <item dataType="Type" id="602122808" value="Khronos.Character.Player" />
+          <item dataType="Type" id="3981262098" value="Khronos.Character.PlayerCollider" />
+          <item dataType="Type" id="3728122660" value="Khronos.Character.PlayerMovement" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="18312158">
-          <item dataType="ObjectRef">445628521</item>
-          <item dataType="ObjectRef">2201078670</item>
           <item dataType="ObjectRef">2163121777</item>
           <item dataType="ObjectRef">3574463839</item>
-          <item dataType="ObjectRef">715903375</item>
+          <item dataType="ObjectRef">1640774047</item>
+          <item dataType="ObjectRef">11490929</item>
+          <item dataType="ObjectRef">2679324311</item>
+          <item dataType="ObjectRef">4164499606</item>
         </values>
       </body>
     </compMap>

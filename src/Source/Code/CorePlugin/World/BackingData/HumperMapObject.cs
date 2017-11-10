@@ -13,7 +13,7 @@ namespace Khronos.World
     /// 
     /// Implemnetations must describe how to add and remove themselves.
     /// </summary>
-    public abstract class HumperMapObject
+    public class HumperMapObject
     {
         private bool _Enabled = false;
         public bool Enabled { get { return _Enabled; } set {
@@ -29,8 +29,30 @@ namespace Khronos.World
             }
         }
 
-        public abstract void Build(IWorld world, Vector2 tilesize);
+        private Action<IWorld, Vector2> _buildFunc;
+        private Action<IWorld> _removeFunc;
 
-        public abstract void Remove(IWorld world);
+
+        public virtual void Build(IWorld world, Vector2 tilesize)
+        {
+            if (_buildFunc != null)
+                _buildFunc(world, tilesize);
+        }
+        public virtual void Remove(IWorld world)
+        {
+            if (_removeFunc != null)
+                _removeFunc(world);
+        }
+
+        public HumperMapObject()
+        {
+
+        }
+
+        public HumperMapObject(Action<IWorld, Vector2> buildFunc, Action<IWorld> removeFunc)
+        {
+            _buildFunc = buildFunc;
+            _removeFunc = removeFunc;
+        }
     }
 }
