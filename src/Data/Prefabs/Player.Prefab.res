@@ -224,8 +224,8 @@
           <gameobj dataType="ObjectRef">2105844559</gameobj>
         </item>
         <item dataType="Struct" type="Khronos.Character.PlayerCollider" id="2679324311">
-          <_x003C_SizeX_x003E_k__BackingField dataType="Int">1</_x003C_SizeX_x003E_k__BackingField>
-          <_x003C_SizeY_x003E_k__BackingField dataType="Int">2</_x003C_SizeY_x003E_k__BackingField>
+          <_x003C_SizeX_x003E_k__BackingField dataType="Int">32</_x003C_SizeX_x003E_k__BackingField>
+          <_x003C_SizeY_x003E_k__BackingField dataType="Int">64</_x003C_SizeY_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">2105844559</gameobj>
         </item>

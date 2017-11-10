@@ -20,7 +20,6 @@ namespace Khronos.Character
         public Vector2 Velocity { get; set; }
         public Vector2 TerminalVelocity { get; set; }
         public int GamepadNumber { get; set; }
-        public bool OnGround { get; set; }
 
 
         public void OnInit(InitContext context)
@@ -64,7 +63,7 @@ namespace Khronos.Character
                 Velocity = Vel;
             }
 
-            if (OnGround)
+            if (collider.OnGround)
                 if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                     if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                         Velocity = new Vector2(Velocity.X, -20);
@@ -78,7 +77,7 @@ namespace Khronos.Character
             Vel.Y -= Gravity * Duality.Time.TimeMult;
 
             //Apply horizontal damping.
-            if (OnGround)
+            if (collider.OnGround)
                 Vel.X = HorizontalMovementDamp * Vel.X;
             else
                 Vel.X = AirborneHorizontalMovementDamp * Vel.X;
@@ -104,7 +103,6 @@ namespace Khronos.Character
             Vector2 Vel = Velocity;
 
             //Now attempt to move based on the Velocity
-            OnGround = false;
             if (collider.AttemptMove(Vel, out var newPosition))
             {
                 //Adjust our velocity based on collision so we don't "inherit" velocity.
@@ -112,9 +110,6 @@ namespace Khronos.Character
                 //We do this by evaluating what our effective velocity is.
                 var effectivevelocity = (newPosition - GameObj.Transform.Pos.Xy) / Duality.Time.TimeMult;
                 Vel = effectivevelocity;
-
-                if (MathF.Abs(effectivevelocity.Y) < 0.05)
-                    OnGround = true;
             }
 
             GameObj.Transform.Pos = new Vector3(newPosition, 0);

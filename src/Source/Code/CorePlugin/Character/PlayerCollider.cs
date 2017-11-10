@@ -16,8 +16,12 @@ namespace Khronos.Character
     {
         public PlayerCollider Owner { get; set; }
 
+
         [DontSerialize]
         private IBox box;
+
+        [DontSerialize]
+        private IWorld world;
 
         public PlayerHumper(PlayerCollider playerCollider)
         {
@@ -26,6 +30,8 @@ namespace Khronos.Character
 
         public override void Build(IWorld world, Vector2 tilesize)
         {
+            this.world = world;
+
             box = world.Create(Owner.GameObj.Transform.Pos.X,
                 -Owner.GameObj.Transform.Pos.Y,
                 Owner.SizeX,
@@ -42,20 +48,32 @@ namespace Khronos.Character
 
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
-            var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) => {
-                if (collisionInfo.Other.HasTag(HumperColliderTags.Pickup))
-                {
-                    var pickup = collisionInfo.Other.Data as PowerupPickup;
-                    if (pickup != null && pickup.PowerupAvailable)
-                    {
-                        pickup.Collect(box.Data as Player);
-                    }
-                    return CollisionResponses.None;
-                }
-                else
-                    return CollisionResponses.Slide;
-                });
+            var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
+            {
+                return CollisionResponses.Slide;
+            });
             actualResultPosition = new Vector2(movement.Destination.X, -movement.Destination.Y);
+
+            bool onGround = false;
+
+            Humper.Base.RectangleF detectionSpot = box.Bounds;
+            detectionSpot.Offset(0, -0.01f);
+
+            var detection = this.world.Hit(box.Bounds, detectionSpot);
+            /*            var onGroundQuery = box.Simulate(box.X, box.Y - 0.01f, (collissioninfo) =>
+                          {
+                              if (collissioninfo.Other.HasTag(HumperColliderTags.World))
+                              {
+                                  onGround = true;
+                              }
+                              return CollisionResponses.None;
+                          });*/
+            if (detection != null)
+                if (detection.Box.HasTag(HumperColliderTags.World))
+                    onGround = true;
+
+            Owner.OnGround = onGround;
+            
             return movement.HasCollided;
         }
     }
@@ -66,6 +84,8 @@ namespace Khronos.Character
     {
         public int SizeX { get; set; }
         public int SizeY { get; set; }
+        public bool OnGround { get; set; }
+
 
         [DontSerialize]
         private PlayerHumper humperObject;
