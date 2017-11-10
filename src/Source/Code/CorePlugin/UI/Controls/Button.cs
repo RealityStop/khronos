@@ -4,11 +4,15 @@ using Duality.Drawing;
 
 namespace Khronos.UI.Controls
 {
-    public class Button : Panel
+    public class Button : Panel, IControlFocusable
     {
         public string Text { get; set; }
 
         public float TextSize { get; set; }
+
+        public int FocusValue { get; set; }
+
+        public bool Focused { get; set; }
 
         public Button(string text)
         {
@@ -38,6 +42,7 @@ namespace Khronos.UI.Controls
         public override void Draw(Canvas canvas)
         {
             canvas.State.ColorTint = IsMouseHover ? MouseHoverColor : BackgroundColor;
+            canvas.State.ColorTint = Focused ? MouseHoverColor : BackgroundColor;
 
             // draw panel
             base.Draw(canvas);
@@ -47,6 +52,16 @@ namespace Khronos.UI.Controls
             canvas.State.TransformScale = new Vector2(TextSize);
             canvas.DrawText(Text, Bounds.CenterX, Bounds.CenterY, 0f, Alignment.Center);
             canvas.State.TransformScale = Vector2.One;
+        }
+
+        public void OnFocus()
+        {
+            BackgroundColor = MouseHoverColor;
+        }
+
+        public void OnDefocus()
+        {
+            BackgroundColor = BackgroundColor;
         }
     }
 }

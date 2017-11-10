@@ -197,7 +197,7 @@
     <Content ID="8" PersistString="Duality.Editor.Plugins.CamView.CamView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
     <Content ID="9" PersistString="Duality.Editor.Plugins.CamView.CamView" AutoHidePortion="0.25" IsHidden="False" IsFloat="False" />
   </Contents>
-  <Panes Count="9">
+  <Panes Count="10">
     <Pane ID="0" DockState="DockRight" ActiveContent="2">
       <Contents Count="1">
         <Content ID="0" RefID="2" />
@@ -247,6 +247,11 @@
         <Content ID="0" RefID="6" />
       </Contents>
     </Pane>
+    <Pane ID="9" DockState="Float" ActiveContent="-1">
+      <Contents Count="1">
+        <Content ID="0" RefID="8" />
+      </Contents>
+    </Pane>
   </Panes>
   <DockWindows>
     <DockWindow ID="0" DockState="Document" ZOrderIndex="0">
@@ -276,7 +281,7 @@
       </NestedPanes>
     </DockWindow>
   </DockWindows>
-  <FloatWindows Count="2">
+  <FloatWindows Count="3">
     <FloatWindow ID="0" Bounds="550, 595, 300, 300" ZOrderIndex="0">
       <NestedPanes Count="1">
         <Pane ID="0" RefID="1" PrevPane="-1" Alignment="Right" Proportion="0.5" />
@@ -285,6 +290,11 @@
     <FloatWindow ID="1" Bounds="84, 141, 699, 429" ZOrderIndex="1">
       <NestedPanes Count="1">
         <Pane ID="0" RefID="5" PrevPane="-1" Alignment="Right" Proportion="0.5" />
+      </NestedPanes>
+    </FloatWindow>
+    <FloatWindow ID="2" Bounds="1915, 69, 300, 300" ZOrderIndex="2">
+      <NestedPanes Count="1">
+        <Pane ID="0" RefID="9" PrevPane="-1" Alignment="Right" Proportion="0.5" />
       </NestedPanes>
     </FloatWindow>
   </FloatWindows>
