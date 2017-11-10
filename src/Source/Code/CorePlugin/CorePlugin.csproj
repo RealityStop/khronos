@@ -69,7 +69,7 @@
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\PlayerCollider.cs" />
     <Compile Include="Player\PlayerMovement.cs" />
-    <Compile Include="Powerups\PowerupComponent.cs" />
+    <Compile Include="Powerups\Powerup.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\PowerupLibrary.cs" />
     <Compile Include="Powerups\SimpleProjectile.cs" />

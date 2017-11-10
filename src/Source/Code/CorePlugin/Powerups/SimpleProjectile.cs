@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Khronos.Powerups
 {
-    public class SimpleProjectile : PowerupComponent
+    public class SimpleProjectile : Powerup
     {
         public SimpleProjectile()
         {

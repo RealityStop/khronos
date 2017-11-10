@@ -9,7 +9,7 @@ namespace Khronos.Powerups
 {
     public class PowerupInstance
     {
-        public PowerupComponent PowerupType { get; set; }
+        public Powerup PowerupType { get; set; }
 
         public int Uses { get; set; }
     }

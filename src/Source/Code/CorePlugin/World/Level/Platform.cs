@@ -45,7 +45,7 @@ namespace Khronos.World.Level
             if (box == null)
                 box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, TileWidth * tilesize.X, TileHeight * tilesize.Y);
 
-            Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
+           // Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
         }
 
 

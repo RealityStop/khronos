@@ -17,7 +17,7 @@ namespace Khronos.World.Level
         public int OffsetX { get; set; }
         public int OffsetY { get; set; }
 
-        public void OnInit(InitContext context)
+        public virtual void OnInit(InitContext context)
         {
             if (TargetTilemap != null)
             {
