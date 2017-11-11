@@ -24,6 +24,9 @@ namespace Khronos.Character
         public float AirborneHorizontalMovementDamp { get; set; }
         public float AirborneHorizontalMovementFactor { get; set; }
         public float Gravity { get; set; }
+        public float JumpVelocity { get; set; } = -20;
+        public float InitialJumpDirectionVelocityGate { get; set; } = 1;
+        public float AirborneJumpDirectionVelocityGate { get; set; } = 2;
 
 
         //Permissions
@@ -103,7 +106,7 @@ namespace Khronos.Character
                             else if (JumpDirection == JumpDirectionEnum.Right)
                                 JumpDirection = JumpDirectionEnum.Left;
                             Vel.X = -(Vel.X * 2) + Vel.X > 0 ? 5 : -5;
-                            Vel.Y = Math.Max(-20, Vel.Y - 20);
+                            Vel.Y = Math.Max(JumpVelocity, Vel.Y + JumpVelocity);
                             WallJumpAvailable = false;
 
                             if (JumpDirection == JumpDirectionEnum.Up)
@@ -127,15 +130,15 @@ namespace Khronos.Character
             if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                 if (DualityApp.Gamepads[Player.GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                 {
-                    Vel.Y = -20;
+                    Vel.Y = JumpVelocity;
 
-                    if (Vel.X < -1)
+                    if (Vel.X < -InitialJumpDirectionVelocityGate)
                     {
                         JumpDirection = JumpDirectionEnum.Left;
                     }
                     else
                     {
-                        if (Vel.X > 1)
+                        if (Vel.X > InitialJumpDirectionVelocityGate)
                             JumpDirection = JumpDirectionEnum.Right;
                         else
                             JumpDirection = JumpDirectionEnum.Up;
@@ -147,7 +150,7 @@ namespace Khronos.Character
 
         private float IncreaseVelocityBasedOnInput(float horizontalVel, float horizontalAxisValue)
         {
-            if (MathF.Abs(horizontalAxisValue) > 0.3)
+            if (MathF.Abs(horizontalAxisValue) > Constants.Instance.GamepadDeadband)
             {
                 float increase = horizontalAxisValue * HorizontalAcceleration;
 
@@ -171,16 +174,16 @@ namespace Khronos.Character
                             break;
                         case JumpDirectionEnum.Up:
                             //If the player is going indeterminately up, they can still change their velocity, but we have to check if we need to lock them into a direction.
-                            if (horizontalVel < -2)
+                            if (horizontalVel < -AirborneJumpDirectionVelocityGate)
                                 JumpDirection = JumpDirectionEnum.Left;
 
-                            if (horizontalVel > 2)
+                            if (horizontalVel > AirborneJumpDirectionVelocityGate)
                                 JumpDirection = JumpDirectionEnum.Right;
 
                             break;
                         case JumpDirectionEnum.Right:
                             //Then ensure we don't slow down tooooo much.
-                            horizontalVel = Math.Max(1, horizontalVel);
+                            horizontalVel = Math.Max(InitialJumpDirectionVelocityGate, horizontalVel);
                             break;
                         default:
                             break;
