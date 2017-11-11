@@ -8,28 +8,32 @@ using System.Threading.Tasks;
 
 namespace Khronos.Character
 {
+    public enum JumpDirectionEnum { None, Left, Up, Right }
+
     [ExecutionOrder(ExecutionRelation.After, typeof(HumperLevelGen))]
     [RequiredComponent(typeof(Player))]
     public class PlayerMovement : Component, ICmpUpdatable, ICmpInitializable
     {
         PlayerCollider collider;
 
+        //Constants
+        public float HorizontalMovementDamp { get; set; }
+        public float AirborneHorizontalMovementDamp { get; set; }
+        public float AirborneHorizontalMovementFactor { get; set; }
+        public float Gravity { get; set; }
+
+
         //Permissions
         public bool CanWallJump { get; set; }
 
 
         //State
-        public float Gravity { get; set; }
-        public float HorizontalMovementDamp { get; set; }
-        public float AirborneHorizontalMovementDamp { get; set; }
         public Vector2 Velocity { get; set; }
         public Vector2 TerminalVelocity { get; set; }
         public float HorizontalAcceleration { get; set; }
-        public float AirborneHorizontalMovementFactor { get; set; }
         public int GamepadNumber { get; set; }
-
         public bool WallJumpAvailable { get; set; }
-        public int JumpDirection { get; set; }
+        public JumpDirectionEnum JumpDirection { get; set; }
 
 
 
@@ -59,7 +63,133 @@ namespace Khronos.Character
         private void GatherInputs()
         {
             Vector2 Vel = Velocity;
+            float horizontalAxisValue = GatherHorizontalAxisValue();
+            Vel.X = IncreaseVelocityBasedOnInput(Vel.X, horizontalAxisValue);
 
+
+            if (collider.OnGround)
+            {
+                JumpDirection = JumpDirectionEnum.None;
+                WallJumpAvailable = true;
+                Vel = HandleJump(Vel);
+            }
+            else
+            {
+                if (CanWallJump && WallJumpAvailable)
+                {
+                    Vel = HandleWallJump(Vel, horizontalAxisValue);
+                }
+            }
+
+            Velocity = Vel;
+        }
+
+        private Vector2 HandleWallJump(Vector2 Vel, float horizontalAxisValue)
+        {
+            if (collider.OnWall)
+            {
+                if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                {
+                    if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                    {
+                        //If the player is moving fast enough, and is providing input opposite to the direction of travel... bounce off the wall
+                        if (((Vel.X < 0 && horizontalAxisValue > 0.25) || (Vel.X > 0 && horizontalAxisValue < 0.25)))
+                        {
+                            if (JumpDirection == JumpDirectionEnum.Left)
+                                JumpDirection = JumpDirectionEnum.Right;
+                            else if (JumpDirection == JumpDirectionEnum.Right)
+                                JumpDirection = JumpDirectionEnum.Left;
+                            Vel.X = -(Vel.X * 2) + Vel.X > 0 ? 5 : -5;
+                            Vel.Y = Math.Max(-20, Vel.Y - 20);
+                            WallJumpAvailable = false;
+
+                            if (JumpDirection == JumpDirectionEnum.Up)
+                            {
+                                if (Vel.X < 0)
+                                    JumpDirection = JumpDirectionEnum.Left;
+                                else if (Vel.X > 0)
+                                    JumpDirection = JumpDirectionEnum.Right;
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Vel;
+        }
+
+        private Vector2 HandleJump(Vector2 Vel)
+        {
+            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                {
+                    Vel.Y = -20;
+
+                    if (Vel.X < -1)
+                    {
+                        JumpDirection = JumpDirectionEnum.Left;
+                    }
+                    else
+                    {
+                        if (Vel.X > 1)
+                            JumpDirection = JumpDirectionEnum.Right;
+                        else
+                            JumpDirection = JumpDirectionEnum.Up;
+                    }
+                }
+
+            return Vel;
+        }
+
+        private float IncreaseVelocityBasedOnInput(float horizontalVel, float horizontalAxisValue)
+        {
+            if (MathF.Abs(horizontalAxisValue) > 0.3)
+            {
+                float increase = horizontalAxisValue * HorizontalAcceleration;
+
+                //Now we need to modify the increase based on whether we're on the ground or not.
+                if (!collider.OnGround)
+                {
+                    increase = increase * AirborneHorizontalMovementFactor;
+                }
+
+                horizontalVel += increase;
+
+                if (!collider.OnGround)
+                {
+                    switch (JumpDirection)
+                    {
+                        case JumpDirectionEnum.None:
+                            break;
+                        case JumpDirectionEnum.Left:
+                            //Then ensure we don't slow down tooooo much.
+                            horizontalVel = Math.Min(-1, horizontalVel);
+                            break;
+                        case JumpDirectionEnum.Up:
+                            //If the player is going indeterminately up, they can still change their velocity, but we have to check if we need to lock them into a direction.
+                            if (horizontalVel < -2)
+                                JumpDirection = JumpDirectionEnum.Left;
+
+                            if (horizontalVel > 2)
+                                JumpDirection = JumpDirectionEnum.Right;
+
+                            break;
+                        case JumpDirectionEnum.Right:
+                            //Then ensure we don't slow down tooooo much.
+                            horizontalVel = Math.Max(1, horizontalVel);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            return horizontalVel;
+        }
+
+        private float GatherHorizontalAxisValue()
+        {
             float horizontalAxisValue = 0;
             if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable)
                 horizontalAxisValue = DualityApp.Gamepads[GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX);
@@ -68,46 +198,7 @@ namespace Khronos.Character
                 horizontalAxisValue = -1;
             else if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.D))
                 horizontalAxisValue = 1;
-
-            if (MathF.Abs(horizontalAxisValue) > 0.3)
-            {
-                Vel.X += (horizontalAxisValue * HorizontalAcceleration) * (collider.OnGround ? 1 : AirborneHorizontalMovementFactor);
-            }
-
-            if (collider.OnGround)
-            {
-                WallJumpAvailable = true;
-                if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                    if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                    {
-                        Vel.Y = -20;
-                        JumpDirection = Vel.X < 0 ? -1 : 1;
-                    }
-            }
-            else
-            {
-                if (CanWallJump && WallJumpAvailable)
-                {
-                    if (collider.OnWall)
-                    {
-                        if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                        {
-                            if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                            {
-                                //If the player is moving fast enough, and is providing input opposite to the direction of travel... bounce off the wall
-                                if ( ((Vel.X < 0 && horizontalAxisValue > 0.25) || (Vel.X > 0 && horizontalAxisValue < 0.25) ) )
-                                {
-                                    Vel.X = -(Vel.X*2) + Vel.X > 0 ? 5 : -5;
-                                    Vel.Y = Math.Max(-20, Vel.Y - 20);
-                                    WallJumpAvailable = false;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            Velocity = Vel;
+            return horizontalAxisValue;
         }
 
         private void AdjustValues()
