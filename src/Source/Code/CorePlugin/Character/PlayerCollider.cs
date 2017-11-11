@@ -23,6 +23,8 @@ namespace Khronos.Character
         [DontSerialize]
         private IWorld world;
 
+        private IEnumerable<IBox> ignoreSelf;
+
         public PlayerHumper(PlayerCollider playerCollider)
         {
             Owner = playerCollider;
@@ -38,6 +40,7 @@ namespace Khronos.Character
                 Owner.SizeY);
             box.AddTags(HumperColliderTags.Player);
             box.Data = Owner.GameObj.GetComponent<Player>();
+            ignoreSelf = new IBox[] { box };
 
             Logs.Game.Write("PlayerHumper created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
         }
@@ -48,33 +51,54 @@ namespace Khronos.Character
 
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
+            float horizontalVelocity = newLocation.X - box.X;
+
             var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
             {
                 return CollisionResponses.Slide;
             });
             actualResultPosition = new Vector2(movement.Destination.X, -movement.Destination.Y);
 
+
+            //Detect ground under feet
+            DetectGroundUnderFeet();
+
+            //Detect Wall beside
+            DetectWallInHorizontalDirectionOfTravel(horizontalVelocity);
+
+            return movement.HasCollided;
+        }
+
+        private void DetectGroundUnderFeet()
+        {
             bool onGround = false;
 
             Humper.Base.RectangleF detectionSpot = box.Bounds;
             detectionSpot.Offset(0, -0.01f);
 
-            var detection = this.world.Hit(box.Bounds, detectionSpot);
-            /*            var onGroundQuery = box.Simulate(box.X, box.Y - 0.01f, (collissioninfo) =>
-                          {
-                              if (collissioninfo.Other.HasTag(HumperColliderTags.World))
-                              {
-                                  onGround = true;
-                              }
-                              return CollisionResponses.None;
-                          });*/
+
+            var detection = this.world.Hit(box.Bounds, detectionSpot, ignoreSelf);
             if (detection != null)
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onGround = true;
 
             Owner.OnGround = onGround;
-            
-            return movement.HasCollided;
+        }
+
+        private void DetectWallInHorizontalDirectionOfTravel(float velocity)
+        {
+            bool onWall = false;
+
+            Humper.Base.RectangleF detectionSpot = box.Bounds;
+            detectionSpot.Offset(velocity >= 0 ? 0.02f : -0.02f, 0f);
+
+
+            var detection = this.world.Hit(box.Bounds, detectionSpot, ignoreSelf);
+            if (detection != null)
+                if (detection.Box.HasTag(HumperColliderTags.World))
+                    onWall = true;
+
+            Owner.OnWall = onWall;
         }
     }
 
@@ -85,6 +109,7 @@ namespace Khronos.Character
         public int SizeX { get; set; }
         public int SizeY { get; set; }
         public bool OnGround { get; set; }
+        public bool OnWall{ get; set; }
 
 
         [DontSerialize]

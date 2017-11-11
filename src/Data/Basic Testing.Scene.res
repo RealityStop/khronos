@@ -358,7 +358,7 @@
                     <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="1199993053" custom="true">
                       <body>
                         <version dataType="Int">3</version>
-                        <data dataType="Array" type="System.Byte[]" id="79756390">H4sIAAAAAAAEAO3awQmEMBQA0fRgA2IdVmL/hSjiMQQFo/N/ZmGZq9kXs0qyllLm4zuV82P42QwwGvGjET8a8aMRPxrxoxE/GvGT1mh5JYihpDVKFI340YgfjfjRiB+EEfBZipR/jZbaRUiFMmrtZUnFN/IvMoyRtxN40laphhSLYjTyzcU1MhrFSUyjmHsMCKP+uzTVl97sT/CPh9L6rfsfvRzycOfjoXx9PPadWRB6yUs03W6MLyZV600x5ojyJftaniH313LzVy6HHX5V0kmINAAA</data>
+                        <data dataType="Array" type="System.Byte[]" id="79756390">H4sIAAAAAAAEAO2awQ2DMAwAs0MXqJiDSbr/IK0qnhZqUZxczCGhewbnYhNw9tba83M/2vcSfLwEEDriQ0d86IgPHfGhIz50xIeO+CjraOsCRChlHRWCjvjQER864kNHfCAcAfdSJMx1tEUPoSqUo7Nelqr4jnxFLuPIdAIv2lDVLY1xHZ2l2r1U4R0JHf2EuT/K13Q0uscw9/Rb1xHyuzThR2/1HfzVUMK5zj96ucrhzsQsTiwCV2ewzyoYvRHsOnqhkpA/WaQY1gylLEgFQvzvKEwuMRyHhze0PcnWiDQAAA==</data>
                       </body>
                     </tileData>
                     <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -674,7 +674,7 @@
         <_items dataType="Array" type="Duality.Component[]" id="196331048" length="4">
           <item dataType="Struct" type="Khronos.Character.PlayerSpawner" id="2910706918">
             <_x003C_PlayerPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-              <contentPath dataType="String">Data\Prefabs\Player.Prefab.res</contentPath>
+              <contentPath dataType="String">Data\Prefabs\Player 1.Prefab.res</contentPath>
             </_x003C_PlayerPrefab_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <AllocatedGamepads dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Int32],[Khronos.Character.Player]]" id="3185544726" surrogate="true">
