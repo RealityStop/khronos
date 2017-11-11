@@ -70,12 +70,7 @@ namespace Khronos.Character
                     if (rootPlayer != null)
                         rootPlayer.PlayerName = "Player " + gamepadNumber;
 
-                    var movement = newObj.GetComponentsDeep<PlayerMovement>().FirstOrDefault();
-
-                    if (movement != null)
-                    {
-                        movement.GamepadNumber = gamepadNumber;
-                    }
+                        rootPlayer.GamepadNumber = gamepadNumber;
                 }
                 newObj.Transform.Pos = assignedSpawn.GameObj.Transform.Pos;
 

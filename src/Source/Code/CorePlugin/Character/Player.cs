@@ -10,16 +10,21 @@ using Khronos.Powerups;
 
 namespace Khronos.Character
 {
-    public class Player : Component, ICmpInitializable
+    public class Player : Component, ICmpInitializable, ICmpUpdatable
     {
         public string PlayerName { get; set; }
 
         [DontSerialize]
-        private PlayerMovement movement;
+        private int _GamepadNumber;
+        public int GamepadNumber { get { return _GamepadNumber; } set { _GamepadNumber = value; } }
+
+
+        [DontSerialize]
+        private PlayerMovement _movement;
         public PlayerMovement Movement
         {
-            get { return movement; }
-            set { movement = value; }
+            get { return _movement; }
+            set { _movement = value; }
         }
 
         [DontSerialize]
@@ -57,6 +62,15 @@ namespace Khronos.Character
         internal void Pickup(PowerupInstance powerupInstance)
         {
             Powerup = powerupInstance;
+        }
+
+        public void OnUpdate()
+        {
+            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                {
+
+                }
         }
     }
 }
