@@ -674,7 +674,7 @@
         <_items dataType="Array" type="Duality.Component[]" id="196331048" length="4">
           <item dataType="Struct" type="Khronos.Character.PlayerSpawner" id="2910706918">
             <_x003C_PlayerPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-              <contentPath dataType="String">Data\Prefabs\Player.Prefab.res</contentPath>
+              <contentPath dataType="String">Data\Prefabs\Player 1.Prefab.res</contentPath>
             </_x003C_PlayerPrefab_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <AllocatedGamepads dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Int32],[Khronos.Character.Player]]" id="3185544726" surrogate="true">
