@@ -76,7 +76,7 @@ namespace Khronos.Character
                         float horizontalaxis = Movement.GatherHorizontalAxisValue();
                         float verticalaxis = Movement.GatherVerticalAxisValue();
 
-                        ProjectileShotDirection direction;
+                        ProjectileShotDirection direction = (ProjectileShotDirection) (-1);
 
                         if (horizontalaxis < -Constants.Instance.GamepadDeadband)
                         {
@@ -85,7 +85,7 @@ namespace Khronos.Character
                                 //up and to the left
                                 direction = ProjectileShotDirection.UpLeft;
                             }
-                            else if (verticalaxis > Constants.Instance.GamepadDeadband)
+                            else if (verticalaxis > Constants.Instance.GamepadDeadband && !Collider.OnGround)
                             {
                                 direction = ProjectileShotDirection.DownLeft;
                             }
@@ -103,7 +103,7 @@ namespace Khronos.Character
                                     //up and to the left
                                     direction = ProjectileShotDirection.UpRight;
                                 }
-                                else if (verticalaxis > Constants.Instance.GamepadDeadband)
+                                else if (verticalaxis > Constants.Instance.GamepadDeadband && !Collider.OnGround)
                                 {
                                     direction = ProjectileShotDirection.DownRight;
                                 }
@@ -118,7 +118,7 @@ namespace Khronos.Character
                                 {
                                     direction = ProjectileShotDirection.Up;
                                 }
-                                else if (verticalaxis > Constants.Instance.GamepadDeadband)
+                                else if (verticalaxis > Constants.Instance.GamepadDeadband && !Collider.OnGround)
                                 {
                                     direction = ProjectileShotDirection.Down;
                                 }
@@ -133,6 +133,18 @@ namespace Khronos.Character
                                         direction = ProjectileShotDirection.Right;
                                     }
                                 }
+                            }
+                        }
+
+                        if (direction < 0)
+                        {
+                            if (Movement.CurrentFacing == FacingEnum.Left)
+                            {
+                                direction = ProjectileShotDirection.Left;
+                            }
+                            else
+                            {
+                                direction = ProjectileShotDirection.Right;
                             }
                         }
 

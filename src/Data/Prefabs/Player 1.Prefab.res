@@ -290,12 +290,13 @@
         </item>
         <item dataType="Struct" type="Khronos.Character.PlayerMovement" id="1905560544">
           <_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.98</_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField>
-          <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.06</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
+          <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.1</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
           <_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">2</_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField>
           <_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField dataType="Bool">true</_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField>
           <_x003C_CanWallJump_x003E_k__BackingField dataType="Bool">true</_x003C_CanWallJump_x003E_k__BackingField>
+          <_x003C_CurrentFacing_x003E_k__BackingField dataType="Enum" type="Khronos.Character.FacingEnum" name="Left" value="0" />
           <_x003C_GravityModifier_x003E_k__BackingField dataType="Float">1</_x003C_GravityModifier_x003E_k__BackingField>
-          <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">2.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
+          <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">1.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
           <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.87</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">1</_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField>
           <_x003C_JumpDirection_x003E_k__BackingField dataType="Enum" type="Khronos.Character.JumpDirectionEnum" name="None" value="0" />
