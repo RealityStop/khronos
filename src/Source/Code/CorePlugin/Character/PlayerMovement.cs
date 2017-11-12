@@ -31,6 +31,7 @@ namespace Khronos.Character
 
         //Permissions
         public bool CanWallJump { get; set; }
+        public bool AllowConsecutiveWallJumps { get; set; }
 
 
         //State
@@ -106,8 +107,10 @@ namespace Khronos.Character
                             else if (JumpDirection == JumpDirectionEnum.Right)
                                 JumpDirection = JumpDirectionEnum.Left;
                             Vel.X = -(Vel.X * 2) + Vel.X > 0 ? 5 : -5;
-                            Vel.Y = Math.Max(JumpVelocity, Vel.Y + JumpVelocity);
-                            WallJumpAvailable = false;
+                            Vel.Y = Math.Min(JumpVelocity, Vel.Y + JumpVelocity);
+
+                            if (!AllowConsecutiveWallJumps)
+                                WallJumpAvailable = false;
 
                             if (JumpDirection == JumpDirectionEnum.Up)
                             {
