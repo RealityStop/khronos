@@ -51,7 +51,7 @@
           <joints />
           <linearDamp dataType="Float">0.3</linearDamp>
           <linearVel dataType="Struct" type="Duality.Vector2">
-            <X dataType="Float">14</X>
+            <X dataType="Float">20</X>
             <Y dataType="Float">0</Y>
           </linearVel>
           <revolutions dataType="Float">0</revolutions>
