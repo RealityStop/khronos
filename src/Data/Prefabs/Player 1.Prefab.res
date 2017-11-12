@@ -235,6 +235,7 @@
           <_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.98</_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.06</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
           <_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">2</_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField>
+          <_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField dataType="Bool">true</_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField>
           <_x003C_CanWallJump_x003E_k__BackingField dataType="Bool">true</_x003C_CanWallJump_x003E_k__BackingField>
           <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
           <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">2.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
