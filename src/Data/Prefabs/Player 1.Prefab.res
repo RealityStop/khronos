@@ -234,11 +234,15 @@
         <item dataType="Struct" type="Khronos.Character.PlayerMovement" id="1905560544">
           <_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.98</_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.06</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
+          <_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">2</_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField>
+          <_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField dataType="Bool">true</_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField>
           <_x003C_CanWallJump_x003E_k__BackingField dataType="Bool">true</_x003C_CanWallJump_x003E_k__BackingField>
-          <_x003C_GamepadNumber_x003E_k__BackingField dataType="Int">0</_x003C_GamepadNumber_x003E_k__BackingField>
           <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
           <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">2.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
           <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.87</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
+          <_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">1</_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField>
+          <_x003C_JumpDirection_x003E_k__BackingField dataType="Enum" type="Khronos.Character.JumpDirectionEnum" name="None" value="0" />
+          <_x003C_JumpVelocity_x003E_k__BackingField dataType="Float">-20</_x003C_JumpVelocity_x003E_k__BackingField>
           <_x003C_TerminalVelocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2">
             <X dataType="Float">12</X>
             <Y dataType="Float">20</Y>
@@ -246,7 +250,6 @@
           <_x003C_Velocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2" />
           <_x003C_WallJumpAvailable_x003E_k__BackingField dataType="Bool">false</_x003C_WallJumpAvailable_x003E_k__BackingField>
           <active dataType="Bool">true</active>
-          <collider dataType="ObjectRef">420385249</collider>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
         </item>
       </_items>

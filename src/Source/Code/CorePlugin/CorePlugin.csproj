@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="ConstantsEditorComponent.cs" />
     <Compile Include="CorePlugin.cs" />
     <Compile Include="FpsDisplay.cs" />
     <Compile Include="Character\Player.cs" />

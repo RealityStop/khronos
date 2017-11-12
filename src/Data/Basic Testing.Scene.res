@@ -358,7 +358,7 @@
                     <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="1199993053" custom="true">
                       <body>
                         <version dataType="Int">3</version>
-                        <data dataType="Array" type="System.Byte[]" id="79756390">H4sIAAAAAAAEAO2awQ2DMAwAs0MXqJiDSbr/IK0qnhZqUZxczCGhewbnYhNw9tba83M/2vcSfLwEEDriQ0d86IgPHfGhIz50xIeO+CjraOsCRChlHRWCjvjQER864kNHfCAcAfdSJMx1tEUPoSqUo7Nelqr4jnxFLuPIdAIv2lDVLY1xHZ2l2r1U4R0JHf2EuT/K13Q0uscw9/Rb1xHyuzThR2/1HfzVUMK5zj96ucrhzsQsTiwCV2ewzyoYvRHsOnqhkpA/WaQY1gylLEgFQvzvKEwuMRyHhze0PcnWiDQAAA==</data>
+                        <data dataType="Array" type="System.Byte[]" id="79756390">H4sIAAAAAAAEAO2awQ3DIAwA2aELVJkjk3T/QVpVedKIRhgO5yJF9wRzseME9lLK83M/yvcSfLwEEDriQ0d86IgPHfGhIz50xIeO+EjraOsCRChpHSVCuyM16kj8go740BEfCEfAXoqEuY622iRUhXJ0tpelKr4j33/LODKdGD1Dw8zu3FZwHZ2l2r1UWfz50FEL5v4oX9PR6D2Guaffuo4Qv0tT/ejN3sFfDaW61vFHL1c53BmYxYFF4OoK9nkKRjeCXUdPVBLiF4sUw5qhpAWpQIj/HVWTSwzH4eENBDv7y4g0AAA=</data>
                       </body>
                     </tileData>
                     <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -717,10 +717,10 @@
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3993628315">
         <_items dataType="Array" type="Duality.Component[]" id="897194902" length="4">
-          <item dataType="Struct" type="Khronos.Constants" id="2725666422">
-            <_x003C_TileSize_x003E_k__BackingField dataType="Int">0</_x003C_TileSize_x003E_k__BackingField>
-            <_x003C_WorldSizeX_x003E_k__BackingField dataType="Int">0</_x003C_WorldSizeX_x003E_k__BackingField>
-            <_x003C_WorldSizeY_x003E_k__BackingField dataType="Int">0</_x003C_WorldSizeY_x003E_k__BackingField>
+          <item dataType="Struct" type="Khronos.ConstantsEditorComponent" id="1127486716">
+            <_serializationHook dataType="Struct" type="Khronos.Constants" id="1002686392">
+              <_x003C_GamepadDeadband_x003E_k__BackingField dataType="Float">0.3</_x003C_GamepadDeadband_x003E_k__BackingField>
+            </_serializationHook>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">2260891961</gameobj>
           </item>
@@ -731,10 +731,10 @@
         <header />
         <body>
           <keys dataType="Array" type="System.Object[]" id="2544426481">
-            <item dataType="Type" id="2669788078" value="Khronos.Constants" />
+            <item dataType="Type" id="2669788078" value="Khronos.ConstantsEditorComponent" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="3036002272">
-            <item dataType="ObjectRef">2725666422</item>
+            <item dataType="ObjectRef">1127486716</item>
           </values>
         </body>
       </compMap>
