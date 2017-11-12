@@ -161,7 +161,7 @@ namespace Khronos.Character
 
 
             //Update facing.
-            if (Movement.Velocity.X < 0)
+            if (Movement.CurrentFacing == FacingEnum.Left)
             {
                 //Then we're facing left
                 PowerupSpawnLocation.RelativePos =  new Vector3(0,-32,0);
