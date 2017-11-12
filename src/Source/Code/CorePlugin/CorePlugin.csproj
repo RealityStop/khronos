@@ -74,6 +74,7 @@
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\PowerupLibrary.cs" />
     <Compile Include="Powerups\Blueprints\SimpleProjectile.cs" />
+    <Compile Include="Powerups\Projectiles\Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World\BackingData\HumperColliderTags.cs" />
     <Compile Include="World\HumperLevelGen.cs" />

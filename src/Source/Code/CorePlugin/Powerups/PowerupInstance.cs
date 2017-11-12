@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Khronos.Character;
+using Duality.Components;
 
 namespace Khronos.Powerups
 {
@@ -12,5 +14,17 @@ namespace Khronos.Powerups
         public Powerup PowerupType { get; set; }
 
         public int Uses { get; set; }
+
+        internal bool Use(Player player, Transform transform)
+        {
+            if (Uses > 0)
+            {
+                PowerupType.ActivateForPlayer(player, transform);
+
+                Uses--;
+                return true;
+            }
+            return false;
+        }
     }
 }

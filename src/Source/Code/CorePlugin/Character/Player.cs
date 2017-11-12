@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Khronos.Powerups;
+using Duality.Components;
 
 namespace Khronos.Character
 {
@@ -36,7 +37,7 @@ namespace Khronos.Character
         }
 
         public PowerupInstance Powerup { get; set; }
-
+        public Transform PowerupSpawnLocation { get; set; }
 
 
         public void OnInit(InitContext context)
@@ -66,10 +67,19 @@ namespace Khronos.Character
 
         public void OnUpdate()
         {
-            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                if (DualityApp.Gamepads[GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
+                if (DualityApp.Gamepads[GamepadNumber].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 {
+                    if (Powerup != null)
+                    {
+                        if (Powerup.Use(this, PowerupSpawnLocation))
+                        {
 
+                        }
+
+                        if (Powerup.Uses <= 0)
+                            Powerup = null;
+                    }
                 }
         }
     }

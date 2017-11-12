@@ -23,7 +23,7 @@ namespace Khronos.Character
         public float HorizontalMovementDamp { get; set; }
         public float AirborneHorizontalMovementDamp { get; set; }
         public float AirborneHorizontalMovementFactor { get; set; }
-        public float Gravity { get; set; }
+        public float GravityModifier { get; set; }
         public float JumpVelocity { get; set; } = -20;
         public float InitialJumpDirectionVelocityGate { get; set; } = 1;
         public float AirborneJumpDirectionVelocityGate { get; set; } = 2;
@@ -107,7 +107,7 @@ namespace Khronos.Character
                             else if (JumpDirection == JumpDirectionEnum.Right)
                                 JumpDirection = JumpDirectionEnum.Left;
                             Vel.X = -(Vel.X * 2) + Vel.X > 0 ? 5 : -5;
-                            Vel.Y = Math.Min(JumpVelocity, Vel.Y + JumpVelocity);
+                            Vel.Y = Math.Min(JumpVelocity, Vel.Y + JumpVelocity /2.0f);
 
                             if (!AllowConsecutiveWallJumps)
                                 WallJumpAvailable = false;
@@ -215,7 +215,7 @@ namespace Khronos.Character
             Vector2 Vel = Velocity;
 
 
-            Vel.Y -= Gravity * Duality.Time.TimeMult;
+            Vel.Y -= (Constants.Instance.Gravity * GravityModifier)  * Duality.Time.TimeMult;
 
             //Apply horizontal damping.
             if (collider.OnGround)

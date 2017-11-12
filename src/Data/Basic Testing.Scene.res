@@ -720,6 +720,7 @@
           <item dataType="Struct" type="Khronos.ConstantsEditorComponent" id="1127486716">
             <_serializationHook dataType="Struct" type="Khronos.Constants" id="1002686392">
               <_x003C_GamepadDeadband_x003E_k__BackingField dataType="Float">0.3</_x003C_GamepadDeadband_x003E_k__BackingField>
+              <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
             </_serializationHook>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">2260891961</gameobj>
