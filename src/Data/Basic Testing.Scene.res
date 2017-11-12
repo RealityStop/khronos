@@ -542,7 +542,7 @@
                   <_x003C__AllPowerupTypes_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.Powerup]]]]" id="1553249156">
                     <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.Powerup]][]" id="2289569860" length="4">
                       <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Powerup]]">
-                        <contentPath dataType="String">Data\Powerups\Basic Shot.SimpleProjectile.res</contentPath>
+                        <contentPath dataType="String">Data\Powerups\SimpleProjectilePowerup.SimpleProjectilePowerup.res</contentPath>
                       </item>
                     </_items>
                     <_size dataType="Int">1</_size>
@@ -630,7 +630,7 @@
             <parent dataType="ObjectRef">3627774044</parent>
             <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="3811474311">
               <changes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Resources.PrefabLink+VarMod]]" id="2703677268">
-                <_items dataType="Array" type="Duality.Resources.PrefabLink+VarMod[]" id="2126947044" length="4">
+                <_items dataType="Array" type="Duality.Resources.PrefabLink+VarMod[]" id="2126947044" length="8">
                   <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
                     <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="2534381768">
                       <_items dataType="Array" type="System.Int32[]" id="4040473196"></_items>
@@ -658,8 +658,26 @@
                     <prop dataType="ObjectRef">1099702050</prop>
                     <val dataType="Int">17</val>
                   </item>
+                  <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
+                    <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="397922182">
+                      <_items dataType="Array" type="System.Int32[]" id="1502656162"></_items>
+                      <_size dataType="Int">0</_size>
+                    </childIndex>
+                    <componentType dataType="ObjectRef">112282186</componentType>
+                    <prop dataType="MemberInfo" id="2019750316" value="P:Khronos.Powerups.PowerupPickup:Library" />
+                    <val dataType="ObjectRef">829115560</val>
+                  </item>
+                  <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
+                    <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="1250761994">
+                      <_items dataType="ObjectRef">1502656162</_items>
+                      <_size dataType="Int">0</_size>
+                    </childIndex>
+                    <componentType dataType="ObjectRef">112282186</componentType>
+                    <prop dataType="MemberInfo" id="1941572472" value="P:Khronos.World.Level.TilemapObjectPositioner:TargetTilemap" />
+                    <val dataType="ObjectRef">1001204493</val>
+                  </item>
                 </_items>
-                <_size dataType="Int">3</_size>
+                <_size dataType="Int">5</_size>
               </changes>
               <obj dataType="ObjectRef">3276087209</obj>
               <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">

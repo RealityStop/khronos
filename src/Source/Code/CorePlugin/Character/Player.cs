@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Khronos.Powerups;
 using Duality.Components;
+using Khronos.Powerups.Projectiles;
 
 namespace Khronos.Character
 {
@@ -72,7 +73,71 @@ namespace Khronos.Character
                 {
                     if (Powerup != null)
                     {
-                        if (Powerup.Use(this, PowerupSpawnLocation))
+                        float horizontalaxis = Movement.GatherHorizontalAxisValue();
+                        float verticalaxis = Movement.GatherVerticalAxisValue();
+
+                        ProjectileShotDirection direction;
+
+                        if (horizontalaxis < -Constants.Instance.GamepadDeadband)
+                        {
+                            if (verticalaxis  < -Constants.Instance.GamepadDeadband)
+                            {
+                                //up and to the left
+                                direction = ProjectileShotDirection.UpLeft;
+                            }
+                            else if (verticalaxis > Constants.Instance.GamepadDeadband)
+                            {
+                                direction = ProjectileShotDirection.DownLeft;
+                            }
+                            else
+                            {
+                                direction = ProjectileShotDirection.Left;
+                            }
+                        }
+                        else
+                        {
+                            if (horizontalaxis > Constants.Instance.GamepadDeadband)
+                            {
+                                if (verticalaxis < -Constants.Instance.GamepadDeadband)
+                                {
+                                    //up and to the left
+                                    direction = ProjectileShotDirection.UpRight;
+                                }
+                                else if (verticalaxis > Constants.Instance.GamepadDeadband)
+                                {
+                                    direction = ProjectileShotDirection.DownRight;
+                                }
+                                else
+                                {
+                                    direction = ProjectileShotDirection.Right;
+                                }
+                            }
+                            else
+                            {
+                                if (verticalaxis < -Constants.Instance.GamepadDeadband)
+                                {
+                                    direction = ProjectileShotDirection.Up;
+                                }
+                                else if (verticalaxis > Constants.Instance.GamepadDeadband)
+                                {
+                                    direction = ProjectileShotDirection.Down;
+                                }
+                                else
+                                {
+                                    if (Movement.CurrentFacing == FacingEnum.Left)
+                                    {
+                                        direction = ProjectileShotDirection.Left;
+                                    }
+                                    else
+                                    {
+                                        direction = ProjectileShotDirection.Right;
+                                    }
+                                }
+                            }
+                        }
+
+
+                        if (Powerup.Use(this, PowerupSpawnLocation, direction))
                         {
 
                         }
@@ -81,6 +146,19 @@ namespace Khronos.Character
                             Powerup = null;
                     }
                 }
+
+
+            //Update facing.
+            if (Movement.Velocity.X < 0)
+            {
+                //Then we're facing left
+                PowerupSpawnLocation.RelativePos =  new Vector3(0,-32,0);
+            }
+            else
+            {
+                PowerupSpawnLocation.RelativePos = new Vector3(32,-32,0);
+            }
+
         }
     }
 }

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Khronos.Character
 {
+
+    public enum FacingEnum {  Left, Right }
     public enum JumpDirectionEnum { None, Left, Up, Right }
 
     [ExecutionOrder(ExecutionRelation.After, typeof(HumperLevelGen))]
@@ -40,6 +42,7 @@ namespace Khronos.Character
         public float HorizontalAcceleration { get; set; }
         public bool WallJumpAvailable { get; set; }
         public JumpDirectionEnum JumpDirection { get; set; }
+        public FacingEnum CurrentFacing { get; set; }
 
 
 
@@ -73,6 +76,11 @@ namespace Khronos.Character
             float horizontalAxisValue = GatherHorizontalAxisValue();
             Vel.X = IncreaseVelocityBasedOnInput(Vel.X, horizontalAxisValue);
 
+            if (horizontalAxisValue < -Constants.Instance.GamepadDeadband)
+                CurrentFacing = FacingEnum.Left;
+            else if (horizontalAxisValue > Constants.Instance.GamepadDeadband)
+                CurrentFacing = FacingEnum.Right;
+                
 
             if (collider.OnGround)
             {
@@ -197,7 +205,7 @@ namespace Khronos.Character
             return horizontalVel;
         }
 
-        private float GatherHorizontalAxisValue()
+        internal float GatherHorizontalAxisValue()
         {
             float horizontalAxisValue = 0;
             if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable)
@@ -209,6 +217,21 @@ namespace Khronos.Character
                 horizontalAxisValue = 1;
             return horizontalAxisValue;
         }
+
+
+        internal float GatherVerticalAxisValue()
+        {
+            float verticalAxisValue = 0;
+            if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable)
+                verticalAxisValue = DualityApp.Gamepads[Player.GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickY);
+
+            if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.W))
+                verticalAxisValue = -1;
+            else if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.S))
+                verticalAxisValue = 1;
+            return verticalAxisValue;
+        }
+
 
         private void AdjustValues()
         {

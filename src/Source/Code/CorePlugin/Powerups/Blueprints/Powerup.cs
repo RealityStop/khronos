@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Khronos.Character;
 using Duality.Components;
+using Khronos.Powerups.Projectiles;
 
 namespace Khronos.Powerups
 {
@@ -18,6 +19,6 @@ namespace Khronos.Powerups
 
         public abstract PowerupInstance Spawn();
 
-        internal abstract void ActivateForPlayer(Player player, Transform location);
+        internal abstract void ActivateForPlayer(Player player, Transform location, ProjectileShotDirection direction);
     }
 }

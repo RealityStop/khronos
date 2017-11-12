@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Khronos.Character;
 using Duality.Components;
+using Khronos.Powerups.Projectiles;
 
 namespace Khronos.Powerups
 {
@@ -15,11 +16,11 @@ namespace Khronos.Powerups
 
         public int Uses { get; set; }
 
-        internal bool Use(Player player, Transform transform)
+        internal bool Use(Player player, Transform transform, ProjectileShotDirection direction)
         {
             if (Uses > 0)
             {
-                PowerupType.ActivateForPlayer(player, transform);
+                PowerupType.ActivateForPlayer(player, transform, direction);
 
                 Uses--;
                 return true;
