@@ -11,37 +11,30 @@ using System.Threading.Tasks;
 using Humper;
 using Duality.Components.Physics;
 using Khronos.Character;
+using Duality.Resources;
 
-namespace Khronos.Powerups
+namespace Khronos.World.Level
 {
+    [RequiredComponent(typeof(SpriteRenderer))]
     public class PowerupPickup : TilemapObjectPositioner, ICmpUpdatable, ICmpInitializable, ICmpCollisionListener
     {
         public float TimeRemaining { get; set; }
-        public PowerupLibrary Library { get; set; }
         public float RespawnTime { get; set; }
         public bool PowerupAvailable { get { return Pickup != null && Pickup.IsAvailable; } }
-        public ContentRef<Powerup> Pickup { get; set; }
+        public ContentRef<PowerupDefinition> Pickup { get; set; }
 
-        //[DontSerialize]
-        //HumperMapObject _backingCollider;
-        //[DontSerialize]
-        //private IBox box;
+        [DontSerialize]
+        private PowerupLibrary _library;
+
 
         public override void OnInit(InitContext context)
         {
             base.OnInit(context);
 
-            //_backingCollider = new HumperMapObject((world, tilesize) =>
-            //{
-            //    box = world.Create(GameObj.Transform.Pos.X + 1, 1 + -GameObj.Transform.Pos.Y, tilesize.X-2, tilesize.Y -2);
-            //    box.AddTags(HumperColliderTags.Pickup);
-            //    box.Data = this;
-            //},
-            //(world) =>
-            //{
-            //    world.Remove(box);
-            //});
-            //_backingCollider.Enabled = true;
+            var worldManager = Scene.Current.FindGameObject<WorldManager>()?.GetComponent<WorldManager>();
+
+            if (worldManager != null)
+                _library = worldManager.GetPowerupLibrary();
         }
 
 
@@ -53,7 +46,7 @@ namespace Khronos.Powerups
 
                 if (TimeRemaining <= 0 && Pickup == null)
                 {
-                    Pickup = Library.GetRandomPowerup();
+                    Pickup = _library.GetRandomPowerup();
                     TimeRemaining = RespawnTime;
 
                     if (Pickup.IsAvailable)

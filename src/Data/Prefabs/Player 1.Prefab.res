@@ -119,8 +119,64 @@
           <parent dataType="ObjectRef">4141872793</parent>
           <prefabLink />
         </item>
+        <item dataType="Struct" type="Duality.GameObject" id="1055508236">
+          <active dataType="Bool">true</active>
+          <children />
+          <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3687180724">
+            <_items dataType="Array" type="Duality.Component[]" id="1808766884" length="4">
+              <item dataType="Struct" type="Duality.Components.Transform" id="1112785454">
+                <active dataType="Bool">true</active>
+                <angle dataType="Float">0</angle>
+                <angleAbs dataType="Float">0</angleAbs>
+                <angleVel dataType="Float">0</angleVel>
+                <angleVelAbs dataType="Float">0</angleVelAbs>
+                <deriveAngle dataType="Bool">true</deriveAngle>
+                <gameobj dataType="ObjectRef">1055508236</gameobj>
+                <ignoreParent dataType="Bool">false</ignoreParent>
+                <parentTransform dataType="ObjectRef">4199150011</parentTransform>
+                <pos dataType="Struct" type="Duality.Vector3">
+                  <X dataType="Float">32</X>
+                  <Y dataType="Float">-32</Y>
+                  <Z dataType="Float">0</Z>
+                </pos>
+                <posAbs dataType="Struct" type="Duality.Vector3">
+                  <X dataType="Float">283.360352</X>
+                  <Y dataType="Float">-309.0387</Y>
+                  <Z dataType="Float">0</Z>
+                </posAbs>
+                <scale dataType="Float">1</scale>
+                <scaleAbs dataType="Float">1</scaleAbs>
+                <vel dataType="Struct" type="Duality.Vector3" />
+                <velAbs dataType="Struct" type="Duality.Vector3" />
+              </item>
+            </_items>
+            <_size dataType="Int">1</_size>
+          </compList>
+          <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="3243445750" surrogate="true">
+            <header />
+            <body>
+              <keys dataType="Array" type="System.Object[]" id="1009318046">
+                <item dataType="ObjectRef">991085198</item>
+              </keys>
+              <values dataType="Array" type="System.Object[]" id="3275373962">
+                <item dataType="ObjectRef">1112785454</item>
+              </values>
+            </body>
+          </compMap>
+          <compTransform dataType="ObjectRef">1112785454</compTransform>
+          <identifier dataType="Struct" type="System.Guid" surrogate="true">
+            <header>
+              <data dataType="Array" type="System.Byte[]" id="3938316142">xaUZpboM7E6PwwfApd3HOg==</data>
+            </header>
+            <body />
+          </identifier>
+          <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+          <name dataType="String">PowerupSpawnPoint</name>
+          <parent dataType="ObjectRef">4141872793</parent>
+          <prefabLink />
+        </item>
       </_items>
-      <_size dataType="Int">1</_size>
+      <_size dataType="Int">2</_size>
     </children>
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1988502730">
       <_items dataType="Array" type="Duality.Component[]" id="4262755592" length="8">
@@ -133,10 +189,10 @@
           <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Kinematic" value="2" />
           <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1" value="1" />
           <colFilter />
-          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="All" value="2147483647" />
+          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1, Cat2, Cat3, Cat5, Cat6, Cat7, Cat8, Cat9, Cat10, Cat11, Cat12, Cat13, Cat14, Cat15, Cat16, Cat17, Cat18, Cat19, Cat20, Cat21, Cat22, Cat23, Cat24, Cat25, Cat26, Cat27, Cat28, Cat29, Cat30, Cat31" value="2147483639" />
           <explicitInertia dataType="Float">0</explicitInertia>
           <explicitMass dataType="Float">0</explicitMass>
-          <fixedAngle dataType="Bool">false</fixedAngle>
+          <fixedAngle dataType="Bool">true</fixedAngle>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
           <ignoreGravity dataType="Bool">false</ignoreGravity>
           <joints />
@@ -220,6 +276,7 @@
         <item dataType="Struct" type="Khronos.Character.Player" id="2047519163">
           <_x003C_PlayerName_x003E_k__BackingField />
           <_x003C_Powerup_x003E_k__BackingField />
+          <_x003C_PowerupSpawnLocation_x003E_k__BackingField dataType="ObjectRef">1112785454</_x003C_PowerupSpawnLocation_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
         </item>
@@ -233,12 +290,13 @@
         </item>
         <item dataType="Struct" type="Khronos.Character.PlayerMovement" id="1905560544">
           <_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.98</_x003C_AirborneHorizontalMovementDamp_x003E_k__BackingField>
-          <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.06</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
+          <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.1</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
           <_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">2</_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField>
           <_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField dataType="Bool">true</_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField>
           <_x003C_CanWallJump_x003E_k__BackingField dataType="Bool">true</_x003C_CanWallJump_x003E_k__BackingField>
-          <_x003C_Gravity_x003E_k__BackingField dataType="Float">-0.981</_x003C_Gravity_x003E_k__BackingField>
-          <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">2.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
+          <_x003C_CurrentFacing_x003E_k__BackingField dataType="Enum" type="Khronos.Character.FacingEnum" name="Left" value="0" />
+          <_x003C_GravityModifier_x003E_k__BackingField dataType="Float">1</_x003C_GravityModifier_x003E_k__BackingField>
+          <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">1.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
           <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.87</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">1</_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField>
           <_x003C_JumpDirection_x003E_k__BackingField dataType="Enum" type="Khronos.Character.JumpDirectionEnum" name="None" value="0" />

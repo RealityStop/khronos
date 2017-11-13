@@ -4,6 +4,21 @@
         <name>GamePlugin.core</name>
     </assembly>
     <members>
+        <member name="T:Khronos.Powerups.PowerupDefinition">
+            <summary>
+            Base class for powerups added to the powerup library.
+            </summary>
+        </member>
+        <member name="T:Khronos.Powerups.PowerupInstance">
+            <summary>
+            An instance of a powerup, in a player's inventory.
+            </summary>
+        </member>
+        <member name="T:Khronos.Powerups.Projectiles.Projectile">
+            <summary>
+            This component is used as the basis for a projectile filed by a player.
+            </summary>
+        </member>
         <member name="T:Khronos.World.HumperMapObject">
             <summary>
             Generic base-class for Humper collision objects.  Automatically add themselves on Enabled=true and remove themselves when Enabled = false

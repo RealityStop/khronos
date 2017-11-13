@@ -10,6 +10,7 @@ namespace Khronos.World.BackingData
     {
         Player,
         World,
-        Pickup
+        Pickup,
+        Bullet
     }
 }

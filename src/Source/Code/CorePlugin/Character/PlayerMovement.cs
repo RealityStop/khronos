@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Khronos.Character
 {
+
+    public enum FacingEnum {  Left, Right }
     public enum JumpDirectionEnum { None, Left, Up, Right }
 
     [ExecutionOrder(ExecutionRelation.After, typeof(HumperLevelGen))]
@@ -23,7 +25,7 @@ namespace Khronos.Character
         public float HorizontalMovementDamp { get; set; }
         public float AirborneHorizontalMovementDamp { get; set; }
         public float AirborneHorizontalMovementFactor { get; set; }
-        public float Gravity { get; set; }
+        public float GravityModifier { get; set; }
         public float JumpVelocity { get; set; } = -20;
         public float InitialJumpDirectionVelocityGate { get; set; } = 1;
         public float AirborneJumpDirectionVelocityGate { get; set; } = 2;
@@ -40,6 +42,7 @@ namespace Khronos.Character
         public float HorizontalAcceleration { get; set; }
         public bool WallJumpAvailable { get; set; }
         public JumpDirectionEnum JumpDirection { get; set; }
+        public FacingEnum CurrentFacing { get; set; }
 
 
 
@@ -73,6 +76,11 @@ namespace Khronos.Character
             float horizontalAxisValue = GatherHorizontalAxisValue();
             Vel.X = IncreaseVelocityBasedOnInput(Vel.X, horizontalAxisValue);
 
+            if (horizontalAxisValue < -Constants.Instance.GamepadDeadband)
+                CurrentFacing = FacingEnum.Left;
+            else if (horizontalAxisValue > Constants.Instance.GamepadDeadband)
+                CurrentFacing = FacingEnum.Right;
+                
 
             if (collider.OnGround)
             {
@@ -107,7 +115,7 @@ namespace Khronos.Character
                             else if (JumpDirection == JumpDirectionEnum.Right)
                                 JumpDirection = JumpDirectionEnum.Left;
                             Vel.X = -(Vel.X * 2) + Vel.X > 0 ? 5 : -5;
-                            Vel.Y = Math.Min(JumpVelocity, Vel.Y + JumpVelocity);
+                            Vel.Y = Math.Min(JumpVelocity, Vel.Y + JumpVelocity /2.0f);
 
                             if (!AllowConsecutiveWallJumps)
                                 WallJumpAvailable = false;
@@ -197,7 +205,7 @@ namespace Khronos.Character
             return horizontalVel;
         }
 
-        private float GatherHorizontalAxisValue()
+        internal float GatherHorizontalAxisValue()
         {
             float horizontalAxisValue = 0;
             if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable)
@@ -210,12 +218,27 @@ namespace Khronos.Character
             return horizontalAxisValue;
         }
 
+
+        internal float GatherVerticalAxisValue()
+        {
+            float verticalAxisValue = 0;
+            if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable)
+                verticalAxisValue = DualityApp.Gamepads[Player.GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickY);
+
+            if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.W))
+                verticalAxisValue = -1;
+            else if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.S))
+                verticalAxisValue = 1;
+            return verticalAxisValue;
+        }
+
+
         private void AdjustValues()
         {
             Vector2 Vel = Velocity;
 
 
-            Vel.Y -= Gravity * Duality.Time.TimeMult;
+            Vel.Y -= (Constants.Instance.Gravity * GravityModifier)  * Duality.Time.TimeMult;
 
             //Apply horizontal damping.
             if (collider.OnGround)

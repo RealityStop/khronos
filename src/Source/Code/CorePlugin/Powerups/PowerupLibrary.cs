@@ -9,29 +9,29 @@ namespace Khronos.Powerups
 {
     public class PowerupLibrary : Component
     {
-        public List<ContentRef<Powerup>> _AllPowerupTypes { get; private set; } = new List<ContentRef<Powerup>>();
+        public List<ContentRef<PowerupDefinition>> _AllPowerupTypes { get; private set; } = new List<ContentRef<PowerupDefinition>>();
 
         [DontSerialize]
         Random rand = new Random();
 
 
 
-        internal void Register(Powerup powerupComponent)
+        internal void Register(PowerupDefinition powerupComponent)
         {
             _AllPowerupTypes.Add(powerupComponent);
         }
 
 
-        internal void Enable(Powerup powerupComponent)
+        internal void Enable(PowerupDefinition powerupComponent)
         {
             _AllPowerupTypes.Add(powerupComponent);
         }
-        internal void Disable(Powerup powerupComponent)
+        internal void Disable(PowerupDefinition powerupComponent)
         {
             _AllPowerupTypes.Remove(powerupComponent);
         }
 
-        public ContentRef<Powerup> GetRandomPowerup()
+        public ContentRef<PowerupDefinition> GetRandomPowerup()
         {
             return rand.OneOf(_AllPowerupTypes).Res;
         }

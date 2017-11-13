@@ -15,5 +15,6 @@ namespace Khronos
         public static Constants Instance { get { return _Instance; } }
 
         public float GamepadDeadband { get; set; } = 0.3f;
+        public float Gravity { get; set; } = -0.981f;
     }
 }
