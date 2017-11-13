@@ -139,13 +139,14 @@
         </item>
         <item dataType="Struct" type="Khronos.Powerups.Projectiles.Projectile" id="2156620449">
           <_x003C_Owner_x003E_k__BackingField />
+          <_x003C_TimeToLive_x003E_k__BackingField dataType="Float">5</_x003C_TimeToLive_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1631800621</gameobj>
         </item>
         <item dataType="Struct" type="Khronos.Powerups.Projectiles.ProjectileWorldCollider" id="3572604507">
           <_x003C_SizeX_x003E_k__BackingField dataType="Int">8</_x003C_SizeX_x003E_k__BackingField>
           <_x003C_SizeY_x003E_k__BackingField dataType="Int">8</_x003C_SizeY_x003E_k__BackingField>
-          <active dataType="Bool">true</active>
+          <active dataType="Bool">false</active>
           <gameobj dataType="ObjectRef">1631800621</gameobj>
         </item>
       </_items>

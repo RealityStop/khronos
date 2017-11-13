@@ -15,16 +15,23 @@ namespace Khronos.Powerups.Projectiles
     /// </summary>
     [RequiredComponent(typeof(Transform))]
     [RequiredComponent(typeof(RigidBody))]
-    public class Projectile : Component, ICmpInitializable
+    public class Projectile : Component, ICmpUpdatable
     {
+        public float TimeToLive { get; set; }
+
         public Player Owner { get; set; }
 
-        public void OnInit(InitContext context)
+        public void OnUpdate()
         {
+            TimeToLive -= Time.DeltaTime;
+
+            if (TimeToLive <= 0)
+                TimeExpire();
         }
 
-        public void OnShutdown(ShutdownContext context)
+        private void TimeExpire()
         {
+            GameObj.DisposeLater();
         }
     }
 }

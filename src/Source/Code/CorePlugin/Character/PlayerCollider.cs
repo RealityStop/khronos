@@ -61,6 +61,9 @@ namespace Khronos.Character
 
             var movement = Box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
             {
+                if (collisionInfo.Other.HasTag(HumperColliderTags.Bullet))
+                    return CollisionResponses.None;
+
                 return CollisionResponses.Slide;
             });
             actualResultPosition = new Vector2(movement.Destination.X, -movement.Destination.Y);
