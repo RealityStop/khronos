@@ -30,7 +30,9 @@ namespace Khronos.Powerups
             if (ProjectilePrefab.IsAvailable)
             {
                 var resultingObj = ProjectilePrefab.Res.Instantiate(location.Pos);
-                resultingObj.GetComponent<Projectile>().Owner = player;
+                var projectile = resultingObj.GetComponent<Projectile>();
+                    projectile.Owner = player;
+                projectile.OnHitPlayerEffects = OnPlayerHitEffects;
 
                 var rigidbody = resultingObj.GetComponent<RigidBody>();
 
@@ -74,6 +76,8 @@ namespace Khronos.Powerups
                         break;
                 }
                 rigidbody.LinearVelocity = velocity;
+
+
 
 
                 Scene.Current.AddObject(resultingObj);

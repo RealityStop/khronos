@@ -2,6 +2,7 @@
 using Duality.Components;
 using Duality.Components.Physics;
 using Khronos.Character;
+using Khronos.Powerups.Projectiles.ProjectileEffects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace Khronos.Powerups.Projectiles
 
         public Player Owner { get; set; }
 
+        public List<ContentRef<ProjectileEffect>> OnHitPlayerEffects { get; set; }
+
         public void OnUpdate()
         {
             TimeToLive -= Time.DeltaTime;
@@ -31,6 +34,16 @@ namespace Khronos.Powerups.Projectiles
 
         private void TimeExpire()
         {
+            GameObj.DisposeLater();
+        }
+
+        internal void HitPlayer(Player player)
+        {
+            foreach (var item in OnHitPlayerEffects)
+            {
+                item.Res.OnPlayerHit(player);
+            }
+
             GameObj.DisposeLater();
         }
     }

@@ -61,6 +61,7 @@ namespace Khronos.Character
 
             var movement = Box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
             {
+                //We ignore bullet hits on the player movement.  Instead, we detect that on the bullet.
                 if (collisionInfo.Other.HasTag(HumperColliderTags.Bullet))
                     return CollisionResponses.None;
 

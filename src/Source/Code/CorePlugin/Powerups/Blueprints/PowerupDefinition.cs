@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Khronos.Character;
 using Duality.Components;
 using Khronos.Powerups.Projectiles;
+using Khronos.Powerups.Projectiles.ProjectileEffects;
 
 namespace Khronos.Powerups
 {
@@ -19,6 +20,8 @@ namespace Khronos.Powerups
         public ContentRef<Material> PickupSprite { get; set; }
 
         public string PowerupName { get; protected set; }
+
+        public List<ContentRef<ProjectileEffect>> OnPlayerHitEffects { get; set; }
 
         public abstract PowerupInstance Spawn();
 
