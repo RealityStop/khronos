@@ -12,10 +12,10 @@ using Duality.Components.Physics;
 
 namespace Khronos.Powerups
 {
-    public class SimpleProjectilePowerup : Powerup
+    public class SimpleProjectilePowerupDefinition : PowerupDefinition
     {
         public ContentRef<Prefab>  ProjectilePrefab { get; set; }
-        public SimpleProjectilePowerup()
+        public SimpleProjectilePowerupDefinition()
         {
             PowerupName = "Projectile";
         }

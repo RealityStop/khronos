@@ -70,12 +70,13 @@
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\PlayerCollider.cs" />
     <Compile Include="Character\PlayerMovement.cs" />
-    <Compile Include="Powerups\Blueprints\Powerup.cs" />
+    <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\PowerupLibrary.cs" />
-    <Compile Include="Powerups\Blueprints\SimpleProjectilePowerup.cs" />
+    <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileShotDirection.cs" />
     <Compile Include="Powerups\Projectiles\Projectile.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileWorldCollider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World\BackingData\HumperColliderTags.cs" />
     <Compile Include="World\HumperLevelGen.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="World\Level\PlayerSpawnPoint.cs" />
     <Compile Include="Powerups\PowerupPickup.cs" />
     <Compile Include="World\BackingData\TileMerger.cs" />
+    <Compile Include="World\WorldManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

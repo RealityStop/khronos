@@ -1,6 +1,7 @@
 ﻿using Duality;
 using Duality.Components;
 using Duality.Plugins.Tilemaps;
+using Duality.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +13,28 @@ namespace Khronos.World.Level
     [RequiredComponent(typeof(Transform))]
     public class TilemapObjectPositioner : Component, ICmpInitializable
     {
-        public Tilemap TargetTilemap { get; set; }
 
         public int OffsetX { get; set; }
         public int OffsetY { get; set; }
 
         public virtual void OnInit(InitContext context)
         {
-            if (TargetTilemap != null)
+            var world = Scene.Current.FindGameObject("World");
+            if (world != null)
             {
-                var size = TargetTilemap.Tileset.Res.TileSize;
-                var newPos = TargetTilemap.GameObj.Transform.Pos.Xy;
-                newPos.X += OffsetX * size.X;
-                newPos.Y -= OffsetY * size.Y;
+                var worldmanager = world.GetComponent<WorldManager>();
 
-                GameObj.Transform.Pos = new Vector3(newPos, GameObj.Transform.Pos.Z);
+                var tilemap = worldmanager.GetTilemap();
+
+                if (tilemap != null)
+                {
+                    var size = tilemap.Tileset.Res.TileSize;
+                    var newPos = tilemap.GameObj.Transform.Pos.Xy;
+                    newPos.X += OffsetX * size.X;
+                    newPos.Y -= OffsetY * size.Y;
+
+                    GameObj.Transform.Pos = new Vector3(newPos, GameObj.Transform.Pos.Z);
+                }
             }
         }
 

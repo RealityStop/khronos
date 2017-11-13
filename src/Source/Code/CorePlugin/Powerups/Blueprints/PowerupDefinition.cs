@@ -11,7 +11,10 @@ using Khronos.Powerups.Projectiles;
 
 namespace Khronos.Powerups
 {
-    public abstract class Powerup : Resource
+    /// <summary>
+    /// Base class for powerups added to the powerup library.
+    /// </summary>
+    public abstract class PowerupDefinition : Resource
     {
         public ContentRef<Material> PickupSprite { get; set; }
 

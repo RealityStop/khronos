@@ -18,7 +18,13 @@ namespace Khronos.Character
 
 
         [DontSerialize]
-        private IBox box;
+        internal IBox Box;
+
+        public IBox MyProperty
+        {
+            get { return Box; }
+            set { Box = value; }
+        }
 
         [DontSerialize]
         private IWorld world;
@@ -34,26 +40,26 @@ namespace Khronos.Character
         {
             this.world = world;
 
-            box = world.Create(Owner.GameObj.Transform.Pos.X,
+            Box = world.Create(Owner.GameObj.Transform.Pos.X,
                 -Owner.GameObj.Transform.Pos.Y,
                 Owner.SizeX,
                 Owner.SizeY);
-            box.AddTags(HumperColliderTags.Player);
-            box.Data = Owner.GameObj.GetComponent<Player>();
-            ignoreSelf = new IBox[] { box };
+            Box.AddTags(HumperColliderTags.Player);
+            Box.Data = Owner.GameObj.GetComponent<Player>();
+            ignoreSelf = new IBox[] { Box };
 
-            Logs.Game.Write("PlayerHumper created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
+            Logs.Game.Write("PlayerHumper created at {0}/{1} as a {2}/{3} wide box", Box.X, Box.Y, Box.Width, Box.Height);
         }
         public override void Remove(IWorld world)
         {
-            world.Remove(box);
+            world.Remove(Box);
         }
 
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
-            float horizontalVelocity = newLocation.X - box.X;
+            float horizontalVelocity = newLocation.X - Box.X;
 
-            var movement = box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
+            var movement = Box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
             {
                 return CollisionResponses.Slide;
             });
@@ -73,11 +79,11 @@ namespace Khronos.Character
         {
             bool onGround = false;
 
-            Humper.Base.RectangleF detectionSpot = box.Bounds;
+            Humper.Base.RectangleF detectionSpot = Box.Bounds;
             detectionSpot.Offset(0, -0.01f);
 
 
-            var detection = this.world.Hit(box.Bounds, detectionSpot, ignoreSelf);
+            var detection = this.world.Hit(Box.Bounds, detectionSpot, ignoreSelf);
             if (detection != null)
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onGround = true;
@@ -89,11 +95,11 @@ namespace Khronos.Character
         {
             bool onWall = false;
 
-            Humper.Base.RectangleF detectionSpot = box.Bounds;
+            Humper.Base.RectangleF detectionSpot = Box.Bounds;
             detectionSpot.Offset(velocity >= 0 ? 0.02f : -0.02f, 0f);
 
 
-            var detection = this.world.Hit(box.Bounds, detectionSpot, ignoreSelf);
+            var detection = this.world.Hit(Box.Bounds, detectionSpot, ignoreSelf);
             if (detection != null)
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onWall = true;
@@ -110,7 +116,6 @@ namespace Khronos.Character
         public int SizeY { get; set; }
         public bool OnGround { get; set; }
         public bool OnWall{ get; set; }
-
 
         [DontSerialize]
         private PlayerHumper humperObject;
@@ -138,6 +143,11 @@ namespace Khronos.Character
         {
             if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
                 humperObject.Enabled = false;
+        }
+
+        internal IBox GetHumperBox()
+        {
+            return humperObject.Box;
         }
     }
 }

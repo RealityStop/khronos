@@ -40,7 +40,7 @@
           <angularDamp dataType="Float">0.3</angularDamp>
           <angularVel dataType="Float">0</angularVel>
           <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Kinematic" value="2" />
-          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1" value="1" />
+          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat4" value="8" />
           <colFilter />
           <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="All" value="2147483647" />
           <explicitInertia dataType="Float">0</explicitInertia>
@@ -142,8 +142,14 @@
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1631800621</gameobj>
         </item>
+        <item dataType="Struct" type="Khronos.Powerups.Projectiles.ProjectileWorldCollider" id="3572604507">
+          <_x003C_SizeX_x003E_k__BackingField dataType="Int">8</_x003C_SizeX_x003E_k__BackingField>
+          <_x003C_SizeY_x003E_k__BackingField dataType="Int">8</_x003C_SizeY_x003E_k__BackingField>
+          <active dataType="Bool">true</active>
+          <gameobj dataType="ObjectRef">1631800621</gameobj>
+        </item>
       </_items>
-      <_size dataType="Int">4</_size>
+      <_size dataType="Int">5</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2012746826" surrogate="true">
       <header />
@@ -153,12 +159,14 @@
           <item dataType="Type" id="3919249174" value="Duality.Components.Transform" />
           <item dataType="Type" id="274054816" value="Duality.Components.Physics.RigidBody" />
           <item dataType="Type" id="17217634" value="Duality.Components.Renderers.SpriteRenderer" />
+          <item dataType="Type" id="2344697852" value="Khronos.Powerups.Projectiles.ProjectileWorldCollider" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="496375286">
           <item dataType="ObjectRef">2156620449</item>
           <item dataType="ObjectRef">1689077839</item>
           <item dataType="ObjectRef">1166730109</item>
           <item dataType="ObjectRef">3100419901</item>
+          <item dataType="ObjectRef">3572604507</item>
         </values>
       </body>
     </compMap>

@@ -1,4 +1,4 @@
-﻿<root dataType="Struct" type="Khronos.Powerups.SimpleProjectilePowerup" id="129723834">
+﻿<root dataType="Struct" type="Khronos.Powerups.SimpleProjectilePowerupDefinition" id="129723834">
   <_x003C_PickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
     <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
   </_x003C_PickupSprite_x003E_k__BackingField>

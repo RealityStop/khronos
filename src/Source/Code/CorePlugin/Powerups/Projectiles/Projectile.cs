@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Khronos.Powerups.Projectiles
 {
+    /// <summary>
+    /// This component is used as the basis for a projectile filed by a player.
+    /// </summary>
     [RequiredComponent(typeof(Transform))]
     [RequiredComponent(typeof(RigidBody))]
     public class Projectile : Component, ICmpInitializable

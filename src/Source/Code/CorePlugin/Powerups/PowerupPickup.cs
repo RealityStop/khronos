@@ -20,7 +20,7 @@ namespace Khronos.Powerups
         public PowerupLibrary Library { get; set; }
         public float RespawnTime { get; set; }
         public bool PowerupAvailable { get { return Pickup != null && Pickup.IsAvailable; } }
-        public ContentRef<Powerup> Pickup { get; set; }
+        public ContentRef<PowerupDefinition> Pickup { get; set; }
 
         //[DontSerialize]
         //HumperMapObject _backingCollider;

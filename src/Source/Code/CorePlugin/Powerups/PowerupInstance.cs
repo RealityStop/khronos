@@ -10,9 +10,12 @@ using Khronos.Powerups.Projectiles;
 
 namespace Khronos.Powerups
 {
+    /// <summary>
+    /// An instance of a powerup, in a player's inventory.
+    /// </summary>
     public class PowerupInstance
     {
-        public Powerup PowerupType { get; set; }
+        public PowerupDefinition PowerupType { get; set; }
 
         public int Uses { get; set; }
 
