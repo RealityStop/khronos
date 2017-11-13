@@ -117,7 +117,27 @@ namespace Khronos.Powerups.Projectiles
         {
             if (humperObject.CheckForCollision(GameObj.Transform.Pos, out var movementInfo))
             {
-                GameObj.DisposeLater();
+                var playerhits = movementInfo.Hits.Where(x => x.Box.HasTag(HumperColliderTags.Player));
+                if (playerhits.Count() == 0)
+                    GameObj.DisposeLater();
+                else
+                {
+                    var projectile = GameObj.GetComponent<Projectile>();
+                    if (projectile != null)
+                    {
+                        if (projectile.Owner != null)
+                        foreach (var item in playerhits)
+                        {
+                                if (projectile.Owner == (Player)item.Box.Data)
+                                    continue;
+
+                                projectile.HitPlayer((Player)item.Box.Data);
+
+
+                        }
+                    }
+                }
+                
             }
         }
     }

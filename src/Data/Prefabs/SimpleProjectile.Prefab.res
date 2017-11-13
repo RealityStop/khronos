@@ -146,7 +146,7 @@
         <item dataType="Struct" type="Khronos.Powerups.Projectiles.ProjectileWorldCollider" id="3572604507">
           <_x003C_SizeX_x003E_k__BackingField dataType="Int">8</_x003C_SizeX_x003E_k__BackingField>
           <_x003C_SizeY_x003E_k__BackingField dataType="Int">8</_x003C_SizeY_x003E_k__BackingField>
-          <active dataType="Bool">false</active>
+          <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1631800621</gameobj>
         </item>
       </_items>

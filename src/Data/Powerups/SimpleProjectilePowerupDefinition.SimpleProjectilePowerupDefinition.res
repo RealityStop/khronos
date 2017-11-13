@@ -1,4 +1,12 @@
 ﻿<root dataType="Struct" type="Khronos.Powerups.SimpleProjectilePowerupDefinition" id="129723834">
+  <_x003C_OnPlayerHitEffects_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]]]" id="427169525">
+    <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]][]" id="1100841590" length="4">
+      <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]">
+        <contentPath dataType="String">Data\PowerupHitEffects\JumpTarget.AddVelocityOnHitEffect.res</contentPath>
+      </item>
+    </_items>
+    <_size dataType="Int">1</_size>
+  </_x003C_OnPlayerHitEffects_x003E_k__BackingField>
   <_x003C_PickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
     <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
   </_x003C_PickupSprite_x003E_k__BackingField>
