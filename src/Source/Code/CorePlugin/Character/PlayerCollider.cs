@@ -61,6 +61,10 @@ namespace Khronos.Character
 
             var movement = Box.Move(newLocation.X, -newLocation.Y, (collisionInfo) =>
             {
+                //Players can walk through each other.
+                if (collisionInfo.Other.HasTag(HumperColliderTags.Player))
+                    return CollisionResponses.None;
+
                 //We ignore bullet hits on the player movement.  Instead, we detect that on the bullet.
                 if (collisionInfo.Other.HasTag(HumperColliderTags.Bullet))
                     return CollisionResponses.None;
