@@ -87,7 +87,7 @@
     <Compile Include="World\Level\TilemapObjectPositioner.cs" />
     <Compile Include="Character\PlayerSpawner.cs" />
     <Compile Include="World\Level\PlayerSpawnPoint.cs" />
-    <Compile Include="Powerups\PowerupPickup.cs" />
+    <Compile Include="World\Level\PowerupPickup.cs" />
     <Compile Include="World\BackingData\TileMerger.cs" />
     <Compile Include="World\WorldManager.cs" />
   </ItemGroup>

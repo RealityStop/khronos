@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Khronos.Powerups;
 
 namespace Khronos.World
 {
@@ -19,6 +20,11 @@ namespace Khronos.World
         internal IEnumerable<PlayerSpawnPoint> GetPlayerSpawnPoints()
         {
             return GameObj.GetComponentsDeep<PlayerSpawnPoint>();
+        }
+
+        internal PowerupLibrary GetPowerupLibrary()
+        {
+            return GameObj.GetComponentsDeep<PowerupLibrary>().FirstOrDefault();
         }
     }
 }
