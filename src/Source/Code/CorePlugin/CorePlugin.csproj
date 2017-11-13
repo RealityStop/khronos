@@ -70,6 +70,8 @@
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\PlayerCollider.cs" />
     <Compile Include="Character\PlayerMovement.cs" />
+    <Compile Include="Khrono\PointInTime.cs" />
+    <Compile Include="Khrono\TimeBody.cs" />
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\PowerupLibrary.cs" />
@@ -93,7 +95,12 @@
     <Compile Include="World\BackingData\TileMerger.cs" />
     <Compile Include="World\WorldManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Deque\src\Nito.Collections.Deque\Nito.Collections.Deque.csproj">
+      <Project>{d68f023f-d0a1-43b0-8f41-ba7dcdb63b1d}</Project>
+      <Name>Nito.Collections.Deque</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "$(SolutionDir)../../Plugins"
