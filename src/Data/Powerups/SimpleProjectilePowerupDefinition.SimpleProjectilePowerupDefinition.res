@@ -2,7 +2,7 @@
   <_x003C_OnPlayerHitEffects_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]]]" id="427169525">
     <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]][]" id="1100841590" length="4">
       <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]">
-        <contentPath dataType="String">Data\PowerupHitEffects\JumpTarget.AddVelocityOnHitEffect.res</contentPath>
+        <contentPath dataType="String">Data\PowerupHitEffects\RewindPlayer.RewindPlayer.res</contentPath>
       </item>
     </_items>
     <_size dataType="Int">1</_size>

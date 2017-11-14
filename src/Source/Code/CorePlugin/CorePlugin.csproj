@@ -66,6 +66,8 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ConstantsEditorComponent.cs" />
     <Compile Include="CorePlugin.cs" />
+    <Compile Include="Data\CollectionHelpers.cs" />
+    <Compile Include="Data\Deque.cs" />
     <Compile Include="FpsDisplay.cs" />
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\PlayerCollider.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\ProjectileEffect.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\RewindPlayer.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileShotDirection.cs" />
     <Compile Include="Powerups\Projectiles\Projectile.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileWorldCollider.cs" />
@@ -94,12 +97,6 @@
     <Compile Include="World\Level\PowerupPickup.cs" />
     <Compile Include="World\BackingData\TileMerger.cs" />
     <Compile Include="World\WorldManager.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Deque\src\Nito.Collections.Deque\Nito.Collections.Deque.csproj">
-      <Project>{d68f023f-d0a1-43b0-8f41-ba7dcdb63b1d}</Project>
-      <Name>Nito.Collections.Deque</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>

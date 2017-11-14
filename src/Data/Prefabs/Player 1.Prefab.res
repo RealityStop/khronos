@@ -310,8 +310,14 @@
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
         </item>
+        <item dataType="Struct" type="Khronos.Khrono.TimeBody" id="3806632903">
+          <active dataType="Bool">true</active>
+          <body dataType="ObjectRef">3676802281</body>
+          <gameobj dataType="ObjectRef">4141872793</gameobj>
+          <recordTime dataType="Float">36000</recordTime>
+        </item>
       </_items>
-      <_size dataType="Int">6</_size>
+      <_size dataType="Int">7</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="667336290" surrogate="true">
       <header />
@@ -323,6 +329,7 @@
           <item dataType="Type" id="874616136" value="Khronos.Character.Player" />
           <item dataType="Type" id="2962702770" value="Khronos.Character.PlayerCollider" />
           <item dataType="Type" id="2136575092" value="Khronos.Character.PlayerMovement" />
+          <item dataType="Type" id="2425208462" value="Khronos.Khrono.TimeBody" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="3483474830">
           <item dataType="ObjectRef">4199150011</item>
@@ -331,6 +338,7 @@
           <item dataType="ObjectRef">2047519163</item>
           <item dataType="ObjectRef">420385249</item>
           <item dataType="ObjectRef">1905560544</item>
+          <item dataType="ObjectRef">3806632903</item>
         </values>
       </body>
     </compMap>
