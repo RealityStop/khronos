@@ -274,6 +274,7 @@
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
         <item dataType="Struct" type="Khronos.Character.Player" id="2047519163">
+          <_x003C_Lives_x003E_k__BackingField dataType="Int">5</_x003C_Lives_x003E_k__BackingField>
           <_x003C_PlayerName_x003E_k__BackingField />
           <_x003C_Powerup_x003E_k__BackingField />
           <_x003C_PowerupSpawnLocation_x003E_k__BackingField dataType="ObjectRef">1112785454</_x003C_PowerupSpawnLocation_x003E_k__BackingField>
@@ -311,6 +312,7 @@
           <gameobj dataType="ObjectRef">4141872793</gameobj>
         </item>
         <item dataType="Struct" type="Khronos.Khrono.TimeBody" id="3806632903">
+          <_OnComplete />
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3676802281</body>
           <gameobj dataType="ObjectRef">4141872793</gameobj>

@@ -653,51 +653,21 @@
       </children>
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3155234550">
         <_items dataType="Array" type="Duality.Component[]" id="3012698910" length="4">
-          <item dataType="Struct" type="Khronos.Character.PlayerSpawner" id="1456439476">
-            <_x003C_PlayerPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-              <contentPath dataType="String">Data\Prefabs\Player 1.Prefab.res</contentPath>
-            </_x003C_PlayerPrefab_x003E_k__BackingField>
-            <active dataType="Bool">true</active>
-            <AllocatedGamepads dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Int32],[Khronos.Character.Player]]" id="1034626144" surrogate="true">
-              <header />
-              <body>
-                <keys dataType="Array" type="System.Object[]" id="1882039004" length="0" />
-                <values dataType="Array" type="System.Object[]" id="2256211222" length="0" />
-              </body>
-            </AllocatedGamepads>
-            <gameobj dataType="ObjectRef">2173506602</gameobj>
-          </item>
-          <item dataType="Struct" type="Khronos.Powerups.PowerupLibrary" id="752640718">
-            <_x003C__AllPowerupTypes_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]]]" id="574112898">
-              <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]][]" id="1397527184" length="4">
-                <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]">
-                  <contentPath dataType="String">Data\Powerups\SimpleProjectilePowerupDefinition.SimpleProjectilePowerupDefinition.res</contentPath>
-                </item>
-              </_items>
-              <_size dataType="Int">1</_size>
-            </_x003C__AllPowerupTypes_x003E_k__BackingField>
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">2173506602</gameobj>
-          </item>
           <item dataType="Struct" type="Khronos.World.WorldManager" id="4130626275">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">2173506602</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">3</_size>
+        <_size dataType="Int">1</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="548165264" surrogate="true">
         <header />
         <body>
           <keys dataType="Array" type="System.Object[]" id="1795873032">
-            <item dataType="Type" id="237519724" value="Khronos.Character.PlayerSpawner" />
-            <item dataType="Type" id="961403958" value="Khronos.World.WorldManager" />
-            <item dataType="Type" id="2022618680" value="Khronos.Powerups.PowerupLibrary" />
+            <item dataType="Type" id="237519724" value="Khronos.World.WorldManager" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="2980245470">
-            <item dataType="ObjectRef">1456439476</item>
             <item dataType="ObjectRef">4130626275</item>
-            <item dataType="ObjectRef">752640718</item>
           </values>
         </body>
       </compMap>
@@ -710,6 +680,72 @@
       </identifier>
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">World</name>
+      <parent />
+      <prefabLink />
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="1731314783">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="661404573">
+        <_items dataType="Array" type="Duality.Component[]" id="2376415974" length="4">
+          <item dataType="Struct" type="Khronos.GameStateManager" id="1327072839">
+            <_x003C_State_x003E_k__BackingField dataType="Enum" type="Khronos.GameState" name="PrePlay" value="0" />
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1731314783</gameobj>
+          </item>
+          <item dataType="Struct" type="Khronos.Character.PlayerSpawner" id="1014247657">
+            <_x003C_PlayerPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+              <contentPath dataType="String">Data\Prefabs\Player 1.Prefab.res</contentPath>
+            </_x003C_PlayerPrefab_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <AllocatedGamepads dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Int32],[Khronos.Character.Player]]" id="1678884201" surrogate="true">
+              <header />
+              <body>
+                <keys dataType="Array" type="System.Object[]" id="2483823886" length="0" />
+                <values dataType="Array" type="System.Object[]" id="1864827210" length="0" />
+              </body>
+            </AllocatedGamepads>
+            <gameobj dataType="ObjectRef">1731314783</gameobj>
+          </item>
+          <item dataType="Struct" type="Khronos.Powerups.PowerupLibrary" id="310448899">
+            <_x003C__AllPowerupTypes_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]]]" id="2028214163">
+              <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]][]" id="1818601702" length="4">
+                <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]">
+                  <contentPath dataType="String">Data\Powerups\SimpleProjectilePowerupDefinition.SimpleProjectilePowerupDefinition.res</contentPath>
+                </item>
+              </_items>
+              <_size dataType="Int">1</_size>
+            </_x003C__AllPowerupTypes_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1731314783</gameobj>
+          </item>
+        </_items>
+        <_size dataType="Int">3</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="795651320" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="1701250295">
+            <item dataType="Type" id="101969550" value="Khronos.GameStateManager" />
+            <item dataType="Type" id="1485860938" value="Khronos.Character.PlayerSpawner" />
+            <item dataType="Type" id="716135870" value="Khronos.Powerups.PowerupLibrary" />
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="3125561920">
+            <item dataType="ObjectRef">1327072839</item>
+            <item dataType="ObjectRef">1014247657</item>
+            <item dataType="ObjectRef">310448899</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform />
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="747342165">G/kQq3LXKkSu7hmzhvI0nQ==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">GameState</name>
       <parent />
       <prefabLink />
     </item>

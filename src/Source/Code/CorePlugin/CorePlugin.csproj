@@ -72,6 +72,7 @@
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\PlayerCollider.cs" />
     <Compile Include="Character\PlayerMovement.cs" />
+    <Compile Include="GameStateManager.cs" />
     <Compile Include="Khrono\PointInTime.cs" />
     <Compile Include="Khrono\TimeBody.cs" />
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
@@ -79,8 +80,8 @@
     <Compile Include="Powerups\PowerupLibrary.cs" />
     <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\KillPlayer.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\ProjectileEffect.cs" />
-    <Compile Include="Powerups\Projectiles\ProjectileEffects\RewindPlayer.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileShotDirection.cs" />
     <Compile Include="Powerups\Projectiles\Projectile.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileWorldCollider.cs" />

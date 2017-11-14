@@ -61,7 +61,7 @@ namespace Khronos.Khrono
                 currentBufferIndex += bufferChangeStep;
 
                 //After the currentBufferIndex has been adjusted, it is safe to check if it is at an edge
-                if (currentBufferIndex == 0 || currentBufferIndex == pointsInTime.Count)
+                if (currentBufferIndex <= 0 || currentBufferIndex >= pointsInTime.Count)
                 {
                     TimeWalkFinished();
                 }
@@ -81,6 +81,15 @@ namespace Khronos.Khrono
                 _OnComplete();
         }
 
+        internal void ClearBuffer()
+        {
+            if (isTimeWalking == false)
+            {
+                pointsInTime.Clear();
+                currentBufferIndex = 0;
+            }
+        }
+
         public void Record()
         {
             if (pointsInTime.Count > MathF.Round(recordTime / Time.TimeMult))
@@ -91,19 +100,19 @@ namespace Khronos.Khrono
             pointsInTime.AddToBack(new PointInTime(GameObj.Transform.Pos, GameObj.Transform.Angle, body.LinearVelocity, body.AngularVelocity));
         }
 
-        public void StartRewind(Action onComplete)
+        public void StartRewind(int speedMultiplier, Action onComplete)
         {
             isTimeWalking = true;
             currentBufferIndex = pointsInTime.Count - 1;
-            bufferChangeStep = -1;
+            bufferChangeStep = -1 * speedMultiplier;
             _OnComplete = onComplete;
         }
 
-        public void StartReplay(Action onComplete)
+        public void StartReplay(int speedMultiplier, Action onComplete)
         {
             isTimeWalking = true;
             currentBufferIndex = 0;
-            bufferChangeStep = 1;
+            bufferChangeStep = 1 * speedMultiplier;
             _OnComplete = onComplete;
         }
 
