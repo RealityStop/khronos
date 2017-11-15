@@ -95,7 +95,7 @@
         <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="1267752045">
           <active dataType="Bool">true</active>
           <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
-            <A dataType="Byte">255</A>
+            <A dataType="Byte">70</A>
             <B dataType="Byte">255</B>
             <G dataType="Byte">255</G>
             <R dataType="Byte">255</R>
