@@ -118,18 +118,20 @@ namespace Khronos.Khrono
             pointsInTime.AddToBack(new PointInTime(GameObj.Transform.Pos, GameObj.Transform.Angle, body.LinearVelocity, body.AngularVelocity));
         }
 
-        public void StartRewind(int speedMultiplier, Action onComplete)
+        public void StartRewind(int speedMultiplier, bool resetTimeIndex, Action onComplete)
         {
             isTimeWalking = true;
-            currentBufferIndex = pointsInTime.Count - 1;
+            if (resetTimeIndex)
+                currentBufferIndex = pointsInTime.Count - 1;
             bufferChangeStep = -1 * speedMultiplier;
             _OnComplete = onComplete;
         }
 
-        public void StartReplay(int speedMultiplier, Action onComplete)
+        public void StartReplay(int speedMultiplier, bool resetTimeIndex, Action onComplete)
         {
             isTimeWalking = true;
-            currentBufferIndex = 0;
+            if (resetTimeIndex)
+                currentBufferIndex = 0;
             bufferChangeStep = 1 * speedMultiplier;
             _OnComplete = onComplete;
         }

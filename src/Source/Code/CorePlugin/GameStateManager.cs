@@ -26,6 +26,15 @@ namespace Khronos
             set { _playerList = value; }
         }
 
+        [DontSerialize]
+        private List<TimeBody> _ghostList = new List<TimeBody>();
+
+        public List<TimeBody> GhostList
+        {
+            get { return _ghostList; }
+            set { _ghostList = value; }
+        }
+
         public ContentRef<Prefab> GhostPrefab { get; set; }
 
 
@@ -69,10 +78,17 @@ namespace Khronos
                 {
                     item.Movement.ActiveSingle = false;
                     item.Collider.ActiveSingle = false;
-                    item.TimeBody.StartRewind(4, () =>
+                    item.TimeBody.StartRewind(4, true, () =>
                     {
                         FinishPlayerDeathRewind(item, item == player);
                     });
+                }
+
+                //and set every ghost to rewind
+
+                foreach (var item in GhostList)
+                {
+                    RewindGhost(item);
                 }
             }
             else
@@ -81,6 +97,10 @@ namespace Khronos
             }
         }
 
+        private static void RewindGhost(TimeBody item)
+        {
+            item.StartRewind(4, false, () => { });
+        }
 
         private void FinishPlayerDeathRewind(Player player, bool died)
         {
@@ -92,6 +112,20 @@ namespace Khronos
                 SpawnGhost(player);
 
             ClearPlayerBuffer(player);
+
+
+            //Set every ghost to play.
+            foreach (var item in GhostList)
+            {
+                PlayGhost(item);
+            }
+        }
+
+        private static void PlayGhost(TimeBody ghost)
+        {
+            Action loopGhost = null;
+            loopGhost = () => { ghost.StartReplay(1, true, loopGhost); };
+            loopGhost();
         }
 
         private void ClearPlayerBuffer(Player player)
@@ -106,9 +140,9 @@ namespace Khronos
                 var newGhost = GhostPrefab.Res.Instantiate(player.GameObj.Transform.Pos);
                 var timebody = newGhost.GetComponent<TimeBody>();
                 timebody.InheritBuffer(player.TimeBody);
-                Action loopGhost = null;
-                loopGhost = () => { timebody.StartReplay(1, loopGhost); };
-                loopGhost();
+                PlayGhost(timebody);
+
+                GhostList.Add(timebody);
 
                 Scene.Current.AddObject(newGhost);
             }
