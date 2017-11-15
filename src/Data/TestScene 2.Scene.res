@@ -689,33 +689,14 @@
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="661404573">
         <_items dataType="Array" type="Duality.Component[]" id="2376415974" length="4">
           <item dataType="Struct" type="Khronos.GameStateManager" id="1327072839">
-            <_x003C_State_x003E_k__BackingField dataType="Enum" type="Khronos.GameState" name="PrePlay" value="0" />
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1731314783</gameobj>
           </item>
           <item dataType="Struct" type="Khronos.Character.PlayerSpawner" id="1014247657">
-            <_x003C_PlayerPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-              <contentPath dataType="String">Data\Prefabs\Player 1.Prefab.res</contentPath>
-            </_x003C_PlayerPrefab_x003E_k__BackingField>
             <active dataType="Bool">true</active>
-            <AllocatedGamepads dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Int32],[Khronos.Character.Player]]" id="1678884201" surrogate="true">
-              <header />
-              <body>
-                <keys dataType="Array" type="System.Object[]" id="2483823886" length="0" />
-                <values dataType="Array" type="System.Object[]" id="1864827210" length="0" />
-              </body>
-            </AllocatedGamepads>
             <gameobj dataType="ObjectRef">1731314783</gameobj>
           </item>
           <item dataType="Struct" type="Khronos.Powerups.PowerupLibrary" id="310448899">
-            <_x003C__AllPowerupTypes_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]]]" id="2028214163">
-              <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]][]" id="1818601702" length="4">
-                <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]">
-                  <contentPath dataType="String">Data\Powerups\SimpleProjectilePowerupDefinition.SimpleProjectilePowerupDefinition.res</contentPath>
-                </item>
-              </_items>
-              <_size dataType="Int">1</_size>
-            </_x003C__AllPowerupTypes_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1731314783</gameobj>
           </item>
@@ -747,7 +728,13 @@
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">GameState</name>
       <parent />
-      <prefabLink />
+      <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="3952013367">
+        <changes />
+        <obj dataType="ObjectRef">1731314783</obj>
+        <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+          <contentPath dataType="String">Data\Prefabs\GameState.Prefab.res</contentPath>
+        </prefab>
+      </prefabLink>
     </item>
     <item dataType="ObjectRef">233290457</item>
     <item dataType="ObjectRef">613379223</item>

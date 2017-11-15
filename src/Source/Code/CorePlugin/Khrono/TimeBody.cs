@@ -22,7 +22,7 @@ namespace Khronos.Khrono
         private float recordTime = 3600f;
 
         [DontSerialize]
-        private Deque<PointInTime> pointsInTime;
+        private Deque<PointInTime> pointsInTime = new Deque<PointInTime>();
 
         [DontSerialize]
         private bool isTimeWalking = false;
@@ -31,6 +31,17 @@ namespace Khronos.Khrono
         private int currentBufferIndex = 0;
         [DontSerialize]
         private int bufferChangeStep = 0;
+
+        [DontSerialize]
+        private bool recordingActive;
+
+        public bool RecordingActive
+        {
+            get { return recordingActive; }
+            set { recordingActive = value; }
+        }
+
+
 
         Action _OnComplete;
 
@@ -41,7 +52,6 @@ namespace Khronos.Khrono
             if (context == InitContext.Activate)
             {
                 body = GameObj.GetComponent<RigidBody>();
-                pointsInTime = new Deque<PointInTime>();
             }
         }
 
@@ -90,6 +100,14 @@ namespace Khronos.Khrono
             }
         }
 
+        internal void InheritBuffer(TimeBody timeBody)
+        {
+            this.pointsInTime.Clear();
+
+            //Make an actual copy of the points.
+            this.pointsInTime = new Deque<PointInTime>(timeBody.pointsInTime);
+        }
+
         public void Record()
         {
             if (pointsInTime.Count > MathF.Round(recordTime / Time.TimeMult))
@@ -121,7 +139,8 @@ namespace Khronos.Khrono
             if (isTimeWalking)
                 UpdateTimeWalk();
             else
-                Record();
+                if (RecordingActive)
+                    Record();
         }
     }
 }
