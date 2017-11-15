@@ -55,14 +55,17 @@ namespace Khronos.Character
 
         public void OnInit(InitContext context)
         {
-            Collider = GameObj.GetComponent<PlayerCollider>();
-            Movement = GameObj.GetComponent<PlayerMovement>();
-            TimeBody = GameObj.GetComponent<TimeBody>();
+            if (context == InitContext.Activate)
+            {
+                Collider = GameObj.GetComponent<PlayerCollider>();
+                Movement = GameObj.GetComponent<PlayerMovement>();
+                TimeBody = GameObj.GetComponent<TimeBody>();
 
 
-            var title = GameObj.GetChildByName("Title")?.GetComponent<TextRenderer>() ?? null;
-            if (title != null)
-                title.Text.SourceText = PlayerName;
+                var title = GameObj.GetChildByName("Title")?.GetComponent<TextRenderer>() ?? null;
+                if (title != null)
+                    title.Text.SourceText = PlayerName;
+            }
         }
 
         public void OnShutdown(ShutdownContext context)

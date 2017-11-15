@@ -8,7 +8,7 @@
     <active dataType="Bool">true</active>
     <children />
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1427469982">
-      <_items dataType="Array" type="Duality.Component[]" id="2042106768">
+      <_items dataType="Array" type="Duality.Component[]" id="2042106768" length="8">
         <item dataType="Struct" type="Duality.Components.Transform" id="4151377279">
           <active dataType="Bool">true</active>
           <angle dataType="Float">0</angle>
@@ -119,14 +119,24 @@
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
         <item dataType="Struct" type="Khronos.Khrono.TimeBody" id="3758860171">
-          <_OnComplete />
+          <_OnComplete dataType="Delegate" type="System.Action" id="75654303" multi="true">
+            <method dataType="MemberInfo" id="3265369966" value="M:Khronos.Character.Ghost:&lt;OnInit&gt;b__5_0" />
+            <target dataType="Struct" type="Khronos.Character.Ghost" id="1207636351">
+              <active dataType="Bool">true</active>
+              <gameobj dataType="ObjectRef">4094100061</gameobj>
+            </target>
+            <invocationList dataType="Array" type="System.Delegate[]" id="3735364042">
+              <item dataType="ObjectRef">75654303</item>
+            </invocationList>
+          </_OnComplete>
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3629029549</body>
           <gameobj dataType="ObjectRef">4094100061</gameobj>
           <recordTime dataType="Float">3600</recordTime>
         </item>
+        <item dataType="ObjectRef">1207636351</item>
       </_items>
-      <_size dataType="Int">4</_size>
+      <_size dataType="Int">5</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1423799690" surrogate="true">
       <header />
@@ -136,12 +146,14 @@
           <item dataType="Type" id="2630593174" value="Duality.Components.Physics.RigidBody" />
           <item dataType="Type" id="375668736" value="Khronos.Khrono.TimeBody" />
           <item dataType="Type" id="2196376098" value="Duality.Components.Renderers.SpriteRenderer" />
+          <item dataType="Type" id="3204528988" value="Khronos.Character.Ghost" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="3011078806">
           <item dataType="ObjectRef">4151377279</item>
           <item dataType="ObjectRef">3629029549</item>
           <item dataType="ObjectRef">3758860171</item>
           <item dataType="ObjectRef">1267752045</item>
+          <item dataType="ObjectRef">1207636351</item>
         </values>
       </body>
     </compMap>

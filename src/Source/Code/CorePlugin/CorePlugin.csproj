@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character\Ghost.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ConstantsEditorComponent.cs" />
     <Compile Include="CorePlugin.cs" />
