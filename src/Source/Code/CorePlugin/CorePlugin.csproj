@@ -66,15 +66,21 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ConstantsEditorComponent.cs" />
     <Compile Include="CorePlugin.cs" />
+    <Compile Include="Data\CollectionHelpers.cs" />
+    <Compile Include="Data\Deque.cs" />
     <Compile Include="FpsDisplay.cs" />
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\PlayerCollider.cs" />
     <Compile Include="Character\PlayerMovement.cs" />
+    <Compile Include="GameStateManager.cs" />
+    <Compile Include="Khrono\PointInTime.cs" />
+    <Compile Include="Khrono\TimeBody.cs" />
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\PowerupLibrary.cs" />
     <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\KillPlayer.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\ProjectileEffect.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileShotDirection.cs" />
     <Compile Include="Powerups\Projectiles\Projectile.cs" />
@@ -93,7 +99,6 @@
     <Compile Include="World\BackingData\TileMerger.cs" />
     <Compile Include="World\WorldManager.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "$(SolutionDir)../../Plugins"

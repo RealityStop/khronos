@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Khronos.Powerups;
 using Duality.Components;
 using Khronos.Powerups.Projectiles;
+using Khronos.Khrono;
 
 namespace Khronos.Character
 {
@@ -37,6 +38,17 @@ namespace Khronos.Character
             set { collider = value; }
         }
 
+        [DontSerialize]
+        private TimeBody _timeBody;
+        public TimeBody TimeBody
+        {
+            get { return _timeBody; }
+            set { _timeBody = value; }
+        }
+
+        public int Lives { get; set; }
+
+
         public PowerupInstance Powerup { get; set; }
         public Transform PowerupSpawnLocation { get; set; }
 
@@ -45,6 +57,7 @@ namespace Khronos.Character
         {
             Collider = GameObj.GetComponent<PlayerCollider>();
             Movement = GameObj.GetComponent<PlayerMovement>();
+            TimeBody = GameObj.GetComponent<TimeBody>();
 
 
             var title = GameObj.GetChildByName("Title")?.GetComponent<TextRenderer>() ?? null;

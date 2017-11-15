@@ -21,10 +21,5 @@ namespace Khronos.World
         {
             return GameObj.GetComponentsDeep<PlayerSpawnPoint>();
         }
-
-        internal PowerupLibrary GetPowerupLibrary()
-        {
-            return GameObj.GetComponentsDeep<PowerupLibrary>().FirstOrDefault();
-        }
     }
 }

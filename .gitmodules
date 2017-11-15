@@ -4,3 +4,6 @@
 [submodule "duality"]
 	path = duality
 	url = https://github.com/RealityStop/duality.git
+[submodule "Deque"]
+	path = Deque
+	url = https://github.com/StephenCleary/Deque.git

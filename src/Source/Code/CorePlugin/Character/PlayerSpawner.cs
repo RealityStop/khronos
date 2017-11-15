@@ -78,6 +78,8 @@ namespace Khronos.Character
                                 rootPlayer.PlayerName = "Player " + gamepadNumber;
 
                             rootPlayer.GamepadNumber = gamepadNumber;
+
+                            Scene.Current.FindComponent<GameStateManager>()?.AddPlayer(rootPlayer);
                         }
                         newObj.Transform.Pos = assignedSpawn.GameObj.Transform.Pos;
 

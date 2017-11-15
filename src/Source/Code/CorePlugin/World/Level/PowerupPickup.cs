@@ -31,10 +31,7 @@ namespace Khronos.World.Level
         {
             base.OnInit(context);
 
-            var worldManager = Scene.Current.FindGameObject<WorldManager>()?.GetComponent<WorldManager>();
-
-            if (worldManager != null)
-                _library = worldManager.GetPowerupLibrary();
+            _library = Scene.Current.FindComponent<PowerupLibrary>();
         }
 
 
