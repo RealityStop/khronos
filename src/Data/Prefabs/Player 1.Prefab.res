@@ -316,7 +316,8 @@
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3676802281</body>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
-          <recordTime dataType="Float">36000</recordTime>
+          <playActions dataType="Bool">false</playActions>
+          <recordTime dataType="Float">360000</recordTime>
         </item>
       </_items>
       <_size dataType="Int">7</_size>

@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Khrono\Actions\RecordableAction.cs" />
+    <Compile Include="Khrono\Actions\PlayerShot.cs" />
     <Compile Include="Character\Ghost.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ConstantsEditorComponent.cs" />

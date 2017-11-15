@@ -4,6 +4,11 @@
         <name>GamePlugin.core</name>
     </assembly>
     <members>
+        <member name="F:Khronos.Khrono.TimeBody._actionsThisFrame">
+            <summary>
+            Only used on a recording entity, this records any special actions that need to take place.
+            </summary>
+        </member>
         <member name="T:Khronos.Data.Deque`1">
             <summary>
             A double-ended queue (deque), which provides O(1) indexed access, O(1) removals from the front and back, amortized O(1) insertions to the front and back, and O(N) insertions and removals anywhere else (with the operations getting slower as the index approaches the middle).

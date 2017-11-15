@@ -53,6 +53,10 @@ namespace Khronos.Character
         public Transform PowerupSpawnLocation { get; set; }
 
 
+
+
+
+
         public void OnInit(InitContext context)
         {
             if (context == InitContext.Activate)
@@ -89,6 +93,8 @@ namespace Khronos.Character
                 {
                     if (Powerup != null)
                     {
+                        
+
                         float horizontalaxis = Movement.GatherHorizontalAxisValue();
                         float verticalaxis = Movement.GatherVerticalAxisValue();
 
@@ -165,9 +171,9 @@ namespace Khronos.Character
                         }
 
 
-                        if (Powerup.Use(this, PowerupSpawnLocation, direction))
+                        if (Powerup.Use(this, PowerupSpawnLocation, direction, out var resultingAction))
                         {
-
+                            TimeBody.ActionsThisFrame.Add(resultingAction);
                         }
 
                         if (Powerup.Uses <= 0)

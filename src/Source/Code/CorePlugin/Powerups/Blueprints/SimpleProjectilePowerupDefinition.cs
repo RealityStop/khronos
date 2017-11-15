@@ -25,11 +25,11 @@ namespace Khronos.Powerups
             return new PowerupInstance() { PowerupType = this, Uses = 3 };
         }
 
-        internal override void ActivateForPlayer(Player player, Transform location, ProjectileShotDirection direction)
+        internal override void ActivateForPlayer(Player player, Vector2 location, ProjectileShotDirection direction)
         {
             if (ProjectilePrefab.IsAvailable)
             {
-                var resultingObj = ProjectilePrefab.Res.Instantiate(location.Pos);
+                var resultingObj = ProjectilePrefab.Res.Instantiate(new Vector3(location, 0));
                 var projectile = resultingObj.GetComponent<Projectile>();
                     projectile.Owner = player;
                 projectile.OnHitPlayerEffects = OnPlayerHitEffects;
