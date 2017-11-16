@@ -53,7 +53,7 @@
                   <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="1035909032" custom="true">
                     <body>
                       <version dataType="Int">3</version>
-                      <data dataType="Array" type="System.Byte[]" id="4092232364">H4sIAAAAAAAEAO2Y0Q1AQBAFtwcNKEQl+i+EqEAOu7NuJDJ/l/d2jhNbRKznvcR1CT52AYSO+NARHzrio9YR8KTER9IRP5KO+JF0xI+kI36kbEdCR/+Ajvi47wj4osbjnZm1nu4kf5B7ptZRG+ioap5AR7Xee+6suaAjPnTEh4740BEfrzp6+J0F3C+IRl+sUtSoaM3sYtlx53qORkvriF8aOBeho3bQER864iP7UBTDOACB9jH0iDQAAA==</data>
+                      <data dataType="Array" type="System.Byte[]" id="4092232364">H4sIAAAAAAAEAO2Z2w2EMBDE0sM1QCFXyfVfyCEq2JCw8QYjIf8gmB3zFN/W2nGun3Ytgo+fAEJHfOiIDx3xEXfkc2xu13ebD2yJmLa7CUSyu7Xu56gY8I6AXwXZkaY62qGQHSIhrn6ho3LQER9zvo80/WRnpR3Fj74op44iIdbmzHYERPe/l5rT1kytI/BlP3gEbviXONo2PL4eoaMC0BEfOuJjqqPBd2Hg+YKYKPvd9MGJFu0ze7DsuIuKRKiKJyM5QtzdgBUUa+mV0BEfOuIj7WkoRvEHFtK75Ig0AAA=</data>
                     </body>
                   </tileData>
                   <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -148,7 +148,7 @@
                   <linearVel dataType="Struct" type="Duality.Vector2" />
                   <revolutions dataType="Float">0</revolutions>
                   <shapes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Components.Physics.ShapeInfo]]" id="1500197416">
-                    <_items dataType="Array" type="Duality.Components.Physics.ShapeInfo[]" id="271851948" length="16" />
+                    <_items dataType="Array" type="Duality.Components.Physics.ShapeInfo[]" id="271851948" length="32" />
                     <_size dataType="Int">0</_size>
                   </shapes>
                   <useCCD dataType="Bool">false</useCCD>
@@ -158,8 +158,8 @@
                   <gameobj dataType="ObjectRef">1002959568</gameobj>
                   <origin dataType="Enum" type="Duality.Alignment" name="BottomLeft" value="9" />
                   <roundedCorners dataType="Bool">true</roundedCorners>
-                  <shapeFriction dataType="Float">0.299999982</shapeFriction>
-                  <shapeRestitution dataType="Float">0.299999982</shapeRestitution>
+                  <shapeFriction dataType="Float">0.3</shapeFriction>
+                  <shapeRestitution dataType="Float">0.3</shapeRestitution>
                   <solidOuterEdges dataType="Bool">true</solidOuterEdges>
                   <source dataType="Array" type="Duality.Plugins.Tilemaps.TilemapCollisionSource[]" id="2731941247">
                     <item dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapCollisionSource">
@@ -840,7 +840,7 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PowerupPickup" id="4247739274">
                   <_x003C_OffsetX_x003E_k__BackingField dataType="Int">30</_x003C_OffsetX_x003E_k__BackingField>
-                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">5</_x003C_OffsetY_x003E_k__BackingField>
+                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">4</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_Pickup_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]" />
                   <_x003C_RespawnTime_x003E_k__BackingField dataType="Float">15</_x003C_RespawnTime_x003E_k__BackingField>
                   <_x003C_TimeRemaining_x003E_k__BackingField dataType="Float">8</_x003C_TimeRemaining_x003E_k__BackingField>
