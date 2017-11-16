@@ -14,8 +14,8 @@
   <soundDopplerFactor dataType="Float">1</soundDopplerFactor>
   <speedOfSound dataType="Float">360</speedOfSound>
   <startScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
-    <contentPath dataType="String">Data\TestScene 2.Scene.res</contentPath>
+    <contentPath dataType="String">Data\Collision2.Scene.res</contentPath>
   </startScene>
-  <version dataType="UInt">555</version>
+  <version dataType="UInt">570</version>
 </root>
 <!-- XmlFormatterBase Document Separator -->

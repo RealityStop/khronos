@@ -21,11 +21,9 @@ namespace Khronos.World.Level
         {
             if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
             {
-                var world = Scene.Current.FindGameObject("World");
-                if (world != null)
-                {
-                    var worldmanager = world.GetComponent<WorldManager>();
-
+                var worldmanager = Scene.Current.FindComponent<WorldManager>();
+                if (worldmanager != null)
+                { 
                     var tilemap = worldmanager.GetTilemap();
 
                     if (tilemap != null)

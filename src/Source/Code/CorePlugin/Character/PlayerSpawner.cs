@@ -44,48 +44,44 @@ namespace Khronos.Character
         private void GeneratePlayer(int gamepadNumber)
         {
             //Look for a free spawn point
-            var world = Scene.Current.FindGameObject("World");
-            if (world != null)
+            var worldmanager = Scene.Current.FindComponent<WorldManager>();
+            if (worldmanager != null)
             {
-                var worldmanager = world.GetComponent<WorldManager>();
-                if (worldmanager != null)
+                var spawnPoints = worldmanager.GetPlayerSpawnPoints();
+
+                var assignedSpawn = spawnPoints.Where(x => x.RestrictToGamepadNumber && x.AssignedGamepadNumber == gamepadNumber).FirstOrDefault();
+                if (assignedSpawn == null)
+                    assignedSpawn = spawnPoints.Where(x => !x.RestrictToGamepadNumber).FirstOrDefault();
+
+                if (assignedSpawn == null)
                 {
-                    var spawnPoints = worldmanager.GetPlayerSpawnPoints();
+                    Logs.Game.WriteError("Unable to assign a spawn for " + gamepadNumber);
 
-                    var assignedSpawn = spawnPoints.Where(x => x.RestrictToGamepadNumber && x.AssignedGamepadNumber == gamepadNumber).FirstOrDefault();
+                    //get a random spawn point and try.
+                    assignedSpawn = spawnPoints.FirstOrDefault();
                     if (assignedSpawn == null)
-                        assignedSpawn = spawnPoints.Where(x => !x.RestrictToGamepadNumber).FirstOrDefault();
+                        return;
+                }
 
-                    if (assignedSpawn == null)
+
+                if (PlayerPrefab.IsAvailable)
+                {
+                    var newObj = PlayerPrefab.Res.Instantiate();
+                    newObj.Name = "Player " + gamepadNumber;
+                    if (newObj != null)
                     {
-                        Logs.Game.WriteError("Unable to assign a spawn for " + gamepadNumber);
+                        var rootPlayer = newObj.GetComponent<Player>();
+                        if (rootPlayer != null)
+                            rootPlayer.PlayerName = "Player " + gamepadNumber;
 
-                        //get a random spawn point and try.
-                        assignedSpawn = spawnPoints.FirstOrDefault();
-                        if (assignedSpawn == null)
-                            return;
+                        rootPlayer.GamepadNumber = gamepadNumber;
+
+                        Scene.Current.FindComponent<GameStateManager>()?.AddPlayer(rootPlayer);
                     }
+                    newObj.Transform.Pos = assignedSpawn.GameObj.Transform.Pos;
 
-
-                    if (PlayerPrefab.IsAvailable)
-                    {
-                        var newObj = PlayerPrefab.Res.Instantiate();
-                        newObj.Name = "Player " + gamepadNumber;
-                        if (newObj != null)
-                        {
-                            var rootPlayer = newObj.GetComponent<Player>();
-                            if (rootPlayer != null)
-                                rootPlayer.PlayerName = "Player " + gamepadNumber;
-
-                            rootPlayer.GamepadNumber = gamepadNumber;
-
-                            Scene.Current.FindComponent<GameStateManager>()?.AddPlayer(rootPlayer);
-                        }
-                        newObj.Transform.Pos = assignedSpawn.GameObj.Transform.Pos;
-
-                        Scene.Current.AddObject(newObj);
-                        AllocatedGamepads.Add(gamepadNumber, newObj.GetComponentsDeep<Player>().First());
-                    }
+                    Scene.Current.AddObject(newObj);
+                    AllocatedGamepads.Add(gamepadNumber, newObj.GetComponentsDeep<Player>().First());
                 }
             }
         }

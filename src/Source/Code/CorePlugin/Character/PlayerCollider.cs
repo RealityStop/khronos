@@ -18,17 +18,17 @@ namespace Khronos.Character
 
 
         [DontSerialize]
-        internal IBox Box;
-
-        public IBox MyProperty
+        internal IBox _box;
+        public IBox Box
         {
-            get { return Box; }
-            set { Box = value; }
+            get { return _box; }
+            set { _box = value; }
         }
 
         [DontSerialize]
         private IWorld world;
 
+        [DontSerialize]
         private IEnumerable<IBox> ignoreSelf;
 
         public PlayerHumper(PlayerCollider playerCollider)
