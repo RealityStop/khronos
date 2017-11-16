@@ -31,15 +31,15 @@
           <allowParent dataType="Bool">false</allowParent>
           <angularDamp dataType="Float">0.3</angularDamp>
           <angularVel dataType="Float">0</angularVel>
-          <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Static" value="0" />
-          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1" value="1" />
+          <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Dynamic" value="1" />
+          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat5" value="16" />
           <colFilter />
-          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="All" value="2147483647" />
+          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="None" value="0" />
           <explicitInertia dataType="Float">0</explicitInertia>
           <explicitMass dataType="Float">0</explicitMass>
           <fixedAngle dataType="Bool">true</fixedAngle>
           <gameobj dataType="ObjectRef">4094100061</gameobj>
-          <ignoreGravity dataType="Bool">false</ignoreGravity>
+          <ignoreGravity dataType="Bool">true</ignoreGravity>
           <joints />
           <linearDamp dataType="Float">0.3</linearDamp>
           <linearVel dataType="Struct" type="Duality.Vector2" />
@@ -132,6 +132,7 @@
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3629029549</body>
           <gameobj dataType="ObjectRef">4094100061</gameobj>
+          <playActions dataType="Bool">true</playActions>
           <recordTime dataType="Float">3600</recordTime>
         </item>
         <item dataType="ObjectRef">1207636351</item>

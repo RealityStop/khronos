@@ -46,5 +46,10 @@ namespace Khronos.Powerups.Projectiles
 
             GameObj.DisposeLater();
         }
+
+        internal void HitGhost(Ghost hitGhost)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

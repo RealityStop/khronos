@@ -31,11 +31,26 @@ namespace Khronos.Powerups.Projectiles
                 projectile.HitPlayer(hitPlayer);
                 GameObj.DisposeLater();
             }
-
-            if (hit.GetComponent<TilemapCollider>() != null)
+            else
             {
-                var projectile = GameObj.GetComponent<Projectile>();
-                GameObj.DisposeLater();
+                Ghost hitGhost = hit.GetComponent<Ghost>();
+                if (hitPlayer != null)
+                {
+                    var projectile = GameObj.GetComponent<Projectile>();
+                    if (projectile.Owner == hitPlayer)
+                        return;
+
+                    projectile.HitGhost(hitGhost);
+                    GameObj.DisposeLater();
+                }
+                else
+                {
+                    if (hit.GetComponent<TilemapCollider>() != null)
+                    {
+                        var projectile = GameObj.GetComponent<Projectile>();
+                        GameObj.DisposeLater();
+                    }
+                }
             }
         }
 

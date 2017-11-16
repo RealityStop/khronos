@@ -31,13 +31,16 @@ namespace Khronos.World.Level
         {
             base.OnInit(context);
 
-            _library = Scene.Current.FindComponent<PowerupLibrary>();
+            if (context == InitContext.Activate)
+            {
+                _library = Scene.Current.FindComponent<PowerupLibrary>();
+            }
         }
 
 
         public void OnUpdate()
         {
-            if (Pickup == null)
+            if (Pickup == null && _library != null)
             {
                 TimeRemaining -= Time.DeltaTime;
 

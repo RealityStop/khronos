@@ -257,15 +257,15 @@
                         <allowParent dataType="Bool">false</allowParent>
                         <angularDamp dataType="Float">0.3</angularDamp>
                         <angularVel dataType="Float">0</angularVel>
-                        <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Static" value="0" />
+                        <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Dynamic" value="1" />
                         <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1" value="1" />
                         <colFilter />
-                        <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="All" value="2147483647" />
+                        <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1, Cat3, Cat4, Cat5, Cat6, Cat7, Cat8, Cat9, Cat10, Cat11, Cat12, Cat13, Cat14, Cat15, Cat16, Cat17, Cat18, Cat19, Cat20, Cat21, Cat22, Cat23, Cat24, Cat25, Cat26, Cat27, Cat28, Cat29, Cat30, Cat31" value="2147483645" />
                         <explicitInertia dataType="Float">0</explicitInertia>
                         <explicitMass dataType="Float">0</explicitMass>
-                        <fixedAngle dataType="Bool">false</fixedAngle>
+                        <fixedAngle dataType="Bool">true</fixedAngle>
                         <gameobj dataType="ObjectRef">3481535131</gameobj>
-                        <ignoreGravity dataType="Bool">false</ignoreGravity>
+                        <ignoreGravity dataType="Bool">true</ignoreGravity>
                         <joints />
                         <linearDamp dataType="Float">0.3</linearDamp>
                         <linearVel dataType="Struct" type="Duality.Vector2" />
@@ -722,7 +722,7 @@
                   </item>
                   <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
                     <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="2935857054">
-                      <_items dataType="ObjectRef">1454431304</_items>
+                      <_items dataType="Array" type="System.Int32[]" id="2875056746"></_items>
                       <_size dataType="Int">0</_size>
                     </childIndex>
                     <componentType />
@@ -731,7 +731,7 @@
                   </item>
                   <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
                     <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="3880042018">
-                      <_items dataType="ObjectRef">1454431304</_items>
+                      <_items dataType="ObjectRef">2875056746</_items>
                       <_size dataType="Int">0</_size>
                     </childIndex>
                     <componentType dataType="ObjectRef">3145761994</componentType>
@@ -740,7 +740,7 @@
                   </item>
                   <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
                     <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="3825779552">
-                      <_items dataType="ObjectRef">1454431304</_items>
+                      <_items dataType="ObjectRef">2875056746</_items>
                       <_size dataType="Int">0</_size>
                     </childIndex>
                     <componentType dataType="ObjectRef">3145761994</componentType>
@@ -795,11 +795,7 @@
       <active dataType="Bool">true</active>
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="661404573">
-        <_items dataType="Array" type="Duality.Component[]" id="2376415974">
-          <item dataType="Struct" type="Khronos.CollisionManager" id="2830712534">
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">1731314783</gameobj>
-          </item>
+        <_items dataType="Array" type="Duality.Component[]" id="2376415974" length="4">
           <item dataType="Struct" type="Khronos.GameStateManager" id="1327072839">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1731314783</gameobj>
@@ -813,7 +809,7 @@
             <gameobj dataType="ObjectRef">1731314783</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">4</_size>
+        <_size dataType="Int">3</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="795651320" surrogate="true">
         <header />
@@ -822,13 +818,11 @@
             <item dataType="Type" id="101969550" value="Khronos.GameStateManager" />
             <item dataType="Type" id="1485860938" value="Khronos.Character.PlayerSpawner" />
             <item dataType="Type" id="716135870" value="Khronos.Powerups.PowerupLibrary" />
-            <item dataType="Type" id="327075034" value="Khronos.CollisionManager" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="3125561920">
             <item dataType="ObjectRef">1327072839</item>
             <item dataType="ObjectRef">1014247657</item>
             <item dataType="ObjectRef">310448899</item>
-            <item dataType="ObjectRef">2830712534</item>
           </values>
         </body>
       </compMap>
@@ -860,6 +854,152 @@
         <obj dataType="ObjectRef">1731314783</obj>
         <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
           <contentPath dataType="String">Data\Prefabs\GameState.Prefab.res</contentPath>
+        </prefab>
+      </prefabLink>
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="4143235107">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1042141713">
+        <_items dataType="Array" type="Duality.Component[]" id="3537206510">
+          <item dataType="Struct" type="Duality.Components.Transform" id="4200512325">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">4143235107</gameobj>
+          </item>
+          <item dataType="Struct" type="Duality.Components.Physics.RigidBody" id="3678164595">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">4143235107</gameobj>
+          </item>
+          <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="1316887091">
+            <active dataType="Bool">false</active>
+            <gameobj dataType="ObjectRef">4143235107</gameobj>
+          </item>
+          <item dataType="Struct" type="Khronos.World.Level.PowerupPickup" id="2886542935">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">4143235107</gameobj>
+          </item>
+        </_items>
+        <_size dataType="Int">4</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="3301093792" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="224135099">
+            <item dataType="ObjectRef">1961752540</item>
+            <item dataType="ObjectRef">3831455278</item>
+            <item dataType="ObjectRef">1103305070</item>
+            <item dataType="ObjectRef">3145761994</item>
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="934471720">
+            <item dataType="ObjectRef">4200512325</item>
+            <item dataType="ObjectRef">1316887091</item>
+            <item dataType="ObjectRef">3678164595</item>
+            <item dataType="ObjectRef">2886542935</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform dataType="ObjectRef">4200512325</compTransform>
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="3844676145">d67p5JczPkSO5B5hp1v2DA==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">Powerup Pickup 1</name>
+      <parent />
+      <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="4060166019">
+        <changes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Resources.PrefabLink+VarMod]]" id="2439827748">
+          <_items dataType="Array" type="Duality.Resources.PrefabLink+VarMod[]" id="3830785732" length="4">
+            <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
+              <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="540051272">
+                <_items dataType="Array" type="System.Int32[]" id="1923952748"></_items>
+                <_size dataType="Int">0</_size>
+              </childIndex>
+              <componentType dataType="ObjectRef">1103305070</componentType>
+              <prop dataType="MemberInfo" id="1244818654" value="P:Duality.Components.Physics.RigidBody:CollisionCategory" />
+              <val dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat4" value="8" />
+            </item>
+            <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
+              <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="968341428">
+                <_items dataType="ObjectRef">1923952748</_items>
+                <_size dataType="Int">0</_size>
+              </childIndex>
+              <componentType dataType="ObjectRef">1103305070</componentType>
+              <prop dataType="MemberInfo" id="2085782050" value="P:Duality.Components.Physics.RigidBody:CollidesWith" />
+              <val dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat2" value="2" />
+            </item>
+          </_items>
+          <_size dataType="Int">2</_size>
+        </changes>
+        <obj dataType="ObjectRef">4143235107</obj>
+        <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+          <contentPath dataType="String">Data\Prefabs\Powerup Pickup 1.Prefab.res</contentPath>
+        </prefab>
+      </prefabLink>
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="3265810459">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3241292393">
+        <_items dataType="Array" type="Duality.Component[]" id="497488142" length="8">
+          <item dataType="Struct" type="Duality.Components.Transform" id="3323087677">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3265810459</gameobj>
+          </item>
+          <item dataType="Struct" type="Duality.Components.Physics.RigidBody" id="2800739947">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3265810459</gameobj>
+          </item>
+          <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="439462443">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3265810459</gameobj>
+          </item>
+          <item dataType="Struct" type="Khronos.Powerups.Projectiles.Projectile" id="3790630287">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3265810459</gameobj>
+          </item>
+          <item dataType="Struct" type="Khronos.Powerups.Projectiles.ProjectileWorldCollider" id="911647049">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3265810459</gameobj>
+          </item>
+        </_items>
+        <_size dataType="Int">5</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2559338176" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="1302547683">
+            <item dataType="Type" id="1783625958" value="Khronos.Powerups.Projectiles.Projectile" />
+            <item dataType="ObjectRef">1961752540</item>
+            <item dataType="ObjectRef">1103305070</item>
+            <item dataType="ObjectRef">3831455278</item>
+            <item dataType="Type" id="1520445754" value="Khronos.Powerups.Projectiles.ProjectileWorldCollider" />
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="3775637240">
+            <item dataType="ObjectRef">3790630287</item>
+            <item dataType="ObjectRef">3323087677</item>
+            <item dataType="ObjectRef">2800739947</item>
+            <item dataType="ObjectRef">439462443</item>
+            <item dataType="ObjectRef">911647049</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform dataType="ObjectRef">3323087677</compTransform>
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="1679402569">FVrVw0kqVEOWiPAlCjjD+g==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">SimpleProjectile</name>
+      <parent />
+      <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="1009038539">
+        <changes />
+        <obj dataType="ObjectRef">3265810459</obj>
+        <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+          <contentPath dataType="String">Data\Prefabs\SimpleProjectile.Prefab.res</contentPath>
         </prefab>
       </prefabLink>
     </item>
