@@ -33,7 +33,7 @@ namespace Khronos.World
 
         void ICmpInitializable.OnInit(InitContext context)
         {
-            if( context == InitContext.Loaded)
+            if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
                 Initialize();
         }
 

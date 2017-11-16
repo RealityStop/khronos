@@ -53,16 +53,23 @@ namespace Khronos.Character
         public Transform PowerupSpawnLocation { get; set; }
 
 
+
+
+
+
         public void OnInit(InitContext context)
         {
-            Collider = GameObj.GetComponent<PlayerCollider>();
-            Movement = GameObj.GetComponent<PlayerMovement>();
-            TimeBody = GameObj.GetComponent<TimeBody>();
+            if (context == InitContext.Activate)
+            {
+                Collider = GameObj.GetComponent<PlayerCollider>();
+                Movement = GameObj.GetComponent<PlayerMovement>();
+                TimeBody = GameObj.GetComponent<TimeBody>();
 
 
-            var title = GameObj.GetChildByName("Title")?.GetComponent<TextRenderer>() ?? null;
-            if (title != null)
-                title.Text.SourceText = PlayerName;
+                var title = GameObj.GetChildByName("Title")?.GetComponent<TextRenderer>() ?? null;
+                if (title != null)
+                    title.Text.SourceText = PlayerName;
+            }
         }
 
         public void OnShutdown(ShutdownContext context)
@@ -86,6 +93,8 @@ namespace Khronos.Character
                 {
                     if (Powerup != null)
                     {
+                        
+
                         float horizontalaxis = Movement.GatherHorizontalAxisValue();
                         float verticalaxis = Movement.GatherVerticalAxisValue();
 
@@ -162,9 +171,9 @@ namespace Khronos.Character
                         }
 
 
-                        if (Powerup.Use(this, PowerupSpawnLocation, direction))
+                        if (Powerup.Use(this, PowerupSpawnLocation, direction, out var resultingAction))
                         {
-
+                            TimeBody.ActionsThisFrame.Add(resultingAction);
                         }
 
                         if (Powerup.Uses <= 0)

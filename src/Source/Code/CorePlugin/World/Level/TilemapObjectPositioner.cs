@@ -19,21 +19,22 @@ namespace Khronos.World.Level
 
         public virtual void OnInit(InitContext context)
         {
-            var world = Scene.Current.FindGameObject("World");
-            if (world != null)
+            if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
             {
-                var worldmanager = world.GetComponent<WorldManager>();
+                var worldmanager = Scene.Current.FindComponent<WorldManager>();
+                if (worldmanager != null)
+                { 
+                    var tilemap = worldmanager.GetTilemap();
 
-                var tilemap = worldmanager.GetTilemap();
+                    if (tilemap != null)
+                    {
+                        var size = tilemap.Tileset.Res.TileSize;
+                        var newPos = tilemap.GameObj.Transform.Pos.Xy;
+                        newPos.X += OffsetX * size.X;
+                        newPos.Y -= OffsetY * size.Y;
 
-                if (tilemap != null)
-                {
-                    var size = tilemap.Tileset.Res.TileSize;
-                    var newPos = tilemap.GameObj.Transform.Pos.Xy;
-                    newPos.X += OffsetX * size.X;
-                    newPos.Y -= OffsetY * size.Y;
-
-                    GameObj.Transform.Pos = new Vector3(newPos, GameObj.Transform.Pos.Z);
+                        GameObj.Transform.Pos = new Vector3(newPos, GameObj.Transform.Pos.Z);
+                    }
                 }
             }
         }

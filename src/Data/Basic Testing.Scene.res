@@ -96,34 +96,9 @@
               <_items dataType="Array" type="Duality.Component[]" id="3237273472" length="4">
                 <item dataType="Struct" type="Duality.Components.Transform" id="3363158920">
                   <active dataType="Bool">true</active>
-                  <angle dataType="Float">0</angle>
-                  <angleAbs dataType="Float">0</angleAbs>
-                  <angleVel dataType="Float">0</angleVel>
-                  <angleVelAbs dataType="Float">0</angleVelAbs>
-                  <deriveAngle dataType="Bool">true</deriveAngle>
                   <gameobj dataType="ObjectRef">3305881702</gameobj>
-                  <ignoreParent dataType="Bool">false</ignoreParent>
-                  <parentTransform />
-                  <pos dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">64</X>
-                    <Y dataType="Float">-96</Y>
-                    <Z dataType="Float">0</Z>
-                  </pos>
-                  <posAbs dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">64</X>
-                    <Y dataType="Float">-96</Y>
-                    <Z dataType="Float">0</Z>
-                  </posAbs>
-                  <scale dataType="Float">1</scale>
-                  <scaleAbs dataType="Float">1</scaleAbs>
-                  <vel dataType="Struct" type="Duality.Vector3" />
-                  <velAbs dataType="Struct" type="Duality.Vector3" />
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PlayerSpawnPoint" id="1067798064">
-                  <_x003C_AssignedGamepadNumber_x003E_k__BackingField dataType="Int">0</_x003C_AssignedGamepadNumber_x003E_k__BackingField>
-                  <_x003C_OffsetX_x003E_k__BackingField dataType="Int">2</_x003C_OffsetX_x003E_k__BackingField>
-                  <_x003C_OffsetY_x003E_k__BackingField dataType="Int">3</_x003C_OffsetY_x003E_k__BackingField>
-                  <_x003C_RestrictToGamepadNumber_x003E_k__BackingField dataType="Bool">true</_x003C_RestrictToGamepadNumber_x003E_k__BackingField>
                   <active dataType="Bool">true</active>
                   <gameobj dataType="ObjectRef">3305881702</gameobj>
                 </item>
@@ -153,7 +128,13 @@
             <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
             <name dataType="String">Spawn 1</name>
             <parent dataType="ObjectRef">3627774044</parent>
-            <prefabLink />
+            <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="2647533062">
+              <changes />
+              <obj dataType="ObjectRef">3305881702</obj>
+              <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+                <contentPath dataType="String">Data\Prefabs\Templates\PlayerSpawner.Prefab.res</contentPath>
+              </prefab>
+            </prefabLink>
           </item>
           <item dataType="Struct" type="Duality.GameObject" id="2427220038">
             <active dataType="Bool">true</active>
@@ -492,7 +473,6 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.HumperRenderer" id="1420845880">
                   <_height dataType="Int">0</_height>
-                  <_humperMap />
                   <_width dataType="Int">0</_width>
                   <active dataType="Bool">true</active>
                   <gameobj dataType="ObjectRef">1621534444</gameobj>
@@ -675,7 +655,7 @@
               </changes>
               <obj dataType="ObjectRef">3234824062</obj>
               <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-                <contentPath dataType="String">Data\Prefabs\Powerup Pickup 1.Prefab.res</contentPath>
+                <contentPath dataType="String">Data\Prefabs\Templates\Powerup Pickup.Prefab.res</contentPath>
               </prefab>
             </prefabLink>
           </item>

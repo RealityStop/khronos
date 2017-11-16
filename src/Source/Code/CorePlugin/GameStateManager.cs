@@ -3,6 +3,7 @@ using Duality.Editor;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Khrono;
+using Khronos.Powerups.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,118 @@ using System.Threading.Tasks;
 
 namespace Khronos
 {
+    internal class RewindOperation
+    {
+        public List<Player> ParticipatingPlayers { get; set; } = new List<Player>();
+        public List<Ghost> ParticipatingGhosts { get; set; } = new List<Ghost>();
+
+
+        public List<Player> RemainingPlayers { get; set; } = new List<Player>();
+        public List<Ghost> RemainingGhosts { get; set; } = new List<Ghost>();
+
+        Action _onComplete;
+
+        public RewindOperation(IEnumerable<Player> players, IEnumerable<Ghost> ghosts, Action onComplete)
+        {
+            _onComplete = onComplete;
+            ParticipatingPlayers.AddRange(players);
+            RemainingPlayers.AddRange(players);
+
+            ParticipatingGhosts.AddRange(ghosts);
+            RemainingGhosts.AddRange(ghosts);
+
+
+            //Kill all projectiles
+            var projectiles = Scene.Current.FindGameObjects<Projectile>();
+            foreach (var item in projectiles)
+            {
+                item.DisposeLater();
+            }
+
+
+            //Turn on replay for all players.
+            foreach (var player in ParticipatingPlayers)
+            {
+                DisablePlayer(player);
+                player.TimeBody.StartRewind(8, true, () =>
+                {
+                    FinishPlayerDeathRewind(player);
+                });
+            }
+
+
+            //Turn on replay for all ghosts.
+            foreach (var ghost in ParticipatingGhosts)
+            {
+                ghost.TimeBody.StartRewind(8, false, () =>
+                {
+                    FinishGhostDeathRewind(ghost);
+                });
+            }
+        }
+
+        private void FinishPlayerDeathRewind(Player player)
+        {
+            RemainingPlayers.Remove(player);
+
+            EnablePlayer(player);
+
+            ClearPlayerBuffer(player);
+
+            CheckForRewindComplete();
+        }
+
+
+        private void FinishGhostDeathRewind(Ghost ghost)
+        {
+            RemainingGhosts.Remove(ghost);
+            
+            CheckForRewindComplete();
+        }
+
+        private void DisablePlayer(Player player)
+        {
+            player.Movement.ActiveSingle = false;
+            player.Collider.ActiveSingle = false;
+        }
+
+
+        private void EnablePlayer(Player player)
+        {
+            player.Movement.ActiveSingle = true;
+            player.Collider.ActiveSingle = true;
+        }
+
+        private void ClearPlayerBuffer(Player player)
+        {
+            player.TimeBody.ClearBuffer();
+        }
+
+
+
+        private void CheckForRewindComplete()
+        {
+            if (RemainingPlayers.Count == 0 && RemainingGhosts.Count == 0)
+            {
+                //Then yes!  All items have checked in, so it is time to reenable things!
+
+                foreach (var player in ParticipatingPlayers)
+                {
+                    EnablePlayer(player);
+                }
+
+                foreach (var ghost in ParticipatingGhosts)
+                {
+                    ghost.PlayRecord();
+                }
+
+                _onComplete();
+            }
+        }
+    }
+
+
+
     public enum GameState { PrePlay, Play, Rewind, GameOver  }
 
     public class GameStateManager : Component, ICmpInitializable, ICmpUpdatable
@@ -24,6 +137,15 @@ namespace Khronos
         {
             get { return _playerList; }
             set { _playerList = value; }
+        }
+
+        [DontSerialize]
+        private List<Ghost> _ghostList = new List<Ghost>();
+
+        public List<Ghost> GhostList
+        {
+            get { return _ghostList; }
+            set { _ghostList = value; }
         }
 
         public ContentRef<Prefab> GhostPrefab { get; set; }
@@ -52,8 +174,6 @@ namespace Khronos
                     item.TimeBody.RecordingActive = true;
                 }
             }
-
-
         }
 
         public void PlayerDead(Player player)
@@ -64,54 +184,33 @@ namespace Khronos
                 player.Lives--;
                 State = GameState.Rewind;
 
-                //Turn on replay for all players.
-                foreach (var item in PlayerList)
-                {
-                    item.Movement.ActiveSingle = false;
-                    item.Collider.ActiveSingle = false;
-                    item.TimeBody.StartRewind(4, () =>
-                    {
-                        FinishPlayerDeathRewind(item, item == player);
+                var newGhost = SpawnGhost(player);
+
+                RewindOperation newRewind = new RewindOperation(PlayerList, GhostList, () => {
+                    newGhost.Transform.Pos = player.GameObj.Transform.Pos;
+                    GhostList.Add(newGhost.GetComponent<Ghost>());
+                    Scene.Current.AddObject(newGhost);
+                    State = GameState.Play;
                     });
-                }
             }
             else
             {
                 State = GameState.GameOver;
             }
         }
-
-
-        private void FinishPlayerDeathRewind(Player player, bool died)
-        {
-            player.Movement.ActiveSingle = true;
-            player.Collider.ActiveSingle = true;
-            State = GameState.Play;
-
-            if (died)
-                SpawnGhost(player);
-
-            ClearPlayerBuffer(player);
-        }
-
-        private void ClearPlayerBuffer(Player player)
-        {
-            player.TimeBody.ClearBuffer();
-        }
-
-        private void SpawnGhost(Player player)
+       
+        private GameObject SpawnGhost(Player player)
         {
             if (GhostPrefab.IsAvailable)
             {
                 var newGhost = GhostPrefab.Res.Instantiate(player.GameObj.Transform.Pos);
+                var ghost = newGhost.GetComponent<Ghost>();
                 var timebody = newGhost.GetComponent<TimeBody>();
                 timebody.InheritBuffer(player.TimeBody);
-                Action loopGhost = null;
-                loopGhost = () => { timebody.StartReplay(1, loopGhost); };
-                loopGhost();
 
-                Scene.Current.AddObject(newGhost);
+                return newGhost;
             }
+            return null;
         }
 
         internal void AddPlayer(Player player)

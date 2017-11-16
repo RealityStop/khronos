@@ -186,15 +186,15 @@
           <allowParent dataType="Bool">false</allowParent>
           <angularDamp dataType="Float">0.3</angularDamp>
           <angularVel dataType="Float">0</angularVel>
-          <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Kinematic" value="2" />
-          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1" value="1" />
+          <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Dynamic" value="1" />
+          <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat2" value="2" />
           <colFilter />
-          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat1, Cat2, Cat3, Cat5, Cat6, Cat7, Cat8, Cat9, Cat10, Cat11, Cat12, Cat13, Cat14, Cat15, Cat16, Cat17, Cat18, Cat19, Cat20, Cat21, Cat22, Cat23, Cat24, Cat25, Cat26, Cat27, Cat28, Cat29, Cat30, Cat31" value="2147483639" />
+          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat2, Cat3, Cat4, Cat5, Cat6, Cat7, Cat8, Cat9, Cat10, Cat11, Cat12, Cat13, Cat14, Cat15, Cat16, Cat17, Cat18, Cat19, Cat20, Cat21, Cat22, Cat23, Cat24, Cat25, Cat26, Cat27, Cat28, Cat29, Cat30, Cat31" value="2147483646" />
           <explicitInertia dataType="Float">0</explicitInertia>
           <explicitMass dataType="Float">0</explicitMass>
           <fixedAngle dataType="Bool">true</fixedAngle>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
-          <ignoreGravity dataType="Bool">false</ignoreGravity>
+          <ignoreGravity dataType="Bool">true</ignoreGravity>
           <joints />
           <linearDamp dataType="Float">0.3</linearDamp>
           <linearVel dataType="Struct" type="Duality.Vector2" />
@@ -316,7 +316,8 @@
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3676802281</body>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
-          <recordTime dataType="Float">36000</recordTime>
+          <playActions dataType="Bool">false</playActions>
+          <recordTime dataType="Float">360000</recordTime>
         </item>
       </_items>
       <_size dataType="Int">7</_size>

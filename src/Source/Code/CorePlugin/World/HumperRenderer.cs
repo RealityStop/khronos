@@ -17,6 +17,7 @@ namespace Khronos.World
     /// </summary>
     public class HumperRenderer : Renderer, ICmpInitializable
     {
+        [DontSerialize]
         private IWorld _humperMap;
         private int _width;
         private int _height;

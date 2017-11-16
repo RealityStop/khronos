@@ -2,6 +2,7 @@
 using Duality.Components.Physics;
 using Duality.Input;
 using Khronos.Data;
+using Khronos.Khrono.Actions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,13 +36,24 @@ namespace Khronos.Khrono
         [DontSerialize]
         private bool recordingActive;
 
+        private bool playActions;
+
         public bool RecordingActive
         {
             get { return recordingActive; }
             set { recordingActive = value; }
         }
 
-
+        /// <summary>
+        /// Only used on a recording entity, this records any special actions that need to take place.
+        /// </summary>
+        [DontSerialize]
+        private List<RecordableAction> _actionsThisFrame = new List<RecordableAction>();
+        public List<RecordableAction> ActionsThisFrame
+        {
+            get { return _actionsThisFrame; }
+            set { _actionsThisFrame = value; }
+        }
 
         Action _OnComplete;
 
@@ -70,6 +82,18 @@ namespace Khronos.Khrono
                 body.AngularVelocity = pointInTime.AngularVelocity;
                 currentBufferIndex += bufferChangeStep;
 
+                if (playActions)
+                {
+                    if (pointInTime.Actions != null && pointInTime.Actions.Length > 0)
+                    {
+                        foreach (var item in pointInTime.Actions)
+                        {
+                            item.Do();
+                        }
+                    }
+                }
+
+
                 //After the currentBufferIndex has been adjusted, it is safe to check if it is at an edge
                 if (currentBufferIndex <= 0 || currentBufferIndex >= pointsInTime.Count)
                 {
@@ -87,6 +111,7 @@ namespace Khronos.Khrono
             isTimeWalking = false;
             currentBufferIndex = -1;
             bufferChangeStep = 0;
+            playActions = false;
             if (_OnComplete != null)
                 _OnComplete();
         }
@@ -115,21 +140,26 @@ namespace Khronos.Khrono
                 pointsInTime.RemoveFromFront();
             }
 
-            pointsInTime.AddToBack(new PointInTime(GameObj.Transform.Pos, GameObj.Transform.Angle, body.LinearVelocity, body.AngularVelocity));
+            pointsInTime.AddToBack(new PointInTime(GameObj.Transform.Pos, GameObj.Transform.Angle, body.LinearVelocity, body.AngularVelocity, ActionsThisFrame.Count == 0 ? null :  ActionsThisFrame.ToArray()));
+            ActionsThisFrame.Clear();
         }
 
-        public void StartRewind(int speedMultiplier, Action onComplete)
+        public void StartRewind(int speedMultiplier, bool resetTimeIndex, Action onComplete)
         {
             isTimeWalking = true;
-            currentBufferIndex = pointsInTime.Count - 1;
+            playActions = false;
+            if (resetTimeIndex)
+                currentBufferIndex = pointsInTime.Count - 1;
             bufferChangeStep = -1 * speedMultiplier;
             _OnComplete = onComplete;
         }
 
-        public void StartReplay(int speedMultiplier, Action onComplete)
+        public void StartReplay(int speedMultiplier, bool resetTimeIndex, Action onComplete)
         {
             isTimeWalking = true;
-            currentBufferIndex = 0;
+            playActions = true;
+            if (resetTimeIndex)
+                currentBufferIndex = 0;
             bufferChangeStep = 1 * speedMultiplier;
             _OnComplete = onComplete;
         }
