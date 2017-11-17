@@ -109,7 +109,7 @@
             </_items>
             <_size dataType="Int">1</_size>
           </shapes>
-          <useCCD dataType="Bool">false</useCCD>
+          <useCCD dataType="Bool">true</useCCD>
         </item>
         <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="3100419901">
           <active dataType="Bool">true</active>

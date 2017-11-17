@@ -140,9 +140,9 @@
                   <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="All" value="2147483647" />
                   <explicitInertia dataType="Float">0</explicitInertia>
                   <explicitMass dataType="Float">0</explicitMass>
-                  <fixedAngle dataType="Bool">false</fixedAngle>
+                  <fixedAngle dataType="Bool">true</fixedAngle>
                   <gameobj dataType="ObjectRef">1002959568</gameobj>
-                  <ignoreGravity dataType="Bool">false</ignoreGravity>
+                  <ignoreGravity dataType="Bool">true</ignoreGravity>
                   <joints />
                   <linearDamp dataType="Float">0.3</linearDamp>
                   <linearVel dataType="Struct" type="Duality.Vector2" />
@@ -151,7 +151,7 @@
                     <_items dataType="Array" type="Duality.Components.Physics.ShapeInfo[]" id="271851948" length="32" />
                     <_size dataType="Int">0</_size>
                   </shapes>
-                  <useCCD dataType="Bool">false</useCCD>
+                  <useCCD dataType="Bool">true</useCCD>
                 </item>
                 <item dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapCollider" id="2665778451">
                   <active dataType="Bool">true</active>

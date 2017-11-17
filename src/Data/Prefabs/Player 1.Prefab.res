@@ -297,13 +297,14 @@
           <_x003C_CanWallJump_x003E_k__BackingField dataType="Bool">true</_x003C_CanWallJump_x003E_k__BackingField>
           <_x003C_CurrentFacing_x003E_k__BackingField dataType="Enum" type="Khronos.Character.FacingEnum" name="Left" value="0" />
           <_x003C_GravityModifier_x003E_k__BackingField dataType="Float">1</_x003C_GravityModifier_x003E_k__BackingField>
-          <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">1.5</_x003C_HorizontalAcceleration_x003E_k__BackingField>
+          <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">2</_x003C_HorizontalAcceleration_x003E_k__BackingField>
           <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.87</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">1</_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField>
           <_x003C_JumpDirection_x003E_k__BackingField dataType="Enum" type="Khronos.Character.JumpDirectionEnum" name="None" value="0" />
           <_x003C_JumpVelocity_x003E_k__BackingField dataType="Float">-20</_x003C_JumpVelocity_x003E_k__BackingField>
+          <_x003C_MinimumHorizontalVelocityOnGround_x003E_k__BackingField dataType="Float">2</_x003C_MinimumHorizontalVelocityOnGround_x003E_k__BackingField>
           <_x003C_TerminalVelocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2">
-            <X dataType="Float">12</X>
+            <X dataType="Float">20</X>
             <Y dataType="Float">20</Y>
           </_x003C_TerminalVelocity_x003E_k__BackingField>
           <_x003C_Velocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2" />

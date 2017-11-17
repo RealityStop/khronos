@@ -29,6 +29,7 @@ namespace Khronos.Character
         public float JumpVelocity { get; set; } = -20;
         public float InitialJumpDirectionVelocityGate { get; set; } = 1;
         public float AirborneJumpDirectionVelocityGate { get; set; } = 2;
+        public float MinimumHorizontalVelocityOnGround { get; set; } = 2;
 
 
         //Permissions
@@ -173,6 +174,14 @@ namespace Khronos.Character
 
                 horizontalVel += increase;
 
+                if (collider.OnGround)
+                {
+                    if (horizontalAxisValue < 0)
+                        horizontalVel = Math.Min(horizontalVel, -1 * MinimumHorizontalVelocityOnGround);
+                    else
+                        horizontalVel = Math.Max(horizontalVel, MinimumHorizontalVelocityOnGround);
+                }
+
                 if (!collider.OnGround)
                 {
                     switch (JumpDirection)
@@ -257,7 +266,7 @@ namespace Khronos.Character
             //Clamp velocity to terminal, regardless of direction
             Vel.Y = MathF.Min(Vel.Y, TerminalVelocity.Y);
             Vel.X = MathF.Min(Vel.X, TerminalVelocity.X);
-            //Vel.Y = MathF.Max(Vel.Y, -TerminalVelocity.Y);        //Okay, just kidding, we don't have an upwards terminal velocity, for now.
+            Vel.Y = MathF.Max(Vel.Y, -TerminalVelocity.Y);
             Vel.X = MathF.Max(Vel.X, -TerminalVelocity.X);
 
             Velocity = Vel;
