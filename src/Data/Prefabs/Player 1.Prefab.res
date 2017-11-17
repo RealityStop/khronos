@@ -294,12 +294,14 @@
           <_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField dataType="Float">0.1</_x003C_AirborneHorizontalMovementFactor_x003E_k__BackingField>
           <_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">2</_x003C_AirborneJumpDirectionVelocityGate_x003E_k__BackingField>
           <_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField dataType="Bool">true</_x003C_AllowConsecutiveWallJumps_x003E_k__BackingField>
+          <_x003C_AllowJumpForgiveness_x003E_k__BackingField dataType="Bool">true</_x003C_AllowJumpForgiveness_x003E_k__BackingField>
           <_x003C_CanWallJump_x003E_k__BackingField dataType="Bool">true</_x003C_CanWallJump_x003E_k__BackingField>
           <_x003C_CurrentFacing_x003E_k__BackingField dataType="Enum" type="Khronos.Character.FacingEnum" name="Left" value="0" />
           <_x003C_GravityModifier_x003E_k__BackingField dataType="Float">1</_x003C_GravityModifier_x003E_k__BackingField>
           <_x003C_HorizontalAcceleration_x003E_k__BackingField dataType="Float">2</_x003C_HorizontalAcceleration_x003E_k__BackingField>
           <_x003C_HorizontalMovementDamp_x003E_k__BackingField dataType="Float">0.87</_x003C_HorizontalMovementDamp_x003E_k__BackingField>
           <_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField dataType="Float">1</_x003C_InitialJumpDirectionVelocityGate_x003E_k__BackingField>
+          <_x003C_JumpAvailable_x003E_k__BackingField dataType="Bool">false</_x003C_JumpAvailable_x003E_k__BackingField>
           <_x003C_JumpDirection_x003E_k__BackingField dataType="Enum" type="Khronos.Character.JumpDirectionEnum" name="None" value="0" />
           <_x003C_JumpVelocity_x003E_k__BackingField dataType="Float">-20</_x003C_JumpVelocity_x003E_k__BackingField>
           <_x003C_MinimumHorizontalVelocityOnGround_x003E_k__BackingField dataType="Float">2</_x003C_MinimumHorizontalVelocityOnGround_x003E_k__BackingField>
@@ -317,7 +319,6 @@
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3676802281</body>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
-          <playActions dataType="Bool">false</playActions>
           <recordTime dataType="Float">360000</recordTime>
         </item>
       </_items>

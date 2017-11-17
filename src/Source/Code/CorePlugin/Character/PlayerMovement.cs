@@ -35,12 +35,14 @@ namespace Khronos.Character
         //Permissions
         public bool CanWallJump { get; set; }
         public bool AllowConsecutiveWallJumps { get; set; }
+        public bool AllowJumpForgiveness { get; set; }
 
 
         //State
         public Vector2 Velocity { get; set; }
         public Vector2 TerminalVelocity { get; set; }
         public float HorizontalAcceleration { get; set; }
+        public bool JumpAvailable { get; set; }
         public bool WallJumpAvailable { get; set; }
         public JumpDirectionEnum JumpDirection { get; set; }
         public FacingEnum CurrentFacing { get; set; }
@@ -87,6 +89,7 @@ namespace Khronos.Character
             {
                 JumpDirection = JumpDirectionEnum.None;
                 WallJumpAvailable = true;
+                JumpAvailable = true;
                 Vel = HandleJump(Vel);
             }
             else
@@ -95,6 +98,11 @@ namespace Khronos.Character
                 {
                     Vel = HandleWallJump(Vel, horizontalAxisValue);
                 }
+
+                //If we allow the user some jump forgiveness, then check for a jump. Note that wall jumps currently disable this ability,
+                //so we check for that first.
+                if (AllowJumpForgiveness && JumpAvailable)
+                    Vel = HandleJump(Vel);
             }
 
             Velocity = Vel;
@@ -109,7 +117,7 @@ namespace Khronos.Character
                     if (DualityApp.Gamepads[Player.GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                     {
                         //If the player is moving fast enough, and is providing input opposite to the direction of travel... bounce off the wall
-                        if (((Vel.X < 0 && horizontalAxisValue > 0.25) || (Vel.X > 0 && horizontalAxisValue < 0.25)))
+                        if (((Vel.X < 0 && horizontalAxisValue > 0.25) || (Vel.X > 0 && horizontalAxisValue < -0.25)))
                         {
                             if (JumpDirection == JumpDirectionEnum.Left)
                                 JumpDirection = JumpDirectionEnum.Right;
@@ -120,6 +128,9 @@ namespace Khronos.Character
 
                             if (!AllowConsecutiveWallJumps)
                                 WallJumpAvailable = false;
+
+                            //regardless, don't let the user do their normal jump if they've walljumped.
+                            JumpAvailable = false;
 
                             if (JumpDirection == JumpDirectionEnum.Up)
                             {
@@ -155,6 +166,7 @@ namespace Khronos.Character
                         else
                             JumpDirection = JumpDirectionEnum.Up;
                     }
+                    JumpAvailable = false;
                 }
 
             return Vel;
