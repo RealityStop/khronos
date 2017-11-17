@@ -14,7 +14,7 @@ namespace Khronos.Character
 {
     public class PlayerHumper : HumperMapObject
     {
-        public PlayerCollider Owner { get; set; }
+        public Player Owner { get; set; }
 
 
         [DontSerialize]
@@ -31,7 +31,7 @@ namespace Khronos.Character
         [DontSerialize]
         private IEnumerable<IBox> ignoreSelf;
 
-        public PlayerHumper(PlayerCollider playerCollider)
+        public PlayerHumper(Player playerCollider)
         {
             Owner = playerCollider;
         }
@@ -42,8 +42,8 @@ namespace Khronos.Character
 
             Box = world.Create(Owner.GameObj.Transform.Pos.X,
                 -Owner.GameObj.Transform.Pos.Y,
-                Owner.SizeX,
-                Owner.SizeY);
+                Owner.Collider.SizeX,
+                Owner.Collider.SizeY);
             Box.AddTags(HumperColliderTags.Player);
             Box.Data = Owner.GameObj.GetComponent<Player>();
             ignoreSelf = new IBox[] { Box };
@@ -88,7 +88,7 @@ namespace Khronos.Character
             bool onGround = false;
 
             Humper.Base.RectangleF detectionSpot = Box.Bounds;
-            detectionSpot.Offset(0, -0.01f);
+            detectionSpot.Offset(0, -0.01f * Owner.Movement.GravityModifier);
 
 
             var detection = this.world.Hit(Box.Bounds, detectionSpot, ignoreSelf);
@@ -96,7 +96,7 @@ namespace Khronos.Character
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onGround = true;
 
-            Owner.OnGround = onGround;
+            Owner.Collider.OnGround = onGround;
         }
 
         private void DetectWallInHorizontalDirectionOfTravel(float velocity)
@@ -112,7 +112,7 @@ namespace Khronos.Character
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onWall = true;
 
-            Owner.OnWall = onWall;
+            Owner.Collider.OnWall = onWall;
         }
     }
 
@@ -128,15 +128,14 @@ namespace Khronos.Character
         [DontSerialize]
         private PlayerHumper humperObject;
 
-        public PlayerCollider()
-        {
-            humperObject = new PlayerHumper(this);
-        }
 
         public void OnInit(InitContext context)
         {
             if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game && context == InitContext.Activate)
+            {
+                humperObject = new PlayerHumper(GameObj.GetComponent<Player>());
                 humperObject.Enabled = true;
+            }
         }
 
         internal bool AttemptMove(Vector2 vel, out Vector2 newPosition)

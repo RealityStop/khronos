@@ -142,7 +142,7 @@ namespace Khronos.Character
             if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                 if (DualityApp.Gamepads[Player.GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                 {
-                    Vel.Y = JumpVelocity;
+                    Vel.Y = JumpVelocity * GravityModifier;
 
                     if (Vel.X < -InitialJumpDirectionVelocityGate)
                     {

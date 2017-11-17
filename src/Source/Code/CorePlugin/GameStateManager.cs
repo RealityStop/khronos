@@ -40,6 +40,14 @@ namespace Khronos
                 item.DisposeLater();
             }
 
+            //And remove all active status effects.
+            foreach (var item in ParticipatingPlayers)
+            {
+                item.RemoveAllStatusEffects();
+            }
+
+
+
 
             //Turn on replay for all players.
             foreach (var player in ParticipatingPlayers)

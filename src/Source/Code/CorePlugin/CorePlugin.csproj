@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character\Status\InvertGravity.cs" />
+    <Compile Include="Character\Status\StatusEffect.cs" />
     <Compile Include="Khrono\Actions\RecordableAction.cs" />
     <Compile Include="Khrono\Actions\PlayerShot.cs" />
     <Compile Include="Character\Ghost.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="GameStateManager.cs" />
     <Compile Include="Khrono\PointInTime.cs" />
     <Compile Include="Khrono\TimeBody.cs" />
+    <Compile Include="Powerups\Blueprints\AntiGravityPowerupDefinition.cs" />
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\PowerupLibrary.cs" />
