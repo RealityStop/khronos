@@ -37,8 +37,11 @@
               <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]">
                 <contentPath dataType="String">Data\Powerups\SimpleProjectilePowerupDefinition.SimpleProjectilePowerupDefinition.res</contentPath>
               </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]">
+                <contentPath dataType="String">Data\Powerups\AntiGravityPowerupDefinition.AntiGravityPowerupDefinition.res</contentPath>
+              </item>
             </_items>
-            <_size dataType="Int">1</_size>
+            <_size dataType="Int">2</_size>
           </_x003C__AllPowerupTypes_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">2252292004</gameobj>

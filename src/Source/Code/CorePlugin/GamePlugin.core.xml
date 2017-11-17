@@ -4,6 +4,12 @@
         <name>GamePlugin.core</name>
     </assembly>
     <members>
+        <member name="M:Khronos.Character.Status.StatusEffect.Update">
+            <summary>
+            Called each from to do any upkeep.  Should return true to keep the effect active, false to signal removal.
+            </summary>
+            <returns>true for still in effect, false for remove.</returns>
+        </member>
         <member name="F:Khronos.Khrono.TimeBody._actionsThisFrame">
             <summary>
             Only used on a recording entity, this records any special actions that need to take place.

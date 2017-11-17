@@ -10,6 +10,7 @@ using Khronos.Powerups;
 using Duality.Components;
 using Khronos.Powerups.Projectiles;
 using Khronos.Khrono;
+using Khronos.Character.Status;
 
 namespace Khronos.Character
 {
@@ -21,7 +22,6 @@ namespace Khronos.Character
         private int _GamepadNumber;
         public int GamepadNumber { get { return _GamepadNumber; } set { _GamepadNumber = value; } }
 
-
         [DontSerialize]
         private PlayerMovement _movement;
         public PlayerMovement Movement
@@ -32,6 +32,8 @@ namespace Khronos.Character
 
         [DontSerialize]
         private PlayerCollider collider;
+
+
         public PlayerCollider Collider
         {
             get { return collider; }
@@ -53,6 +55,8 @@ namespace Khronos.Character
         public Transform PowerupSpawnLocation { get; set; }
 
 
+        [DontSerialize]
+        private List<StatusEffect> StatusEffects = new List<StatusEffect>();
 
 
 
@@ -85,8 +89,40 @@ namespace Khronos.Character
             Powerup = powerupInstance;
         }
 
+        internal void AssignStatusEffect(StatusEffect status)
+        {
+            status.AssignToPlayer(this);
+            StatusEffects.Add(status);
+        }
+
+
+        internal void RemoveAllStatusEffects()
+        {
+            foreach (var item in StatusEffects)
+            {
+                RemoveEffect(item);
+            }
+        }
+
+
+        internal void RemoveEffect(StatusEffect status)
+        {
+            if (StatusEffects.Contains(status))
+            {
+                status.Remove();
+                StatusEffects.Remove(status);
+            }
+        }
+
         public void OnUpdate()
         {
+
+            for (int i = 0; i < StatusEffects.Count; i++)
+            {
+                if (!StatusEffects[i].Update())
+                    RemoveEffect(StatusEffects[i--]);
+            }
+
             if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 if (DualityApp.Gamepads[GamepadNumber].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 {

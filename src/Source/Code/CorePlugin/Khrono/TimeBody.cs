@@ -136,10 +136,10 @@ namespace Khronos.Khrono
 
         public void Record()
         {
-            if (pointsInTime.Count > MathF.Round(recordTime / Time.TimeMult))
-            {
-                pointsInTime.RemoveFromFront();
-            }
+            //if (pointsInTime.Count > MathF.Round(recordTime / Time.TimeMult))
+            //{
+            //    pointsInTime.RemoveFromFront();
+            //}
 
             pointsInTime.AddToBack(new PointInTime(GameObj.Transform.Pos, GameObj.Transform.Angle, body.LinearVelocity, body.AngularVelocity, ActionsThisFrame.Count == 0 ? null :  ActionsThisFrame.ToArray()));
             ActionsThisFrame.Clear();
