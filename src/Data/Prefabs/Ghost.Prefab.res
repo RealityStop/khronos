@@ -34,7 +34,7 @@
           <bodyType dataType="Enum" type="Duality.Components.Physics.BodyType" name="Dynamic" value="1" />
           <colCat dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat5" value="16" />
           <colFilter />
-          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="None" value="0" />
+          <colWith dataType="Enum" type="Duality.Components.Physics.CollisionCategory" name="Cat4" value="8" />
           <explicitInertia dataType="Float">0</explicitInertia>
           <explicitMass dataType="Float">0</explicitMass>
           <fixedAngle dataType="Bool">true</fixedAngle>
@@ -132,7 +132,6 @@
           <active dataType="Bool">true</active>
           <body dataType="ObjectRef">3629029549</body>
           <gameobj dataType="ObjectRef">4094100061</gameobj>
-          <playActions dataType="Bool">true</playActions>
           <recordTime dataType="Float">3600</recordTime>
         </item>
         <item dataType="ObjectRef">1207636351</item>

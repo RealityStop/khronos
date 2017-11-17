@@ -10,6 +10,8 @@ namespace Khronos.Powerups.Projectiles.ProjectileEffects
 {
     public abstract class ProjectileEffect : Resource
     {
-        public abstract void OnPlayerHit(Player hit);
+        public abstract void OnPlayerHit(Player hit, Projectile instance);
+
+        public abstract void OnGhostHit(Ghost hit, Projectile instance);
     }
 }

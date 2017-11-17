@@ -1,5 +1,7 @@
 ﻿using Duality;
 using Duality.Components;
+using Duality.Components.Physics;
+using Duality.Components.Renderers;
 using Khronos.Khrono;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,16 @@ namespace Khronos.Character
     [RequiredComponent(typeof(TimeBody))]
     public class Ghost : Component, ICmpInitializable
     {
+        [DontSerialize]
+        private Player _owner;
+
+        public Player Owner
+        {
+            get { return _owner; }
+            set { _owner = value; }
+        }
+
+
         [DontSerialize]
         private TimeBody _timeBody;
 
@@ -31,7 +43,14 @@ namespace Khronos.Character
             {
                 TimeBody = GameObj.GetComponent<TimeBody>();
 
-                loopGhost = () => { TimeBody.StartReplay(1, true, loopGhost); };
+                loopGhost = () => {
+                    var renderer = GameObj.GetComponent<SpriteRenderer>();
+                    if (renderer != null)
+                        renderer.ActiveSingle = true;
+                    var physics = GameObj.GetComponent<RigidBody>();
+                    if (physics != null)
+                        physics.ActiveSingle = true;
+                    TimeBody.StartReplay(1, true, loopGhost); };
                 loopGhost();
             }
         }
@@ -43,6 +62,17 @@ namespace Khronos.Character
         public void PlayRecord()
         {
             loopGhost();
+        }
+
+        internal void KillTemporarily()
+        {
+            TimeBody.playActions = false;
+            var renderer = GameObj.GetComponent<SpriteRenderer>();
+            if (renderer != null)
+                renderer.ActiveSingle = false;
+            var physics = GameObj.GetComponent<RigidBody>();
+            if (physics != null)
+                physics.ActiveSingle = false;
         }
     }
 }
