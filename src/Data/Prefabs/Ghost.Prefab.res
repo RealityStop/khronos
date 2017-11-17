@@ -120,7 +120,7 @@
         </item>
         <item dataType="Struct" type="Khronos.Khrono.TimeBody" id="3758860171">
           <_OnComplete dataType="Delegate" type="System.Action" id="75654303" multi="true">
-            <method dataType="MemberInfo" id="3265369966" value="M:Khronos.Character.Ghost:&lt;OnInit&gt;b__5_0" />
+            <method dataType="MemberInfo" id="3265369966" value="M:Khronos.Character.Ghost:&lt;OnInit&gt;b__9_0" />
             <target dataType="Struct" type="Khronos.Character.Ghost" id="1207636351">
               <active dataType="Bool">true</active>
               <gameobj dataType="ObjectRef">4094100061</gameobj>
