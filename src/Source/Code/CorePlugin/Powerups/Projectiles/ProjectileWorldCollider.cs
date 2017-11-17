@@ -29,19 +29,17 @@ namespace Khronos.Powerups.Projectiles
                     return;
 
                 projectile.HitPlayer(hitPlayer);
-                GameObj.DisposeLater();
             }
             else
             {
                 Ghost hitGhost = hit.GetComponent<Ghost>();
-                if (hitPlayer != null)
+                if (hitGhost != null)
                 {
                     var projectile = GameObj.GetComponent<Projectile>();
                     if (projectile.Owner == hitPlayer)
                         return;
 
                     projectile.HitGhost(hitGhost);
-                    GameObj.DisposeLater();
                 }
                 else
                 {

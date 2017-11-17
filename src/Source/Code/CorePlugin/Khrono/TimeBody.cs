@@ -36,7 +36,8 @@ namespace Khronos.Khrono
         [DontSerialize]
         private bool recordingActive;
 
-        private bool playActions;
+        [DontSerialize]
+        public bool playActions;
 
         public bool RecordingActive
         {

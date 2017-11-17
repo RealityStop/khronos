@@ -41,15 +41,21 @@ namespace Khronos.Powerups.Projectiles
         {
             foreach (var item in OnHitPlayerEffects)
             {
-                item.Res.OnPlayerHit(player);
+                item.Res.OnPlayerHit(player, this);
             }
-
-            GameObj.DisposeLater();
         }
 
         internal void HitGhost(Ghost hitGhost)
         {
-            throw new NotImplementedException();
+            foreach (var item in OnHitPlayerEffects)
+            {
+                item.Res.OnGhostHit(hitGhost, this);
+            }
+        }
+
+        internal void DestroyProjectile()
+        {
+            GameObj.DisposeLater();
         }
     }
 }

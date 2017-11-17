@@ -78,7 +78,6 @@ namespace Khronos.Character
 
         internal void PlayerDropout()
         {
-            throw new NotImplementedException();
         }
 
         internal void Pickup(PowerupInstance powerupInstance)

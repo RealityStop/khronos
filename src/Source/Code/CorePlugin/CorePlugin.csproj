@@ -83,6 +83,7 @@
     <Compile Include="Powerups\PowerupLibrary.cs" />
     <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\KillGhost.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\KillPlayer.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\ProjectileEffect.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileShotDirection.cs" />

@@ -4,20 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Khronos.Character;
-using Duality;
+using Duality.Resources;
 
 namespace Khronos.Powerups.Projectiles.ProjectileEffects
 {
-    public class AddVelocityOnHitEffect : ProjectileEffect
+    public class KillGhost : ProjectileEffect
     {
         public override void OnGhostHit(Ghost hit, Projectile instance)
         {
+            if (hit.Owner != instance.Owner)
+            {
+                Scene.Current.FindComponent<GameStateManager>()?.GhostDead(hit);
+                instance.DestroyProjectile();
+            }
         }
 
         public override void OnPlayerHit(Player hit, Projectile instance)
         {
-            hit.Movement.Velocity = new Vector2(hit.Movement.Velocity.X, -20);
-            instance.DestroyProjectile();
         }
     }
 }

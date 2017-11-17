@@ -198,7 +198,13 @@ namespace Khronos
                 State = GameState.GameOver;
             }
         }
-       
+
+
+        internal void GhostDead(Ghost hit)
+        {
+            hit.KillTemporarily();
+        }
+
         private GameObject SpawnGhost(Player player)
         {
             if (GhostPrefab.IsAvailable)
@@ -206,6 +212,7 @@ namespace Khronos
                 var newGhost = GhostPrefab.Res.Instantiate(player.GameObj.Transform.Pos);
                 var ghost = newGhost.GetComponent<Ghost>();
                 var timebody = newGhost.GetComponent<TimeBody>();
+                ghost.Owner = player;
                 timebody.InheritBuffer(player.TimeBody);
 
                 return newGhost;
