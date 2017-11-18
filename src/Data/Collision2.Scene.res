@@ -452,8 +452,12 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PowerupPickup" id="792072690">
                   <_x003C__library_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Blueprints.PowerupLibrary]]">
-                    <contentPath dataType="String">Data\PowerupLibraries\AllPowerups.PowerupLibrary.res</contentPath>
+                    <contentPath dataType="String">Data\PowerupLibraries\JustWeapons.PowerupLibrary.res</contentPath>
                   </_x003C__library_x003E_k__BackingField>
+                  <_x003C_CloakedPickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+                    <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
+                  </_x003C_CloakedPickupSprite_x003E_k__BackingField>
+                  <_x003C_CloakPickup_x003E_k__BackingField dataType="Bool">false</_x003C_CloakPickup_x003E_k__BackingField>
                   <_x003C_OffsetX_x003E_k__BackingField dataType="Int">17</_x003C_OffsetX_x003E_k__BackingField>
                   <_x003C_OffsetY_x003E_k__BackingField dataType="Int">15</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_Pickup_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]" />
@@ -490,7 +494,7 @@
               <body />
             </identifier>
             <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
-            <name dataType="String">Powerup Pickup 1</name>
+            <name dataType="String">Weapon pickup left</name>
             <parent dataType="ObjectRef">1016267709</parent>
             <prefabLink />
           </item>
@@ -616,8 +620,12 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PowerupPickup" id="3339759729">
                   <_x003C__library_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Blueprints.PowerupLibrary]]">
-                    <contentPath dataType="String">Data\PowerupLibraries\AllPowerups.PowerupLibrary.res</contentPath>
+                    <contentPath dataType="String">Data\PowerupLibraries\JustWeapons.PowerupLibrary.res</contentPath>
                   </_x003C__library_x003E_k__BackingField>
+                  <_x003C_CloakedPickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+                    <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
+                  </_x003C_CloakedPickupSprite_x003E_k__BackingField>
+                  <_x003C_CloakPickup_x003E_k__BackingField dataType="Bool">false</_x003C_CloakPickup_x003E_k__BackingField>
                   <_x003C_OffsetX_x003E_k__BackingField dataType="Int">43</_x003C_OffsetX_x003E_k__BackingField>
                   <_x003C_OffsetY_x003E_k__BackingField dataType="Int">15</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_Pickup_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]" />
@@ -654,7 +662,7 @@
               <body />
             </identifier>
             <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
-            <name dataType="String">Powerup Pickup 1</name>
+            <name dataType="String">Weapon pickup right</name>
             <parent dataType="ObjectRef">1016267709</parent>
             <prefabLink />
           </item>
@@ -846,8 +854,12 @@
                 </item>
                 <item dataType="Struct" type="Khronos.World.Level.PowerupPickup" id="4247739274">
                   <_x003C__library_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Blueprints.PowerupLibrary]]">
-                    <contentPath dataType="String">Data\PowerupLibraries\AllPowerups.PowerupLibrary.res</contentPath>
+                    <contentPath dataType="String">Data\PowerupLibraries\JustWeapons.PowerupLibrary.res</contentPath>
                   </_x003C__library_x003E_k__BackingField>
+                  <_x003C_CloakedPickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+                    <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
+                  </_x003C_CloakedPickupSprite_x003E_k__BackingField>
+                  <_x003C_CloakPickup_x003E_k__BackingField dataType="Bool">false</_x003C_CloakPickup_x003E_k__BackingField>
                   <_x003C_OffsetX_x003E_k__BackingField dataType="Int">30</_x003C_OffsetX_x003E_k__BackingField>
                   <_x003C_OffsetY_x003E_k__BackingField dataType="Int">4</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_Pickup_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]" />
@@ -884,7 +896,7 @@
               <body />
             </identifier>
             <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
-            <name dataType="String">Powerup Pickup 1</name>
+            <name dataType="String">Weapon pickup bottom</name>
             <parent dataType="ObjectRef">1016267709</parent>
             <prefabLink />
           </item>
@@ -1012,6 +1024,10 @@
                   <_x003C__library_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Blueprints.PowerupLibrary]]">
                     <contentPath dataType="String">Data\PowerupLibraries\Utility.PowerupLibrary.res</contentPath>
                   </_x003C__library_x003E_k__BackingField>
+                  <_x003C_CloakedPickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+                    <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
+                  </_x003C_CloakedPickupSprite_x003E_k__BackingField>
+                  <_x003C_CloakPickup_x003E_k__BackingField dataType="Bool">true</_x003C_CloakPickup_x003E_k__BackingField>
                   <_x003C_OffsetX_x003E_k__BackingField dataType="Int">30</_x003C_OffsetX_x003E_k__BackingField>
                   <_x003C_OffsetY_x003E_k__BackingField dataType="Int">27</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_Pickup_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]" />
@@ -1048,7 +1064,7 @@
               <body />
             </identifier>
             <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
-            <name dataType="String">Powerup Pickup 1</name>
+            <name dataType="String">Utility Pickup</name>
             <parent dataType="ObjectRef">1016267709</parent>
             <prefabLink />
           </item>
