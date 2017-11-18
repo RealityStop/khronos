@@ -12,29 +12,27 @@ using Humper;
 using Duality.Components.Physics;
 using Khronos.Character;
 using Duality.Resources;
+using Khronos.Powerups.Blueprints;
 
 namespace Khronos.World.Level
 {
     [RequiredComponent(typeof(SpriteRenderer))]
     public class PowerupPickup : TilemapObjectPositioner, ICmpUpdatable, ICmpInitializable, ICmpCollisionListener
     {
+        public bool CloakPickup { get; set; }
         public float TimeRemaining { get; set; }
         public float RespawnTime { get; set; }
         public bool PowerupAvailable { get { return Pickup != null && Pickup.IsAvailable; } }
         public ContentRef<PowerupDefinition> Pickup { get; set; }
+        public ContentRef<Material> CloakedPickupSprite { get; set; }
 
-        [DontSerialize]
-        private PowerupLibrary _library;
+        public ContentRef<PowerupLibrary> _library { get; set; }
 
 
         public override void OnInit(InitContext context)
         {
             base.OnInit(context);
 
-            if (context == InitContext.Activate)
-            {
-                _library = Scene.Current.FindComponent<PowerupLibrary>();
-            }
         }
 
 
@@ -46,7 +44,7 @@ namespace Khronos.World.Level
 
                 if (TimeRemaining <= 0 && Pickup == null)
                 {
-                    Pickup = _library.GetRandomPowerup();
+                    Pickup = _library.Res.GetRandomPowerup();
                     TimeRemaining = RespawnTime;
 
                     if (Pickup.IsAvailable)
@@ -54,7 +52,11 @@ namespace Khronos.World.Level
                         SpriteRenderer sprite = GameObj.GetComponent<SpriteRenderer>();
                         if (sprite != null)
                         {
-                            sprite.SharedMaterial = Pickup.Res.PickupSprite;
+                            if (CloakPickup)
+                                sprite.SharedMaterial = CloakedPickupSprite.Res;
+                            else
+                                sprite.SharedMaterial = Pickup.Res.PickupSprite;
+
                             sprite.Active = true;
                         }
                         GameObj.GetComponent<RigidBody>().Active = true;

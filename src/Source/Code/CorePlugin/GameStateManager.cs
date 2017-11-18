@@ -182,6 +182,9 @@ namespace Khronos
                     item.TimeBody.RecordingActive = true;
                 }
             }
+
+            if (DualityApp.Keyboard.KeyHit(Duality.Input.Key.Escape))
+                DualityApp.Terminate();
         }
 
         public void PlayerDead(Player player)
