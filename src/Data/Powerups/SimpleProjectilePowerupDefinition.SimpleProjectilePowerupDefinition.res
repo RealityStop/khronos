@@ -11,7 +11,7 @@
     <_size dataType="Int">2</_size>
   </_x003C_OnPlayerHitEffects_x003E_k__BackingField>
   <_x003C_PickupSprite_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-    <contentPath dataType="String">Data\Media\sprites\Powerup\icon_bullet_gold_long.Material.res</contentPath>
+    <contentPath dataType="String">Data\Media\sprites\Powerup\icon bullet.Material.res</contentPath>
   </_x003C_PickupSprite_x003E_k__BackingField>
   <_x003C_PowerupName_x003E_k__BackingField dataType="String">Projectile</_x003C_PowerupName_x003E_k__BackingField>
   <_x003C_ProjectilePrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
