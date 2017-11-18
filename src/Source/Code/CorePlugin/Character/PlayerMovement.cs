@@ -124,7 +124,11 @@ namespace Khronos.Character
                             else if (JumpDirection == JumpDirectionEnum.Right)
                                 JumpDirection = JumpDirectionEnum.Left;
                             Vel.X = -(Vel.X * 2) + Vel.X > 0 ? 5 : -5;
-                            Vel.Y = Math.Min(JumpVelocity, Vel.Y + JumpVelocity /2.0f);
+
+                            if (GravityModifier >0)
+                                Vel.Y = Math.Min(JumpVelocity * GravityModifier, GravityModifier* (Vel.Y + JumpVelocity /2.0f));
+                            else
+                                Vel.Y = Math.Max(JumpVelocity * GravityModifier, GravityModifier * (Vel.Y + JumpVelocity / 2.0f));
 
                             if (!AllowConsecutiveWallJumps)
                                 WallJumpAvailable = false;
