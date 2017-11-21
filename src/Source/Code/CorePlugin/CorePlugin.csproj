@@ -100,6 +100,7 @@
     <Compile Include="UI\GUI.cs" />
     <Compile Include="UI\IUIScreen.cs" />
     <Compile Include="UI\Screens\MainMenu.cs" />
+    <Compile Include="UI\Screens\StageSelect.cs" />
     <Compile Include="UI\Screens\TestOverlay.cs" />
     <Compile Include="UI\UIScreen.cs" />
     <Compile Include="UI\UITest.cs" />

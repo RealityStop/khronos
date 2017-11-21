@@ -100,7 +100,7 @@
                   <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">0</_x003C_DrawOrder_x003E_k__BackingField>
                   <_x003C_Visible_x003E_k__BackingField dataType="Bool">true</_x003C_Visible_x003E_k__BackingField>
                   <gameScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
-                    <contentPath dataType="String">Data\Collision2.Scene.res</contentPath>
+                    <contentPath dataType="String">Data\StageSelect.Scene.res</contentPath>
                   </gameScene>
                   <selectedBtn dataType="Int">0</selectedBtn>
                   <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
@@ -108,7 +108,7 @@
                   </selectSound>
                 </item>
                 <item dataType="Struct" type="Khronos.UI.Screens.TestOverlay" id="2950279790">
-                  <_x003C_Active_x003E_k__BackingField dataType="Bool">false</_x003C_Active_x003E_k__BackingField>
+                  <_x003C_Active_x003E_k__BackingField dataType="Bool">true</_x003C_Active_x003E_k__BackingField>
                   <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">1</_x003C_DrawOrder_x003E_k__BackingField>
                   <_x003C_Visible_x003E_k__BackingField dataType="Bool">false</_x003C_Visible_x003E_k__BackingField>
                 </item>
