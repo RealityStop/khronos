@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Character\Status\InvertGravity.cs" />
     <Compile Include="Character\Status\StatusEffect.cs" />
+    <Compile Include="Data\Stage.cs" />
     <Compile Include="Khrono\Actions\RecordableAction.cs" />
     <Compile Include="Khrono\Actions\PlayerShot.cs" />
     <Compile Include="Character\Ghost.cs" />

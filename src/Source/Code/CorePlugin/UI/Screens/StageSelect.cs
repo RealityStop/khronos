@@ -1,8 +1,10 @@
 ﻿using Duality;
 using Duality.Cloning;
+using Duality.Components.Renderers;
 using Duality.Drawing;
 using Duality.Input;
 using Duality.Resources;
+using Khronos.Data;
 using Khronos.UI.Controls;
 using System;
 using System.Collections.Generic;
@@ -14,13 +16,6 @@ namespace Khronos.UI.Screens
 {
     public class StageSelect : UIScreen
     {
-        private ContentRef<Scene> gameScene = new ContentRef<Scene>();
-        public ContentRef<Scene> GameScene
-        {
-            get { return gameScene; }
-            set { gameScene = value; }
-        }
-
         private ContentRef<Sound> selectSound = new ContentRef<Sound>();
         public ContentRef<Sound> SelectSound
         {
@@ -29,13 +24,29 @@ namespace Khronos.UI.Screens
         }
 
         [DontSerialize]
-        private ContentRef<Scene> selectedStage = new ContentRef<Scene>();
-        public ContentRef<Scene> SelectedStage
+        private ContentRef<Stage> selectedStage = new ContentRef<Stage>();
+        public ContentRef<Stage> SelectedStage
         {
             get { return selectedStage; }
             set { selectedStage = value; }
         }
 
+
+        private List<ContentRef<Stage>> _allStages = new List<ContentRef<Stage>>();
+        public List<ContentRef<Stage>> AllStages
+        {
+            get { return _allStages; }
+            set { _allStages = value; }
+        }
+
+
+        [DontSerialize]
+        private int _selectedStageIndex = 0;
+        public int SelectedStageIndex
+        {
+            get { return _selectedStageIndex; }
+            set { _selectedStageIndex = value; }
+        }
 
         private int selectedBtn = 0;
 
@@ -45,7 +56,7 @@ namespace Khronos.UI.Screens
             Active = true;
             var resSize = DualityApp.TargetViewSize.X / 2;
 
-            var startGameBtn = new Button("Select")
+            var selectStageBtn = new Button("Select")
             {
                 Position = new Vector2(resSize - 512 / 2f, DualityApp.TargetViewSize.Y - 100),
                 Size = new Vector2(512, 65),
@@ -54,16 +65,20 @@ namespace Khronos.UI.Screens
                 MouseHoverColor = ColorRgba.DarkGrey,
                 FocusValue = 1,
             };
-            startGameBtn.Clicked += (sender, args) =>
+            selectStageBtn.Clicked += (sender, args) =>
             {
                 if (SelectedStage.IsAvailable)
-                    Scene.SwitchTo(SelectedStage);
+                    Scene.SwitchTo(SelectedStage.Res.LevelSetupScene.Res);
             };
 
 
-            startGameBtn.Focused = true;
+            selectStageBtn.Focused = true;
 
-            Controls.Add(startGameBtn);
+            if (AllStages.Count > SelectedStageIndex)
+                SelectedStage = AllStages[SelectedStageIndex];
+
+
+            Controls.Add(selectStageBtn);
             base.OnInitialize();
         }
 
@@ -74,16 +89,23 @@ namespace Khronos.UI.Screens
             var gamepad = DualityApp.Gamepads[0];
             var keyboard = DualityApp.Keyboard;
 
-            if (gamepad.ButtonHit(GamepadButton.DPadUp) || keyboard.KeyHit(Key.Up))
+            if (gamepad.ButtonHit(GamepadButton.DPadLeft) || keyboard.KeyHit(Key.Left))
             {
-                SelectNextButton(-1);
+                SelectedStageIndex -= 1;
+                if (SelectedStageIndex < 0)
+                    SelectedStageIndex = AllStages.Count - 1;
+
+                SelectedStage = AllStages[SelectedStageIndex];
                 if (selectSound.IsAvailable)
                     DualityApp.Sound.PlaySound(selectSound);
             }
 
-            if (gamepad.ButtonHit(GamepadButton.DPadDown) || keyboard.KeyHit(Key.Down))
+            if (gamepad.ButtonHit(GamepadButton.DPadRight) || keyboard.KeyHit(Key.Right))
             {
-                SelectNextButton(1);
+                SelectedStageIndex = (SelectedStageIndex + 1) % AllStages.Count;
+
+
+                SelectedStage = AllStages[SelectedStageIndex];
                 if (selectSound.IsAvailable)
                     DualityApp.Sound.PlaySound(selectSound);
             }
@@ -114,16 +136,18 @@ namespace Khronos.UI.Screens
         {
             var resolution = DualityApp.TargetViewSize;
 
-            // background
-            canvas.State.ColorTint = ColorRgba.White;
-            canvas.FillRect(0, 0, resolution.X, resolution.Y);
-
             // text
-            canvas.State.ColorTint = ColorRgba.Black;
+            canvas.State.ColorTint = ColorRgba.White;
             canvas.State.TransformScale = Vector2.One * 2.5f;
-            canvas.DrawText("Select Stage", resolution.X / 2,  150f, 0f, Alignment.Center);
+            canvas.DrawText("Select Stage", resolution.X / 2, resolution.Y / 2 - 300f, 0f, Alignment.Center);
+
+
+            canvas.State.ColorTint = ColorRgba.White;
+            canvas.State.TransformScale = Vector2.One;
+            canvas.DrawText(SelectedStage.Res.StageName, resolution.X / 2, resolution.Y -  150f, 0f, Alignment.Center);
 
             canvas.State.TransformScale = Vector2.One;
+
 
             base.OnDraw(canvas);
         }
