@@ -31,5 +31,21 @@ namespace Khronos.Data
             get { return _levelSetupScene; }
             set { _levelSetupScene = value; }
         }
+
+
+        private int _minPlayerCount;
+        public int MinPlayerCount
+        {
+            get { return _minPlayerCount; }
+            set { _minPlayerCount = value; }
+        }
+
+
+        private int _maxPlayerCount;
+        public int MaxPlayerCount
+        {
+            get { return _maxPlayerCount; }
+            set { _maxPlayerCount = value; }
+        }
     }
 }

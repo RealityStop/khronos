@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Character\Status\InvertGravity.cs" />
     <Compile Include="Character\Status\StatusEffect.cs" />
+    <Compile Include="Data\GameSetup.cs" />
+    <Compile Include="Data\PlayerDefinition.cs" />
     <Compile Include="Data\Stage.cs" />
     <Compile Include="Khrono\Actions\RecordableAction.cs" />
     <Compile Include="Khrono\Actions\PlayerShot.cs" />
@@ -100,6 +102,8 @@
     <Compile Include="UI\Controls\Panel.cs" />
     <Compile Include="UI\GUI.cs" />
     <Compile Include="UI\IUIScreen.cs" />
+    <Compile Include="UI\PlayerDefinitionEditor.cs" />
+    <Compile Include="UI\PlayerSetup.cs" />
     <Compile Include="UI\Screens\MainMenu.cs" />
     <Compile Include="UI\Screens\StageSelect.cs" />
     <Compile Include="UI\Screens\TestOverlay.cs" />

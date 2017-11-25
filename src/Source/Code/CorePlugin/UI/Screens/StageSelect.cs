@@ -68,7 +68,10 @@ namespace Khronos.UI.Screens
             selectStageBtn.Clicked += (sender, args) =>
             {
                 if (SelectedStage.IsAvailable)
-                    Scene.SwitchTo(SelectedStage.Res.LevelSetupScene.Res);
+                {
+                    GameSetup.Instance.Level = SelectedStage;
+                    GameSetup.Instance.SwitchToStage();
+                }
             };
 
 
