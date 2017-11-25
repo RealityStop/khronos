@@ -208,7 +208,8 @@ namespace Khronos.Character
 
                         if (Powerup.Use(this, PowerupSpawnLocation, direction, out var resultingAction))
                         {
-                            TimeBody.ActionsThisFrame.Add(resultingAction);
+                            if (Powerup.PowerupType.Recordable)
+                                TimeBody.ActionsThisFrame.Add(resultingAction);
                         }
 
                         if (Powerup.Uses <= 0)

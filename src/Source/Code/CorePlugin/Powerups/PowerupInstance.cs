@@ -17,6 +17,7 @@ namespace Khronos.Powerups
     public class PowerupInstance
     {
         public PowerupDefinition PowerupType { get; set; }
+        
 
         public int Uses { get; set; }
 

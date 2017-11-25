@@ -12,6 +12,8 @@ namespace Khronos.Powerups
 {
     public class AntiGravityPowerupDefinition : PowerupDefinition
     {
+        public override bool Recordable => false;
+
         public override PowerupInstance Spawn()
         {
             return new PowerupInstance() { PowerupType = this, Uses = 1 };

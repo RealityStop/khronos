@@ -15,6 +15,9 @@ namespace Khronos.Powerups
     public class SimpleProjectilePowerupDefinition : PowerupDefinition
     {
         public ContentRef<Prefab>  ProjectilePrefab { get; set; }
+
+        public override bool Recordable { get { return true; } }
+
         public SimpleProjectilePowerupDefinition()
         {
             PowerupName = "Projectile";
