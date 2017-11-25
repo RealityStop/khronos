@@ -221,18 +221,7 @@
                     <G dataType="Byte">255</G>
                     <R dataType="Byte">255</R>
                   </colorTint>
-                  <customMat dataType="Struct" type="Duality.Drawing.BatchInfo" id="3389557546">
-                    <parameters dataType="Struct" type="Duality.Drawing.ShaderParameterCollection" id="1061376288" custom="true">
-                      <body>
-                        <mainTex dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Texture]]">
-                          <contentPath dataType="String">Data\Media\snapshots\Stage 1.Texture.res</contentPath>
-                        </mainTex>
-                      </body>
-                    </parameters>
-                    <technique dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.DrawTechnique]]">
-                      <contentPath dataType="String">Default:DrawTechnique:Mask</contentPath>
-                    </technique>
-                  </customMat>
+                  <customMat />
                   <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
                   <gameobj dataType="ObjectRef">2521105954</gameobj>
                   <offset dataType="Float">0</offset>

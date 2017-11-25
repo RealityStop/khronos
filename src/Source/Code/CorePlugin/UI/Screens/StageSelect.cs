@@ -98,6 +98,8 @@ namespace Khronos.UI.Screens
                 SelectedStage = AllStages[SelectedStageIndex];
                 if (selectSound.IsAvailable)
                     DualityApp.Sound.PlaySound(selectSound);
+
+                Scene.Current.FindComponent<SpriteRenderer>().SharedMaterial = SelectedStage.Res.StageSnapshot;
             }
 
             if (gamepad.ButtonHit(GamepadButton.DPadRight) || keyboard.KeyHit(Key.Right))
@@ -108,6 +110,8 @@ namespace Khronos.UI.Screens
                 SelectedStage = AllStages[SelectedStageIndex];
                 if (selectSound.IsAvailable)
                     DualityApp.Sound.PlaySound(selectSound);
+
+                Scene.Current.FindComponent<SpriteRenderer>().SharedMaterial = SelectedStage.Res.StageSnapshot;
             }
             if (gamepad.ButtonHit(GamepadButton.A) || keyboard.KeyHit(Key.Enter))
             {
