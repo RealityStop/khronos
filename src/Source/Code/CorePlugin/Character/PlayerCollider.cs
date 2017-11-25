@@ -55,6 +55,15 @@ namespace Khronos.Character
             world.Remove(Box);
         }
 
+
+        internal void Reposition(Vector2 newPosition)
+        {
+            var movement = Box.Move(newPosition.X, newPosition.Y, (collisionInfo) =>
+            {
+                return CollisionResponses.None;
+            });
+        }
+
         internal bool AttemptMovement(Vector2 newLocation, out Vector2 actualResultPosition)
         {
             float horizontalVelocity = newLocation.X - Box.X;
@@ -144,6 +153,11 @@ namespace Khronos.Character
             var newLocation = currentLocation.Xy + (vel * Duality.Time.TimeMult);
 
             return humperObject.AttemptMovement(newLocation, out newPosition);
+        }
+
+        internal void Reposition(Vector2 newPosition)
+        {
+            humperObject.Reposition(newPosition);
         }
 
         public void OnShutdown(ShutdownContext context)

@@ -70,8 +70,11 @@ namespace Khronos.Character
 
                 //Uses the computed velocities to move the player character.
                 ApplyVelocity();
+
+                AdjustPosition();
             }
         }
+
 
         private void GatherInputs()
         {
@@ -174,6 +177,23 @@ namespace Khronos.Character
                 }
 
             return Vel;
+        }
+
+        private void AdjustPosition()
+        {
+            if (GameObj.Transform.Pos.Y > 32)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y - DualityApp.TargetViewSize.Y, GameObj.Transform.Pos.Z);
+                collider.Reposition(new Vector2(GameObj.Transform.Pos.X, -GameObj.Transform.Pos.Y));
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.Y < -DualityApp.TargetViewSize.Y+32)
+                {
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y + DualityApp.TargetViewSize.Y, GameObj.Transform.Pos.Z);
+                    collider.Reposition(new Vector2(GameObj.Transform.Pos.X, -GameObj.Transform.Pos.Y));
+                }
+            }
         }
 
         private float IncreaseVelocityBasedOnInput(float horizontalVel, float horizontalAxisValue)
