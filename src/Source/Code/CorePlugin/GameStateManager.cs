@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Duality.Components.Renderers;
 using Duality.Editor;
 using Duality.Resources;
 using Khronos.Character;
@@ -223,6 +224,8 @@ namespace Khronos
                 var newGhost = GhostPrefab.Res.Instantiate(player.GameObj.Transform.Pos);
                 var ghost = newGhost.GetComponent<Ghost>();
                 var timebody = newGhost.GetComponent<TimeBody>();
+                newGhost.GetComponent<SpriteRenderer>().SharedMaterial = player.GameObj.GetComponent<SpriteRenderer>().SharedMaterial;
+                newGhost.GetComponent<SpriteRenderer>().ColorTint = new Duality.Drawing.ColorRgba(255, 255, 255, 60);
                 ghost.Owner = player;
                 timebody.InheritBuffer(player.TimeBody);
 
