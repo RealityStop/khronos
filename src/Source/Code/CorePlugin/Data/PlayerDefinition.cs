@@ -14,11 +14,12 @@ namespace Khronos.Data
         {
             ColorRgba.Red,
             ColorRgba.Blue,
-            ColorRgba.Green
+            ColorRgba.Green,
+            new ColorRgba(255,174,201)
         };
 
         public int AssignedGamepad { get; set; }
-        public int PlayerColorIndex { get; set; } = 1;
+        public int PlayerColorIndex { get; set; } = 0;
         public ColorRgba PlayerColor { get; set; } = new ColorRgba(255, 0, 0, 255);
         public PlayerDefinitionEditor Editor { get; set; }
 
