@@ -58,7 +58,7 @@ namespace Khronos.UI
 
 
         [DontSerialize]
-        private Dictionary<int,PlayerDefinition> _allocatedGamepads;
+        private Dictionary<int,PlayerDefinition> _allocatedGamepads = new Dictionary<int, PlayerDefinition>();
         public Dictionary<int,PlayerDefinition> AllocatedGamepads
         {
             get { return _allocatedGamepads; }
@@ -66,8 +66,7 @@ namespace Khronos.UI
         }
 
         [DontSerialize]
-        private List<PlayerDefinitionEditor> _editors;
-
+        private List<PlayerDefinitionEditor> _editors = new List<PlayerDefinitionEditor>();
         public List<PlayerDefinitionEditor> Editors
         {
             get { return _editors; }
@@ -79,6 +78,9 @@ namespace Khronos.UI
 
         public void OnUpdate()
         {
+            MinPlayerCount = GameSetup.Instance.Level.Res.MinPlayerCount;
+            MaxPlayerCount = GameSetup.Instance.Level.Res.MaxPlayerCount;
+
             CheckForPlayerAddRemove();
 
             PositionEditors();
@@ -138,6 +140,7 @@ namespace Khronos.UI
                     var newEditor = PlayerDefinitionEditorPrefab.Res.Instantiate();
                     var editor = newEditor.GetComponent<PlayerDefinitionEditor>();
                     Editors.Add(editor);
+                    Scene.Current.AddObject(newEditor);
                 }
             }
         }
