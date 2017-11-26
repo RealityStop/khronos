@@ -1,5 +1,6 @@
 ﻿using Duality;
 using Duality.Components;
+using Duality.Components.Renderers;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Data;
@@ -87,6 +88,9 @@ namespace Khronos.Character
                             rootPlayer.PlayerName = "Player " + playerDef.AssignedGamepad;
 
                         rootPlayer.GamepadNumber = playerDef.AssignedGamepad;
+
+                        var playerSprite = newObj.GetComponentsDeep<SpriteRenderer>().First();
+                        playerSprite.ColorTint = playerDef.PlayerColor;
 
                         Scene.Current.FindComponent<GameStateManager>()?.AddPlayer(rootPlayer);
                     }

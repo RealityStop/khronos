@@ -225,7 +225,9 @@ namespace Khronos
                 var ghost = newGhost.GetComponent<Ghost>();
                 var timebody = newGhost.GetComponent<TimeBody>();
                 newGhost.GetComponent<SpriteRenderer>().SharedMaterial = player.GameObj.GetComponent<SpriteRenderer>().SharedMaterial;
-                newGhost.GetComponent<SpriteRenderer>().ColorTint = new Duality.Drawing.ColorRgba(255, 255, 255, 60);
+                var playertint = player.GameObj.GetComponent<SpriteRenderer>().ColorTint;
+                playertint.A = 120;
+                newGhost.GetComponent<SpriteRenderer>().ColorTint = playertint;
                 ghost.Owner = player;
                 timebody.InheritBuffer(player.TimeBody);
 
