@@ -91,9 +91,17 @@ namespace Khronos.UI
             canvas.DrawText("Choose a color", X + CellWidth / 2, Y + 2 * CellHeight / 3f, 0f, Alignment.Center);
 
 
+            if (PlayerReady)
+                canvas.DrawText("Ready!", X + CellWidth / 2, Y + 3 * CellHeight / 4f, 0f, Alignment.Center);
+            else
+                canvas.DrawText("Press A to Ready!", X + CellWidth / 2, Y + 3 * CellHeight / 4f, 0f, Alignment.Center);
+
             canvas.State.TransformScale = Vector2.One;
             canvas.State.ColorTint = PlayerDef.PlayerColor;
-            canvas.FillRect(X, Y, CellWidth, CellHeight);
+
+            Vector2 center = new Vector2(X + CellWidth / 2.0f, Y + CellHeight / 2.0f);
+
+            canvas.FillRect(center.X  - 16, center.Y -32, 32, 64);
 
 
             canvas.End();
