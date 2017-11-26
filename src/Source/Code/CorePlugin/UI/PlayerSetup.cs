@@ -13,13 +13,7 @@ namespace Khronos.UI
 {
     public class PlayerSetup : Component, ICmpUpdatable
     {
-        [DontSerialize]
-        private List<ColorRgba> ColorRoulette = new List<ColorRgba>()
-        {
-            ColorRgba.Red,
-            ColorRgba.Blue,
-            ColorRgba.Green
-        };
+
 
 
 
@@ -97,6 +91,19 @@ namespace Khronos.UI
             CheckForPlayerAddRemove();
 
             PositionEditors();
+
+            if (Editors.Count >= MinPlayerCount && Editors.Count <= MaxPlayerCount)
+                Valid = true;
+
+            AllReady = true;
+            foreach (var item in Editors)
+            {
+                if (!item.PlayerReady)
+                    AllReady = false;
+            }
+
+            if (Valid && AllReady)
+                GameSetup.Instance.SwitchToStage();
         }
 
         private void PositionEditors()
@@ -114,7 +121,7 @@ namespace Khronos.UI
                 int row = i / columns;
 
                 //Time to position
-                Editors[i].Position(DualityApp.TargetViewSize.X / rows * row, DualityApp.TargetViewSize.X / columns * column, cellwidth, cellheight);
+                Editors[i].Position(DualityApp.TargetViewSize.X / columns * column, DualityApp.TargetViewSize.X / rows * row, cellwidth, cellheight);
             }
         }
 
@@ -153,6 +160,7 @@ namespace Khronos.UI
                     var newEditor = PlayerDefinitionEditorPrefab.Res.Instantiate();
                     var editor = newEditor.GetComponent<PlayerDefinitionEditor>();
                     editor.PlayerDef = newDef;
+                    newDef.Editor = editor;
                     Editors.Add(editor);
                     Scene.Current.AddObject(newEditor);
                 }

@@ -61,7 +61,6 @@ namespace Khronos.UI
 
         [DontSerialize]
         private PlayerDefinition _PlayerDef;
-
         public PlayerDefinition PlayerDef
         {
             get { return _PlayerDef; }
@@ -69,7 +68,17 @@ namespace Khronos.UI
         }
 
 
+        [DontSerialize]
+        private bool _playerReady;
+        public bool PlayerReady
+        {
+            get { return _playerReady; }
+            set { _playerReady = value; }
+        }
 
+
+        [DontSerialize]
+        private bool _colorChanged = false;
 
         public override void Draw(IDrawDevice device)
         {
@@ -100,7 +109,25 @@ namespace Khronos.UI
 
         public void OnUpdate()
         {
-            throw new NotImplementedException();
+            if (DualityApp.Gamepads[PlayerDef.AssignedGamepad].LeftThumbstick.X < -Constants.Instance.GamepadDeadband)
+            {
+                if (!_colorChanged)
+                    PlayerDef.PrevColor();
+                _colorChanged = true;
+            }
+            else if (DualityApp.Gamepads[PlayerDef.AssignedGamepad].LeftThumbstick.X > Constants.Instance.GamepadDeadband)
+            {
+                if (!_colorChanged)
+                    PlayerDef.NextColor();
+                _colorChanged = true;
+            }
+            else
+                _colorChanged = false;
+
+            if (DualityApp.Gamepads[PlayerDef.AssignedGamepad].ButtonHit(GamepadButton.A))
+            {
+                PlayerReady = !PlayerReady;
+            }
         }
     }
 }

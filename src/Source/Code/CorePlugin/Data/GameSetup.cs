@@ -35,6 +35,7 @@ namespace Khronos.Data
             var gameplaySetup = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
             gameplaySetup.Res.Append(Level.Res.LevelSetupScene);
             Scene.SwitchTo(gameplaySetup);
+            //Scene.Current.Append(Level.Res.LevelSetupScene);  //Doesn't seem to work.  Hence getting a runtime reference and appending prior to load.
         }
 
         private GameSetup()
