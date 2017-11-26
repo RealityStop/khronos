@@ -2,6 +2,7 @@
 using Duality.Components;
 using Duality.Resources;
 using Khronos.Character;
+using Khronos.Data;
 using Khronos.World;
 using Khronos.World.Level;
 using System;
@@ -18,8 +19,18 @@ namespace Khronos.Character
 
         Dictionary<int, Player> AllocatedGamepads = new Dictionary<int, Player>();
 
+        [DontSerialize]
+        private bool _hasSpawned = false;
+
         public void OnUpdate()
         {
+            if (!_hasSpawned)
+            {
+                SpawnPlayers();
+                _hasSpawned = true;
+            }
+
+
             for (int i = 0; i < DualityApp.Gamepads.Count; i++)
             {
                 var item = DualityApp.Gamepads[i];
@@ -29,19 +40,20 @@ namespace Khronos.Character
                     {
                         if (AllocatedGamepads.ContainsKey(i))
                             AllocatedGamepads[i].PlayerDropout();
-                        else
-                            GeneratePlayer(i);
                     }
                 }
             }
+        }
 
-            if (DualityApp.Keyboard.KeyHit(Duality.Input.Key.F2))
+        private void SpawnPlayers()
+        {
+            foreach (var item in GameSetup.Instance.Players)
             {
-                GeneratePlayer(AllocatedGamepads.Count);
+                GeneratePlayer(item);
             }
         }
 
-        private void GeneratePlayer(int gamepadNumber)
+        private void GeneratePlayer(PlayerDefinition playerDef)
         {
             //Look for a free spawn point
             var worldmanager = Scene.Current.FindComponent<WorldManager>();
@@ -49,13 +61,13 @@ namespace Khronos.Character
             {
                 var spawnPoints = worldmanager.GetPlayerSpawnPoints();
 
-                var assignedSpawn = spawnPoints.Where(x => x.RestrictToGamepadNumber && x.AssignedGamepadNumber == gamepadNumber).FirstOrDefault();
+                var assignedSpawn = spawnPoints.Where(x => x.RestrictToGamepadNumber && x.AssignedGamepadNumber == playerDef.AssignedGamepad).FirstOrDefault();
                 if (assignedSpawn == null)
                     assignedSpawn = spawnPoints.Where(x => !x.RestrictToGamepadNumber).FirstOrDefault();
 
                 if (assignedSpawn == null)
                 {
-                    Logs.Game.WriteError("Unable to assign a spawn for " + gamepadNumber);
+                    Logs.Game.WriteError("Unable to assign a spawn for " + playerDef.AssignedGamepad);
 
                     //get a random spawn point and try.
                     assignedSpawn = spawnPoints.FirstOrDefault();
@@ -67,21 +79,21 @@ namespace Khronos.Character
                 if (PlayerPrefab.IsAvailable)
                 {
                     var newObj = PlayerPrefab.Res.Instantiate();
-                    newObj.Name = "Player " + gamepadNumber;
+                    newObj.Name = "Player " + playerDef.AssignedGamepad;
                     if (newObj != null)
                     {
                         var rootPlayer = newObj.GetComponent<Player>();
                         if (rootPlayer != null)
-                            rootPlayer.PlayerName = "Player " + gamepadNumber;
+                            rootPlayer.PlayerName = "Player " + playerDef.AssignedGamepad;
 
-                        rootPlayer.GamepadNumber = gamepadNumber;
+                        rootPlayer.GamepadNumber = playerDef.AssignedGamepad;
 
                         Scene.Current.FindComponent<GameStateManager>()?.AddPlayer(rootPlayer);
                     }
                     newObj.Transform.Pos = assignedSpawn.GameObj.Transform.Pos;
 
                     Scene.Current.AddObject(newObj);
-                    AllocatedGamepads.Add(gamepadNumber, newObj.GetComponentsDeep<Player>().First());
+                    AllocatedGamepads.Add(playerDef.AssignedGamepad, newObj.GetComponentsDeep<Player>().First());
                 }
             }
         }

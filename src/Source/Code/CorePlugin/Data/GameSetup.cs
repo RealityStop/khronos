@@ -13,6 +13,15 @@ namespace Khronos.Data
         private static GameSetup _instance = new GameSetup();
         public static GameSetup Instance { get { return _instance; } }
 
+        private IEnumerable<PlayerDefinition> _players;
+
+        public IEnumerable<PlayerDefinition> Players
+        {
+            get { return _players; }
+            set { _players = value; }
+        }
+
+
         public ContentRef<Stage> Level { get; set; }
 
         private ContentRef<Scene> stageSelectScreen;
@@ -30,11 +39,12 @@ namespace Khronos.Data
             Scene.SwitchTo(playerSetupScreen);
         }
 
-        public void SwitchToStage()
+        public void SwitchToStage(IEnumerable<PlayerDefinition> players)
         {
             var gameplaySetup = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
             gameplaySetup.Res.Append(Level.Res.LevelSetupScene);
             Scene.SwitchTo(gameplaySetup);
+            Players = players;
             //Scene.Current.Append(Level.Res.LevelSetupScene);  //Doesn't seem to work.  Hence getting a runtime reference and appending prior to load.
         }
 
@@ -43,5 +53,6 @@ namespace Khronos.Data
             stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
             playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
         }
+        
     }
 }

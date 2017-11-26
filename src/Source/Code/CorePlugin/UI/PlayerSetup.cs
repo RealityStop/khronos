@@ -103,7 +103,7 @@ namespace Khronos.UI
             }
 
             if (Valid && AllReady)
-                GameSetup.Instance.SwitchToStage();
+                GameSetup.Instance.SwitchToStage(AllocatedGamepads.Select(x=>x.Value));
         }
 
         private void PositionEditors()
