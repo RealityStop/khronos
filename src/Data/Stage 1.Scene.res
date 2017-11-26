@@ -53,7 +53,7 @@
                   <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="1035909032" custom="true">
                     <body>
                       <version dataType="Int">3</version>
-                      <data dataType="Array" type="System.Byte[]" id="4092232364">H4sIAAAAAAAEAO2Z2w2EMBDE0sM1QCFXyfVfyCEq2JCw8QYjIf8gmB3zFN/W2nGun3Ytgo+fAEJHfOiIDx3xEXfkc2xu13ebD2yJmLa7CUSyu7Xu56gY8I6AXwXZkaY62qGQHSIhrn6ho3LQER9zvo80/WRnpR3Fj74op44iIdbmzHYERPe/l5rT1kytI/BlP3gEbviXONo2PL4eoaMC0BEfOuJjqqPBd2Hg+YKYKPvd9MGJFu0ze7DsuIuKRKiKJyM5QtzdgBUUa+mV0BEfOuIj7WkoRvEHFtK75Ig0AAA=</data>
+                      <data dataType="Array" type="System.Byte[]" id="4092232364">H4sIAAAAAAAEAO2Z6w2DMAwGs0MX6CCdpPsP0qoTOO+ze0jo/iD47COEwKu19vzuj/bbBB9vAYSO+NARHzriI+7IeWxtr0c7HzgSUW13JxDJRttaz1Ey4B0BVwWnIy11VKEhFSIhRr/QUTroiI816yNN7+xZakfxq1/KqaNIiLs5TzsCovvfS85qc6bWEXjYT16BG/5PHJUNj2+PUI4QQvRi8l0YODcWqmhpKaMVXTrnMVXdXyQ2Yn8jEariyeLhgXIqPC6WOhKMWwMRSegoHY7NhmIWHw0WDMOINAAA</data>
                     </body>
                   </tileData>
                   <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
@@ -158,8 +158,8 @@
                   <gameobj dataType="ObjectRef">1002959568</gameobj>
                   <origin dataType="Enum" type="Duality.Alignment" name="BottomLeft" value="9" />
                   <roundedCorners dataType="Bool">true</roundedCorners>
-                  <shapeFriction dataType="Float">0.3</shapeFriction>
-                  <shapeRestitution dataType="Float">0.3</shapeRestitution>
+                  <shapeFriction dataType="Float">0.300000042</shapeFriction>
+                  <shapeRestitution dataType="Float">0.300000042</shapeRestitution>
                   <solidOuterEdges dataType="Bool">true</solidOuterEdges>
                   <source dataType="Array" type="Duality.Plugins.Tilemaps.TilemapCollisionSource[]" id="2731941247">
                     <item dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapCollisionSource">

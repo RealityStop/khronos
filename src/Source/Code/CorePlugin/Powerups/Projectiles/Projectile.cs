@@ -30,6 +30,18 @@ namespace Khronos.Powerups.Projectiles
 
             if (TimeToLive <= 0)
                 TimeExpire();
+
+            if (GameObj.Transform.Pos.X < -16)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X + DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.X > DualityApp.TargetViewSize.X)
+                {
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X - DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+                }
+            }
         }
 
         private void TimeExpire()

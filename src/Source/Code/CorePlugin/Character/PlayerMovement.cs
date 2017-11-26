@@ -71,6 +71,7 @@ namespace Khronos.Character
                 //Uses the computed velocities to move the player character.
                 ApplyVelocity();
 
+                //Handle going off the side of the level.
                 AdjustPosition();
             }
         }
@@ -191,6 +192,20 @@ namespace Khronos.Character
                 if (GameObj.Transform.Pos.Y < -DualityApp.TargetViewSize.Y+32)
                 {
                     GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y + DualityApp.TargetViewSize.Y, GameObj.Transform.Pos.Z);
+                    collider.Reposition(new Vector2(GameObj.Transform.Pos.X, -GameObj.Transform.Pos.Y));
+                }
+            }
+
+            if (GameObj.Transform.Pos.X < -16)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X + DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+                collider.Reposition(new Vector2(GameObj.Transform.Pos.X, -GameObj.Transform.Pos.Y));
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.X > DualityApp.TargetViewSize.X)
+                {
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X - DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
                     collider.Reposition(new Vector2(GameObj.Transform.Pos.X, -GameObj.Transform.Pos.Y));
                 }
             }

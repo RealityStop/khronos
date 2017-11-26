@@ -15,7 +15,8 @@ namespace Khronos.Data
             ColorRgba.Red,
             ColorRgba.Blue,
             ColorRgba.Green,
-            new ColorRgba(255,174,201)
+            new ColorRgba(255,174,201),
+            new ColorRgba(128,255,255)
         };
 
         public int AssignedGamepad { get; set; }
