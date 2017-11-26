@@ -20,7 +20,7 @@
         <body>
           <version dataType="Int">4</version>
           <formatId dataType="String">image/png</formatId>
-          <pixelData dataType="Array" type="System.Byte[]" id="2204481104">iVBORw0KGgoAAAANSUhEUgAAACAAAABACAYAAAB7jnWuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABASURBVGhD7c4hAQAACAMwgiDp34wMJwZmYn61PfkkICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg8ByYHJO1YQCJW+QjAAAAAElFTkSuQmCC</pixelData>
+          <pixelData dataType="Array" type="System.Byte[]" id="2204481104">iVBORw0KGgoAAAANSUhEUgAAACAAAABACAYAAAB7jnWuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA6SURBVGhD7c4xAQAADMOg+TedyegDCrjGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBMaBej/G4dKLjlrGAAAAAElFTkSuQmCC</pixelData>
         </body>
       </item>
     </_items>

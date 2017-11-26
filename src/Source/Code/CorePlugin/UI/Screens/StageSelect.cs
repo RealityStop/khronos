@@ -70,7 +70,7 @@ namespace Khronos.UI.Screens
                 if (SelectedStage.IsAvailable)
                 {
                     GameSetup.Instance.Level = SelectedStage;
-                    GameSetup.Instance.SwitchToStage();
+                    GameSetup.Instance.SwitchToPlayerSetup();
                 }
             };
 

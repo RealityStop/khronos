@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Duality.Drawing;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Data;
@@ -12,6 +13,12 @@ namespace Khronos.UI
 {
     public class PlayerSetup : Component, ICmpUpdatable
     {
+
+
+
+
+
+
         [DontSerialize]
         private int _minPlayerCount;
         public int MinPlayerCount
@@ -58,7 +65,7 @@ namespace Khronos.UI
 
 
         [DontSerialize]
-        private Dictionary<int,PlayerDefinition> _allocatedGamepads;
+        private Dictionary<int,PlayerDefinition> _allocatedGamepads = new Dictionary<int, PlayerDefinition>();
         public Dictionary<int,PlayerDefinition> AllocatedGamepads
         {
             get { return _allocatedGamepads; }
@@ -66,8 +73,7 @@ namespace Khronos.UI
         }
 
         [DontSerialize]
-        private List<PlayerDefinitionEditor> _editors;
-
+        private List<PlayerDefinitionEditor> _editors = new List<PlayerDefinitionEditor>();
         public List<PlayerDefinitionEditor> Editors
         {
             get { return _editors; }
@@ -79,9 +85,25 @@ namespace Khronos.UI
 
         public void OnUpdate()
         {
+            MinPlayerCount = GameSetup.Instance.Level.Res.MinPlayerCount;
+            MaxPlayerCount = GameSetup.Instance.Level.Res.MaxPlayerCount;
+
             CheckForPlayerAddRemove();
 
             PositionEditors();
+
+            if (Editors.Count >= MinPlayerCount && Editors.Count <= MaxPlayerCount)
+                Valid = true;
+
+            AllReady = true;
+            foreach (var item in Editors)
+            {
+                if (!item.PlayerReady)
+                    AllReady = false;
+            }
+
+            if (Valid && AllReady)
+                GameSetup.Instance.SwitchToStage(AllocatedGamepads.Select(x=>x.Value));
         }
 
         private void PositionEditors()
@@ -99,7 +121,7 @@ namespace Khronos.UI
                 int row = i / columns;
 
                 //Time to position
-                Editors[i].Position(DualityApp.TargetViewSize.X / rows * row, DualityApp.TargetViewSize.X / columns * column, cellwidth, cellheight);
+                Editors[i].Position(DualityApp.TargetViewSize.X / columns * column, DualityApp.TargetViewSize.X / rows * row, cellwidth, cellheight);
             }
         }
 
@@ -137,7 +159,10 @@ namespace Khronos.UI
                 {
                     var newEditor = PlayerDefinitionEditorPrefab.Res.Instantiate();
                     var editor = newEditor.GetComponent<PlayerDefinitionEditor>();
+                    editor.PlayerDef = newDef;
+                    newDef.Editor = editor;
                     Editors.Add(editor);
+                    Scene.Current.AddObject(newEditor);
                 }
             }
         }

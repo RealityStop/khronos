@@ -49,7 +49,7 @@
           <gameobj dataType="ObjectRef">1631800621</gameobj>
           <ignoreGravity dataType="Bool">true</ignoreGravity>
           <joints />
-          <linearDamp dataType="Float">0.3</linearDamp>
+          <linearDamp dataType="Float">0</linearDamp>
           <linearVel dataType="Struct" type="Duality.Vector2">
             <X dataType="Float">20</X>
             <Y dataType="Float">0</Y>
@@ -82,7 +82,7 @@
                   <_size dataType="Int">1</_size>
                 </convexPolygons>
                 <density dataType="Float">1</density>
-                <friction dataType="Float">0.3</friction>
+                <friction dataType="Float">0</friction>
                 <parent dataType="ObjectRef">1166730109</parent>
                 <restitution dataType="Float">0.3</restitution>
                 <sensor dataType="Bool">true</sensor>
