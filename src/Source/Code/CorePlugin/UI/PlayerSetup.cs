@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Duality.Drawing;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Data;
@@ -12,6 +13,18 @@ namespace Khronos.UI
 {
     public class PlayerSetup : Component, ICmpUpdatable
     {
+        [DontSerialize]
+        private List<ColorRgba> ColorRoulette = new List<ColorRgba>()
+        {
+            ColorRgba.Red,
+            ColorRgba.Blue,
+            ColorRgba.Green
+        };
+
+
+
+
+
         [DontSerialize]
         private int _minPlayerCount;
         public int MinPlayerCount
@@ -139,6 +152,7 @@ namespace Khronos.UI
                 {
                     var newEditor = PlayerDefinitionEditorPrefab.Res.Instantiate();
                     var editor = newEditor.GetComponent<PlayerDefinitionEditor>();
+                    editor.PlayerDef = newDef;
                     Editors.Add(editor);
                     Scene.Current.AddObject(newEditor);
                 }

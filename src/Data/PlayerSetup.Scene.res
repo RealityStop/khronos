@@ -7,9 +7,12 @@
   <serializeObj dataType="Array" type="Duality.GameObject[]" id="427169525">
     <item dataType="Struct" type="Duality.GameObject" id="742675200">
       <active dataType="Bool">true</active>
-      <children />
-      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="709119046">
-        <_items dataType="Array" type="Duality.Component[]" id="2688274432" length="4">
+      <children dataType="Struct" type="System.Collections.Generic.List`1[[Duality.GameObject]]" id="709119046">
+        <_items dataType="Array" type="Duality.GameObject[]" id="2688274432" length="4" />
+        <_size dataType="Int">0</_size>
+      </children>
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="2697829818">
+        <_items dataType="Array" type="Duality.Component[]" id="965537716" length="4">
           <item dataType="Struct" type="Khronos.UI.PlayerSetup" id="1567603780">
             <_x003C_PlayerDefinitionEditorPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
               <contentPath dataType="String">Data\Prefabs\PlayerEditor.Prefab.res</contentPath>
@@ -20,13 +23,13 @@
         </_items>
         <_size dataType="Int">1</_size>
       </compList>
-      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2697829818" surrogate="true">
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2584452166" surrogate="true">
         <header />
         <body>
-          <keys dataType="Array" type="System.Object[]" id="965537716">
-            <item dataType="Type" id="1005432740" value="Khronos.UI.PlayerSetup" />
+          <keys dataType="Array" type="System.Object[]" id="641245184">
+            <item dataType="Type" id="1480972444" value="Khronos.UI.PlayerSetup" />
           </keys>
-          <values dataType="Array" type="System.Object[]" id="1614513654">
+          <values dataType="Array" type="System.Object[]" id="1297677262">
             <item dataType="ObjectRef">1567603780</item>
           </values>
         </body>
@@ -34,7 +37,7 @@
       <compTransform />
       <identifier dataType="Struct" type="System.Guid" surrogate="true">
         <header>
-          <data dataType="Array" type="System.Byte[]" id="2310565904">0T7Ml2xXCEONgMHa7IDDiQ==</data>
+          <data dataType="Array" type="System.Byte[]" id="2758506652">0T7Ml2xXCEONgMHa7IDDiQ==</data>
         </header>
         <body />
       </identifier>
