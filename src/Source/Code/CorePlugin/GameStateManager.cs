@@ -194,6 +194,7 @@ namespace Khronos
             if (player.Lives > 0)
             {
                 player.Lives--;
+                player.Movement.Velocity = Vector2.Zero;
                 State = GameState.Rewind;
 
                 var newGhost = SpawnGhost(player);
