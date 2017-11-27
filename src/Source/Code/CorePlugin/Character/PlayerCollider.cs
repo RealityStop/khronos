@@ -9,10 +9,11 @@ using Humper;
 using Humper.Responses;
 using Khronos.World.BackingData;
 using Khronos.Powerups;
+using Duality.Resources;
 
 namespace Khronos.Character
 {
-    public class PlayerHumper : HumperMapObject
+    public class PlayerHumper
     {
         public Player Owner { get; set; }
 
@@ -26,31 +27,39 @@ namespace Khronos.Character
         }
 
         [DontSerialize]
-        private IWorld world;
-
-        [DontSerialize]
-        private IEnumerable<IBox> ignoreSelf;
-
-        public PlayerHumper(Player playerCollider)
+        internal IWorld _world;
+        public IWorld World
         {
-            Owner = playerCollider;
+            get { return _world; }
+            set { _world = value; }
         }
 
-        public override void Build(IWorld world, Vector2 tilesize)
-        {
-            this.world = world;
+        [DontSerialize]
+        private List<IBox> ignoreSelf;
 
-            Box = world.Create(Owner.GameObj.Transform.Pos.X,
+        [DontSerialize]
+        private GameStateManager _statemanager;
+
+        public PlayerHumper(Player playerCollider)
+            : base()
+        {
+            Owner = playerCollider;
+            _statemanager = Scene.Current.FindComponent<GameStateManager>();
+
+            World = GameLevel.Instance.BuildHumpermap();
+
+            Box = World.Create(Owner.GameObj.Transform.Pos.X,
                 -Owner.GameObj.Transform.Pos.Y,
                 Owner.Collider.SizeX,
                 Owner.Collider.SizeY);
             Box.AddTags(HumperColliderTags.Player);
             Box.Data = Owner.GameObj.GetComponent<Player>();
-            ignoreSelf = new IBox[] { Box };
+            ignoreSelf = new List<IBox> { Box };
 
             Logs.Game.Write("PlayerHumper created at {0}/{1} as a {2}/{3} wide box", Box.X, Box.Y, Box.Width, Box.Height);
         }
-        public override void Remove(IWorld world)
+
+        public void Remove(IWorld world)
         {
             world.Remove(Box);
         }
@@ -100,7 +109,7 @@ namespace Khronos.Character
             detectionSpot.Offset(0, -0.01f * Owner.Movement.GravityModifier);
 
 
-            var detection = this.world.Hit(Box.Bounds, detectionSpot, ignoreSelf);
+            var detection = this.World.Hit(Box.Bounds, detectionSpot, ignoreSelf);
             if (detection != null)
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onGround = true;
@@ -116,12 +125,22 @@ namespace Khronos.Character
             detectionSpot.Offset(velocity >= 0 ? 0.02f : -0.02f, 0f);
 
 
-            var detection = this.world.Hit(Box.Bounds, detectionSpot, ignoreSelf);
+            var detection = this.World.Hit(Box.Bounds, detectionSpot, ignoreSelf);
             if (detection != null)
                 if (detection.Box.HasTag(HumperColliderTags.World))
                     onWall = true;
 
             Owner.Collider.OnWall = onWall;
+        }
+
+        public void OnInit(Component.InitContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnShutdown(Component.ShutdownContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -143,7 +162,6 @@ namespace Khronos.Character
             if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game && context == InitContext.Activate)
             {
                 humperObject = new PlayerHumper(GameObj.GetComponent<Player>());
-                humperObject.Enabled = true;
             }
         }
 
@@ -162,13 +180,16 @@ namespace Khronos.Character
 
         public void OnShutdown(ShutdownContext context)
         {
-            if (Duality.DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
-                humperObject.Enabled = false;
         }
 
         internal IBox GetHumperBox()
         {
             return humperObject.Box;
+        }
+
+        internal IWorld GetHumperWorld()
+        {
+            return humperObject.World;
         }
     }
 }

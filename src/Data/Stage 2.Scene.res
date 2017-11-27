@@ -1072,25 +1072,18 @@
         <_size dataType="Int">9</_size>
       </children>
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1774799072">
-        <_items dataType="Array" type="Duality.Component[]" id="3336626469">
+        <_items dataType="Array" type="Duality.Component[]" id="3336626469" length="4">
           <item dataType="ObjectRef">1073544927</item>
           <item dataType="Struct" type="Khronos.World.HumperLevelGen" id="4086047890">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1016267709</gameobj>
-          </item>
-          <item dataType="Struct" type="Khronos.World.HumperRenderer" id="815579145">
-            <_height dataType="Int">0</_height>
-            <_width dataType="Int">0</_width>
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">1016267709</gameobj>
-            <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
           </item>
           <item dataType="Struct" type="Khronos.World.WorldManager" id="2973387382">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1016267709</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">4</_size>
+        <_size dataType="Int">3</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="104417501" surrogate="true">
         <header />
@@ -1098,13 +1091,11 @@
           <keys dataType="Array" type="System.Object[]" id="422759844">
             <item dataType="ObjectRef">1948057750</item>
             <item dataType="Type" id="27147460" value="Khronos.World.HumperLevelGen" />
-            <item dataType="Type" id="2325814166" value="Khronos.World.HumperRenderer" />
-            <item dataType="Type" id="653757824" value="Khronos.World.WorldManager" />
+            <item dataType="Type" id="2325814166" value="Khronos.World.WorldManager" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="2581182230">
             <item dataType="ObjectRef">1073544927</item>
             <item dataType="ObjectRef">4086047890</item>
-            <item dataType="ObjectRef">815579145</item>
             <item dataType="ObjectRef">2973387382</item>
           </values>
         </body>

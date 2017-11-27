@@ -32,8 +32,6 @@ namespace Khronos.Character
 
         [DontSerialize]
         private PlayerCollider collider;
-
-
         public PlayerCollider Collider
         {
             get { return collider; }
@@ -98,9 +96,9 @@ namespace Khronos.Character
 
         internal void RemoveAllStatusEffects()
         {
-            foreach (var item in StatusEffects)
+            while(StatusEffects.Count > 0)
             {
-                RemoveEffect(item);
+                RemoveEffect(StatusEffects[0]);
             }
         }
 

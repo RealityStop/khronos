@@ -382,6 +382,7 @@
             This component is used as the basis for a projectile filed by a player.
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:Khronos.World.HumperRenderer" -->
         <member name="T:Khronos.World.HumperMapObject">
             <summary>
             Generic base-class for Humper collision objects.  Automatically add themselves on Enabled=true and remove themselves when Enabled = false
@@ -391,14 +392,7 @@
         </member>
         <member name="T:Khronos.World.GameLevel">
             <summary>
-            An internal singleton that handles setting up and tearing down the humpermap.  
-            </summary>
-        </member>
-        <member name="T:Khronos.World.HumperRenderer">
-            <summary>
-            Responsible for drawing the humper collision boxes in the game on Group30.  Currently ignores humper collision cells and strings.
-            
-            Draws at z= -80, leaving some room for UI elements above.
+            An internal singleton that handles setting up and tearing down humpermaps.
             </summary>
         </member>
         <member name="T:Khronos.World.Level.Platform">

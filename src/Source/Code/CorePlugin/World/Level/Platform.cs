@@ -21,9 +21,6 @@ namespace Khronos.World.Level
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
 
-        [DontSerialize]
-        private IBox box;
-
         public bool PassThroughFromBelow { get; set; }
         public bool PassThroughFromAbove { get; set; }
 
@@ -38,30 +35,14 @@ namespace Khronos.World.Level
                 Enabled = true;
         }
 
-        public override void Build(IWorld world, Vector2 tilesize)
+        public override IBox BuildMapObject(IWorld world, Vector2 tilesize)
         {
             if (!Enabled)
-                return;
+                return null;
 
-            if (box == null)
-                box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, TileWidth * tilesize.X, TileHeight * tilesize.Y);
-
-
+            var box = world.Create(TileX * tilesize.X, TileY * tilesize.Y, TileWidth * tilesize.X, TileHeight * tilesize.Y);
             box.AddTags(HumperColliderTags.World);
-            // Logs.Game.Write("Humper Object created at {0}/{1} as a {2}/{3} wide box", box.X, box.Y, box.Width, box.Height);
+            return box;
         }
-
-
-        public override void Remove(IWorld world)
-        {
-            if (Enabled)
-                return;
-            if (box == null)
-                return;
-
-            world.Remove(box);
-            box = null;
-        }
-
     }
 }

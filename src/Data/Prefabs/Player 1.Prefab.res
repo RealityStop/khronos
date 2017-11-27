@@ -179,7 +179,7 @@
       <_size dataType="Int">2</_size>
     </children>
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1988502730">
-      <_items dataType="Array" type="Duality.Component[]" id="4262755592" length="8">
+      <_items dataType="Array" type="Duality.Component[]" id="4262755592">
         <item dataType="ObjectRef">4199150011</item>
         <item dataType="Struct" type="Duality.Components.Physics.RigidBody" id="3676802281">
           <active dataType="Bool">true</active>
@@ -273,6 +273,13 @@
           <spriteIndex dataType="Int">-1</spriteIndex>
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
+        <item dataType="Struct" type="Khronos.World.HumperRenderer" id="3941184229">
+          <_height dataType="Int">0</_height>
+          <_width dataType="Int">0</_width>
+          <active dataType="Bool">false</active>
+          <gameobj dataType="ObjectRef">4141872793</gameobj>
+          <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
+        </item>
         <item dataType="Struct" type="Khronos.Character.Player" id="2047519163">
           <_x003C_Lives_x003E_k__BackingField dataType="Int">5</_x003C_Lives_x003E_k__BackingField>
           <_x003C_PlayerName_x003E_k__BackingField />
@@ -322,7 +329,7 @@
           <recordTime dataType="Float">360000</recordTime>
         </item>
       </_items>
-      <_size dataType="Int">7</_size>
+      <_size dataType="Int">8</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="667336290" surrogate="true">
       <header />
@@ -335,6 +342,7 @@
           <item dataType="Type" id="2962702770" value="Khronos.Character.PlayerCollider" />
           <item dataType="Type" id="2136575092" value="Khronos.Character.PlayerMovement" />
           <item dataType="Type" id="2425208462" value="Khronos.Khrono.TimeBody" />
+          <item dataType="Type" id="3531489024" value="Khronos.World.HumperRenderer" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="3483474830">
           <item dataType="ObjectRef">4199150011</item>
@@ -344,6 +352,7 @@
           <item dataType="ObjectRef">420385249</item>
           <item dataType="ObjectRef">1905560544</item>
           <item dataType="ObjectRef">3806632903</item>
+          <item dataType="ObjectRef">3941184229</item>
         </values>
       </body>
     </compMap>

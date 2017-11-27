@@ -13,7 +13,7 @@ namespace Khronos.World
     /// 
     /// Implemnetations must describe how to add and remove themselves.
     /// </summary>
-    public class HumperMapObject
+    public abstract class HumperMapObject
     {
         private bool _Enabled = false;
         public bool Enabled { get { return _Enabled; } set {
@@ -29,30 +29,25 @@ namespace Khronos.World
             }
         }
 
-        private Action<IWorld, Vector2> _buildFunc;
-        private Action<IWorld> _removeFunc;
+        private Dictionary<IWorld, IBox> worldToBoxMapping = new Dictionary<IWorld, IBox>();
 
+        public void Build(IWorld world, Vector2 tilesize)
+        {
+            var box = BuildMapObject(world, tilesize);
+            if (box != null)
+                worldToBoxMapping.Add(world, box);
+        }
 
-        public virtual void Build(IWorld world, Vector2 tilesize)
+        public void Remove(IWorld world)
         {
-            if (_buildFunc != null)
-                _buildFunc(world, tilesize);
+            world.Remove(worldToBoxMapping[world]);
+            worldToBoxMapping.Remove(world);
         }
-        public virtual void Remove(IWorld world)
-        {
-            if (_removeFunc != null)
-                _removeFunc(world);
-        }
+
+        public abstract IBox BuildMapObject(IWorld world, Vector2 tilesize);
 
         public HumperMapObject()
         {
-
-        }
-
-        public HumperMapObject(Action<IWorld, Vector2> buildFunc, Action<IWorld> removeFunc)
-        {
-            _buildFunc = buildFunc;
-            _removeFunc = removeFunc;
         }
     }
 }

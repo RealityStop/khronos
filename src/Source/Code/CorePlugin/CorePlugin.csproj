@@ -55,9 +55,6 @@
     <Reference Include="DualityPrimitives">
       <HintPath>..\..\..\DualityPrimitives.dll</HintPath>
     </Reference>
-    <Reference Include="Humper">
-      <HintPath>..\..\..\Plugins\Humper.dll</HintPath>
-    </Reference>
     <Reference Include="Tilemaps.core">
       <HintPath>..\..\..\Plugins\Tilemaps.core.dll</HintPath>
     </Reference>
@@ -110,10 +107,10 @@
     <Compile Include="UI\UIScreen.cs" />
     <Compile Include="UI\UITest.cs" />
     <Compile Include="World\BackingData\HumperColliderTags.cs" />
+    <Compile Include="World\HumpererRenderer.cs" />
     <Compile Include="World\HumperLevelGen.cs" />
     <Compile Include="World\BackingData\HumperMapObject.cs" />
     <Compile Include="World\BackingData\GameLevel.cs" />
-    <Compile Include="World\HumperRenderer.cs" />
     <Compile Include="World\Level\Platform.cs" />
     <Compile Include="World\Level\TilemapObjectPositioner.cs" />
     <Compile Include="Character\PlayerSpawner.cs" />
@@ -121,6 +118,12 @@
     <Compile Include="World\Level\PowerupPickup.cs" />
     <Compile Include="World\BackingData\TileMerger.cs" />
     <Compile Include="World\WorldManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Humper\Sources\Humper\Humper.csproj">
+      <Project>{1dd7d455-8710-44a5-b275-8606eb78d80e}</Project>
+      <Name>Humper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>

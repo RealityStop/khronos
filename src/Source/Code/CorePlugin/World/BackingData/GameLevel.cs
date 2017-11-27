@@ -8,14 +8,18 @@ using System.Collections.Generic;
 namespace Khronos.World
 {
     /// <summary>
-    /// An internal singleton that handles setting up and tearing down the humpermap.  
+    /// An internal singleton that handles setting up and tearing down humpermaps.
     /// </summary>
     internal class GameLevel
     {
         public static GameLevel Instance { get; } = new GameLevel();
 
         [DontSerialize]
-        IWorld HumperMap;
+        List<IWorld> AllHumperMaps = new List<IWorld>();
+
+
+        [DontSerialize]
+        List<HumperMapObject> WorldObjects = new List<HumperMapObject>();
 
         [DontSerialize]
         private int humperWidth;
@@ -45,9 +49,6 @@ namespace Khronos.World
 
         const int defaultFloorHeight = 50;
 
-        [DontSerialize]
-        List<HumperMapObject> _queuedObjects = new List<HumperMapObject>();
-
         internal void Initialize(Vector2 tilesize, int humperwidth = -1, int humperheight = -1)
         {
             TileSize = tilesize;
@@ -55,33 +56,39 @@ namespace Khronos.World
                 HumperWidth = Duality.DualityApp.AppData.ForcedRenderSize.X;
             if (humperheight < 0)
                 HumperHeight = Duality.DualityApp.AppData.ForcedRenderSize.Y;
-            HumperMap = new Humper.World(HumperWidth, HumperHeight);
 
-            foreach (var item in _queuedObjects)
-            {
-                item.Build(HumperMap, TileSize);
-            }
-        }
-
-        internal void WireRenderer(HumperRenderer renderer)
-        {
-            renderer.Initialize(HumperMap, HumperWidth, HumperHeight);
         }
 
         internal void Inject(HumperMapObject humperMapObject)
         {
-            if (HumperMap == null)
-                _queuedObjects.Add(humperMapObject);
-            else
-                humperMapObject.Build(HumperMap, TileSize);
+            WorldObjects.Add(humperMapObject);
+            foreach (var item in AllHumperMaps)
+            {
+                humperMapObject.Build(item, TileSize);
+            }
         }
 
         internal void Remove(HumperMapObject humperMapObject)
         {
-            if (HumperMap == null)
-                return;
+            WorldObjects.Remove(humperMapObject);
+            foreach (var item in AllHumperMaps)
+            {
+                humperMapObject.Remove(item);
+            }
+        }
 
-            humperMapObject.Remove(HumperMap);
+        internal IWorld BuildHumpermap()
+        {
+            var HumperMap = new Humper.World(HumperWidth, HumperHeight);
+
+            foreach (var item in WorldObjects)
+            {
+                item.Build(HumperMap, TileSize);
+            }
+
+            AllHumperMaps.Add(HumperMap);
+
+            return HumperMap;
         }
     }
 }

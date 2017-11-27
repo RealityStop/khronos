@@ -1,20 +1,22 @@
-﻿using Duality.Components;
-using Duality.Drawing;
-using Humper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿﻿using Duality.Components; 
+using Duality.Drawing; 
+using Humper; 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+using System.Threading.Tasks; 
 using Duality;
+using Khronos.Character;
 
 namespace Khronos.World
-{
-    /// <summary>
-    /// Responsible for drawing the humper collision boxes in the game on Group30.  Currently ignores humper collision cells and strings.
-    /// 
-    /// Draws at z= -80, leaving some room for UI elements above.
-    /// </summary>
+{ 
+    /// <summary> 
+    /// Responsible for drawing the humper collision boxes in the game on Group30.  Currently ignores humper collision cells and strings. 
+    ///  
+-
+    /// Draws at z= -80, leaving some room for UI elements above. 
+    /// </summary> 
     public class HumperRenderer : Renderer, ICmpInitializable
     {
         [DontSerialize]
@@ -35,28 +37,22 @@ namespace Khronos.World
 
 
             _humperMap.DrawDebug(0, 0, Duality.DualityApp.AppData.ForcedRenderSize.X, Duality.DualityApp.AppData.ForcedRenderSize.Y,
-                //DrawCell
+                //DrawCell 
                 DrawCell,
 
-                //DrawBox
+                //DrawBox 
                 (box) =>
                 {
                     canvas.DrawRect(box.X, -(box.Y + box.Height), -80, box.Width, box.Height);
                 },
 
-                //DrawString
+                //DrawString 
                 DrawString);
 
             canvas.End();
         }
-        
-        internal void Initialize(IWorld humperMap, int humperWidth, int humperHeight)
-        {
-            _humperMap = humperMap;
-            _width = humperWidth;
-            _height = humperHeight;
-            VisibilityGroup = VisibilityFlag.Group30;
-        }
+
+
 
         private void DrawString(string arg1, int arg2, int arg3, float arg4)
         {
@@ -68,11 +64,15 @@ namespace Khronos.World
 
         public void OnInit(InitContext context)
         {
-            if (DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
+            if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game)
             {
-                GameLevel.Instance.WireRenderer(this);
+                _humperMap = GameObj.GetComponentsDeep<PlayerCollider>().First().GetHumperWorld();
+                _width = GameLevel.Instance.HumperWidth;
+                _height = GameLevel.Instance.HumperHeight;
+                VisibilityGroup = VisibilityFlag.Group30;
             }
         }
+
 
         public void OnShutdown(ShutdownContext context)
         {
