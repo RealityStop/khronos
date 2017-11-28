@@ -85,7 +85,7 @@ namespace Khronos.Powerups.Projectiles
         public void OnUpdate()
         {
             //Only check for world collisions if we've gone a short way.  Going further was due to a world loop.
-            if ((GameObj.Transform.Pos.Xy - previousPosition.Xy).LengthSquared < 25)
+            if ((GameObj.Transform.Pos.Xy - previousPosition.Xy).Length < _rigidbody.LinearVelocity.Length * Time.DeltaTime*1.25)
             {
                 //Feel for whether we've impacted!
                 //Rather than try to figure out where we need to cast to based on bullet size and position realtive to the sprite and delta time, and speed, and and and and...

@@ -157,10 +157,10 @@
                   <active dataType="Bool">true</active>
                   <gameobj dataType="ObjectRef">1002959568</gameobj>
                   <origin dataType="Enum" type="Duality.Alignment" name="BottomLeft" value="9" />
-                  <roundedCorners dataType="Bool">true</roundedCorners>
+                  <roundedCorners dataType="Bool">false</roundedCorners>
                   <shapeFriction dataType="Float">0.300000161</shapeFriction>
                   <shapeRestitution dataType="Float">0.300000161</shapeRestitution>
-                  <solidOuterEdges dataType="Bool">true</solidOuterEdges>
+                  <solidOuterEdges dataType="Bool">false</solidOuterEdges>
                   <source dataType="Array" type="Duality.Plugins.Tilemaps.TilemapCollisionSource[]" id="2731941247">
                     <item dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapCollisionSource">
                       <Layers dataType="Enum" type="Duality.Plugins.Tilemaps.TileCollisionLayer" name="Layer0" value="1" />
