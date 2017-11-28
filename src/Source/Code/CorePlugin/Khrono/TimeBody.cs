@@ -19,6 +19,8 @@ namespace Khronos.Khrono
             get { return recordTime; }
             set { recordTime = value; }
         }
+        [DontSerialize]
+        private float timewalkDuration = 0f;
 
         private float recordTime = 3600f;
 
@@ -74,6 +76,13 @@ namespace Khronos.Khrono
 
         public void UpdateTimeWalk()
         {
+            timewalkDuration += Time.DeltaTime;
+            if (timewalkDuration > 2.5)
+            {
+                bufferChangeStep = (int)(bufferChangeStep * 1.5);
+                timewalkDuration = 0;
+                    }
+
             if (pointsInTime.Count > 0)
             {
                 var pointInTime = pointsInTime[currentBufferIndex];
@@ -152,6 +161,7 @@ namespace Khronos.Khrono
             if (resetTimeIndex)
                 currentBufferIndex = pointsInTime.Count - 1;
             bufferChangeStep = -1 * speedMultiplier;
+            timewalkDuration = 0;
             _OnComplete = onComplete;
         }
 
@@ -162,6 +172,7 @@ namespace Khronos.Khrono
             if (resetTimeIndex)
                 currentBufferIndex = 0;
             bufferChangeStep = 1 * speedMultiplier;
+            timewalkDuration = 0;
             _OnComplete = onComplete;
         }
 
@@ -172,6 +183,7 @@ namespace Khronos.Khrono
             else
                 if (RecordingActive)
                     Record();
+
         }
     }
 }
