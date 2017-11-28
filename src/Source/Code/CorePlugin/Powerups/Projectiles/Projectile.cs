@@ -24,6 +24,8 @@ namespace Khronos.Powerups.Projectiles
 
         public List<ContentRef<ProjectileEffect>> OnHitPlayerEffects { get; set; }
 
+
+
         public void OnUpdate()
         {
             TimeToLive -= Time.DeltaTime;
@@ -63,6 +65,11 @@ namespace Khronos.Powerups.Projectiles
             {
                 item.Res.OnGhostHit(hitGhost, this);
             }
+        }
+
+        internal void WorldImpact()
+        {
+            GameObj.DisposeLater();
         }
 
         internal void DestroyProjectile()
