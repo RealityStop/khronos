@@ -1,4 +1,5 @@
 ﻿<root dataType="Struct" type="Khronos.Powerups.SimpleProjectilePowerupDefinition" id="129723834">
+  <_x003C_Class_x003E_k__BackingField dataType="Enum" type="Khronos.Powerups.PowerupClass" name="Weapon" value="0" />
   <_x003C_OnPlayerHitEffects_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]]]" id="427169525">
     <_items dataType="Array" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]][]" id="1100841590" length="4">
       <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]">

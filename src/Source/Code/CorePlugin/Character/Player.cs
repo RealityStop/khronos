@@ -49,7 +49,11 @@ namespace Khronos.Character
         public int Lives { get; set; }
 
 
-        public PowerupInstance Powerup { get; set; }
+        public PowerupInstance WeaponPowerup { get; set; }
+
+        public PowerupInstance UtilityPowerup { get; set; }
+
+
         public Transform PowerupSpawnLocation { get; set; }
 
 
@@ -84,7 +88,10 @@ namespace Khronos.Character
 
         internal void Pickup(PowerupInstance powerupInstance)
         {
-            Powerup = powerupInstance;
+            if (powerupInstance.PowerupType.Class == PowerupClass.Weapon)
+                WeaponPowerup = powerupInstance;
+            else if (powerupInstance.PowerupType.Class == PowerupClass.Utility)
+                UtilityPowerup = powerupInstance;
         }
 
         internal void AssignStatusEffect(StatusEffect status)
@@ -121,21 +128,63 @@ namespace Khronos.Character
                     RemoveEffect(StatusEffects[i--]);
             }
 
+            CheckPowerups();
+
+
+            //Update facing.
+            if (Movement.CurrentFacing == FacingEnum.Left)
+            {
+                //Then we're facing left
+                PowerupSpawnLocation.RelativePos = new Vector3(0, -32, 0);
+            }
+            else
+            {
+                PowerupSpawnLocation.RelativePos = new Vector3(32, -32, 0);
+            }
+
+        }
+
+        private void CheckPowerups()
+        {
+            CheckWeaponPowerup();
+            CheckUtilityPowerup();
+        }
+
+        private void CheckUtilityPowerup()
+        {
+            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.AltLeft))
+                if (DualityApp.Gamepads[GamepadNumber].ButtonHit(GamepadButton.Y) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.AltLeft))
+                {
+                    if (UtilityPowerup != null)
+                    {
+
+                        if (UtilityPowerup.Use(this, PowerupSpawnLocation, Movement.CurrentFacing == FacingEnum.Left ? ProjectileShotDirection.Left : ProjectileShotDirection.Right, out var resultingAction))
+                        {
+                            if (UtilityPowerup.PowerupType.Recordable)
+                                TimeBody.ActionsThisFrame.Add(resultingAction);
+                        }
+
+                        if (UtilityPowerup.Uses <= 0)
+                            UtilityPowerup = null;
+                    }
+                }
+        }
+
+        private void CheckWeaponPowerup()
+        {
             if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 if (DualityApp.Gamepads[GamepadNumber].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 {
-                    if (Powerup != null)
+                    if (WeaponPowerup != null)
                     {
-                        
-
                         float horizontalaxis = Movement.GatherHorizontalAxisValue();
                         float verticalaxis = Movement.GatherVerticalAxisValue();
 
-                        ProjectileShotDirection direction = (ProjectileShotDirection) (-1);
+                        ProjectileShotDirection direction = (ProjectileShotDirection)(-1);
 
                         if (horizontalaxis < -Constants.Instance.GamepadDeadband)
                         {
-                            if (verticalaxis  < -Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier > 0))
+                            if (verticalaxis < -Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier > 0))
                             {
                                 //up and to the left
                                 direction = ProjectileShotDirection.UpLeft;
@@ -204,29 +253,16 @@ namespace Khronos.Character
                         }
 
 
-                        if (Powerup.Use(this, PowerupSpawnLocation, direction, out var resultingAction))
+                        if (WeaponPowerup.Use(this, PowerupSpawnLocation, direction, out var resultingAction))
                         {
-                            if (Powerup.PowerupType.Recordable)
+                            if (WeaponPowerup.PowerupType.Recordable)
                                 TimeBody.ActionsThisFrame.Add(resultingAction);
                         }
 
-                        if (Powerup.Uses <= 0)
-                            Powerup = null;
+                        if (WeaponPowerup.Uses <= 0)
+                            WeaponPowerup = null;
                     }
                 }
-
-
-            //Update facing.
-            if (Movement.CurrentFacing == FacingEnum.Left)
-            {
-                //Then we're facing left
-                PowerupSpawnLocation.RelativePos =  new Vector3(0,-32,0);
-            }
-            else
-            {
-                PowerupSpawnLocation.RelativePos = new Vector3(32,-32,0);
-            }
-
         }
     }
 }

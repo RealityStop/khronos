@@ -12,11 +12,15 @@ using Khronos.Powerups.Projectiles.ProjectileEffects;
 
 namespace Khronos.Powerups
 {
+    public enum PowerupClass {  Weapon, Utility }
+
     /// <summary>
     /// Base class for powerups added to the powerup library.
     /// </summary>
     public abstract class PowerupDefinition : Resource
     {
+        public PowerupClass Class { get; set; }
+
         public ContentRef<Material> PickupSprite { get; set; }
 
         public string PowerupName { get; protected set; }
