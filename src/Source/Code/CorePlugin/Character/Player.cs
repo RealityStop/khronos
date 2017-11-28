@@ -135,12 +135,12 @@ namespace Khronos.Character
 
                         if (horizontalaxis < -Constants.Instance.GamepadDeadband)
                         {
-                            if (verticalaxis  < -Constants.Instance.GamepadDeadband)
+                            if (verticalaxis  < -Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier > 0))
                             {
                                 //up and to the left
                                 direction = ProjectileShotDirection.UpLeft;
                             }
-                            else if (verticalaxis > Constants.Instance.GamepadDeadband && !Collider.OnGround)
+                            else if (verticalaxis > Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier < 0))
                             {
                                 direction = ProjectileShotDirection.DownLeft;
                             }
@@ -153,12 +153,12 @@ namespace Khronos.Character
                         {
                             if (horizontalaxis > Constants.Instance.GamepadDeadband)
                             {
-                                if (verticalaxis < -Constants.Instance.GamepadDeadband)
+                                if (verticalaxis < -Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier > 0))
                                 {
                                     //up and to the left
                                     direction = ProjectileShotDirection.UpRight;
                                 }
-                                else if (verticalaxis > Constants.Instance.GamepadDeadband && !Collider.OnGround)
+                                else if (verticalaxis > Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier < 0))
                                 {
                                     direction = ProjectileShotDirection.DownRight;
                                 }
@@ -169,11 +169,11 @@ namespace Khronos.Character
                             }
                             else
                             {
-                                if (verticalaxis < -Constants.Instance.GamepadDeadband)
+                                if (verticalaxis < -Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier > 0))
                                 {
                                     direction = ProjectileShotDirection.Up;
                                 }
-                                else if (verticalaxis > Constants.Instance.GamepadDeadband && !Collider.OnGround)
+                                else if (verticalaxis > Constants.Instance.GamepadDeadband && (!Collider.OnGround || Movement.GravityModifier < 0))
                                 {
                                     direction = ProjectileShotDirection.Down;
                                 }
