@@ -15,6 +15,7 @@ namespace Khronos.World
     /// </summary>
     public abstract class HumperMapObject
     {
+        [DontSerialize]
         private bool _Enabled = false;
         public bool Enabled { get { return _Enabled; } set {
                 if (_Enabled == value)
@@ -29,6 +30,7 @@ namespace Khronos.World
             }
         }
 
+        [DontSerialize]
         private Dictionary<IWorld, IBox> worldToBoxMapping = new Dictionary<IWorld, IBox>();
 
         public void Build(IWorld world, Vector2 tilesize)

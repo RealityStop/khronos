@@ -21,7 +21,11 @@ namespace Khronos.World
     {
         [DontSerialize]
         private IWorld _humperMap;
+
+        [DontSerialize]
         private int _width;
+
+        [DontSerialize]
         private int _height;
 
         public override float BoundRadius { get { return Math.Max(Duality.DualityApp.AppData.ForcedRenderSize.X, Duality.DualityApp.AppData.ForcedRenderSize.Y); } }

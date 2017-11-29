@@ -85,7 +85,7 @@ namespace Khronos.World.Level
         void ICmpCollisionListener.OnCollisionBegin(Component sender, CollisionEventArgs args)
         {
             var player = args.CollideWith.GetComponent<Player>();
-            if (player != null && PowerupAvailable)
+            if (player != null && PowerupAvailable && player.CanCollectPickups)
             {
                 Collect(player);
             }

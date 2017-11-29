@@ -94,6 +94,7 @@ namespace Khronos
         {
             player.Movement.ActiveSingle = false;
             player.Collider.ActiveSingle = false;
+            player.CanCollectPickups = false;
         }
 
 
@@ -101,6 +102,7 @@ namespace Khronos
         {
             player.Movement.ActiveSingle = true;
             player.Collider.ActiveSingle = true;
+            player.CanCollectPickups = true;
         }
 
         private void ClearPlayerBuffer(Player player)

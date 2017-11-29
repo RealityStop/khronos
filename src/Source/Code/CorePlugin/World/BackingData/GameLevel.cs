@@ -12,7 +12,9 @@ namespace Khronos.World
     /// </summary>
     internal class GameLevel
     {
-        public static GameLevel Instance { get; } = new GameLevel();
+        [DontSerialize]
+        public static GameLevel _Instance  = new GameLevel();
+        public static GameLevel Instance { get { return _Instance; } }
 
         [DontSerialize]
         List<IWorld> AllHumperMaps = new List<IWorld>();
@@ -51,6 +53,9 @@ namespace Khronos.World
 
         internal void Initialize(Vector2 tilesize, int humperwidth = -1, int humperheight = -1)
         {
+            AllHumperMaps.Clear();
+            WorldObjects.Clear();
+
             TileSize = tilesize;
             if (humperwidth < 0)
                 humperwidth = Duality.DualityApp.AppData.ForcedRenderSize.X;

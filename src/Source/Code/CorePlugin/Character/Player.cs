@@ -46,6 +46,16 @@ namespace Khronos.Character
             set { _timeBody = value; }
         }
 
+
+        [DontSerialize]
+        private bool _canCollectPickups = true;
+        public bool CanCollectPickups
+        {
+            get { return _canCollectPickups; }
+            set { _canCollectPickups = value; }
+        }
+
+
         public int Lives { get; set; }
 
 
@@ -144,6 +154,8 @@ namespace Khronos.Character
 
         }
 
+
+        #region Powerup Usage
         private void CheckPowerups()
         {
             CheckWeaponPowerup();
@@ -264,5 +276,7 @@ namespace Khronos.Character
                     }
                 }
         }
+
+        #endregion Powerup Usage
     }
 }
