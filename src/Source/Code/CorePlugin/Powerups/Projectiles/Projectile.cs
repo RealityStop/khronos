@@ -3,6 +3,7 @@ using Duality.Components;
 using Duality.Components.Physics;
 using Khronos.Character;
 using Khronos.Powerups.Projectiles.ProjectileEffects;
+using Khronos.World;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,25 +35,7 @@ namespace Khronos.Powerups.Projectiles
             if (TimeToLive <= 0)
                 TimeExpire();
 
-            if (GameObj.Transform.Pos.X < -16)
-            {
-                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X + DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
-            }
-            else
-            {
-                if (GameObj.Transform.Pos.X > DualityApp.TargetViewSize.X)
-                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X - DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
-            }
 
-            if (GameObj.Transform.Pos.Y < -DualityApp.TargetViewSize.Y)
-            {
-                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y + DualityApp.TargetViewSize.Y, GameObj.Transform.Pos.Z);
-            }
-            else
-            {
-                if (GameObj.Transform.Pos.Y > 16)
-                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y - DualityApp.TargetViewSize.Y, GameObj.Transform.Pos.Z);
-            }
         }
 
         private void TimeExpire()

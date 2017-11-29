@@ -34,9 +34,6 @@ namespace Khronos.Powerups.Projectiles
         [DontSerialize]
         private Camera _gameCamera;
 
-        [DontSerialize]
-        private bool skipCollisionCheck = false;
-
         public void OnCollisionBegin(Component sender, CollisionEventArgs args)
         {
             var hit = args.CollideWith;
@@ -102,12 +99,6 @@ namespace Khronos.Powerups.Projectiles
 
         public void OnUpdate()
         {
-            if (skipCollisionCheck)
-            {
-                skipCollisionCheck = false;
-                return;
-            }
-
             Logs.Game.Write(string.Format("dTime: {0}, Length: {1}, Expected max:{2}", Time.DeltaTime, (GameObj.Transform.Pos.Xy - previousPosition.Xy).Length, _rigidbody.LinearVelocity.Length * Time.TimeMult * 1.25));
             //Only check for world collisions if we've gone a short way.  Going further was due to a world loop.
             if ((GameObj.Transform.Pos.Xy - previousPosition.Xy).Length < _rigidbody.LinearVelocity.Length * Time.TimeMult * 1.25)
@@ -150,7 +141,6 @@ namespace Khronos.Powerups.Projectiles
                                     default:
                                         break;
                                 }
-                                skipCollisionCheck = true;
                             }
                         }
                     }
@@ -181,6 +171,27 @@ namespace Khronos.Powerups.Projectiles
 
             }
             previousPosition = GameObj.Transform.Pos;
+
+
+            if (GameObj.Transform.Pos.X <= 0)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X + GameLevel.Instance.HumperWidth, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.X > GameLevel.Instance.HumperWidth)
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X - GameLevel.Instance.HumperWidth, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+            }
+
+            if (GameObj.Transform.Pos.Y <= -GameLevel.Instance.HumperHeight)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y + GameLevel.Instance.HumperHeight, GameObj.Transform.Pos.Z);
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.Y >= 0)
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y - GameLevel.Instance.HumperHeight, GameObj.Transform.Pos.Z);
+            }
         }
     }
 }

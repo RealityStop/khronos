@@ -53,10 +53,11 @@ namespace Khronos.World
         {
             TileSize = tilesize;
             if (humperwidth < 0)
-                HumperWidth = Duality.DualityApp.AppData.ForcedRenderSize.X;
+                humperwidth = Duality.DualityApp.AppData.ForcedRenderSize.X;
+            HumperWidth = humperwidth;
             if (humperheight < 0)
-                HumperHeight = Duality.DualityApp.AppData.ForcedRenderSize.Y;
-
+                humperheight = Duality.DualityApp.AppData.ForcedRenderSize.Y;
+            HumperHeight = humperheight;
         }
 
         internal void Inject(HumperMapObject humperMapObject)
