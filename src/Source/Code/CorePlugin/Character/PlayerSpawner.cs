@@ -88,9 +88,12 @@ namespace Khronos.Character
                             rootPlayer.PlayerName = "Player " + playerDef.AssignedGamepad;
 
                         rootPlayer.GamepadNumber = playerDef.AssignedGamepad;
+                        rootPlayer.PlayerColor = playerDef.PlayerColor.Player;
+                        rootPlayer.GhostColor = playerDef.PlayerColor.Ghost;
 
                         var playerSprite = newObj.GetComponentsDeep<SpriteRenderer>().First();
-                        playerSprite.ColorTint = playerDef.PlayerColor;
+                        
+                        playerSprite.ColorTint = playerDef.PlayerColor.Player;
 
                         Scene.Current.FindComponent<GameStateManager>()?.AddPlayer(rootPlayer);
                     }

@@ -97,7 +97,7 @@ namespace Khronos.UI
                 canvas.DrawText("Press A to Ready!", X + CellWidth / 2, Y + 3 * CellHeight / 4f, 0f, Alignment.Center);
 
             canvas.State.TransformScale = Vector2.One;
-            canvas.State.ColorTint = PlayerDef.PlayerColor;
+            canvas.State.ColorTint = PlayerDef.PlayerColor.Player;
 
             Vector2 center = new Vector2(X + CellWidth / 2.0f, Y + CellHeight / 2.0f);
 

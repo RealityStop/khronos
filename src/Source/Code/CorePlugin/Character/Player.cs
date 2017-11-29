@@ -11,6 +11,7 @@ using Duality.Components;
 using Khronos.Powerups.Projectiles;
 using Khronos.Khrono;
 using Khronos.Character.Status;
+using Duality.Drawing;
 
 namespace Khronos.Character
 {
@@ -54,6 +55,25 @@ namespace Khronos.Character
             get { return _canCollectPickups; }
             set { _canCollectPickups = value; }
         }
+
+        [DontSerialize]
+        private ColorRgba _playerColor;
+        public ColorRgba PlayerColor
+        {
+            get { return _playerColor; }
+            set { _playerColor = value; }
+        }
+
+
+        [DontSerialize]
+        private ColorRgba _ghostColor;
+        public ColorRgba GhostColor
+        {
+            get { return _ghostColor; }
+            set { _ghostColor = value; }
+        }
+
+
 
 
         public int Lives { get; set; }
