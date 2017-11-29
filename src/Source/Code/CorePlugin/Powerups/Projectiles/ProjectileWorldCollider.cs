@@ -63,7 +63,9 @@ namespace Khronos.Powerups.Projectiles
                     {
                         var projectile = GameObj.GetComponent<Projectile>();
                         if (projectile != null)
-                        projectile.WorldImpact();
+                        {
+                         //   projectile.WorldImpact(args.CollisionData.Normal);
+                        }
                     }
                 }
             }
@@ -113,7 +115,33 @@ namespace Khronos.Powerups.Projectiles
                         {
                             var projectile = GameObj.GetComponent<Projectile>();
                             if (projectile != null)
-                                projectile.WorldImpact();
+                            {
+                                var response = projectile.WorldImpact(hit.Normal);
+                                switch (response)
+                                {
+                                    case ProjectileImpactResponse.DestroyProjectile:
+                                        GameObj.DisposeLater();
+                                        break;
+                                    case ProjectileImpactResponse.Bounce:
+                                        var rigidbody = this.GameObj.GetComponent<RigidBody>();
+                                        if (hit.Normal.X != 0)
+                                        {
+                                            //Left /  right
+                                            rigidbody.LinearVelocity = new Vector2(-rigidbody.LinearVelocity.X, rigidbody.LinearVelocity.Y);
+                                        }
+
+                                        if (hit.Normal.Y != 0)
+                                        {
+                                            //up /  down
+                                            rigidbody.LinearVelocity = new Vector2(rigidbody.LinearVelocity.X, -rigidbody.LinearVelocity.Y);
+                                        }
+
+                                        GameObj.Transform.Pos = previousPosition;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
                         }
                     }
 
@@ -143,6 +171,27 @@ namespace Khronos.Powerups.Projectiles
 
             }
             previousPosition = GameObj.Transform.Pos;
+
+
+            if (GameObj.Transform.Pos.X <= 0)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X + GameLevel.Instance.HumperWidth, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.X > GameLevel.Instance.HumperWidth)
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X - GameLevel.Instance.HumperWidth, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
+            }
+
+            if (GameObj.Transform.Pos.Y <= -GameLevel.Instance.HumperHeight)
+            {
+                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y + GameLevel.Instance.HumperHeight, GameObj.Transform.Pos.Z);
+            }
+            else
+            {
+                if (GameObj.Transform.Pos.Y >= 0)
+                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y - GameLevel.Instance.HumperHeight, GameObj.Transform.Pos.Z);
+            }
         }
     }
 }

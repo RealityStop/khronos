@@ -19,7 +19,7 @@ namespace Khronos.World
         {
             var tilemap = GameObj.GetComponentsInChildren<Tilemap>().FirstOrDefault();
 
-            GameLevel.Instance.Initialize(tilemap.Tileset.Res.TileSize);
+            GameLevel.Instance.Initialize(tilemap.Tileset.Res.TileSize, (int)(tilemap.Tiles.Width * tilemap.Tileset.Res.TileSize.X), (int)(tilemap.Tiles.Height * tilemap.Tileset.Res.TileSize.Y));
 
             if (tilemap != null)
             {

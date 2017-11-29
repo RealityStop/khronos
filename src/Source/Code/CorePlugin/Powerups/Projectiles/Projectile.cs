@@ -3,6 +3,7 @@ using Duality.Components;
 using Duality.Components.Physics;
 using Khronos.Character;
 using Khronos.Powerups.Projectiles.ProjectileEffects;
+using Khronos.World;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Khronos.Powerups.Projectiles
 {
+    public enum ProjectileImpactResponse { DestroyProjectile, Bounce }
     /// <summary>
     /// This component is used as the basis for a projectile filed by a player.
     /// </summary>
@@ -24,7 +26,7 @@ namespace Khronos.Powerups.Projectiles
 
         public List<ContentRef<ProjectileEffect>> OnHitPlayerEffects { get; set; }
 
-
+        public bool Bounce { get; set; }
 
         public void OnUpdate()
         {
@@ -33,17 +35,7 @@ namespace Khronos.Powerups.Projectiles
             if (TimeToLive <= 0)
                 TimeExpire();
 
-            if (GameObj.Transform.Pos.X < -16)
-            {
-                GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X + DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
-            }
-            else
-            {
-                if (GameObj.Transform.Pos.X > DualityApp.TargetViewSize.X)
-                {
-                    GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X - DualityApp.TargetViewSize.X, GameObj.Transform.Pos.Y, GameObj.Transform.Pos.Z);
-                }
-            }
+
         }
 
         private void TimeExpire()
@@ -67,9 +59,17 @@ namespace Khronos.Powerups.Projectiles
             }
         }
 
-        internal void WorldImpact()
+        internal ProjectileImpactResponse WorldImpact(Vector2 Normal)
         {
-            GameObj.DisposeLater();
+            if (Bounce)
+            {
+                return ProjectileImpactResponse.Bounce;
+            }
+            else
+            {
+                return ProjectileImpactResponse.DestroyProjectile;
+                GameObj.DisposeLater();
+            }
         }
 
         internal void DestroyProjectile()
