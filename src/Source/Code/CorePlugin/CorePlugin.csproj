@@ -83,6 +83,7 @@
     <Compile Include="Powerups\Blueprints\AntiGravityPowerupDefinition.cs" />
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
     <Compile Include="Powerups\Blueprints\PowerupLibrary.cs" />
+    <Compile Include="Powerups\Blueprints\BouncyProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />

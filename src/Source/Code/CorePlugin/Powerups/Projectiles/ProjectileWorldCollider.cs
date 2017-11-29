@@ -34,6 +34,9 @@ namespace Khronos.Powerups.Projectiles
         [DontSerialize]
         private Camera _gameCamera;
 
+        [DontSerialize]
+        private bool skipCollisionCheck = false;
+
         public void OnCollisionBegin(Component sender, CollisionEventArgs args)
         {
             var hit = args.CollideWith;
@@ -63,7 +66,9 @@ namespace Khronos.Powerups.Projectiles
                     {
                         var projectile = GameObj.GetComponent<Projectile>();
                         if (projectile != null)
-                        projectile.WorldImpact();
+                        {
+                         //   projectile.WorldImpact(args.CollisionData.Normal);
+                        }
                     }
                 }
             }
@@ -97,6 +102,12 @@ namespace Khronos.Powerups.Projectiles
 
         public void OnUpdate()
         {
+            if (skipCollisionCheck)
+            {
+                skipCollisionCheck = false;
+                return;
+            }
+
             Logs.Game.Write(string.Format("dTime: {0}, Length: {1}, Expected max:{2}", Time.DeltaTime, (GameObj.Transform.Pos.Xy - previousPosition.Xy).Length, _rigidbody.LinearVelocity.Length * Time.TimeMult * 1.25));
             //Only check for world collisions if we've gone a short way.  Going further was due to a world loop.
             if ((GameObj.Transform.Pos.Xy - previousPosition.Xy).Length < _rigidbody.LinearVelocity.Length * Time.TimeMult * 1.25)
@@ -113,7 +124,34 @@ namespace Khronos.Powerups.Projectiles
                         {
                             var projectile = GameObj.GetComponent<Projectile>();
                             if (projectile != null)
-                                projectile.WorldImpact();
+                            {
+                                var response = projectile.WorldImpact(hit.Normal);
+                                switch (response)
+                                {
+                                    case ProjectileImpactResponse.DestroyProjectile:
+                                        GameObj.DisposeLater();
+                                        break;
+                                    case ProjectileImpactResponse.Bounce:
+                                        var rigidbody = this.GameObj.GetComponent<RigidBody>();
+                                        if (hit.Normal.X != 0)
+                                        {
+                                            //Left /  right
+                                            rigidbody.LinearVelocity = new Vector2(-rigidbody.LinearVelocity.X, rigidbody.LinearVelocity.Y);
+                                        }
+
+                                        if (hit.Normal.Y != 0)
+                                        {
+                                            //up /  down
+                                            rigidbody.LinearVelocity = new Vector2(rigidbody.LinearVelocity.X, -rigidbody.LinearVelocity.Y);
+                                        }
+
+                                        GameObj.Transform.Pos = previousPosition;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                skipCollisionCheck = true;
+                            }
                         }
                     }
 
