@@ -98,6 +98,7 @@
     <Compile Include="UI\Controls\Control.cs" />
     <Compile Include="UI\Controls\IControlFocusable.cs" />
     <Compile Include="UI\Controls\Panel.cs" />
+    <Compile Include="UI\GameFinishUI.cs" />
     <Compile Include="UI\GUI.cs" />
     <Compile Include="UI\IUIScreen.cs" />
     <Compile Include="UI\PlayerDefinitionEditor.cs" />

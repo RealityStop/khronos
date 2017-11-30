@@ -3,6 +3,7 @@ using Duality.Components.Renderers;
 using Duality.Editor;
 using Duality.Resources;
 using Khronos.Character;
+using Khronos.Data;
 using Khronos.Khrono;
 using Khronos.Powerups.Projectiles;
 using System;
@@ -211,6 +212,7 @@ namespace Khronos
             else
             {
                 State = GameState.GameOver;
+                GameSetup.Instance.SwitchToGameEnd();
             }
         }
 
