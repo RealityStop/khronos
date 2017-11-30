@@ -47,6 +47,8 @@ namespace Khronos.Data
         private ContentRef<Scene> playerSetupScreen;
         [DontSerialize]
         private ContentRef<Scene> gameEndScreen;
+        [DontSerialize]
+        private ContentRef<Scene> gameSetupScene;
 
 
 
@@ -62,9 +64,8 @@ namespace Khronos.Data
 
         public void SwitchToStage(IEnumerable<PlayerDefinition> players)
         {
-            var gameplaySetup = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
-            gameplaySetup.Res.Append(Level.Res.LevelSetupScene);
-            Scene.SwitchTo(gameplaySetup);
+            gameSetupScene.Res.Append(Level.Res.LevelSetupScene);
+            Scene.SwitchTo(gameSetupScene);
             Players = players.ToList();
             //Scene.Current.Append(Level.Res.LevelSetupScene);  //Doesn't seem to work.  Hence getting a runtime reference and appending prior to load.
 
@@ -83,13 +84,23 @@ namespace Khronos.Data
         {
             stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
             playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
+            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
             gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.Res");
         }
 
 
         internal void Reset()
         {
+            WinningPlayer = null;
             Players.Clear();
+            stageSelectScreen.Res.Dispose();
+            stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
+            playerSetupScreen.Res.Dispose();
+            playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
+            gameSetupScene.Res.Dispose();
+            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
+            gameEndScreen.Res.Dispose();
+            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.Res");
         }
 
     }
