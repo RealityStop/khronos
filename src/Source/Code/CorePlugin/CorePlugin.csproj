@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(SolutionDir)..\..\DualityLauncher.exe</StartProgram>
+    <StartWorkingDirectory>$(SolutionDir)..\..</StartWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(SolutionDir)..\..\DualityLauncher.exe</StartProgram>
+    <StartWorkingDirectory>$(SolutionDir)..\..</StartWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Khronos</RootNamespace>
+    <AssemblyName>GamePlugin.core</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>GamePlugin.core.xml</DocumentationFile>
+    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>GamePlugin.core.xml</DocumentationFile>
+    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Duality">
+      <HintPath>..\..\..\Duality.dll</HintPath>
+    </Reference>
+    <Reference Include="DualityPrimitives">
+      <HintPath>..\..\..\DualityPrimitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Tilemaps.core">
+      <HintPath>..\..\..\Plugins\Tilemaps.core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Character\Status\InvertGravity.cs" />
+    <Compile Include="Character\Status\StatusEffect.cs" />
+    <Compile Include="Data\GameSetup.cs" />
+    <Compile Include="Data\PlayerDefinition.cs" />
+    <Compile Include="Data\Stage.cs" />
+    <Compile Include="Khrono\Actions\RecordableAction.cs" />
+    <Compile Include="Khrono\Actions\PlayerShot.cs" />
+    <Compile Include="Character\Ghost.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="ConstantsEditorComponent.cs" />
+    <Compile Include="CorePlugin.cs" />
+    <Compile Include="Data\CollectionHelpers.cs" />
+    <Compile Include="Data\Deque.cs" />
+    <Compile Include="FpsDisplay.cs" />
+    <Compile Include="Character\Player.cs" />
+    <Compile Include="Character\PlayerCollider.cs" />
+    <Compile Include="Character\PlayerMovement.cs" />
+    <Compile Include="GameStateManager.cs" />
+    <Compile Include="Khrono\PointInTime.cs" />
+    <Compile Include="Khrono\TimeBody.cs" />
+    <Compile Include="Powerups\Blueprints\AntiGravityPowerupDefinition.cs" />
+    <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
+    <Compile Include="Powerups\Blueprints\PowerupLibrary.cs" />
+    <Compile Include="Powerups\Blueprints\BouncyProjectilePowerupDefinition.cs" />
+    <Compile Include="Powerups\PowerupInstance.cs" />
+    <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\KillGhost.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\KillPlayer.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileEffects\ProjectileEffect.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileShotDirection.cs" />
+    <Compile Include="Powerups\Projectiles\Projectile.cs" />
+    <Compile Include="Powerups\Projectiles\ProjectileWorldCollider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Controls\Button.cs" />
+    <Compile Include="UI\Controls\Control.cs" />
+    <Compile Include="UI\Controls\IControlFocusable.cs" />
+    <Compile Include="UI\Controls\Panel.cs" />
+    <Compile Include="UI\GameFinishUI.cs" />
+    <Compile Include="UI\GUI.cs" />
+    <Compile Include="UI\IUIScreen.cs" />
+    <Compile Include="UI\PlayerDefinitionEditor.cs" />
+    <Compile Include="UI\PlayerSetup.cs" />
+    <Compile Include="UI\Screens\MainMenu.cs" />
+    <Compile Include="UI\Screens\StageSelect.cs" />
+    <Compile Include="UI\Screens\TestOverlay.cs" />
+    <Compile Include="UI\UIScreen.cs" />
+    <Compile Include="UI\UITest.cs" />
+    <Compile Include="World\BackingData\HumperColliderTags.cs" />
+    <Compile Include="World\HumpererRenderer.cs" />
+    <Compile Include="World\HumperLevelGen.cs" />
+    <Compile Include="World\BackingData\HumperMapObject.cs" />
+    <Compile Include="World\BackingData\GameLevel.cs" />
+    <Compile Include="World\Level\Platform.cs" />
+    <Compile Include="World\Level\TilemapObjectPositioner.cs" />
+    <Compile Include="Character\PlayerSpawner.cs" />
+    <Compile Include="World\Level\PlayerSpawnPoint.cs" />
+    <Compile Include="World\Level\PowerupPickup.cs" />
+    <Compile Include="World\BackingData\TileMerger.cs" />
+    <Compile Include="World\WorldManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Humper\Sources\Humper\Humper.csproj">
+      <Project>{1dd7d455-8710-44a5-b275-8606eb78d80e}</Project>
+      <Name>Humper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)../../Plugins"
+copy "$(TargetPath)" "$(SolutionDir)../../Plugins"
+copy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)../../Plugins"
+xcopy /Y "$(TargetDir)*.core.xml" "$(SolutionDir)../../Plugins"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

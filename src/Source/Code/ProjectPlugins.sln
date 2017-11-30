@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorePlugin", "CorePlugin\CorePlugin.csproj", "{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference Projects", "Reference Projects", "{B11303FC-58CB-454F-928B-B4C553CAA41F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Duality", "Duality", "{8A7FB212-9BAD-42C9-BB5C-9B6321183A86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Humper", "Humper", "{E15911EA-7126-4941-A482-81B04942A987}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humper", "..\..\..\Humper\Sources\Humper\Humper.csproj", "{1DD7D455-8710-44A5-B275-8606EB78D80E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duality", "..\..\..\duality\Source\Core\Duality\Duality.csproj", "{D821AFB9-BCC9-4025-9A9C-798E2BC546AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DualityPrimitives", "..\..\..\duality\Source\Core\Primitives\DualityPrimitives.csproj", "{C87A6A2F-E537-48FA-A789-3C54CF29CC09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tilemaps.Core", "..\..\..\duality\Source\Plugins\Tilemaps\Core\Tilemaps.Core.csproj", "{2F7D1F9D-0803-4E13-85A6-0AF56AC05431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DualityEditor", "..\..\..\duality\Source\Editor\DualityEditor\DualityEditor.csproj", "{9FB9F397-FD39-460C-A9AD-B4780D19945F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nito.Collections.Deque", "..\..\..\Deque\src\Nito.Collections.Deque\Nito.Collections.Deque.csproj", "{D68F023F-D0A1-43B0-8F41-BA7DCDB63B1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE883F3-72B4-4C7C-A1D1-44EDC09C8F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD7D455-8710-44A5-B275-8606EB78D80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD7D455-8710-44A5-B275-8606EB78D80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD7D455-8710-44A5-B275-8606EB78D80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D821AFB9-BCC9-4025-9A9C-798E2BC546AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D821AFB9-BCC9-4025-9A9C-798E2BC546AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87A6A2F-E537-48FA-A789-3C54CF29CC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87A6A2F-E537-48FA-A789-3C54CF29CC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F7D1F9D-0803-4E13-85A6-0AF56AC05431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F7D1F9D-0803-4E13-85A6-0AF56AC05431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB9F397-FD39-460C-A9AD-B4780D19945F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB9F397-FD39-460C-A9AD-B4780D19945F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68F023F-D0A1-43B0-8F41-BA7DCDB63B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68F023F-D0A1-43B0-8F41-BA7DCDB63B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8A7FB212-9BAD-42C9-BB5C-9B6321183A86} = {B11303FC-58CB-454F-928B-B4C553CAA41F}
+		{E15911EA-7126-4941-A482-81B04942A987} = {B11303FC-58CB-454F-928B-B4C553CAA41F}
+		{1DD7D455-8710-44A5-B275-8606EB78D80E} = {E15911EA-7126-4941-A482-81B04942A987}
+		{D821AFB9-BCC9-4025-9A9C-798E2BC546AB} = {8A7FB212-9BAD-42C9-BB5C-9B6321183A86}
+		{C87A6A2F-E537-48FA-A789-3C54CF29CC09} = {8A7FB212-9BAD-42C9-BB5C-9B6321183A86}
+		{2F7D1F9D-0803-4E13-85A6-0AF56AC05431} = {8A7FB212-9BAD-42C9-BB5C-9B6321183A86}
+		{9FB9F397-FD39-460C-A9AD-B4780D19945F} = {8A7FB212-9BAD-42C9-BB5C-9B6321183A86}
+		{D68F023F-D0A1-43B0-8F41-BA7DCDB63B1D} = {B11303FC-58CB-454F-928B-B4C553CAA41F}
+	EndGlobalSection
+EndGlobal
