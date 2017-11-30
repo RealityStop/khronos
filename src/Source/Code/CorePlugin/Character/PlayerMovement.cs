@@ -116,9 +116,9 @@ namespace Khronos.Character
         {
             if (collider.OnWall)
             {
-                if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                if (Player.Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Player.Definition.AssignedGamepad].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                 {
-                    if (DualityApp.Gamepads[Player.GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                    if (DualityApp.Gamepads[Player.Definition.AssignedGamepad].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                     {
                         //If the player is moving fast enough, and is providing input opposite to the direction of travel... bounce off the wall
                         if (((Vel.X < 0 && horizontalAxisValue > 0.25) || (Vel.X > 0 && horizontalAxisValue < -0.25)))
@@ -158,8 +158,8 @@ namespace Khronos.Character
 
         private Vector2 HandleJump(Vector2 Vel)
         {
-            if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
-                if (DualityApp.Gamepads[Player.GamepadNumber].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+            if (Player.Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Player.Definition.AssignedGamepad].IsAvailable || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
+                if (DualityApp.Gamepads[Player.Definition.AssignedGamepad].ButtonPressed(GamepadButton.A) || DualityApp.Keyboard.KeyPressed(Duality.Input.Key.Space))
                 {
                     Vel.Y = JumpVelocity * GravityModifier;
 
@@ -268,8 +268,8 @@ namespace Khronos.Character
         internal float GatherHorizontalAxisValue()
         {
             float horizontalAxisValue = 0;
-            if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable)
-                horizontalAxisValue = DualityApp.Gamepads[Player.GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX);
+            if (Player.Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Player.Definition.AssignedGamepad].IsAvailable)
+                horizontalAxisValue = DualityApp.Gamepads[Player.Definition.AssignedGamepad].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickX);
 
             if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.A))
                 horizontalAxisValue = -1;
@@ -282,8 +282,8 @@ namespace Khronos.Character
         internal float GatherVerticalAxisValue()
         {
             float verticalAxisValue = 0;
-            if (Player.GamepadNumber >= 0 && DualityApp.Gamepads[Player.GamepadNumber].IsAvailable)
-                verticalAxisValue = DualityApp.Gamepads[Player.GamepadNumber].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickY);
+            if (Player.Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Player.Definition.AssignedGamepad].IsAvailable)
+                verticalAxisValue = DualityApp.Gamepads[Player.Definition.AssignedGamepad].AxisValue(Duality.Input.GamepadAxis.LeftThumbstickY);
 
             if (DualityApp.Keyboard.KeyPressed(Duality.Input.Key.W))
                 verticalAxisValue = -1;

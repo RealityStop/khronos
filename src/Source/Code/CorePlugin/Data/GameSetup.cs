@@ -10,22 +10,45 @@ namespace Khronos.Data
 {
     public class GameSetup
     {
+        [DontSerialize]
         private static GameSetup _instance = new GameSetup();
         public static GameSetup Instance { get { return _instance; } }
 
-        private IEnumerable<PlayerDefinition> _players;
-
-        public IEnumerable<PlayerDefinition> Players
+        [DontSerialize]
+        private List<PlayerDefinition> _players;
+        public List<PlayerDefinition> Players
         {
             get { return _players; }
             set { _players = value; }
         }
 
+        [DontSerialize]
+        private PlayerDefinition _winningPlayer;
+        public PlayerDefinition WinningPlayer
+        {
+            get { return _winningPlayer; }
+            set { _winningPlayer = value; }
+        }
 
-        public ContentRef<Stage> Level { get; set; }
 
+
+        [DontSerialize]
+        private ContentRef<Stage> _level;
+        public ContentRef<Stage> Level
+        {
+            get { return _level; }
+            set { _level = value; }
+        }
+
+
+        [DontSerialize]
         private ContentRef<Scene> stageSelectScreen;
+        [DontSerialize]
         private ContentRef<Scene> playerSetupScreen;
+        [DontSerialize]
+        private ContentRef<Scene> gameEndScreen;
+        [DontSerialize]
+        private ContentRef<Scene> gameSetupScene;
 
 
 
@@ -41,18 +64,44 @@ namespace Khronos.Data
 
         public void SwitchToStage(IEnumerable<PlayerDefinition> players)
         {
-            var gameplaySetup = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
-            gameplaySetup.Res.Append(Level.Res.LevelSetupScene);
-            Scene.SwitchTo(gameplaySetup);
-            Players = players;
+            gameSetupScene.Res.Append(Level.Res.LevelSetupScene);
+            Scene.SwitchTo(gameSetupScene);
+            Players = players.ToList();
             //Scene.Current.Append(Level.Res.LevelSetupScene);  //Doesn't seem to work.  Hence getting a runtime reference and appending prior to load.
+
+            //Adam, brainiac extraordinaire, knows the reason for it.  Turns out, if you actually read the comments on .SwitchTo(), it isn't actually immediate.
+            //Otherwise, everything would fly apart as some updates would have happened, some wouldn't, and the object that was in the Update() wouldn't exist anymore...
+            //So yeah.  You can add to the current scene, but only after the Scene.Current is actually the scene that you want.
+        }
+
+        internal void SwitchToGameEnd(PlayerDefinition winningPlayer)
+        {
+            WinningPlayer = winningPlayer;
+            Scene.SwitchTo(gameEndScreen);
         }
 
         private GameSetup()
         {
             stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
             playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
+            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
+            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.Res");
         }
-        
+
+
+        internal void Reset()
+        {
+            WinningPlayer = null;
+            Players.Clear();
+            stageSelectScreen.Res.Dispose();
+            stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
+            playerSetupScreen.Res.Dispose();
+            playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
+            gameSetupScene.Res.Dispose();
+            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
+            gameEndScreen.Res.Dispose();
+            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.Res");
+        }
+
     }
 }
