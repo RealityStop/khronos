@@ -212,7 +212,7 @@ namespace Khronos
             else
             {
                 State = GameState.GameOver;
-                GameSetup.Instance.SwitchToGameEnd();
+                GameSetup.Instance.SwitchToGameEnd(PlayerList.Where(x=>x != player).Select(x=>x.Definition).First());
             }
         }
 
@@ -230,7 +230,7 @@ namespace Khronos
                 var ghost = newGhost.GetComponent<Ghost>();
                 var timebody = newGhost.GetComponent<TimeBody>();
                 newGhost.GetComponent<SpriteRenderer>().SharedMaterial = player.GameObj.GetComponent<SpriteRenderer>().SharedMaterial;
-                newGhost.GetComponent<SpriteRenderer>().ColorTint = player.GhostColor;
+                newGhost.GetComponent<SpriteRenderer>().ColorTint = player.Definition.PlayerColor.Ghost;
                 ghost.Owner = player;
                 timebody.InheritBuffer(player.TimeBody);
 

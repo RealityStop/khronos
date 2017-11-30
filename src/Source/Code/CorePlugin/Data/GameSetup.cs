@@ -23,6 +23,16 @@ namespace Khronos.Data
         }
 
         [DontSerialize]
+        private PlayerDefinition _winningPlayer;
+        public PlayerDefinition WinningPlayer
+        {
+            get { return _winningPlayer; }
+            set { _winningPlayer = value; }
+        }
+
+
+
+        [DontSerialize]
         private ContentRef<Stage> _level;
         public ContentRef<Stage> Level
         {
@@ -63,8 +73,9 @@ namespace Khronos.Data
             //So yeah.  You can add to the current scene, but only after the Scene.Current is actually the scene that you want.
         }
 
-        internal void SwitchToGameEnd()
+        internal void SwitchToGameEnd(PlayerDefinition winningPlayer)
         {
+            WinningPlayer = winningPlayer;
             Scene.SwitchTo(gameEndScreen);
         }
 

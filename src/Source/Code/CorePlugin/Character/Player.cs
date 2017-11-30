@@ -12,16 +12,22 @@ using Khronos.Powerups.Projectiles;
 using Khronos.Khrono;
 using Khronos.Character.Status;
 using Duality.Drawing;
+using Khronos.Data;
 
 namespace Khronos.Character
 {
     public class Player : Component, ICmpInitializable, ICmpUpdatable
     {
         public string PlayerName { get; set; }
-
+        
         [DontSerialize]
-        private int _GamepadNumber;
-        public int GamepadNumber { get { return _GamepadNumber; } set { _GamepadNumber = value; } }
+        private PlayerDefinition _definition;
+        public PlayerDefinition Definition
+        {
+            get { return _definition; }
+            set { _definition = value; }
+        }
+
 
         [DontSerialize]
         private PlayerMovement _movement;
@@ -54,23 +60,6 @@ namespace Khronos.Character
         {
             get { return _canCollectPickups; }
             set { _canCollectPickups = value; }
-        }
-
-        [DontSerialize]
-        private ColorRgba _playerColor;
-        public ColorRgba PlayerColor
-        {
-            get { return _playerColor; }
-            set { _playerColor = value; }
-        }
-
-
-        [DontSerialize]
-        private ColorRgba _ghostColor;
-        public ColorRgba GhostColor
-        {
-            get { return _ghostColor; }
-            set { _ghostColor = value; }
         }
 
 
@@ -184,8 +173,8 @@ namespace Khronos.Character
 
         private void CheckUtilityPowerup()
         {
-            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.AltLeft))
-                if (DualityApp.Gamepads[GamepadNumber].ButtonHit(GamepadButton.Y) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.AltLeft))
+            if (Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Definition.AssignedGamepad].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.AltLeft))
+                if (DualityApp.Gamepads[Definition.AssignedGamepad].ButtonHit(GamepadButton.Y) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.AltLeft))
                 {
                     if (UtilityPowerup != null)
                     {
@@ -204,8 +193,8 @@ namespace Khronos.Character
 
         private void CheckWeaponPowerup()
         {
-            if (GamepadNumber >= 0 && DualityApp.Gamepads[GamepadNumber].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
-                if (DualityApp.Gamepads[GamepadNumber].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
+            if (Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Definition.AssignedGamepad].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
+                if (DualityApp.Gamepads[Definition.AssignedGamepad].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 {
                     if (WeaponPowerup != null)
                     {

@@ -13,12 +13,6 @@ namespace Khronos.UI
 {
     public class PlayerSetup : Component, ICmpUpdatable
     {
-
-
-
-
-
-
         [DontSerialize]
         private int _minPlayerCount;
         public int MinPlayerCount
@@ -162,6 +156,7 @@ namespace Khronos.UI
                     editor.PlayerDef = newDef;
                     newDef.Editor = editor;
                     Editors.Add(editor);
+                    Editors.Sort(Comparer<PlayerDefinitionEditor>.Create((one, two) => { return one.PlayerDef.AssignedGamepad.CompareTo(two.PlayerDef.AssignedGamepad);  }));
                     Scene.Current.AddObject(newEditor);
                 }
             }

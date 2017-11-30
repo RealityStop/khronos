@@ -87,9 +87,7 @@ namespace Khronos.Character
                         if (rootPlayer != null)
                             rootPlayer.PlayerName = "Player " + playerDef.AssignedGamepad;
 
-                        rootPlayer.GamepadNumber = playerDef.AssignedGamepad;
-                        rootPlayer.PlayerColor = playerDef.PlayerColor.Player;
-                        rootPlayer.GhostColor = playerDef.PlayerColor.Ghost;
+                        rootPlayer.Definition = playerDef;
 
                         var playerSprite = newObj.GetComponentsDeep<SpriteRenderer>().First();
                         
