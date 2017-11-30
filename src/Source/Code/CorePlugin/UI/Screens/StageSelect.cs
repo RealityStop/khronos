@@ -81,6 +81,8 @@ namespace Khronos.UI.Screens
                 SelectedStage = AllStages[SelectedStageIndex];
 
 
+            Scene.Current.FindComponent<SpriteRenderer>().SharedMaterial = SelectedStage.Res.StageSnapshot;
+
             Controls.Add(selectStageBtn);
             base.OnInitialize();
         }

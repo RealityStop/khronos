@@ -4,7 +4,7 @@
     <parameters dataType="Struct" type="Duality.Drawing.ShaderParameterCollection" id="1100841590" custom="true">
       <body>
         <mainTex dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Texture]]">
-          <contentPath dataType="String">Data\Media\snapshots\Stage 1.Texture.res</contentPath>
+          <contentPath dataType="String">Data\Media\snapshots\stage1.Texture.res</contentPath>
         </mainTex>
       </body>
     </parameters>
