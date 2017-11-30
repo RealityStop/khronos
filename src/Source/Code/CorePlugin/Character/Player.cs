@@ -79,7 +79,8 @@ namespace Khronos.Character
         [DontSerialize]
         private List<StatusEffect> StatusEffects = new List<StatusEffect>();
 
-
+        [DontSerialize]
+        private Random rand = new Random();
 
 
         public void OnInit(InitContext context)
@@ -111,6 +112,19 @@ namespace Khronos.Character
                 WeaponPowerup = powerupInstance;
             else if (powerupInstance.PowerupType.Class == PowerupClass.Utility)
                 UtilityPowerup = powerupInstance;
+
+            if (powerupInstance.PowerupType.PickupSound != null)
+            {
+                if (powerupInstance.PowerupType.PickupSound.Count > 0)
+                {
+                    int index = rand.Next(0, powerupInstance.PowerupType.PickupSound.Count);
+
+                    if (powerupInstance.PowerupType.PickupSound[index].IsAvailable)
+                    {
+                        DualityApp.Sound.PlaySound(powerupInstance.PowerupType.PickupSound[index]);
+                    }
+                }
+            }
         }
 
         internal void AssignStatusEffect(StatusEffect status)

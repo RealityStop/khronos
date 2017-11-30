@@ -27,6 +27,8 @@ namespace Khronos.Powerups
 
         public abstract bool Recordable { get; }
 
+        public List<ContentRef<Sound>> PickupSound { get; set; }
+
         public List<ContentRef<ProjectileEffect>> OnPlayerHitEffects { get; set; }
 
         public abstract PowerupInstance Spawn();

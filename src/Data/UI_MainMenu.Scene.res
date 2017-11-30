@@ -104,7 +104,7 @@
                   </gameScene>
                   <selectedBtn dataType="Int">0</selectedBtn>
                   <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
-                    <contentPath dataType="String">Data\Media\audio\fx\ui\ui_select.Sound.res</contentPath>
+                    <contentPath dataType="String">Data\Media\audio\fx\ui\rollover5.Sound.res</contentPath>
                   </selectSound>
                 </item>
                 <item dataType="Struct" type="Khronos.UI.Screens.TestOverlay" id="2950279790">
