@@ -16,7 +16,7 @@ using Khronos.Data;
 
 namespace Khronos.Character
 {
-    public class Player : Component, ICmpInitializable, ICmpUpdatable
+    public class Player : Component, ICmpInitializable, ICmpUpdatable, IStatusEffectTarget
     {
         public string PlayerName { get; set; }
         
@@ -63,6 +63,23 @@ namespace Khronos.Character
         }
 
 
+        [DontSerialize]
+        private bool _canUsePickups = true;
+        public bool CanUsePickups
+        {
+            get { return _canUsePickups; }
+            set { _canUsePickups = value; }
+        }
+
+        [DontSerialize]
+        private int _shotMitigation;
+        public int ShotMitigation
+        {
+            get { return _shotMitigation; }
+            set { _shotMitigation = value; }
+        }
+
+
 
 
         public int Lives { get; set; }
@@ -78,9 +95,7 @@ namespace Khronos.Character
 
         [DontSerialize]
         private List<StatusEffect> StatusEffects = new List<StatusEffect>();
-
-
-
+        
 
         public void OnInit(InitContext context)
         {
@@ -111,16 +126,29 @@ namespace Khronos.Character
                 WeaponPowerup = powerupInstance;
             else if (powerupInstance.PowerupType.Class == PowerupClass.Utility)
                 UtilityPowerup = powerupInstance;
+
+            if (powerupInstance.PowerupType.PickupSound != null)
+            {
+                if (powerupInstance.PowerupType.PickupSound.Count > 0)
+                {
+                    int index = Constants.Instance.Rand.Next(0, powerupInstance.PowerupType.PickupSound.Count);
+
+                    if (powerupInstance.PowerupType.PickupSound[index].IsAvailable)
+                    {
+                        DualityApp.Sound.PlaySound(powerupInstance.PowerupType.PickupSound[index]);
+                    }
+                }
+            }
         }
 
-        internal void AssignStatusEffect(StatusEffect status)
+        public void AssignStatusEffect(StatusEffect status)
         {
             status.AssignToPlayer(this);
             StatusEffects.Add(status);
         }
 
 
-        internal void RemoveAllStatusEffects()
+        public void RemoveAllStatusEffects()
         {
             while(StatusEffects.Count > 0)
             {
@@ -129,7 +157,7 @@ namespace Khronos.Character
         }
 
 
-        internal void RemoveEffect(StatusEffect status)
+        public void RemoveEffect(StatusEffect status)
         {
             if (StatusEffects.Contains(status))
             {
@@ -154,11 +182,11 @@ namespace Khronos.Character
             if (Movement.CurrentFacing == FacingEnum.Left)
             {
                 //Then we're facing left
-                PowerupSpawnLocation.RelativePos = new Vector3(0, -32, 0);
+                PowerupSpawnLocation.RelativePos = new Vector3(1, -32, 0);
             }
             else
             {
-                PowerupSpawnLocation.RelativePos = new Vector3(32, -32, 0);
+                PowerupSpawnLocation.RelativePos = new Vector3(31, -32, 0);
             }
 
         }
@@ -196,7 +224,7 @@ namespace Khronos.Character
             if (Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Definition.AssignedGamepad].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 if (DualityApp.Gamepads[Definition.AssignedGamepad].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 {
-                    if (WeaponPowerup != null)
+                    if (WeaponPowerup != null && CanUsePickups)
                     {
                         float horizontalaxis = Movement.GatherHorizontalAxisValue();
                         float verticalaxis = Movement.GatherVerticalAxisValue();

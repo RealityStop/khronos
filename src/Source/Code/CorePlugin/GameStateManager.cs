@@ -4,6 +4,7 @@ using Duality.Editor;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Data;
+using Khronos.Extensions;
 using Khronos.Khrono;
 using Khronos.Powerups.Projectiles;
 using System;
@@ -55,7 +56,7 @@ namespace Khronos
             foreach (var player in ParticipatingPlayers)
             {
                 DisablePlayer(player);
-                player.TimeBody.StartRewind(8, true, () =>
+                player.TimeBody.StartRewind(2, true, () =>
                 {
                     FinishPlayerDeathRewind(player);
                 });
@@ -65,7 +66,7 @@ namespace Khronos
             //Turn on replay for all ghosts.
             foreach (var ghost in ParticipatingGhosts)
             {
-                ghost.TimeBody.StartRewind(8, false, () =>
+                ghost.TimeBody.StartRewind(2, false, () =>
                 {
                     FinishGhostDeathRewind(ghost);
                 });
@@ -96,6 +97,7 @@ namespace Khronos
             player.Movement.ActiveSingle = false;
             player.Collider.ActiveSingle = false;
             player.CanCollectPickups = false;
+            player.CanUsePickups = false;
         }
 
 
@@ -104,6 +106,8 @@ namespace Khronos
             player.Movement.ActiveSingle = true;
             player.Collider.ActiveSingle = true;
             player.CanCollectPickups = true;
+            player.CanUsePickups = true;
+            player.Movement.Velocity = Vector2.Zero;
         }
 
         private void ClearPlayerBuffer(Player player)
@@ -163,6 +167,10 @@ namespace Khronos
         public ContentRef<Prefab> GhostPrefab { get; set; }
 
 
+        public List<ContentRef<Sound>> PlayerDeathSounds { get; set; }
+        public List<ContentRef<Sound>> GhostDeathSounds { get; set; }
+
+
         public void OnInit(InitContext context)
         {
             State = GameState.PrePlay;
@@ -200,7 +208,9 @@ namespace Khronos
                 player.Movement.Velocity = Vector2.Zero;
                 State = GameState.Rewind;
 
+                PlayerDeathSounds.PlayRandomSound();
                 var newGhost = SpawnGhost(player);
+                GameObj.GetComponentsDeep<ScreenFlash>().FirstOrDefault()?.Flash();
 
                 RewindOperation newRewind = new RewindOperation(PlayerList, GhostList, () => {
                     newGhost.Transform.Pos = player.GameObj.Transform.Pos;
@@ -219,6 +229,7 @@ namespace Khronos
 
         internal void GhostDead(Ghost hit)
         {
+            GhostDeathSounds.PlayRandomSound();
             hit.KillTemporarily();
         }
 

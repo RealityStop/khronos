@@ -11,13 +11,9 @@ namespace Khronos.Powerups.Blueprints
     {
         public List<ContentRef<PowerupDefinition>> _AllPowerupTypes { get; private set; } = new List<ContentRef<PowerupDefinition>>();
 
-        [DontSerialize]
-        Random rand = new Random();
-
-
         public ContentRef<PowerupDefinition> GetRandomPowerup()
         {
-            return rand.OneOf(_AllPowerupTypes).Res;
+            return Constants.Instance.Rand.OneOf(_AllPowerupTypes).Res;
         }
     }
 }

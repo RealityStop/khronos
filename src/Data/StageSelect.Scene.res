@@ -234,7 +234,7 @@
                   </rect>
                   <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
                   <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-                    <contentPath dataType="String">Data\Media\snapshots\Stage 1.Material.res</contentPath>
+                    <contentPath dataType="String">Data\Media\snapshots\stage1.Material.res</contentPath>
                   </sharedMat>
                   <spriteIndex dataType="Int">-1</spriteIndex>
                   <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
@@ -294,7 +294,7 @@
                   <_x003C_Visible_x003E_k__BackingField dataType="Bool">true</_x003C_Visible_x003E_k__BackingField>
                   <selectedBtn dataType="Int">0</selectedBtn>
                   <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
-                    <contentPath dataType="String">Data\Media\audio\fx\ui\ui_select.Sound.res</contentPath>
+                    <contentPath dataType="String">Data\Media\audio\fx\ui\rollover5.Sound.res</contentPath>
                   </selectSound>
                 </item>
               </_items>

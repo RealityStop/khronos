@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Khronos.Character;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,6 @@ namespace Khronos.Khrono.Actions
     {
         public abstract RecordableActionType Action { get; }
 
-        public abstract void Do();
+        public abstract void Do(TimeBody owner = null);
     }
 }

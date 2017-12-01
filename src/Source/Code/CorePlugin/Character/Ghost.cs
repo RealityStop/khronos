@@ -2,6 +2,7 @@
 using Duality.Components;
 using Duality.Components.Physics;
 using Duality.Components.Renderers;
+using Khronos.Character.Status;
 using Khronos.Khrono;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Khronos.Character
 {
     [RequiredComponent(typeof(Transform))]
     [RequiredComponent(typeof(TimeBody))]
-    public class Ghost : Component, ICmpInitializable
+    public class Ghost : Component, ICmpInitializable, IStatusEffectTarget, ICmpUpdatable
     {
         [DontSerialize]
         private Player _owner;
@@ -27,15 +28,28 @@ namespace Khronos.Character
 
         [DontSerialize]
         private TimeBody _timeBody;
-
         public TimeBody TimeBody
         {
             get { return _timeBody; }
             set { _timeBody = value; }
         }
 
+
+        [DontSerialize]
+        private int _shotMitigation;
+        public int ShotMitigation
+        {
+            get { return _shotMitigation; }
+            set { _shotMitigation = value; }
+        }
+
         [DontSerialize]
         Action loopGhost = null;
+
+
+
+        [DontSerialize]
+        private List<StatusEffect> StatusEffects = new List<StatusEffect>();
 
         public void OnInit(InitContext context)
         {
@@ -59,6 +73,32 @@ namespace Khronos.Character
         {
         }
 
+
+        public void AssignStatusEffect(StatusEffect status)
+        {
+            status.AssignToGhost(this);
+            StatusEffects.Add(status);
+        }
+
+
+        public void RemoveAllStatusEffects()
+        {
+            while (StatusEffects.Count > 0)
+            {
+                RemoveEffect(StatusEffects[0]);
+            }
+        }
+
+
+        public void RemoveEffect(StatusEffect status)
+        {
+            if (StatusEffects.Contains(status))
+            {
+                status.Remove();
+                StatusEffects.Remove(status);
+            }
+        }
+
         public void PlayRecord()
         {
             loopGhost();
@@ -66,6 +106,7 @@ namespace Khronos.Character
 
         internal void KillTemporarily()
         {
+            RemoveAllStatusEffects();
             TimeBody.playActions = false;
             var renderer = GameObj.GetComponent<SpriteRenderer>();
             if (renderer != null)
@@ -73,6 +114,15 @@ namespace Khronos.Character
             var physics = GameObj.GetComponent<RigidBody>();
             if (physics != null)
                 physics.ActiveSingle = false;
+        }
+
+        public void OnUpdate()
+        {
+            for (int i = 0; i < StatusEffects.Count; i++)
+            {
+                if (!StatusEffects[i].Update())
+                    RemoveEffect(StatusEffects[i--]);
+            }
         }
     }
 }

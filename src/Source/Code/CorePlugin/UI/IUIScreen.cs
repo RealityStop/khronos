@@ -10,7 +10,7 @@ namespace Khronos.UI
 
         float DrawOrder { get; set; }
 
-        void OnInitialize();
+        void OnInitialize(GUI gui);
 
         void OnDisable();
 

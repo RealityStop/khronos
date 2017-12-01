@@ -77,7 +77,7 @@ namespace Khronos.Khrono
         public void UpdateTimeWalk()
         {
             timewalkDuration += Time.DeltaTime;
-            if (timewalkDuration > 2.5)
+            if (timewalkDuration > 1 && !playActions)
             {
                 bufferChangeStep = (int)(bufferChangeStep * 1.5);
                 timewalkDuration = 0;
@@ -98,7 +98,7 @@ namespace Khronos.Khrono
                     {
                         foreach (var item in pointInTime.Actions)
                         {
-                            item.Do();
+                            item.Do(this);
                         }
                     }
                 }

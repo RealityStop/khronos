@@ -98,13 +98,16 @@
                 <item dataType="Struct" type="Khronos.UI.Screens.MainMenu" id="410551504">
                   <_x003C_Active_x003E_k__BackingField dataType="Bool">true</_x003C_Active_x003E_k__BackingField>
                   <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">0</_x003C_DrawOrder_x003E_k__BackingField>
+                  <_x003C_HowToPlayScene_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
+                    <contentPath dataType="String">Data\HowToPlay1.Scene.res</contentPath>
+                  </_x003C_HowToPlayScene_x003E_k__BackingField>
                   <_x003C_Visible_x003E_k__BackingField dataType="Bool">true</_x003C_Visible_x003E_k__BackingField>
                   <gameScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
                     <contentPath dataType="String">Data\StageSelect.Scene.res</contentPath>
                   </gameScene>
                   <selectedBtn dataType="Int">0</selectedBtn>
                   <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
-                    <contentPath dataType="String">Data\Media\audio\fx\ui\ui_select.Sound.res</contentPath>
+                    <contentPath dataType="String">Data\Media\audio\fx\ui\rollover5.Sound.res</contentPath>
                   </selectSound>
                 </item>
                 <item dataType="Struct" type="Khronos.UI.Screens.TestOverlay" id="2950279790">
@@ -119,17 +122,32 @@
               <contentPath dataType="String">Data\Media\fonts\m5x7.Font.res</contentPath>
             </textFont>
           </item>
+          <item dataType="Struct" type="Khronos.Jukebox" id="2828083186">
+            <_x003C_ForceStopAllMusic_x003E_k__BackingField dataType="Bool">true</_x003C_ForceStopAllMusic_x003E_k__BackingField>
+            <_x003C_Music_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Duality.Resources.Sound]]]]" id="1197752298">
+              <_items dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Sound]][]" id="85431584" length="4">
+                <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                  <contentPath dataType="String">Data\Media\audio\music\02_Failien_Funk.Sound.res</contentPath>
+                </item>
+              </_items>
+              <_size dataType="Int">1</_size>
+            </_x003C_Music_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">2496773112</gameobj>
+          </item>
         </_items>
-        <_size dataType="Int">1</_size>
+        <_size dataType="Int">2</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="3992226442" surrogate="true">
         <header />
         <body>
           <keys dataType="Array" type="System.Object[]" id="2237010236">
             <item dataType="Type" id="653414212" value="Khronos.UI.GUI" />
+            <item dataType="Type" id="218992278" value="Khronos.Jukebox" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="1418683286">
             <item dataType="ObjectRef">2294168029</item>
+            <item dataType="ObjectRef">2828083186</item>
           </values>
         </body>
       </compMap>

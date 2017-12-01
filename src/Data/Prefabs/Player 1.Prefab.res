@@ -135,12 +135,12 @@
                 <ignoreParent dataType="Bool">false</ignoreParent>
                 <parentTransform dataType="ObjectRef">4199150011</parentTransform>
                 <pos dataType="Struct" type="Duality.Vector3">
-                  <X dataType="Float">32</X>
+                  <X dataType="Float">31</X>
                   <Y dataType="Float">-36</Y>
                   <Z dataType="Float">0</Z>
                 </pos>
                 <posAbs dataType="Struct" type="Duality.Vector3">
-                  <X dataType="Float">283.360352</X>
+                  <X dataType="Float">282.360352</X>
                   <Y dataType="Float">-313.0387</Y>
                   <Z dataType="Float">0</Z>
                 </posAbs>
@@ -181,6 +181,32 @@
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1988502730">
       <_items dataType="Array" type="Duality.Component[]" id="4262755592">
         <item dataType="ObjectRef">4199150011</item>
+        <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="1315524777">
+          <active dataType="Bool">true</active>
+          <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
+            <A dataType="Byte">255</A>
+            <B dataType="Byte">255</B>
+            <G dataType="Byte">255</G>
+            <R dataType="Byte">255</R>
+          </colorTint>
+          <customMat />
+          <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
+          <gameobj dataType="ObjectRef">4141872793</gameobj>
+          <offset dataType="Float">0</offset>
+          <pixelGrid dataType="Bool">false</pixelGrid>
+          <rect dataType="Struct" type="Duality.Rect">
+            <H dataType="Float">64</H>
+            <W dataType="Float">32</W>
+            <X dataType="Float">0</X>
+            <Y dataType="Float">-64</Y>
+          </rect>
+          <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
+          <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+            <contentPath dataType="String">Data\Media\sprites\player\player graphic.Material.res</contentPath>
+          </sharedMat>
+          <spriteIndex dataType="Int">-1</spriteIndex>
+          <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
+        </item>
         <item dataType="Struct" type="Duality.Components.Physics.RigidBody" id="3676802281">
           <active dataType="Bool">true</active>
           <allowParent dataType="Bool">false</allowParent>
@@ -247,35 +273,7 @@
           </shapes>
           <useCCD dataType="Bool">false</useCCD>
         </item>
-        <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="1315524777">
-          <active dataType="Bool">true</active>
-          <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
-            <A dataType="Byte">255</A>
-            <B dataType="Byte">255</B>
-            <G dataType="Byte">255</G>
-            <R dataType="Byte">255</R>
-          </colorTint>
-          <customMat />
-          <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
-          <gameobj dataType="ObjectRef">4141872793</gameobj>
-          <offset dataType="Float">0</offset>
-          <pixelGrid dataType="Bool">false</pixelGrid>
-          <rect dataType="Struct" type="Duality.Rect">
-            <H dataType="Float">64</H>
-            <W dataType="Float">32</W>
-            <X dataType="Float">0</X>
-            <Y dataType="Float">-64</Y>
-          </rect>
-          <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
-          <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-            <contentPath dataType="String">Data\Media\sprites\player\player graphic.Material.res</contentPath>
-          </sharedMat>
-          <spriteIndex dataType="Int">-1</spriteIndex>
-          <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
-        </item>
         <item dataType="Struct" type="Khronos.World.HumperRenderer" id="3941184229">
-          <_height dataType="Int">0</_height>
-          <_width dataType="Int">0</_width>
           <active dataType="Bool">false</active>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
@@ -283,8 +281,9 @@
         <item dataType="Struct" type="Khronos.Character.Player" id="2047519163">
           <_x003C_Lives_x003E_k__BackingField dataType="Int">5</_x003C_Lives_x003E_k__BackingField>
           <_x003C_PlayerName_x003E_k__BackingField />
-          <_x003C_Powerup_x003E_k__BackingField />
           <_x003C_PowerupSpawnLocation_x003E_k__BackingField dataType="ObjectRef">1112785454</_x003C_PowerupSpawnLocation_x003E_k__BackingField>
+          <_x003C_UtilityPowerup_x003E_k__BackingField />
+          <_x003C_WeaponPowerup_x003E_k__BackingField />
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">4141872793</gameobj>
         </item>
@@ -312,6 +311,50 @@
           <_x003C_JumpDirection_x003E_k__BackingField dataType="Enum" type="Khronos.Character.JumpDirectionEnum" name="None" value="0" />
           <_x003C_JumpVelocity_x003E_k__BackingField dataType="Float">-20</_x003C_JumpVelocity_x003E_k__BackingField>
           <_x003C_MinimumHorizontalVelocityOnGround_x003E_k__BackingField dataType="Float">2</_x003C_MinimumHorizontalVelocityOnGround_x003E_k__BackingField>
+          <_x003C_PlayerJumpSounds_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Duality.Resources.Sound]]]]" id="219955808">
+            <_items dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Sound]][]" id="264024796" length="16">
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+              <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                <contentPath dataType="String">Data\Media\audio\fx\jump\swish.Sound.res</contentPath>
+              </item>
+            </_items>
+            <_size dataType="Int">13</_size>
+          </_x003C_PlayerJumpSounds_x003E_k__BackingField>
           <_x003C_TerminalVelocity_x003E_k__BackingField dataType="Struct" type="Duality.Vector2">
             <X dataType="Float">20</X>
             <Y dataType="Float">20</Y>

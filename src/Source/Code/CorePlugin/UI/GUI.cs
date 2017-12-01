@@ -4,6 +4,7 @@ using System.Linq;
 using Duality;
 using Duality.Drawing;
 using Duality.Resources;
+using Khronos.UI.Screens;
 
 namespace Khronos.UI
 {
@@ -24,7 +25,7 @@ namespace Khronos.UI
             }
         }
 
-        private List<IUIScreen> screens;
+        protected List<IUIScreen> screens;
         private ContentRef<Font> textFont;
 
         public virtual void GetCullingInfo(out CullingInfo info)
@@ -34,7 +35,7 @@ namespace Khronos.UI
             info.Visibility = VisibilityFlag.AllGroups | VisibilityFlag.ScreenOverlay;
         }
 
-        public void OnInit(InitContext context)
+        public virtual void OnInit(InitContext context)
         {
             if (context == InitContext.Activate)
             {
@@ -42,7 +43,7 @@ namespace Khronos.UI
                 {
                     screens.Sort((x, y) => x.DrawOrder.CompareTo(y.DrawOrder));
                     foreach (var screen in screens)
-                        screen?.OnInitialize();
+                        screen?.OnInitialize(this);
                 }
             }
         }
@@ -51,7 +52,7 @@ namespace Khronos.UI
         {
         }
 
-        public void OnUpdate()
+        public virtual void OnUpdate()
         {
             foreach (var screen in screens)
             {
@@ -83,5 +84,7 @@ namespace Khronos.UI
             }
             canvas.End();
         }
+
+        
     }
 }

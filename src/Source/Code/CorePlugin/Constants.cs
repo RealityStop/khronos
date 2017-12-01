@@ -16,5 +16,13 @@ namespace Khronos
 
         public float GamepadDeadband { get; set; } = 0.3f;
         public float Gravity { get; set; } = -0.981f;
+
+        [DontSerialize]
+        private Random _rand = new Random();
+        public Random Rand
+        {
+            get { return _rand; }
+            set { _rand = value; }
+        }
     }
 }

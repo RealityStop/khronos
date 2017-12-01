@@ -12,6 +12,12 @@ namespace Khronos.Powerups.Projectiles.ProjectileEffects
     {
         public override void OnPlayerHit(Player hit, Projectile instance)
         {
+            if (hit.ShotMitigation > 0)
+            {
+                hit.ShotMitigation--;
+                instance.DestroyProjectile();
+                return;
+            }
             Scene.Current.FindComponent<GameStateManager>()?.PlayerDead(hit);
 
             instance.DestroyProjectile();

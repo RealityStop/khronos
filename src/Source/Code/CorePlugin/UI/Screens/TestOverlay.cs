@@ -8,7 +8,7 @@ namespace Khronos.UI.Screens
         public bool Active { get; set; }
         public float DrawOrder { get; set; }
 
-        public void OnInitialize()
+        public void OnInitialize(GUI gui)
         {
         }
 

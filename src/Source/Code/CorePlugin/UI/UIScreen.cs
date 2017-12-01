@@ -23,7 +23,7 @@ namespace Khronos.UI
         [DontSerialize]
         private List<Control> controls = new List<Control>();
 
-        public virtual void OnInitialize()
+        public virtual void OnInitialize(GUI gui)
         {
             foreach (var control in controls)
             {

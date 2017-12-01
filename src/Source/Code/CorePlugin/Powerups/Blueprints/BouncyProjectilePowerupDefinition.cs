@@ -28,6 +28,12 @@ namespace Khronos.Powerups
             return new PowerupInstance() { PowerupType = this, Uses = 1 };
         }
 
+        internal override void ActivateForGhost(Ghost ghost, Vector2 location, ProjectileShotDirection direction)
+        {
+            ActivateForPlayer(ghost.Owner, location, direction);
+        }
+
+
         internal override void ActivateForPlayer(Player player, Vector2 location, ProjectileShotDirection direction)
         {
             if (ProjectilePrefab.IsAvailable)

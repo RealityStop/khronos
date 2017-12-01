@@ -27,9 +27,12 @@ namespace Khronos.UI.Screens
         private ContentRef<Scene> gameScene = new ContentRef<Scene>();
         private ContentRef<Sound> selectSound = new ContentRef<Sound>();
 
+
+        public ContentRef<Scene> HowToPlayScene { get; set; }
+
         private int selectedBtn = 0;
 
-        public override void OnInitialize()
+        public override void OnInitialize(GUI gui)
         {
             Visible = true;
             Active = true;
@@ -50,18 +53,20 @@ namespace Khronos.UI.Screens
                     Scene.SwitchTo(gameScene);
             };
 
-            var optionsBtn = startGameBtn.DeepClone();
-            optionsBtn.Position += new Vector2(0, 100);
-            optionsBtn.Text = "Options";
-            optionsBtn.FocusValue = 2;
-            optionsBtn.Clicked += (sender, args) =>
+            var howToPlayBtn = startGameBtn.DeepClone();
+            howToPlayBtn.Position += new Vector2(0, 100);
+            howToPlayBtn.Text = "How to Play";
+            howToPlayBtn.FocusValue = 2;
+            howToPlayBtn.Clicked += (sender, args) =>
             {
+                if (gameScene.IsAvailable)
+                    Scene.SwitchTo(HowToPlayScene);
             };
 
-            var exitBtn = optionsBtn.DeepClone();
+            var exitBtn = howToPlayBtn.DeepClone();
             exitBtn.Position += new Vector2(0, 100);
             exitBtn.Text = "Exit";
-            optionsBtn.FocusValue = 3;
+            exitBtn.FocusValue = 3;
             exitBtn.Clicked += (sender, args) =>
             {
                 DualityApp.Terminate();
@@ -70,9 +75,9 @@ namespace Khronos.UI.Screens
             startGameBtn.Focused = true;
 
             Controls.Add(startGameBtn);
-            Controls.Add(optionsBtn);
+            Controls.Add(howToPlayBtn);
             Controls.Add(exitBtn);
-            base.OnInitialize();
+            base.OnInitialize(gui);
         }
 
         public override void OnUpdate()
@@ -132,6 +137,8 @@ namespace Khronos.UI.Screens
             canvas.DrawText("Khronos", resolution.X / 2, resolution.Y / 2 - 150f, 0f, Alignment.Center);
 
             canvas.State.TransformScale = Vector2.One;
+
+            canvas.DrawText("For a list of attributions, please see the project page.", resolution.X / 2, resolution.Y - 150f, 0f, Alignment.Center);
 
             base.OnDraw(canvas);
         }

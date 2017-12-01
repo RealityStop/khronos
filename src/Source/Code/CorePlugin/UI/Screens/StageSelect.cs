@@ -50,7 +50,7 @@ namespace Khronos.UI.Screens
 
         private int selectedBtn = 0;
 
-        public override void OnInitialize()
+        public override void OnInitialize(GUI gui)
         {
             Visible = true;
             Active = true;
@@ -84,7 +84,7 @@ namespace Khronos.UI.Screens
             Scene.Current.FindComponent<SpriteRenderer>().SharedMaterial = SelectedStage.Res.StageSnapshot;
 
             Controls.Add(selectStageBtn);
-            base.OnInitialize();
+            base.OnInitialize(gui);
         }
 
         public override void OnUpdate()

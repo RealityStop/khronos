@@ -23,5 +23,10 @@ namespace Khronos.Powerups
         {
             player.AssignStatusEffect(new InvertGravityStatusEffect() { Duration = 5 });
         }
+
+        internal override void ActivateForGhost(Ghost ghost, Vector2 location, ProjectileShotDirection direction)
+        {
+            
+        }
     }
 }
