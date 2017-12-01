@@ -1,6 +1,7 @@
 ﻿using Duality;
 using Duality.Components;
 using Duality.Components.Physics;
+using Duality.Components.Renderers;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Extensions;
@@ -20,11 +21,13 @@ namespace Khronos.Powerups.Projectiles
     /// </summary>
     [RequiredComponent(typeof(Transform))]
     [RequiredComponent(typeof(RigidBody))]
-    public class Projectile : Component, ICmpUpdatable
+    public class Projectile : Component, ICmpUpdatable , ICmpInitializable
     {
         public float TimeToLive { get; set; }
 
         public Player Owner { get; set; }
+
+        public SpriteRenderer ShotShroud{ get; set; }
 
         public List<ContentRef<ProjectileEffect>> OnHitPlayerEffects { get; set; }
 
@@ -34,8 +37,8 @@ namespace Khronos.Powerups.Projectiles
         public List<ContentRef<Sound>> HitPlayerSound { get; set; }
         public List<ContentRef<Sound>> HitGhostSound { get; set; }
 
-
-
+        [DontSerialize]
+        private RigidBody _body;
 
         public bool Bounce { get; set; }
 
@@ -46,7 +49,7 @@ namespace Khronos.Powerups.Projectiles
             if (TimeToLive <= 0)
                 TimeExpire();
 
-
+            GameObj.Transform.Angle = _body.LinearVelocity.Angle - MathF.PiOver2;
         }
 
         private void TimeExpire()
@@ -89,6 +92,22 @@ namespace Khronos.Powerups.Projectiles
         internal void DestroyProjectile()
         {
             GameObj.DisposeLater();
+        }
+
+        public void OnInit(InitContext context)
+        {
+            _body = GameObj.GetComponent<RigidBody>();
+            if (context == InitContext.Activate)
+            {
+                if (Owner != null && ShotShroud != null)
+                {
+                    ShotShroud.ColorTint = Owner.Definition.PlayerColor.Player.WithAlpha(160);
+                }
+            }
+        }
+
+        public void OnShutdown(ShutdownContext context)
+        {
         }
     }
 }
