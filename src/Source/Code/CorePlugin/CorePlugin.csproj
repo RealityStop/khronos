@@ -60,7 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character\IStatusEffectTarget.cs" />
     <Compile Include="Character\Status\InvertGravity.cs" />
+    <Compile Include="Character\Status\ShieldEffect.cs" />
     <Compile Include="Character\Status\StatusEffect.cs" />
     <Compile Include="Data\GameSetup.cs" />
     <Compile Include="Data\PlayerDefinition.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
     <Compile Include="Powerups\Blueprints\PowerupLibrary.cs" />
     <Compile Include="Powerups\Blueprints\BouncyProjectilePowerupDefinition.cs" />
+    <Compile Include="Powerups\Blueprints\ShieldPowerupDefinition.cs" />
     <Compile Include="Powerups\PowerupInstance.cs" />
     <Compile Include="Powerups\Blueprints\SimpleProjectilePowerupDefinition.cs" />
     <Compile Include="Powerups\Projectiles\ProjectileEffects\AddVelocityOnHitEffect.cs" />

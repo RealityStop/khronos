@@ -26,6 +26,32 @@
           <vel dataType="Struct" type="Duality.Vector3" />
           <velAbs dataType="Struct" type="Duality.Vector3" />
         </item>
+        <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="1267752045">
+          <active dataType="Bool">true</active>
+          <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
+            <A dataType="Byte">70</A>
+            <B dataType="Byte">255</B>
+            <G dataType="Byte">255</G>
+            <R dataType="Byte">255</R>
+          </colorTint>
+          <customMat />
+          <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
+          <gameobj dataType="ObjectRef">4094100061</gameobj>
+          <offset dataType="Float">0</offset>
+          <pixelGrid dataType="Bool">false</pixelGrid>
+          <rect dataType="Struct" type="Duality.Rect">
+            <H dataType="Float">64</H>
+            <W dataType="Float">32</W>
+            <X dataType="Float">0</X>
+            <Y dataType="Float">-64</Y>
+          </rect>
+          <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
+          <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+            <contentPath dataType="String">Data\Media\sprites\player\Ghost.Material.res</contentPath>
+          </sharedMat>
+          <spriteIndex dataType="Int">-1</spriteIndex>
+          <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
+        </item>
         <item dataType="Struct" type="Duality.Components.Physics.RigidBody" id="3629029549">
           <active dataType="Bool">true</active>
           <allowParent dataType="Bool">false</allowParent>
@@ -92,35 +118,9 @@
           </shapes>
           <useCCD dataType="Bool">false</useCCD>
         </item>
-        <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="1267752045">
-          <active dataType="Bool">true</active>
-          <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
-            <A dataType="Byte">70</A>
-            <B dataType="Byte">255</B>
-            <G dataType="Byte">255</G>
-            <R dataType="Byte">255</R>
-          </colorTint>
-          <customMat />
-          <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
-          <gameobj dataType="ObjectRef">4094100061</gameobj>
-          <offset dataType="Float">0</offset>
-          <pixelGrid dataType="Bool">false</pixelGrid>
-          <rect dataType="Struct" type="Duality.Rect">
-            <H dataType="Float">64</H>
-            <W dataType="Float">32</W>
-            <X dataType="Float">0</X>
-            <Y dataType="Float">-64</Y>
-          </rect>
-          <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
-          <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-            <contentPath dataType="String">Data\Media\sprites\player\Ghost.Material.res</contentPath>
-          </sharedMat>
-          <spriteIndex dataType="Int">-1</spriteIndex>
-          <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
-        </item>
         <item dataType="Struct" type="Khronos.Khrono.TimeBody" id="3758860171">
           <_OnComplete dataType="Delegate" type="System.Action" id="75654303" multi="true">
-            <method dataType="MemberInfo" id="3265369966" value="M:Khronos.Character.Ghost:&lt;OnInit&gt;b__9_0" />
+            <method dataType="MemberInfo" id="3265369966" value="M:Khronos.Character.Ghost:&lt;OnInit&gt;b__14_0" />
             <target dataType="Struct" type="Khronos.Character.Ghost" id="1207636351">
               <active dataType="Bool">true</active>
               <gameobj dataType="ObjectRef">4094100061</gameobj>

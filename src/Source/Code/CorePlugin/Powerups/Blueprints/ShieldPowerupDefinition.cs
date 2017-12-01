@@ -8,11 +8,11 @@ using Khronos.Character;
 using Khronos.Powerups.Projectiles;
 using Khronos.Character.Status;
 
-namespace Khronos.Powerups
+namespace Khronos.Powerups.Blueprints
 {
-    public class AntiGravityPowerupDefinition : PowerupDefinition
+    public class ShieldPowerupDefinition : PowerupDefinition
     {
-        public override bool Recordable => false;
+        public override bool Recordable => true;
 
         public override PowerupInstance Spawn()
         {
@@ -24,9 +24,9 @@ namespace Khronos.Powerups
             player.AssignStatusEffect(new InvertGravityStatusEffect() { Duration = 5 });
         }
 
-        internal override void ActivateForGhost(Ghost ghost, Vector2 location, ProjectileShotDirection direction)
+        internal override void ActivateForGhost(Ghost player, Vector2 location, ProjectileShotDirection direction)
         {
-            
+            player.AssignStatusEffect(new InvertGravityStatusEffect() { Duration = 5 });
         }
     }
 }

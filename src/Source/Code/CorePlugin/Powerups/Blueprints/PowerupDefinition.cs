@@ -34,5 +34,6 @@ namespace Khronos.Powerups
         public abstract PowerupInstance Spawn();
 
         internal abstract void ActivateForPlayer(Player player, Vector2 location, ProjectileShotDirection direction);
+        internal abstract void ActivateForGhost(Ghost ghost, Vector2 location, ProjectileShotDirection direction);
     }
 }

@@ -14,6 +14,12 @@ namespace Khronos.Powerups.Projectiles.ProjectileEffects
         {
             if (hit.Owner != instance.Owner)
             {
+                if (hit.ShotMitigation > 0)
+                {
+                    hit.ShotMitigation--;
+                    instance.DestroyProjectile();
+                    return;
+                }
                 Scene.Current.FindComponent<GameStateManager>()?.GhostDead(hit);
                 instance.DestroyProjectile();
             }

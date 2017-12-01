@@ -145,8 +145,8 @@
                   <parentTransform />
                   <pos dataType="Struct" type="Duality.Vector3" />
                   <posAbs dataType="Struct" type="Duality.Vector3" />
-                  <scale dataType="Float">20</scale>
-                  <scaleAbs dataType="Float">20</scaleAbs>
+                  <scale dataType="Float">200</scale>
+                  <scaleAbs dataType="Float">200</scaleAbs>
                   <vel dataType="Struct" type="Duality.Vector3" />
                   <velAbs dataType="Struct" type="Duality.Vector3" />
                 </item>

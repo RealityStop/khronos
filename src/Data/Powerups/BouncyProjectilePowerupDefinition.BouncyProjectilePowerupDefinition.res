@@ -5,8 +5,11 @@
       <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]">
         <contentPath dataType="String">Data\PowerupHitEffects\KillPlayer.KillPlayer.res</contentPath>
       </item>
+      <item dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.Projectiles.ProjectileEffects.ProjectileEffect]]">
+        <contentPath dataType="String">Data\PowerupHitEffects\KillGhost.KillGhost.res</contentPath>
+      </item>
     </_items>
-    <_size dataType="Int">1</_size>
+    <_size dataType="Int">2</_size>
   </_x003C_OnPlayerHitEffects_x003E_k__BackingField>
   <_x003C_PickupSound_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Duality.Resources.Sound]]]]" id="2035693768">
     <_items dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Sound]][]" id="2696347487" length="4">

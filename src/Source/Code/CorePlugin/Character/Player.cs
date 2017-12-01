@@ -16,7 +16,7 @@ using Khronos.Data;
 
 namespace Khronos.Character
 {
-    public class Player : Component, ICmpInitializable, ICmpUpdatable
+    public class Player : Component, ICmpInitializable, ICmpUpdatable, IStatusEffectTarget
     {
         public string PlayerName { get; set; }
         
@@ -60,6 +60,14 @@ namespace Khronos.Character
         {
             get { return _canCollectPickups; }
             set { _canCollectPickups = value; }
+        }
+
+        [DontSerialize]
+        private int _shotMitigation;
+        public int ShotMitigation
+        {
+            get { return _shotMitigation; }
+            set { _shotMitigation = value; }
         }
 
 
@@ -124,14 +132,14 @@ namespace Khronos.Character
             }
         }
 
-        internal void AssignStatusEffect(StatusEffect status)
+        public void AssignStatusEffect(StatusEffect status)
         {
             status.AssignToPlayer(this);
             StatusEffects.Add(status);
         }
 
 
-        internal void RemoveAllStatusEffects()
+        public void RemoveAllStatusEffects()
         {
             while(StatusEffects.Count > 0)
             {
@@ -140,7 +148,7 @@ namespace Khronos.Character
         }
 
 
-        internal void RemoveEffect(StatusEffect status)
+        public void RemoveEffect(StatusEffect status)
         {
             if (StatusEffects.Contains(status))
             {
