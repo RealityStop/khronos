@@ -56,7 +56,7 @@ namespace Khronos
             foreach (var player in ParticipatingPlayers)
             {
                 DisablePlayer(player);
-                player.TimeBody.StartRewind(8, true, () =>
+                player.TimeBody.StartRewind(2, true, () =>
                 {
                     FinishPlayerDeathRewind(player);
                 });
@@ -66,7 +66,7 @@ namespace Khronos
             //Turn on replay for all ghosts.
             foreach (var ghost in ParticipatingGhosts)
             {
-                ghost.TimeBody.StartRewind(8, false, () =>
+                ghost.TimeBody.StartRewind(2, false, () =>
                 {
                     FinishGhostDeathRewind(ghost);
                 });
