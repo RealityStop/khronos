@@ -1028,11 +1028,11 @@
                     <contentPath dataType="String">Data\Media\sprites\Powerup\boxCrate_warning.Material.res</contentPath>
                   </_x003C_CloakedPickupSprite_x003E_k__BackingField>
                   <_x003C_CloakPickup_x003E_k__BackingField dataType="Bool">false</_x003C_CloakPickup_x003E_k__BackingField>
-                  <_x003C_OffsetX_x003E_k__BackingField dataType="Float">30</_x003C_OffsetX_x003E_k__BackingField>
+                  <_x003C_OffsetX_x003E_k__BackingField dataType="Float">29.5</_x003C_OffsetX_x003E_k__BackingField>
                   <_x003C_OffsetY_x003E_k__BackingField dataType="Float">27</_x003C_OffsetY_x003E_k__BackingField>
                   <_x003C_Pickup_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Khronos.Powerups.PowerupDefinition]]" />
-                  <_x003C_RespawnTime_x003E_k__BackingField dataType="Float">2</_x003C_RespawnTime_x003E_k__BackingField>
-                  <_x003C_TimeRemaining_x003E_k__BackingField dataType="Float">2</_x003C_TimeRemaining_x003E_k__BackingField>
+                  <_x003C_RespawnTime_x003E_k__BackingField dataType="Float">8</_x003C_RespawnTime_x003E_k__BackingField>
+                  <_x003C_TimeRemaining_x003E_k__BackingField dataType="Float">8</_x003C_TimeRemaining_x003E_k__BackingField>
                   <active dataType="Bool">true</active>
                   <gameobj dataType="ObjectRef">2633057196</gameobj>
                 </item>

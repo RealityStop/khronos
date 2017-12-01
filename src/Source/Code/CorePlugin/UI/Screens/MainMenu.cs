@@ -138,6 +138,8 @@ namespace Khronos.UI.Screens
 
             canvas.State.TransformScale = Vector2.One;
 
+            canvas.DrawText("For a list of attributions, please see the project page.", resolution.X / 2, resolution.Y - 150f, 0f, Alignment.Center);
+
             base.OnDraw(canvas);
         }
     }

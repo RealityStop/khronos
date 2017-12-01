@@ -1,4 +1,5 @@
 ﻿using Duality;
+using Duality.Components.Renderers;
 using Duality.Drawing;
 using Duality.Resources;
 using Khronos.Character;
@@ -76,6 +77,7 @@ namespace Khronos.UI
 
 
         public ContentRef<Prefab> PlayerDefinitionEditorPrefab { get; set; }
+        public TextRenderer HelpTextRenderer { get; set; }
 
         public void OnUpdate()
         {
@@ -88,6 +90,13 @@ namespace Khronos.UI
 
             if (Editors.Count >= MinPlayerCount && Editors.Count <= MaxPlayerCount)
                 Valid = true;
+            else
+                Valid = false;
+
+            if (!Valid)
+                HelpTextRenderer.Text.SourceText = string.Format("Add more Players!  This map supports {0} players.", MinPlayerCount);
+            else
+                HelpTextRenderer.Text.SourceText = "";
 
             AllReady = true;
             foreach (var item in Editors)

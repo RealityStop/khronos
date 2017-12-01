@@ -2061,7 +2061,7 @@
               <contentPath dataType="String">Data\UI_MainMenu.Scene.res</contentPath>
             </_x003C_MainMenuScene_x003E_k__BackingField>
             <_x003C_NextScene_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
-              <contentPath dataType="String">Data\HowToPlay1.Scene.res</contentPath>
+              <contentPath dataType="String">Data\HowToPlay3.Scene.res</contentPath>
             </_x003C_NextScene_x003E_k__BackingField>
             <_x003C_PrevScene_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
               <contentPath dataType="String">Data\HowToPlay1.Scene.res</contentPath>

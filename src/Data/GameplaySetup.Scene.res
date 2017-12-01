@@ -228,6 +228,19 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3527465798</gameobj>
           </item>
+          <item dataType="Struct" type="Khronos.Jukebox" id="3858775872">
+            <_x003C_ForceStopAllMusic_x003E_k__BackingField dataType="Bool">false</_x003C_ForceStopAllMusic_x003E_k__BackingField>
+            <_x003C_Music_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Duality.Resources.Sound]]]]" id="412716556">
+              <_items dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Sound]][]" id="461857956" length="4">
+                <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                  <contentPath dataType="String">Data\Media\audio\music\Rolemusic_-_04_-_The_Black_Kitty.Sound.res</contentPath>
+                </item>
+              </_items>
+              <_size dataType="Int">1</_size>
+            </_x003C_Music_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3527465798</gameobj>
+          </item>
           <item dataType="Struct" type="Khronos.Character.PlayerSpawner" id="2810398672">
             <_x003C_PlayerPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
               <contentPath dataType="String">Data\Prefabs\Player 1.Prefab.res</contentPath>
@@ -243,7 +256,7 @@
             <gameobj dataType="ObjectRef">3527465798</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">2</_size>
+        <_size dataType="Int">3</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="3269640044" surrogate="true">
         <header />
@@ -251,10 +264,12 @@
           <keys dataType="Array" type="System.Object[]" id="3051728504">
             <item dataType="Type" id="3765606764" value="Khronos.GameStateManager" />
             <item dataType="Type" id="3857070134" value="Khronos.Character.PlayerSpawner" />
+            <item dataType="Type" id="2988130360" value="Khronos.Jukebox" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="675871198">
             <item dataType="ObjectRef">3123223854</item>
             <item dataType="ObjectRef">2810398672</item>
+            <item dataType="ObjectRef">3858775872</item>
           </values>
         </body>
       </compMap>

@@ -62,6 +62,15 @@ namespace Khronos.Character
             set { _canCollectPickups = value; }
         }
 
+
+        [DontSerialize]
+        private bool _canUsePickups = true;
+        public bool CanUsePickups
+        {
+            get { return _canUsePickups; }
+            set { _canUsePickups = value; }
+        }
+
         [DontSerialize]
         private int _shotMitigation;
         public int ShotMitigation
@@ -215,7 +224,7 @@ namespace Khronos.Character
             if (Definition.AssignedGamepad >= 0 && DualityApp.Gamepads[Definition.AssignedGamepad].IsAvailable || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 if (DualityApp.Gamepads[Definition.AssignedGamepad].ButtonHit(GamepadButton.X) || DualityApp.Keyboard.KeyHit(Duality.Input.Key.ControlLeft))
                 {
-                    if (WeaponPowerup != null)
+                    if (WeaponPowerup != null && CanUsePickups)
                     {
                         float horizontalaxis = Movement.GatherHorizontalAxisValue();
                         float verticalaxis = Movement.GatherVerticalAxisValue();
