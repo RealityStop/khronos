@@ -1754,12 +1754,12 @@
                                             <ignoreParent dataType="Bool">false</ignoreParent>
                                             <parentTransform dataType="ObjectRef">2191516947</parentTransform>
                                             <pos dataType="Struct" type="Duality.Vector3">
-                                              <X dataType="Float">-1125.55566</X>
+                                              <X dataType="Float">-1055.55566</X>
                                               <Y dataType="Float">1013.33325</Y>
                                               <Z dataType="Float">0</Z>
                                             </pos>
                                             <posAbs dataType="Struct" type="Duality.Vector3">
-                                              <X dataType="Float">947.222168</X>
+                                              <X dataType="Float">982.222168</X>
                                               <Y dataType="Float">-213.333374</Y>
                                               <Z dataType="Float">0</Z>
                                             </posAbs>
@@ -1769,12 +1769,12 @@
                                             <velAbs dataType="Struct" type="Duality.Vector3" />
                                           </parentTransform>
                                           <pos dataType="Struct" type="Duality.Vector3">
-                                            <X dataType="Float">-404.444336</X>
+                                            <X dataType="Float">-485.396729</X>
                                             <Y dataType="Float">-64</Y>
                                             <Z dataType="Float">0</Z>
                                           </pos>
                                           <posAbs dataType="Struct" type="Duality.Vector3">
-                                            <X dataType="Float">745</X>
+                                            <X dataType="Float">739.5238</X>
                                             <Y dataType="Float">-245.333374</Y>
                                             <Z dataType="Float">0</Z>
                                           </posAbs>
@@ -2129,12 +2129,12 @@
     <item dataType="ObjectRef">3377523778</item>
     <item dataType="ObjectRef">2019811668</item>
     <item dataType="ObjectRef">1105315654</item>
-    <item dataType="ObjectRef">4083172936</item>
     <item dataType="ObjectRef">317749840</item>
     <item dataType="ObjectRef">1891040267</item>
     <item dataType="ObjectRef">4097228668</item>
-    <item dataType="ObjectRef">2519619645</item>
     <item dataType="ObjectRef">1391277548</item>
+    <item dataType="ObjectRef">2519619645</item>
+    <item dataType="ObjectRef">4083172936</item>
     <item dataType="ObjectRef">2008954102</item>
     <item dataType="ObjectRef">1473538891</item>
     <item dataType="ObjectRef">2582874207</item>
@@ -2143,8 +2143,8 @@
     <item dataType="ObjectRef">3601711425</item>
     <item dataType="ObjectRef">3580724491</item>
     <item dataType="ObjectRef">1542437701</item>
-    <item dataType="ObjectRef">3169735959</item>
     <item dataType="ObjectRef">1742653651</item>
+    <item dataType="ObjectRef">3169735959</item>
   </serializeObj>
   <visibilityStrategy dataType="Struct" type="Duality.Components.DefaultRendererVisibilityStrategy" id="2035693768" />
 </root>

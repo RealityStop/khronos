@@ -39,7 +39,7 @@ namespace Khronos
                 {
                     var toPlay = Music.ToList();
                     toPlay.RemoveAt(lastTrackPlayed);
-                    toPlay.PlayRandomSound();
+                    lastTrackPlayed = toPlay.PlayRandomSound();
                 }
                 else
                     Music.PlayRandomSound();
