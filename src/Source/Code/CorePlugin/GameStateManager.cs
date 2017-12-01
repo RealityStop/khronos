@@ -4,6 +4,7 @@ using Duality.Editor;
 using Duality.Resources;
 using Khronos.Character;
 using Khronos.Data;
+using Khronos.Extensions;
 using Khronos.Khrono;
 using Khronos.Powerups.Projectiles;
 using System;
@@ -163,6 +164,10 @@ namespace Khronos
         public ContentRef<Prefab> GhostPrefab { get; set; }
 
 
+        public List<ContentRef<Sound>> PlayerDeathSounds { get; set; }
+        public List<ContentRef<Sound>> GhostDeathSounds { get; set; }
+
+
         public void OnInit(InitContext context)
         {
             State = GameState.PrePlay;
@@ -200,6 +205,7 @@ namespace Khronos
                 player.Movement.Velocity = Vector2.Zero;
                 State = GameState.Rewind;
 
+                PlayerDeathSounds.PlayRandomSound();
                 var newGhost = SpawnGhost(player);
 
                 RewindOperation newRewind = new RewindOperation(PlayerList, GhostList, () => {
@@ -219,6 +225,7 @@ namespace Khronos
 
         internal void GhostDead(Ghost hit)
         {
+            GhostDeathSounds.PlayRandomSound();
             hit.KillTemporarily();
         }
 

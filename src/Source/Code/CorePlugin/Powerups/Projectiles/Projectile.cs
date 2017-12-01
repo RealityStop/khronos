@@ -1,7 +1,9 @@
 ﻿using Duality;
 using Duality.Components;
 using Duality.Components.Physics;
+using Duality.Resources;
 using Khronos.Character;
+using Khronos.Extensions;
 using Khronos.Powerups.Projectiles.ProjectileEffects;
 using Khronos.World;
 using System;
@@ -26,6 +28,15 @@ namespace Khronos.Powerups.Projectiles
 
         public List<ContentRef<ProjectileEffect>> OnHitPlayerEffects { get; set; }
 
+
+        public List<ContentRef<Sound>> HitWallSound { get; set; }
+        public List<ContentRef<Sound>> BounceWallSound { get; set; }
+        public List<ContentRef<Sound>> HitPlayerSound { get; set; }
+        public List<ContentRef<Sound>> HitGhostSound { get; set; }
+
+
+
+
         public bool Bounce { get; set; }
 
         public void OnUpdate()
@@ -48,6 +59,7 @@ namespace Khronos.Powerups.Projectiles
             foreach (var item in OnHitPlayerEffects)
             {
                 item.Res.OnPlayerHit(player, this);
+                HitPlayerSound.PlayRandomSound();
             }
         }
 
@@ -56,6 +68,7 @@ namespace Khronos.Powerups.Projectiles
             foreach (var item in OnHitPlayerEffects)
             {
                 item.Res.OnGhostHit(hitGhost, this);
+                HitGhostSound.PlayRandomSound();
             }
         }
 
@@ -63,12 +76,13 @@ namespace Khronos.Powerups.Projectiles
         {
             if (Bounce)
             {
+                BounceWallSound.PlayRandomSound();
                 return ProjectileImpactResponse.Bounce;
             }
             else
             {
+                HitWallSound.PlayRandomSound();
                 return ProjectileImpactResponse.DestroyProjectile;
-                GameObj.DisposeLater();
             }
         }
 

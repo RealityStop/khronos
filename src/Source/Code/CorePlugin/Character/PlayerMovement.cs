@@ -1,4 +1,6 @@
 ﻿using Duality;
+using Duality.Resources;
+using Khronos.Extensions;
 using Khronos.World;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,9 @@ namespace Khronos.Character
         Player Player;
         [DontSerialize]
         PlayerCollider collider;
+
+
+        public List<ContentRef<Sound>> PlayerJumpSounds { get; set; }
 
         //Constants
         public float HorizontalMovementDamp { get; set; }
@@ -148,6 +153,8 @@ namespace Khronos.Character
                                     JumpDirection = JumpDirectionEnum.Right;
 
                             }
+
+                            PlayerJumpSounds.PlayRandomSound();
                         }
                     }
                 }
@@ -175,6 +182,7 @@ namespace Khronos.Character
                             JumpDirection = JumpDirectionEnum.Up;
                     }
                     JumpAvailable = false;
+                    PlayerJumpSounds.PlayRandomSound();
                 }
 
             return Vel;

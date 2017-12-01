@@ -65,6 +65,7 @@
     <Compile Include="Data\GameSetup.cs" />
     <Compile Include="Data\PlayerDefinition.cs" />
     <Compile Include="Data\Stage.cs" />
+    <Compile Include="Extensions\SoundExt.cs" />
     <Compile Include="Khrono\Actions\RecordableAction.cs" />
     <Compile Include="Khrono\Actions\PlayerShot.cs" />
     <Compile Include="Character\Ghost.cs" />
