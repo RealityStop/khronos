@@ -42,14 +42,14 @@ namespace Khronos.UI
 
             if (gamepad.ButtonHit(GamepadButton.DPadLeft) || keyboard.KeyHit(Key.Left))
             {
-                NextScreen();
+                PrevScreen();
                 if (selectSound.IsAvailable)
                     DualityApp.Sound.PlaySound(selectSound);
             }
 
             if (gamepad.ButtonHit(GamepadButton.DPadRight) || gamepad.ButtonHit(GamepadButton.A) || keyboard.KeyHit(Key.Right))
             {
-                PrevScreen();
+                NextScreen();
                 if (selectSound.IsAvailable)
                     DualityApp.Sound.PlaySound(selectSound);
             }
