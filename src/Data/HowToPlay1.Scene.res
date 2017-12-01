@@ -543,12 +543,12 @@
                                     <parentTransform dataType="ObjectRef">3246149652</parentTransform>
                                     <pos dataType="Struct" type="Duality.Vector3">
                                       <X dataType="Float">-600</X>
-                                      <Y dataType="Float">540</Y>
+                                      <Y dataType="Float">560</Y>
                                       <Z dataType="Float">0</Z>
                                     </pos>
                                     <posAbs dataType="Struct" type="Duality.Vector3">
                                       <X dataType="Float">110</X>
-                                      <Y dataType="Float">-530</Y>
+                                      <Y dataType="Float">-520</Y>
                                       <Z dataType="Float">0</Z>
                                     </posAbs>
                                     <scale dataType="Float">2</scale>
