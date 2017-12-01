@@ -1,0 +1,30 @@
+﻿<root dataType="Struct" type="Duality.Resources.Pixmap" id="129723834">
+  <assetInfo dataType="Struct" type="Duality.Editor.AssetManagement.AssetInfo" id="427169525">
+    <customData dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.String],[System.Object]]" id="1100841590" surrogate="true">
+      <header />
+      <body>
+        <SpriteSheetColumns dataType="Int">0</SpriteSheetColumns>
+        <SpriteSheetRows dataType="Int">0</SpriteSheetRows>
+        <SpriteFrameBorder dataType="Int">0</SpriteFrameBorder>
+      </body>
+    </customData>
+    <importerId dataType="String">BasicPixmapAssetImporter</importerId>
+    <sourceFileHint dataType="Array" type="System.String[]" id="649525530">
+      <item dataType="String">{Name}.png</item>
+    </sourceFileHint>
+  </assetInfo>
+  <atlas />
+  <layers dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Drawing.PixelData]]" id="2035693768">
+    <_items dataType="Array" type="Duality.Drawing.PixelData[]" id="2696347487" length="4">
+      <item dataType="Struct" type="Duality.Drawing.PixelData" id="1485019246" custom="true">
+        <body>
+          <version dataType="Int">4</version>
+          <formatId dataType="String">image/png</formatId>
+          <pixelData dataType="Array" type="System.Byte[]" id="2204481104">iVBORw0KGgoAAAANSUhEUgAAAGAAAABkCAYAAAB5CTUuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA0pSURBVHhe7ZxNb1RHFoZ7NCgBRRCiCBQsJCsaIQEBjIMNBBIcsM2XbcxnEqJIhkSKlJX/wCisR4rEng1rVpZmwzKzYWfJGxbeWULqtS3/gZ73Kd/TnC5Xd7s/brttbkmP3L59P9+36pyqumWX+qXMzMyUZmdnA3fv3q1+np6eHtJ3Y/fu3ZvT9meNuH//foB9xRjH6vfSw4cPAw8ePChpe6AoKlNTUwgcxL9z5w4/g9ASfkEsSdSKfq9BgtYgUWuQ0CmWHj16tMC5xRhGeD6ocuvWrdLt27er4uvnnMR/KVYlegXRY7wB0I4JMqCK9lkVL8Wcfg+tQ+fZvS3j3LlzpStXrpSuXr0axJcJYxIe0SuA8J5emAA//PBDQPu/1DnHtE8wgYoxMTGR3f0OL9T4a9euYcKn+jwv4VcUaoLwnu02ITNiRdvmJf6nul5Jn7On2IHlxo0bpZs3bwYDEF41PwjvaWSCjq3oHBW1nMqFCxcqo6OjgVOnTtVg2z3fffddZWxsrHL9+vWKanNLJmQEI0Q1ge+YQm3XgwcDxKyEX0IEo54JMqmiEFUZGRmpnDlzZpPQnaIWGIzBVFqPNwBiE3788Ue2L0n8WQygRRA++7ogPMiEQQm6oHBTFb6eCd9//33l66+/ToqWFxh8+fLl0MoIXY1MyIxYkPiDMq5/e02EG5ABcxJ+FfGN2AA9TAgtedT0VhkeHg6VgLDXxAR6TqHXpO3ZU/dBsVqfxfyXiAveADOB7d9++20Q/vTp030HlYIWUc8E0O8vRcgLtIhtLZOTk0F4GTCknysmfsoEkmK/Ch9DLvIGQGTCisQfwgRaxLYUq/kyYUzxfpUkCrEJ4+PjIcanHrSfGRoaCs9TzwRCkhjT59Ljx48zVXpULOTo5xyJzMT3JrCdRJd6uJ0EIZMxRcoEkPhzP/30U+9MiMU3vAHUevrjhJw8uHjxYkUPXUWhINfrnT17NnSVG5mg7fnnBMTPGPLiexMQn+abepBuMTc3V/n9999rYBs9mtT+3ULd67omkBOUwPMz4dKlSzbIGlLcX1Ur2GRAL8TnGrH4hh4+eUw3YTCXMoGcgAmMEzCiq4XJNMVzTBg08Q0T3/r1eZOq/Z7UMd1mYmKirgkSf1Bjiu5O5ikRhck01b4VtYCq+AbiU/N7QUp0T+qYPKgXjvT7CpN5Gvdk6nVYCDvqw+PoEuIb2yE+kHBTwgPfpY7JiwbhiJdJnY8RmL9XrceE5wo9VfGNXosP33zzTeXXX3/dJD7b+C51TJ4wjVHHhOcYwGCtrULcl8OYMIv4honPaJHuWeqm8oaBHd1PE5/PbEvt2wuIBCkTJL7SQZv5gF4PcV+1f9UbACQhunwYULBBapxAUm4rHxB6FF4IPQuIDd4ABj2pm/iQoQWmRswyYYF80FIowgBCj4nvTVDLSN5Awdkw9WIGeBMIRVtOyEoqZgDdqRoD7OUJ4acgDWOi2AT95BVn81ZA4qXPL6GfMeIEbwChJ3XRgvdIw5pQZCZI/GdNE7IlXtX+VTPATGBWMHXBgs34rqnRNCFT+9WPDrWfUZ43AHA2dbGCNLwBjE2gFUxNTaVbwcWLF0PtlwGrGOBNIPES+wu2Dpqp1scG1G8FhB91PedMfEPhKNT+1EUKGsNistgE5Ye5mZmZTPWsZOIz57OE4N4AYn/q5AXN4T04BngT1AqWeGdw268xoucjEwYR3zADWCiVOnnB1rBW4E2Q+IMMzqqFOR+1gOfeAGCyjfBT0D7Mm5kBZoJ+Pq8aQO3Pws8K3SdvAO9eUyct2Dqsa/UGgPLAith4fYkBYgjxDTMgdcKC1mEJZmwCry/Dq0vCjwyY9wYALxuI/wWdQy5V8q0xQC1gnlZg4WeBjO0N4OVG6mQFrcOYAAMiExb0ezUBr2KAN+H8+fPJkxW0B2tOvQmq/ayiCGOAQRPfm5A6SUH7sFrQDDAT6I7SAqR5rQHKCWHms6B7MKHpDQC1gDES8DP6+94AYlbqJAXtI53LsQEKS89oAc8xwJtAAk6dpKB9iCqK+7EBz2kBf5sBZoL/o7iC7jA8PLyIAd4Eff6bJYc1BgAjYHpBBd1DJqybAWZCMIABF3gDUieIoUnxqu3nn38O8JnWk9p3N9HJc8/Ozpa9CQpBq1UDvAmpg2OePHlSszIN2Eb+SO2/W+jkuaemppa9AVBjgJmQOtjDm//4JgyaVuqY3UCnz83fyjEgqzGAJhWbQBJuRKoWeFLH7AY6fW4zwJsQDIhNSB3sSV3ckzpmN5B6Vk/qGI83wExgKmIlNiF1sIfEk7oB4LvUMbuBTp+b6QhvANAC/mcGmAl0QxvBXNFvv/226SbYxnepY3YDnT43BtyL/ssLy1HeeAMgPjAF0xV0w+wm+My21L67iU6eWyGojAHehJKaxgsWlbZqQEHrqAUsmgFw586dtyzG+gsDvAn0aVMnKGgfdUPXWSERGfCmNDw8/G8zwEzAgILuooq+iAHehOnp6delU6dOTXsDgJiWOklB+6hil80AM+HWrVv/KR07duxKYUD+XL16NYQgz/Xr1/9gadABBC8MyJfJycmaFgDquoZVuvuVJN6kTCjoHkzEzUb/DRLtMWCvEsQL27EwIBfKiG8g/szMzFtp/wkG7Dl9+vRTf0BhQHdR/K8xADQmeCHtPyodOnSodPTo0fPxQdYSCjpHybbM3xF7A9QrenrixAm1gU9CK/hcA4W3hQndR/k1iG+YAYcPH/7Xl19+ifah7NeA7C+ydWFCd1FPZ9kbAAo/r6X5gX379m2or7KHMGRdpsKA7nHjxo0yq6O9AePj4/PSfO+G9Cp794bPhwlDsQmcxOaIClpD2i0jvpEZsHbkyJHj0vsfiO7LwTNnzsybAd6E1MkLmqOaXmMAqEW8ktafffzxxxuqu7J3//79xy9cuLAWm1C0gtaRZov8rTB4A06ePHleWr8P/lb27NnDj8OWjGMTUhcpqI9qf9UAM+HmzZtvpPEXYlP4sbKfZMz8dWwCrcDeGRc0pezFNxRd+NfrBzekThecGTh37tyrlAk4m7hYgUMVdZ2BFysgvPhZ7R8QIdQ0KgfJBeoRrcUmEIpSFy14j/r9i4hvmAFZ7P98Q+LG5Z9igFyAAbEJtAJbwlhQiwwos/LBGwCTk5P0fKj9HyHwVgpxamB0dPRtygScTt3Ah4wqZgg9GOBNUOh5l/X7t1T7rZALvjh+/PgDM6AwoTHXrl1bNvG9CQrbT6UltZ/I0lLhZUFNKPIm6HM5dSO9gP9d98svv1R5/Phx+Lc6qX17gSrjov3neG+ATGHKGfEb9nzqFVrBYUEoepMyQZTtz5p6ydOnT6sLowy28df9qf3zRAaUTXxvgka8b7PQ07Df36yQNAYYG1ivaLtNYEATi2/YH0v0CsX9ZbXGdZatewMk/poiB/8Wi9r/ftKtzXJADPDWzBtgJmhwsa44t5y6wTxI1X5P6pg8YKrBxDfMABnDbCfif4aAnRaazyExwGRdygSge5q60W6TEt2TOqbbSPz/TkxM1Ihv6Ps/0UoQvtsOPXFh9EYsq46SUyaoNSyySjhP/MLYGL5LHdNNSLj8r2jDi6+ka/19tGo64m21EMs4eVMTlJjWUzffDXjoekvE+S51TLeQwGX+AZM3ACLxYfNsZ5cKL5DDRZRk/qxngj6XVVNyM0EPG7qfJj6f2ZbatxuQbNXDWkZ8wxvgwg6EtT55ljBKhkY5ARMYHaYeaCeB+NR8xh7eADPBJVxoq7/fTtmSCVkPaZ2QRB99J5Hdc1niryO+4Q3YLvGtVMMRJjQYJ/D7OiEpfsh+RSFlWbV/mf9wAt4A0La1SPywtmc7Cskm3MSxY8cmGpmQwfRF3xpBuFEX828T3mPij4+Pr504ccIGWZBbwt1qqZoAcQ8pNoF3CoSlLLaG5LndIDo1XqwzpwQpE9QyfE+nL8S3wo2EcQLEIamOCXxelhFMZaynhMkTronwYNc38WMT9N2a8pkPOTxr34hvpTpYA0KSWsPrZiaAvi9jBnkiTzMU/giBGI7xdC037ROboH1fRyEnl0FWN0u1hwTMIak1vGtmAqg2BvRd6MJiCDmjXVN0XLU7yXmAz3Hsj49DeO33bmRkxObyjZ73dNotNSEJGLhhxFZN8MiMYIo+Y0qYg/cgtCdrSTXbzAijngnal3v0Ayvoy5DTrNBMmQ30DxLyA+8X2jHBgxGeZqZAIxN0jje6Lx/nDZ6hr0NOs8IcUnix48lyxCslt7ASb5tMWNN5X0Ux3uCeO57L76fCYGWTESyBIU/IjBcy413eJmifdzrPC+J79saq5n4E97htA6teFGIpKwTiBw/w9o0whSFK3IQqamm7JnAsr1Nf6HzznDt1zQzuacfF+U4KcZVeRU2yrgcrNDxfffVVQ1LnSMC1uYcdHeM7Lbw1Itby6nNTiMoBrsG1uGbX3ljtpsL6GUIBIhEWttRC6sCxnINzcc6W1+YU5X1hhUYr7IBSKv0fM2346FyEyaAAAAAASUVORK5CYII=</pixelData>
+        </body>
+      </item>
+    </_items>
+    <_size dataType="Int">1</_size>
+  </layers>
+</root>
+<!-- XmlFormatterBase Document Separator -->

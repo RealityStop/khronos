@@ -106,8 +106,6 @@
     <Compile Include="UI\IUIScreen.cs" />
     <Compile Include="UI\PlayerDefinitionEditor.cs" />
     <Compile Include="UI\PlayerSetup.cs" />
-    <Compile Include="UI\Screens\HowToPlay2.cs" />
-    <Compile Include="UI\Screens\HowToPlay1.cs" />
     <Compile Include="UI\Screens\MainMenu.cs" />
     <Compile Include="UI\Screens\StageSelect.cs" />
     <Compile Include="UI\Screens\TestOverlay.cs" />

@@ -9,16 +9,12 @@ using Duality.Input;
 
 namespace Khronos.UI
 {
-    public class HowToPlayUI : GUI
+    public class HowToPlayUI : Component, ICmpUpdatable
     {
-        public int CurrentScreen { get; set; } = 0;
+        public ContentRef<Scene> PrevScene { get; set; }
+        public ContentRef<Scene> NextScene { get; set; }
 
-        private ContentRef<Scene> mainMenuScene = new ContentRef<Scene>();
-        public ContentRef<Scene> MainMenuScene
-        {
-            get { return mainMenuScene; }
-            set { mainMenuScene = value; }
-        }
+        public ContentRef<Scene> MainMenuScene { get; set; }
 
         private ContentRef<Sound> selectSound = new ContentRef<Sound>();
         public ContentRef<Sound> SelectSound
@@ -28,48 +24,19 @@ namespace Khronos.UI
         }
 
 
-        private void DisableScreen(IUIScreen screens)
-        {
-            screens.Visible = false;
-            screens.Active = false;
-        }
-
-        private void EnableScreen(IUIScreen screens)
-        {
-            screens.Visible = true;
-            screens.Active = true;
-        }
-
         internal void NextScreen()
         {
-            DisableScreen(screens[CurrentScreen]);
-
-            CurrentScreen = ++CurrentScreen % screens.Count;
-
-            EnableScreen(screens[CurrentScreen]);
+            Scene.SwitchTo(NextScene);
         }
 
         internal void PrevScreen()
         {
-            DisableScreen(screens[CurrentScreen]);
-
-            CurrentScreen = (CurrentScreen - 1) < 0 ? screens.Count - 1 : CurrentScreen - 1;
-
-            EnableScreen(screens[CurrentScreen]);
-        }
-
-        public override void OnInit(InitContext context)
-        {
-            base.OnInit(context);
-
-            EnableScreen(screens[CurrentScreen]);
+            Scene.SwitchTo(PrevScene);
         }
 
 
-        public override void OnUpdate()
+        public void OnUpdate()
         {
-            base.OnUpdate();
-
             var gamepad = DualityApp.Gamepads[0];
             var keyboard = DualityApp.Keyboard;
 

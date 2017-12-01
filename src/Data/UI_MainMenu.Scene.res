@@ -99,7 +99,7 @@
                   <_x003C_Active_x003E_k__BackingField dataType="Bool">true</_x003C_Active_x003E_k__BackingField>
                   <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">0</_x003C_DrawOrder_x003E_k__BackingField>
                   <_x003C_HowToPlayScene_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
-                    <contentPath dataType="String">Data\HowToPlay.Scene.res</contentPath>
+                    <contentPath dataType="String">Data\HowToPlay1.Scene.res</contentPath>
                   </_x003C_HowToPlayScene_x003E_k__BackingField>
                   <_x003C_Visible_x003E_k__BackingField dataType="Bool">true</_x003C_Visible_x003E_k__BackingField>
                   <gameScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
