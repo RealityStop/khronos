@@ -154,6 +154,11 @@ namespace Khronos.UI
                     var newEditor = PlayerDefinitionEditorPrefab.Res.Instantiate();
                     var editor = newEditor.GetComponent<PlayerDefinitionEditor>();
                     editor.PlayerDef = newDef;
+                    for (int i = 1; i < AllocatedGamepads.Count; i++)
+                    {
+                        newDef.NextColor();
+                    }
+
                     newDef.Editor = editor;
                     Editors.Add(editor);
                     Editors.Sort(Comparer<PlayerDefinitionEditor>.Create((one, two) => { return one.PlayerDef.AssignedGamepad.CompareTo(two.PlayerDef.AssignedGamepad);  }));
