@@ -101,7 +101,7 @@ namespace Khronos.Powerups.Projectiles
             {
                 if (Owner != null && ShotShroud != null)
                 {
-                    ShotShroud.ColorTint = Owner.Definition.PlayerColor.Player.WithAlpha(160);
+                    ShotShroud.ColorTint = Owner.Definition.PlayerColor.Shot;
                 }
             }
         }
