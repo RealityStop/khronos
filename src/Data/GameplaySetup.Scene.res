@@ -238,8 +238,11 @@
                 <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
                   <contentPath dataType="String">Data\Media\audio\music\Rolemusic_-_09_-_The_Little_Broth.Sound.res</contentPath>
                 </item>
+                <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                  <contentPath dataType="String">Data\Media\audio\music\Rolemusic_-_03_-_Crush_At_Maracas_Bar.Sound.res</contentPath>
+                </item>
               </_items>
-              <_size dataType="Int">2</_size>
+              <_size dataType="Int">3</_size>
             </_x003C_Music_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3527465798</gameobj>

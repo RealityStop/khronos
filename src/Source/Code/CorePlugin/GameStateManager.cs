@@ -107,6 +107,7 @@ namespace Khronos
             player.Collider.ActiveSingle = true;
             player.CanCollectPickups = true;
             player.CanUsePickups = true;
+            player.Movement.Velocity = Vector2.Zero;
         }
 
         private void ClearPlayerBuffer(Player player)

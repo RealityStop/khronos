@@ -13,6 +13,9 @@ namespace Khronos
     {
         public bool ForceStopAllMusic { get; set; }
 
+        [DontSerialize]
+        private int lastTrackPlayed = -1;
+
         public List<ContentRef<Sound>> Music { get; set; }
 
         public void OnInit(Component.InitContext context)
@@ -32,7 +35,14 @@ namespace Khronos
         {
             if (DualityApp.Sound.NumPlaying2D == 0)
             {
-                Music.PlayRandomSound();
+                if (lastTrackPlayed >= 0 && Music.Count > 1)
+                {
+                    var toPlay = Music.ToList();
+                    toPlay.RemoveAt(lastTrackPlayed);
+                    toPlay.PlayRandomSound();
+                }
+                else
+                    Music.PlayRandomSound();
             }
         }
     }

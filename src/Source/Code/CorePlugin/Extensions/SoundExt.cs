@@ -10,7 +10,7 @@ namespace Khronos.Extensions
 {
     public static class SoundExt
     {
-        public static void PlayRandomSound(this List<ContentRef<Sound>> self)
+        public static int PlayRandomSound(this List<ContentRef<Sound>> self)
         {
             if (self != null)
             {
@@ -22,8 +22,10 @@ namespace Khronos.Extensions
                     {
                         DualityApp.Sound.PlaySound(self[index]);
                     }
+                    return index;
                 }
             }
+            return -1;
         }
     }
 }
