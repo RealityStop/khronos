@@ -207,6 +207,7 @@ namespace Khronos
 
                 PlayerDeathSounds.PlayRandomSound();
                 var newGhost = SpawnGhost(player);
+                GameObj.GetComponentsDeep<ScreenFlash>().FirstOrDefault()?.Flash();
 
                 RewindOperation newRewind = new RewindOperation(PlayerList, GhostList, () => {
                     newGhost.Transform.Pos = player.GameObj.Transform.Pos;

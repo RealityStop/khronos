@@ -80,6 +80,7 @@
     <Compile Include="Character\PlayerMovement.cs" />
     <Compile Include="GameStateManager.cs" />
     <Compile Include="Khrono\PointInTime.cs" />
+    <Compile Include="Khrono\ScreenFlash.cs" />
     <Compile Include="Khrono\TimeBody.cs" />
     <Compile Include="Powerups\Blueprints\AntiGravityPowerupDefinition.cs" />
     <Compile Include="Powerups\Blueprints\PowerupDefinition.cs" />
