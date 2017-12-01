@@ -56,9 +56,12 @@ namespace Khronos.Khrono.Actions
             ShotDirection = direction;
         }
 
-        public override void Do()
+        public override void Do(TimeBody owner = null)
         {
-            ShotDefinition.ActivateForPlayer(ShotOwner, ShotLocation, ShotDirection);
+            if (owner == null)
+                ShotDefinition.ActivateForPlayer(ShotOwner, ShotLocation, ShotDirection);
+            else
+                ShotDefinition.ActivateForGhost(owner.GameObj.GetComponent<Ghost>(), ShotLocation, ShotDirection);
         }
     }
 }

@@ -11,6 +11,14 @@ namespace Khronos.Character.Status
     {
         [DontSerialize]
         private double _duration;
+        [DontSerialize]
+        private GameObject shieldEffect;
+
+        public ShieldEffect(GameObject visual)
+        {
+            shieldEffect = visual;
+        }
+
         public double Duration
         {
             get { return _duration; }
@@ -22,6 +30,7 @@ namespace Khronos.Character.Status
         public override void AssignToGhost(Ghost ghost)
         {
             base.AssignToGhost(ghost);
+            AssignedGhost.ShotMitigation = 1;
         }
 
         public override void AssignToPlayer(Player player)
@@ -37,6 +46,8 @@ namespace Khronos.Character.Status
 
             if (AssignedGhost != null)
                 AssignedGhost.ShotMitigation = 0;
+
+            shieldEffect.DisposeLater();
         }
 
         public override bool Update()

@@ -14,7 +14,7 @@ namespace Khronos.Character
 {
     [RequiredComponent(typeof(Transform))]
     [RequiredComponent(typeof(TimeBody))]
-    public class Ghost : Component, ICmpInitializable, IStatusEffectTarget
+    public class Ghost : Component, ICmpInitializable, IStatusEffectTarget, ICmpUpdatable
     {
         [DontSerialize]
         private Player _owner;
@@ -106,6 +106,7 @@ namespace Khronos.Character
 
         internal void KillTemporarily()
         {
+            RemoveAllStatusEffects();
             TimeBody.playActions = false;
             var renderer = GameObj.GetComponent<SpriteRenderer>();
             if (renderer != null)
@@ -113,6 +114,15 @@ namespace Khronos.Character
             var physics = GameObj.GetComponent<RigidBody>();
             if (physics != null)
                 physics.ActiveSingle = false;
+        }
+
+        public void OnUpdate()
+        {
+            for (int i = 0; i < StatusEffects.Count; i++)
+            {
+                if (!StatusEffects[i].Update())
+                    RemoveEffect(StatusEffects[i--]);
+            }
         }
     }
 }

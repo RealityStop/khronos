@@ -98,7 +98,7 @@ namespace Khronos.Khrono
                     {
                         foreach (var item in pointInTime.Actions)
                         {
-                            item.Do();
+                            item.Do(this);
                         }
                     }
                 }

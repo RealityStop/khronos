@@ -1326,10 +1326,74 @@
       <name dataType="String">Camera</name>
       <parent />
       <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="1859967474">
-        <changes />
+        <changes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Resources.PrefabLink+VarMod]]" id="2056007968">
+          <_items dataType="Array" type="Duality.Resources.PrefabLink+VarMod[]" id="4202059740" length="4">
+            <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
+              <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="3976644040">
+                <_items dataType="Array" type="System.Int32[]" id="1042744940"></_items>
+                <_size dataType="Int">0</_size>
+              </childIndex>
+              <componentType dataType="ObjectRef">2871860846</componentType>
+              <prop dataType="MemberInfo" id="1117716190" value="P:Duality.Components.Transform:RelativePos" />
+              <val dataType="Struct" type="Duality.Vector3">
+                <X dataType="Float">960</X>
+                <Y dataType="Float">-540</Y>
+                <Z dataType="Float">-100</Z>
+              </val>
+            </item>
+          </_items>
+          <_size dataType="Int">1</_size>
+        </changes>
         <obj dataType="ObjectRef">1641100940</obj>
         <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
           <contentPath dataType="String">Data\Prefabs\Templates\GameCamera.Prefab.res</contentPath>
+        </prefab>
+      </prefabLink>
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="2416117089">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3549776547">
+        <_items dataType="Array" type="Duality.Component[]" id="3528842598" length="4">
+          <item dataType="Struct" type="Duality.Components.Transform" id="2473394307">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">2416117089</gameobj>
+          </item>
+          <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="3884736369">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">2416117089</gameobj>
+          </item>
+        </_items>
+        <_size dataType="Int">2</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="927943032" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="2507672009">
+            <item dataType="ObjectRef">2871860846</item>
+            <item dataType="ObjectRef">1588803472</item>
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="3847424576">
+            <item dataType="ObjectRef">2473394307</item>
+            <item dataType="ObjectRef">3884736369</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform dataType="ObjectRef">2473394307</compTransform>
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="3255306219">7v48ZlScck26YGGV83vvIw==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">ShieldEffect</name>
+      <parent />
+      <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="4067966217">
+        <changes />
+        <obj dataType="ObjectRef">2416117089</obj>
+        <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+          <contentPath dataType="String">Data\Prefabs\ShieldEffect.Prefab.res</contentPath>
         </prefab>
       </prefabLink>
     </item>

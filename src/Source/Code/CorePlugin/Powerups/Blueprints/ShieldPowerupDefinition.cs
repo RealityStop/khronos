@@ -7,11 +7,14 @@ using Duality;
 using Khronos.Character;
 using Khronos.Powerups.Projectiles;
 using Khronos.Character.Status;
+using Duality.Resources;
 
 namespace Khronos.Powerups.Blueprints
 {
     public class ShieldPowerupDefinition : PowerupDefinition
     {
+        public ContentRef<Prefab> AttachableEffect { get; set; }
+
         public override bool Recordable => true;
 
         public override PowerupInstance Spawn()
@@ -21,12 +24,20 @@ namespace Khronos.Powerups.Blueprints
 
         internal override void ActivateForPlayer(Player player, Vector2 location, ProjectileShotDirection direction)
         {
-            player.AssignStatusEffect(new InvertGravityStatusEffect() { Duration = 5 });
+            var newObject = AttachableEffect.Res.Instantiate();
+            Scene.Current.AddObject(newObject);
+            newObject.Parent = player.GameObj;
+            newObject.Transform.RelativePos = new Vector3(0, 0, -20);
+            player.AssignStatusEffect(new ShieldEffect(newObject) { Duration = 5 });
         }
 
-        internal override void ActivateForGhost(Ghost player, Vector2 location, ProjectileShotDirection direction)
+        internal override void ActivateForGhost(Ghost ghost, Vector2 location, ProjectileShotDirection direction)
         {
-            player.AssignStatusEffect(new InvertGravityStatusEffect() { Duration = 5 });
+            var newObject = AttachableEffect.Res.Instantiate();
+            Scene.Current.AddObject(newObject);
+            newObject.Parent = ghost.GameObj;
+            newObject.Transform.RelativePos = new Vector3(0, 0, -20);
+            ghost.AssignStatusEffect(new ShieldEffect(newObject) { Duration = 5 });
         }
     }
 }
