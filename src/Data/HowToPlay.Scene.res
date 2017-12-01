@@ -90,30 +90,25 @@
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="430378270">
         <_items dataType="Array" type="Duality.Component[]" id="197718160" length="4">
-          <item dataType="Struct" type="Khronos.UI.GUI" id="2294168029">
+          <item dataType="Struct" type="Khronos.UI.HowToPlayUI" id="1833511309">
+            <_x003C_CurrentScreen_x003E_k__BackingField dataType="Int">0</_x003C_CurrentScreen_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">2496773112</gameobj>
-            <screens dataType="Struct" type="System.Collections.Generic.List`1[[Khronos.UI.IUIScreen]]" id="3497328265">
-              <_items dataType="Array" type="Khronos.UI.IUIScreen[]" id="1355585422" length="4">
-                <item dataType="Struct" type="Khronos.UI.Screens.MainMenu" id="410551504">
-                  <_x003C_Active_x003E_k__BackingField dataType="Bool">true</_x003C_Active_x003E_k__BackingField>
+            <screens dataType="Struct" type="System.Collections.Generic.List`1[[Khronos.UI.IUIScreen]]" id="1719761625">
+              <_items dataType="Array" type="Khronos.UI.IUIScreen[]" id="2745304526" length="4">
+                <item dataType="Struct" type="Khronos.UI.Screens.HowToPlay1" id="1572207056">
+                  <_x003C_Active_x003E_k__BackingField dataType="Bool">false</_x003C_Active_x003E_k__BackingField>
                   <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">0</_x003C_DrawOrder_x003E_k__BackingField>
-                  <_x003C_HowToPlayScene_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
-                    <contentPath dataType="String">Data\HowToPlay.Scene.res</contentPath>
-                  </_x003C_HowToPlayScene_x003E_k__BackingField>
-                  <_x003C_Visible_x003E_k__BackingField dataType="Bool">true</_x003C_Visible_x003E_k__BackingField>
-                  <gameScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
-                    <contentPath dataType="String">Data\StageSelect.Scene.res</contentPath>
-                  </gameScene>
-                  <selectedBtn dataType="Int">0</selectedBtn>
-                  <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
-                    <contentPath dataType="String">Data\Media\audio\fx\ui\rollover5.Sound.res</contentPath>
-                  </selectSound>
-                </item>
-                <item dataType="Struct" type="Khronos.UI.Screens.TestOverlay" id="2950279790">
-                  <_x003C_Active_x003E_k__BackingField dataType="Bool">true</_x003C_Active_x003E_k__BackingField>
-                  <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">1</_x003C_DrawOrder_x003E_k__BackingField>
                   <_x003C_Visible_x003E_k__BackingField dataType="Bool">false</_x003C_Visible_x003E_k__BackingField>
+                  <mainMenuScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]" />
+                  <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]" />
+                </item>
+                <item dataType="Struct" type="Khronos.UI.Screens.HowToPlay2" id="1441099374">
+                  <_x003C_Active_x003E_k__BackingField dataType="Bool">false</_x003C_Active_x003E_k__BackingField>
+                  <_x003C_DrawOrder_x003E_k__BackingField dataType="Float">0</_x003C_DrawOrder_x003E_k__BackingField>
+                  <_x003C_Visible_x003E_k__BackingField dataType="Bool">false</_x003C_Visible_x003E_k__BackingField>
+                  <mainMenuScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]" />
+                  <selectSound dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]" />
                 </item>
               </_items>
               <_size dataType="Int">2</_size>
@@ -129,10 +124,10 @@
         <header />
         <body>
           <keys dataType="Array" type="System.Object[]" id="2237010236">
-            <item dataType="Type" id="653414212" value="Khronos.UI.GUI" />
+            <item dataType="Type" id="653414212" value="Khronos.UI.HowToPlayUI" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="1418683286">
-            <item dataType="ObjectRef">2294168029</item>
+            <item dataType="ObjectRef">1833511309</item>
           </values>
         </body>
       </compMap>
@@ -145,41 +140,6 @@
       </identifier>
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">GUI</name>
-      <parent />
-      <prefabLink />
-    </item>
-    <item dataType="Struct" type="Duality.GameObject" id="1155579525">
-      <active dataType="Bool">true</active>
-      <children />
-      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="2679394295">
-        <_items dataType="Array" type="Duality.Component[]" id="3231096462" length="4">
-          <item dataType="Struct" type="Khronos.UI.UITest" id="3924892933">
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">1155579525</gameobj>
-          </item>
-        </_items>
-        <_size dataType="Int">1</_size>
-      </compList>
-      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2792151616" surrogate="true">
-        <header />
-        <body>
-          <keys dataType="Array" type="System.Object[]" id="4187799869">
-            <item dataType="Type" id="1172580902" value="Khronos.UI.UITest" />
-          </keys>
-          <values dataType="Array" type="System.Object[]" id="2126835896">
-            <item dataType="ObjectRef">3924892933</item>
-          </values>
-        </body>
-      </compMap>
-      <compTransform />
-      <identifier dataType="Struct" type="System.Guid" surrogate="true">
-        <header>
-          <data dataType="Array" type="System.Byte[]" id="179658519">JAw3MXToE0eYfHl+t7XWGg==</data>
-        </header>
-        <body />
-      </identifier>
-      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
-      <name dataType="String">UITest</name>
       <parent />
       <prefabLink />
     </item>

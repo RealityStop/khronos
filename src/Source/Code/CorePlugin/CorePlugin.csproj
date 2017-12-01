@@ -102,9 +102,12 @@
     <Compile Include="UI\Controls\Panel.cs" />
     <Compile Include="UI\GameFinishUI.cs" />
     <Compile Include="UI\GUI.cs" />
+    <Compile Include="UI\HowToPlayUI.cs" />
     <Compile Include="UI\IUIScreen.cs" />
     <Compile Include="UI\PlayerDefinitionEditor.cs" />
     <Compile Include="UI\PlayerSetup.cs" />
+    <Compile Include="UI\Screens\HowToPlay2.cs" />
+    <Compile Include="UI\Screens\HowToPlay1.cs" />
     <Compile Include="UI\Screens\MainMenu.cs" />
     <Compile Include="UI\Screens\StageSelect.cs" />
     <Compile Include="UI\Screens\TestOverlay.cs" />
