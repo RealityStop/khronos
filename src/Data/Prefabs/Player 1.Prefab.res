@@ -135,12 +135,12 @@
                 <ignoreParent dataType="Bool">false</ignoreParent>
                 <parentTransform dataType="ObjectRef">4199150011</parentTransform>
                 <pos dataType="Struct" type="Duality.Vector3">
-                  <X dataType="Float">32</X>
+                  <X dataType="Float">31</X>
                   <Y dataType="Float">-36</Y>
                   <Z dataType="Float">0</Z>
                 </pos>
                 <posAbs dataType="Struct" type="Duality.Vector3">
-                  <X dataType="Float">283.360352</X>
+                  <X dataType="Float">282.360352</X>
                   <Y dataType="Float">-313.0387</Y>
                   <Z dataType="Float">0</Z>
                 </posAbs>

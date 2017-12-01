@@ -182,11 +182,11 @@ namespace Khronos.Character
             if (Movement.CurrentFacing == FacingEnum.Left)
             {
                 //Then we're facing left
-                PowerupSpawnLocation.RelativePos = new Vector3(0, -32, 0);
+                PowerupSpawnLocation.RelativePos = new Vector3(1, -32, 0);
             }
             else
             {
-                PowerupSpawnLocation.RelativePos = new Vector3(32, -32, 0);
+                PowerupSpawnLocation.RelativePos = new Vector3(31, -32, 0);
             }
 
         }
