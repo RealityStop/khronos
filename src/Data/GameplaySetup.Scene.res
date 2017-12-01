@@ -229,14 +229,17 @@
             <gameobj dataType="ObjectRef">3527465798</gameobj>
           </item>
           <item dataType="Struct" type="Khronos.Jukebox" id="3858775872">
-            <_x003C_ForceStopAllMusic_x003E_k__BackingField dataType="Bool">false</_x003C_ForceStopAllMusic_x003E_k__BackingField>
+            <_x003C_ForceStopAllMusic_x003E_k__BackingField dataType="Bool">true</_x003C_ForceStopAllMusic_x003E_k__BackingField>
             <_x003C_Music_x003E_k__BackingField dataType="Struct" type="System.Collections.Generic.List`1[[Duality.ContentRef`1[[Duality.Resources.Sound]]]]" id="412716556">
               <_items dataType="Array" type="Duality.ContentRef`1[[Duality.Resources.Sound]][]" id="461857956" length="4">
                 <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
                   <contentPath dataType="String">Data\Media\audio\music\Rolemusic_-_04_-_The_Black_Kitty.Sound.res</contentPath>
                 </item>
+                <item dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Sound]]">
+                  <contentPath dataType="String">Data\Media\audio\music\Rolemusic_-_09_-_The_Little_Broth.Sound.res</contentPath>
+                </item>
               </_items>
-              <_size dataType="Int">1</_size>
+              <_size dataType="Int">2</_size>
             </_x003C_Music_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3527465798</gameobj>
