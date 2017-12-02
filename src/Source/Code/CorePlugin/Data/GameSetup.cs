@@ -82,10 +82,10 @@ namespace Khronos.Data
 
         private GameSetup()
         {
-            stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
-            playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
-            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
-            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.Res");
+            stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.res");
+            playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.res");
+            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.res");
+            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.res");
         }
 
 
@@ -94,13 +94,13 @@ namespace Khronos.Data
             WinningPlayer = null;
             Players.Clear();
             stageSelectScreen.Res.Dispose();
-            stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.Res");
+            stageSelectScreen = ContentProvider.RequestContent<Scene>("Data\\StageSelect.Scene.res");
             playerSetupScreen.Res.Dispose();
-            playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.Res");
+            playerSetupScreen = ContentProvider.RequestContent<Scene>("Data\\PlayerSetup.Scene.res");
             gameSetupScene.Res.Dispose();
-            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.Res");
+            gameSetupScene = ContentProvider.RequestContent<Scene>("Data\\GameplaySetup.Scene.res");
             gameEndScreen.Res.Dispose();
-            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.Res");
+            gameEndScreen = ContentProvider.RequestContent<Scene>("Data\\GameFinish.Scene.res");
         }
 
     }
